@@ -12,7 +12,7 @@ docBreadcrumb = [
 
 h1. Modules
 
-p. The modules section describes node level modules that can be configured. Node level modules are modules that are basically singletons on the node level, and different from "index modules":../index_modules which are create on a per index or even per index shard level allowing them to be configured on the index level.
+p. The modules section describes node level modules that can be configured. Node level modules are modules that are basically singletons on the node level, and different from "index modules":../index_modules which are created on a per index or even per index shard level allowing them to be configured on the index level.
 
 p. The following lists the available top level modules:
 
