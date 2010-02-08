@@ -1,0 +1,125 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON Index API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"],
+    ["index", "Index"]
+];
+</script>
+
+h1. Index
+
+p. The index API allows to index a typed JSON document into a specific index and make it searchable. The following example index the JSON document into an index called twitter, under a type called tweet, with id valued 1:
+
+<pre class="prettyprint">
+$ curl -XPUT http://localhost:9200/twitter/tweet/1 -d \
+'
+{
+    user : "kimchy",
+    postDate : "2009-11-15T14:12:12",
+    message : "trying out Elastic Search"
+}
+'
+</pre>
+
+p. The result of the above index operation is:
+
+<pre class="prettyprint lang-js">
+{
+    "ok" : true,
+    "_index" : "twitter",
+    "_type" : "tweet",
+    "_id" : "1"
+}
+</pre>
+
+h2. Automatic for the Index
+
+p. The index operation automatically creates an index if it has not been created before (check out the "create index API":../admin/indices/create_index for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "create mapping API":../admin/indices/create_mapping for manually creating type mapping). 
+
+p. The mapping itself is very flexible and is schema free, meaning that new fields / objects can be added and they will be automatically be added to the mapping definition of the specific type. Check out the "mapping":/docs/elasticsearch/mapping section for more information on mapping definitions.
+
+p. Though explained on the "mapping":/docs/elasticsearch/mapping section, its important to note that the format of the JSON document can also include the type (very handy when using JSON mappers), for example:
+
+<pre class="prettyprint">
+$ curl -XPUT http://localhost:9200/twitter/tweet/1 -d \
+'
+{
+    tweet : {
+        user : "kimchy",
+        postDate : "2009-11-15T14:12:12",
+        message : "trying out Elastic Search"
+    }
+}
+'
+</pre>
+
+
+h2. Operation Type
+
+p. The index operation will automatically replace an existing document within the same index that has the same type and id. If you know in advance that this is a new document, then the @opType@ parameter can be set to @create@. The benefit is a slight improvement in performance since there is no need to check and possibly delete the existing document.
+
+p(note). If the opType is set to create, and there is already an existing document with the same type and id within the index, the index will now hold *two* documents with the same id and type. 
+
+p. Here is an example of using the @opType@ parameter:
+
+<pre class="prettyprint">
+$ curl -XPUT http://localhost:9200/twitter/tweet/1?opType=create -d \
+'
+{
+    user : "kimchy",
+    postDate : "2009-11-15T14:12:12",
+    message : "trying out Elastic Search"
+}
+'
+</pre>
+
+h2. Automatic Id Generation
+
+The index operation can be executed without specifying the id. In such a case, an id will be generated automatically for the document. In such a case, the @opType@ will automatically be set to @create@. Here is an example (note the *POST* used instead of *PUT*):
+
+<pre class="prettyprint">
+$ curl -XPOST http://localhost:9200/twitter/tweet/ -d \
+'
+{
+    user : "kimchy",
+    postDate : "2009-11-15T14:12:12",
+    message : "trying out Elastic Search"
+}
+'
+</pre>
+
+p. The result of the above index operation is:
+
+<pre class="prettyprint lang-js">
+{
+    "ok" : true,
+    "_index" : "twitter",
+    "_type" : "tweet",
+    "_id" : "6a8ca01c-7896-48e9-81cc-9f70661fcb32"
+}
+</pre>
+
+h2. Distributed
+
+The index operation gets hashed into a specific shard id. It then gets redirected into the primary shard within that id group, and replicated (if needed) to shard replicas within that id group.
+
+h2. Timeout
+
+The primary shard that needs to perform the operation might not be available yet. For example, it might still be in the process of recovery from a gateway, or might be in the process of relocation. The timeout parameter allows to control how long the index operation will wait till the primary shard is available before exiting with an error. The parameter name is @timeout@ and the default value of it is 1 minute. Here is an example of setting it to 5 minutes:
+
+<pre class="prettyprint">
+$ curl -XPUT http://localhost:9200/twitter/tweet/1?timeout=5m -d \
+'
+{
+    user : "kimchy",
+    postDate : "2009-11-15T14:12:12",
+    message : "trying out Elastic Search"
+}
+'
+</pre>
+

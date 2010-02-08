@@ -1,0 +1,198 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Mapping | Object Type
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["mapping", "Mapping"], 
+    ["object_type", "Object Type"], 
+];
+</script>
+
+h1. Object Type
+
+p. JSON documents are hierarchal in nature, allowing to define inner "object"s within the actual JSON. ElasticSearch completely understand the nature of objects and allows to map them easily, automatically support their dynamic nature (object can one have different fields each time), and provides query support for their inner field. Lets take the following JSON as an example:
+
+<pre class="prettyprint lang-js">
+{
+    tweet {
+        person : {
+            name : {
+                firstName : "Shay",
+                lastName : "Banon"
+            },
+            sid : "12345"
+        },
+        message : "This is a tweet!"
+    }
+}
+</pre>
+ 
+p. The above shows an example where a tweet includes the actual @person@ details. A @person@ is an object, with an @sid@, and a @name@ object which has @firstName@ and @lastName@. Its important to note that @tweet@ is also an an object, though a special "root object type":../root_object_type which allows for additional mapping definitions.
+
+p. The following is an example of explicit mapping for the above JSON:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            person : {
+                type = "object"
+                properties : {
+                    name : {
+                        properties : {
+                            firstName : {type : "string"},
+                            lastName : {type : "string"}
+                        }
+                    },
+                    sid : {type : "string", index : "not_analyzed"}
+                }
+            }
+            message : {type : "string"}
+        }
+    }
+}
+</pre>
+
+p. In order to mark a mapping of type @object@, set the @type@ to object. This is an optional step, since if there are @properties@ defined for it, it will automatically be identified as an @object@ mapping.
+
+h2. properties
+
+p. An object mapping can optionally define one or more properties using the @properties@ tag. Properties list the properties this field will have. Each property can be either another @object@, or one of the "core_types":../core_types.
+
+h2. dynamic
+
+p. One of the more important features of ElasticSearch is its ability to be schema-less. This means that, in our example above, the @person@ object can later on be indexed with a new property, for example, @age@, and it will automatically be added to the mapping definitions. Same goes for the @tweet@ root object.
+
+p. This feature is by default turned on, and its the @dynamic@ nature of each object mapped. Each object mapped is automatically dynamic, though is can be explicitly turned off:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            person : {
+                type = "object"
+                properties : {
+                    name : {
+                        dynamic : false,
+                        properties : {
+                            firstName : {type : "string"},
+                            lastName : {type : "string"}
+                        }
+                    },
+                    sid : {type : "string", index : "not_analyzed"}
+                }
+            }
+            message : {type : "string"}
+        }
+    }
+}
+</pre>
+
+p. In the above example, the @name@ object mapped is not dynamic, meaning that if, in the future, we will try and index a JSON with a @middleName@ within the @name@ object, it will get discarded and not added.
+
+p. There is no performance overhead of an @object@ being dynamic, the ability to turn it off is provided as a safe mechanism so "malformed" objects won't, by mistake, index data that we do not wish to be indexed.
+
+p. The dynamic nature also works with inner objects, meaning that if if a new @object@ is provided within a mapped dynamic object, it will be automatically added to the index and mapped as well.
+
+p. When processing dynamic new fields, their type is automatically derived. For example, if its a @number@, it will automatically be treated as number "core_type":../core_type. Dynamic fields default to their default attributes, for example, they are not stored and they are always indexed.
+
+p. Date fields are special since they are represented as a @string@. Date fields are detected if they can be parsed as a date when they are first introduced into the system. The set of date formats that are tested against can be configured using the @dateFormats@ and explained later.
+
+p. Note, once a field has been added, *its type can not change*. For example, if we added age and its value is a number, then it can't be treated as a string.
+
+h2. enabled
+
+p. The enabled flag allows to disable parsing and adding a named object completely. This is handy when a portion of the JSON document passed should not be indexed. For example:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            person : {
+                type = "object"
+                properties : {
+                    name : {
+                        type : "object",
+                        enabled : false
+                    },
+                    sid : {type : "string", index : "not_analyzed"}
+                }
+            }
+            message : {type : "string"}
+        }
+    }
+}
+</pre>
+
+p. In the above, @name@ and its content will not be indexed at all.
+
+h2. pathType
+
+p. In the "core_types":../core_types section, a field can have a @indexName@ associated with it in order to control the name of the field that will be stored within the index. When that field exists within an object(s) that are not the root object, the name of the field of the index can either include the full "path" to the field with its @indexName@, or just the @indexName@. For example:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            person : {
+                properties : {
+                    name : {
+                        field1 : {
+                            type : "string", 
+                            pathType : "full"
+                        }, 
+                        field2 : {
+                            type : "string", 
+                            pathType : "full", 
+                            indexName : "field2Index"
+                        },
+                        field3 : {
+                            type : "string", 
+                            pathType : "justName"
+                        },
+                        field4 : {
+                            type : "string", 
+                            pathType : "justName", 
+                            indexName : "field4Index"
+                        }
+                    },
+                }
+            }
+            message : {type : "string"}
+        }
+    }
+}
+</pre>
+
+p. In the above example, the @name@ object within the @person@ object has four fields, each with a different combination of @pathType@ and @indexName@. The document fields that will be stored in the index as a result of that are:
+
+|_. JSON Name | Document Field Name |
+|@field1@|@person.name.field1@|
+|@field2@|@person.name.field2Index@|
+|@field3@|@field3@|
+|@field4@|@field4Index@|
+
+p. Note, when querying or using a field name in any of the APIs provided (search, query, selective loading, ...), there is an automatic detection from logical full path and into the indexName and vice versa. For example, even though @field4@ defines that it is stored with @justName@ and a different @indexName@, it can either be referred to using @person.name.field4@ (logical name), or its actual indexed name of @field4Index@.
+
+p. More over, where applicable, for example, in queries, the full path including the type can be used such as @tweet.person.name.field4@, in this case, both the actual indexed name will be resolved to match against the index, and an automatic query filter will be added to only match @tweet@ types.
+
+h2. dateFormats
+
+p. @dateFormats@ is the ability to set one or more date formats that will be used to detect @date@ fields. For example:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        dateFormats : ["yyyy-MM-dd", "dd-MM-yyyy"],
+        properties : {
+            message : {type : "string"}
+        }
+    }
+}
+</pre>
+
+p. In the above mapping, is a new JSON field of type string is detected, the date formats specified will be used in order to check if its a date. If it passes parsing, then the field will be declared with @date@ type, and will use the matching format as its format attribute. The date format itself is explained "here":../date_format.
+

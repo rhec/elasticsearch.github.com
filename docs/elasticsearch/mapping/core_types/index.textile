@@ -1,0 +1,185 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Mapping | Core Types
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["mapping", "Mapping"], 
+    ["core_types", "Core Types"], 
+];
+</script>
+
+h1. Core Types
+
+p. Each JSON field can be mapped to a specific core type. JSON itself already provides us with some typing, with its support for @string@, @integer@/@long@, @float@/@double@, @boolean@, and @null@.
+
+p. The following sample tweet JSON document will be used to explain the core types:
+
+<pre class="prettyprint lang-js">
+{
+    tweet {
+        user : "kimchy"
+        message : "This is a tweet!",
+        postDate : "2009-11-15T14:12:12",
+        priority : 4,
+        rank : 12.3
+    }
+}
+</pre>
+
+p. Explicit mapping for the above JSON tweet can be:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            user : {type : "string", index : "not_analyzed"},
+            message : {type : "string", nullValue : "na"},
+            postDate : {type : "date"},
+            priority : {type : "integer"},
+            rank : {type : "float"}
+        }
+    }
+}
+</pre>
+
+
+h2. String
+
+p. The text based string type is the most basic type, and contains one or more characters. An example mapping can be:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            message : {
+                type : "string",
+                store : "yes",
+                index : "analyzed",
+                nullValue : "na"
+            }
+        }
+    }
+}
+</pre>
+
+p. The above mapping defines a @string@ @message@ property/field within the @tweet@ type. The field is stored in the index (so it can later be retrieved using selective loading when searching), and it gets analyzed (broken down into searchable terms). If the message has a @null@ value, then then value that will be stored is @na@.
+
+p. The following table lists all the attributes that can be used with the @string@ type:
+
+|_. Attribute |_. Description |
+|indexName|The name of the field that will be stored in the index. Defaults to the property/field name.|
+|store|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
+|index|Set to @analyzed@ for the field to be indexed and searchable after being broken down into token using an analyzer. @not_analyzed@ means that its still searchable, but does not go through any analysis process or broken down into tokens. @no@ means that it won't be searchable at all. Defaults to @analyzed@.|
+|termVector|Possible values are @no@, @yes@, @with_offsets@, @with_positions@, @with_positions_offsets@. Defaults to @no@.|
+|boost|The boost value. Defaults to @1.0@.|
+|nullValue|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
+|omitNorms|Boolean value if norms should be omitted or not. Defaults to @false@.|
+|omitTermFreqAndPositions|Boolean value if term freq and positions should be omitted. Defaults to @false@.|
+|analyzer|The analyzer used to analyze the text contents when @analyzed@ during indexing and when searching using a query string. Defaults to the globally configured analyzer.|
+|indexAnalyzer|The analyzer used to analyze the text contents when @analyzed@ during indexing.|
+|searchAnalyzer|The analyzer used to analyze the field when part of a query string.|
+
+h2. Number
+
+p. A number based type supporting @float@, @double@, @integer@, and @long@. It uses specific constructs within Lucene is order to support numeric values. An example mapping can be:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            rank : {
+                type : "float",
+                nullValue : 1.0
+            }
+        }
+    }
+}
+</pre>
+
+p. The following table lists all the attributes that can be used with a numbered type:
+
+|_. Attribute |_. Description |
+|type|The type of the number. Can be @float@, @double@, @integer@, @long@. Required.|
+|indexName|The name of the field that will be stored in the index. Defaults to the property/field name.|
+|store|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
+|index|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if its not indexed and not stored, there is nothing to do with it.|
+|precisionStep|The precision step (number of terms generated for each number value). Defaults to @4@.|
+|boost|The boost value. Defaults to @1.0@.|
+|nullValue|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
+
+h2. Date
+
+p. The date type is a special type which maps to JSON string type. It follows a specific format that can be explicitly set. All dates are @UTC@. Internally, a date maps to a number type @long@, with the added parsing stage from string to long and from long to string. An example mapping:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            postDate : {
+                type : "date",
+                format : "YYYY-MM-dd"
+            }
+        }
+    }
+}
+</pre>
+
+p. The following table lists all the attributes that can be used with a date type:
+
+|_. Attribute |_. Description |
+|indexName|The name of the field that will be stored in the index. Defaults to the property/field name.|
+|format|The "date format":../date_format.|
+|store|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
+|index|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if its not indexed and not stored, there is nothing to do with it.|
+|precisionStep|The precision step (number of terms generated for each number value). Defaults to @4@.|
+|boost|The boost value. Defaults to @1.0@.|
+|nullValue|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
+
+h2. Boolean
+
+p. The boolean type Maps to the JSON boolean type. It ends up storing within the index either @T@ or @F@, with automatic translation to @true@ and @false@ respectively.
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            hesMySpecialTweet : {
+                type : "boolean",
+            }
+        }
+    }
+}
+</pre>
+
+p. The following table lists all the attributes that can be used with the boolean type:
+
+|_. Attribute |_. Description |
+|indexName|The name of the field that will be stored in the index. Defaults to the property/field name.|
+|store|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
+|index|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if its not indexed and not stored, there is nothing to do with it.|
+|boost|The boost value. Defaults to @1.0@.|
+|nullValue|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
+
+h2. Binary
+
+p. The binary type is a base64 representation of binary data that can be stored in the index. The field is always stored and not indexed at all.
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            image : {
+                type : "boolean",
+            }
+        }
+    }
+}
+</pre>
+
+p. The following table lists all the attributes that can be used with the binary type:
+
+|_. Attribute |_. Description |
+|indexName|The name of the field that will be stored in the index. Defaults to the property/field name.|

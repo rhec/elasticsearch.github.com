@@ -1,0 +1,18 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Merge
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["merge", "Merge"], 
+];
+</script>
+
+h1. Index Merge Module
+
+p. The merge module allow to configure both the "merge policy":policy and "merge scheduler":scheduler of a specific shard index.
+
+p. Lucene indices (which each shard has a complete standalone one) gets segmented over time while performing indexing (and delete) operations on them. The merge process keeps those segments at bay. The more segments you have, the slower the search will be, though merging can potentially be a heavy operation so forcing small number of segments will mean more heavy merge operations.

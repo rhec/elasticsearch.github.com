@@ -1,0 +1,15 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Setup
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["setup", "Setup"], 
+];
+</script>
+
+h1. Setup
+
+p. This section includes information on how to setup Elastic Search and get it running. If you haven't already, "download":/download it, and then check the "installation":installation docs.

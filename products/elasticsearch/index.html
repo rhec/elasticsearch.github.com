@@ -1,0 +1,274 @@
+---
+layout: default
+title: ElasticSearch Overview
+---
+
+<div id="gallerywrapper">
+  <div id="gallery">
+	
+    <div id="slides">
+    
+        <div class="slide"><div class="generic slidecontent">
+            <div>
+                <img src="/images/set3/bonsai2.png" height="120px" class="left-img"></img>
+                <h2>You know, for Search</h2>
+                <p>So, we build a web site or an application and want to add search to it, and then it hits us: <b>getting search working is hard</b>. We want our search solution to be <b>fast</b>, we want a <b>painless setup</b> and a completely <b>free search schema</b>, we want to be able to index data simply using <b>JSON over HTTP</b>, we want our search server to be <b>always available</b>, we want to be able to start with one machine and <b>scale to hundreds</b>, we want <b>real-time search</b>, we want simple <b>muti-tenancy</b>, and we want a solution that is <b>built for the cloud</b>.</p>
+                <p class="textcenter"><b>"This should be easier"</b>, we declared, <b>"and cool, bonsai cool"</b>.</p>
+            </div>
+            <div class="center" style="width: 60em">
+                <img src="/images/logo-text.png" height="50px" class="left-img"></img>
+                <img src="/images/license_asl.png" height="50px" class="right-img"></img>
+                <p>aims at solving all these problems and more. It is an Open Source (Apache 2), Distributed, RESTful, Search Engine built on top of <a href="http://lucene.apache.org">Lucene</a>.</p>
+            </div>
+        </div></div>
+        <div class="slide"><div class="generic slidecontent">
+            <div>
+                <img src="/images/set4/textedit128.png" height="100px" class="left-img"></img>
+                <h2>Schema Free <span class="amp">&amp;</span> Document Oriented</h2>
+                <p>Search Engines data model roots lies with schema free and document oriented databases, and as shown by the <strong>#nosql</strong> movement, this model proves to be very effective for building applications.</p> 
+            </div>
+
+            <div style="text-align: center; float: right">
+                <a class="zoom" rel="json_data" href="images/json_with_type_and_id.jpg" title="Json with Type (person) and id (_id)"><img src="images/json_with_type_and_id.jpg" height="90px" class="bordered-img"></img></a>
+                <a style="display:none" class="zoom" rel="json_data" href="images/json_with_type.jpg" title="Json with Type (person)"><img src="images/json_with_type.jpg" height="60px" class="bordered-img"></img></a>
+                <a style="display:none" class="zoom" rel="json_data" href="images/json_without_type.jpg" title="Json without Type or Id (derived from request)"><img src="images/json_without_type.jpg" height="60px" class="bordered-img"></img></a>
+            </div>
+            <div>
+                <p>Elastic Search model is <a href="http://json.org">JSON</a>, which slowly emerges as the de-facto standard for representing data these days. More over, with JSON, it is simple to provide semi-structured data with complex entities as well as being programming language natural with first level parsers.</p>
+            </div>
+            <p>&nbsp;</p>
+            
+            <div style="float: left; margin-top: -27px; margin-left: 10px;"><img src="/images/set4/terminal128.png" height="40px"></img></div>
+            <div>
+<pre class="prettyprint lang-bsh">
+$ curl -XPUT http://localhost:9200/twitter/user/kimchy -d \
+'{ name: "Shay Banon" }'
+
+$ curl -XPUT http://localhost:9200/twitter/tweet/1 -d \
+'{ user: "kimchy", postDate: "2009-11-15T13:12:00", message: "Trying out Elastic Search, so far so good?" }'
+
+$ curl -XPUT http://localhost:9200/twitter/tweet/2 -d \
+'{ user: "kimchy", postDate: "2009-11-15T14:12:12", message: "You know, for Search" }'
+</pre>
+            </div>
+        </div></div>
+        <div class="slide"><div class="generic slidecontent">
+            <div>
+                <img src="/images/set3/map.png" height="100px" class="right-img"></img>
+                <h2>Schema Mapping</h2>
+                <p>Elastic Search is schema less, just toss it a typed JSON document and it will automatically index it. Types such as numbers and dates are automatically detected and treated accordingly.</p>
+            </div>
+            
+            <div style="float: left; margin-right: 10px;"><a class="zoom" href="images/json_mapping.jpg" title="Mapping Definition of Person"><img src="images/json_mapping.jpg" class="bordered-img" height="80px"></img></a></div>
+            <div>
+                <p>But, as we all know, Search Engines are quite sophisticated. Fields in documents can have boost levels that affect scoring, analyzers can be used to control how text gets tokenized into terms, certain fields should not be analyzed at all, and so on... . Elastic Search allows to completely control how a JSON document gets mapped into the search engine on a per type and per index level.</p>
+            </div>
+
+            <p>&nbsp;</p>
+            <div style="float: left; margin-top: -27px; margin-left: 10px;"><img src="/images/set4/terminal128.png" height="40px"></img></div>
+            <div>
+<pre class="prettyprint lang-bsh">
+$ curl -XPUT http://localhost:9200/twitter
+
+$ curl -XPUT http://localhost:9200/twitter/user/_mapping -d \
+'{
+    properties : {
+        name : { type : "string" }
+    }
+}'
+</pre>
+            </div>
+        </div></div>
+        
+        <div class="slide"><div class="generic slidecontent">
+            <div>
+                <img src="/images/set4/keychain128.png" height="100px" class="left-img"></img>
+                <h2>GETting Some Data</h2>
+                <p>Indexing data is always done using a unique identifier (at the type level). This is very handy since many time we wish to update or delete the actual indexed data, or just GET it. Getting data could not be simpler and all is needed is the index name, the type and the id. What we get back is the <b>actual JSON document</b> used to index the specific data, but please, keep it secret and don't tell any other distributed Key/Value storage systems...</p>
+            </div>
+
+            <div style="float: left; margin-top: -27px; margin-left: 10px;"><img src="/images/set4/terminal128.png" height="40px"></img></div>
+            <div>
+<pre class="prettyprint lang-bsh">
+$ curl -XPUT http://localhost:9200/twitter/tweet/2 -d \
+'{ user: "kimchy", postDate: "2009-11-15T14:12:12", message: "You know, for Search" }'
+
+$ curl -XGET http://localhost:9200/twitter/tweet/2
+</pre>
+            </div>
+            
+            <div>
+                <p>The result of the GET operation contains the <b>actual JSON source</b>:</p>
+                
+<pre class="prettyprint lang-js">
+{
+  "_index" : "twitter",
+  "_type" : "tweet",
+  "_id" : "2", 
+  "_source" : { user: "kimchy", postDate: "2009-11-15T14:12:12", message: "You know, for Search" }
+}
+</pre>                
+            </div>
+
+        </div></div>
+
+        
+        <div class="slide"><div class="generic slidecontent">
+            <div style="float:right">
+                <div><a class="zoom" rel="json_query" href="images/json_query.jpg" title="Features Query"><img src="images/json_query.jpg" height="50px" width="70px" class="bordered-img"></img></a></div>
+                <div><a class="zoom" rel="json_query" href="images/json_query_term.jpg" title="Term Query"><img src="images/json_query_term.jpg" height="50px" width="70px" class="bordered-img"></img></a></div>
+                <div><a class="zoom" rel="json_query" href="images/json_query_term_boost.jpg" title="Term Query with Boost"><img src="images/json_query_term_boost.jpg" height="50px" width="70px" class="bordered-img"></img></a></div>
+                <div><a class="zoom" rel="json_query" href="images/json_query_range.jpg" title="Range Query"><img src="images/json_query_range.jpg" height="50px" width="70px" class="bordered-img"></img></a></div>
+                <div><a class="zoom" rel="json_query" href="images/json_query_prefix.jpg" title="Prefix Query"><img src="images/json_query_prefix.jpg" height="50px" width="70px" class="bordered-img"></img></a></div>
+                <div><a class="zoom" rel="json_query" href="images/json_query_filteredq.jpg" title="Filtered Query"><img src="images/json_query_filteredq.jpg" height="50px" width="70px" class="bordered-img"></img></a></div>
+                <div><a class="zoom" rel="json_query" href="images/json_query_bool.jpg" title="Boolean Query"><img src="images/json_query_bool.jpg" height="50px" width="70px" class="bordered-img"></img></a></div>
+                <div><a class="zoom" rel="json_query" href="images/json_query_dismax.jpg" title="Dis Max Query"><img src="images/json_query_dismax.jpg" height="50px" width="70px" class="bordered-img"></img></a></div>
+            </div>
+            <div>
+                <img src="/images/set3/search128.png" height="100px" class="left-img"></img>
+                <h2>Search</h2>
+                <p>It what it all boils down to at the end, being able to search. And search could never be simpler. Issuing queries is a simple call hiding away the sophisticated distributed based search support Elastic Search provides. Search can be execute either using a simple, <a href="http://lucene.apache.org/java/3_0_0/queryparsersyntax.html">Lucene</a> based query string or using an extensive <b>JSON based search query DSL</b>.</p>
+            </div>
+            
+            <div style="float: left; margin-top: -27px; margin-left: 10px;"><img src="/images/set4/terminal128.png" height="40px"></img></div>
+            <div>
+<pre class="prettyprint lang-bsh" style="width: 600px">
+$ curl -XPUT http://localhost:9200/twitter/tweet/2 -d \
+'{ user: "kimchy", postDate: "2009-11-15T14:12:12", message: "You know, for Search" }'
+
+$ curl -XGET http://localhost:9200/twitter/tweet/_search?q=user:kimchy
+
+$ curl -XGET http://localhost:9200/twitter/tweet/_search -d \
+'{ query : { term : { user: "kimchy" } } }'
+
+$ curl -XGET http://localhost:9200/twitter/_search?pretty=true -d \
+'{ query : { range : { postDate : { from : "2009-11-15T13:00:00", to : "2009-11-15T14:30:00" } } } }'
+</pre>
+            </div>
+            
+            <p>Search returns <b>ranked</b> hits based on the search query. Search can include <b>facet queries</b>, <b>sorting</b>, <b>selective stored fields loading</b> (including or excluding the source), <b>from/size</b> chunking and many more advance aspects.</p>            
+        </div></div>
+      
+        <div class="slide"><div class="generic slidecontent">
+            <div>
+                <img src="/images/set3/crystal128.png" height="120px" class="right-img"></img>
+                <h2>Multi Tenancy</h2>
+                <p>A single index is already a major step forward, but what happens when we need to have more than one index. There are many cases for using multiple indices, an example can be storing an actual index per user in a twitter example, or even having different indices with different settings (one with memory storage, and one with file system storage).</p>
+                    
+                <p>When we do that though, we would like to be able to <b>search across multiple indices</b> (among other operations). For example, search on user tweets and the user friends tweets and their friends.</p>
+            </div>
+
+            <div style="float: left; margin-top: -27px; margin-left: 10px;"><img src="/images/set4/terminal128.png" height="40px"></img></div>
+            <div>
+<pre class="prettyprint lang-bsh">
+$ curl -XPUT http://localhost:9200/kimchy
+
+$ curl -XPUT http://localhost:9200/elasticsearch
+
+$ curl -XPUT http://localhost:9200/elasticsearch/tweet/1 -d \
+'{ postDate: "2009-11-15T14:12:12", message: "Zug Zug", tag: "warcraft" }'
+
+$ curl -XPUT http://localhost:9200/kimchy/tweet/1 -d \
+'{ postDate: "2009-11-15T14:12:12", message: "Whatyouwant?", tag: "warcraft" }'
+
+$ curl -XGET http://localhost:9200/kimchy,elasticsearch/tweet/_search?q=tag:warcraft
+
+$ curl -XGET http://localhost:9200/_all/tweet/_search?q=tag:warcraft
+</pre>
+            </div>
+        </div></div>
+      
+        <div class="slide"><div class="generic slidecontent">
+            <div>
+                <img src="/images/set4/settings128.png" height="120px" class="left-img"></img>
+                <h2>Settings</h2>
+                <p>The ability to configure is a double edged sword. We want the ability to start working with the system as fast as possible, with no configuration, and still be able to control almost every aspect of the application if need be.</p>
+                
+                <p>Elastic Search is built with this notion in mind. Almost everything is configurable and pluggable. More over, <b>each index can have its own settings</b> which can override the master settings. For example, one index can be configured with memory storage and have 10 shards with 1 replica each, and another index can have file based storage with 1 shard and 10 replicas. All the index level settings can be controlled when creating an index either using a YAML or JSON format.</p>
+            </div>
+
+            <div style="float: left; margin-top: -27px; margin-left: 10px;"><img src="/images/set4/terminal128.png" height="40px"></img></div>
+            <div>
+<pre class="prettyprint lang-bsh">
+$ curl -XPUT http://localhost:9200/kimchy/ -d \
+'
+index :
+    store:
+        type: ram
+'
+
+$ curl -XPUT http://localhost:9200/elasticsearch/ -d \
+' {
+    index : {
+        numberOfShards : 2,
+        numberOfReplicas: 3
+    }
+}'
+</pre>
+            </div>
+        </div></div>
+
+        <div class="slide"><div class="generic slidecontent">
+            <div>
+                <img src="/images/set4/intranet128.png" height="120px" class="left-img"></img>
+                <h2>Distributed</h2>
+                <p>One of the main features of Elastic Search is its distributed nature. Indices are broken down into shards, each shard with 0 or more replicas. Each data node within the cluster hosts one or more shards, and acts as a coordinator to delegate operations to the correct shard(s). Rebalancing and routing are done <b>automatically and behind the scenes</b>.</p>
+            </div>
+            
+            <div>
+                <div class="bordered-video" style="margin-left: 100px; width: 622px;">
+                    <object width="622" height="350"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=8969103&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=6A8A22&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=8969103&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=6A8A22&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="622" height="350"></embed></object>
+                </div>
+            </div>
+        </div></div>
+
+        <div class="slide"><div class="generic slidecontent">
+            <div>
+                <img src="/images/set4/timemachine128.png" height="120px" class="left-img"></img>
+                <h2>Gateway (Write Behind)</h2>
+                <p>Sometimes the whole cluster crashes or needs to be taken down. Many times, in such a case, we want to restore to the latest state of the cluster when it comes back up again. Elastic Search provides the gateway module allowing to do just that, think <b>Time Machine for search</b>.</p>
+                
+                <p>The state of the cluster (including the transaction log) can be <b>asynchronously</b> replicated to a persistent storage, which can then be used to recover from when the cluster comes back up. The gateway settings are set on the whole cluster, and on a per index level.</p>
+            </div>
+
+            <div>
+<pre class="prettyprint lang-yaml">
+gateway :
+    type: fs
+    fs :
+        location : /shared/elasticsearch
+</pre>          
+            </div>
+
+            <div style="float: left; margin-top: -27px; margin-left: 10px;"><img src="/images/set4/terminal128.png" height="40px"></img></div>
+            <div>
+<pre class="prettyprint lang-bsh">
+$ curl -XPUT http://localhost:9200/kimchy/ -d \
+'
+index :
+    gateway:
+        type: none
+'
+</pre>
+            </div>
+            
+        </div></div>
+
+        <div class="slide"><div class="generic slidecontent">
+            <img src="/images/set3/shoe.png" height="120px" class="right-img"></img>
+            <h2>Where to go from here</h2>
+            <p>If you haven't already, <a href="/download">download</a> the the latest version. From there, you can follow the <a href="/videos/2010/01/15/1min.html">1 minute introduction</a> and <a href="/videos/2010/01/16/5min.html">5 minute introduction</a> videos, among other <a href="/videos">videos</a>. Last, be sure to check the comprehensive <a href="/docs/elasticsearch">Reference Documentation</a> of Elastic Search.</p>
+        </div></div>
+    </div>
+    
+    <!-- ALL li MUST BE ON THE SAME LINE -->
+    <div id="menu">
+        <ul>
+            <li class="fbar">&nbsp;</li><li class="menuItem"><a href=""><img src="/images/set3/bonsai2.png" height="32px" /></a></li><li class="menuItem"><a href=""><img src="/images/set4/textedit32.png" height="32px" /></a></li><li class="menuItem"><a href=""><img src="/images/set3/mapcrop.png" height="32px" /></a></li><li class="menuItem"><a href=""><img src="/images/set4/keychain32.png" height="32px" /></a></li><li class="menuItem"><a href=""><img src="/images/set3/search128.png" height="32px" /></a></li><li class="menuItem"><a href=""><img src="/images/set3/crystal32.png" height="32px" /></a></li><li class="menuItem"><a href=""><img src="/images/set4/settings32.png" height="32px" /></a></li><li class="menuItem"><a href=""><img src="/images/set4/intranet32.png" height="32px" /></a></li><li class="menuItem"><a href=""><img src="/images/set4/timemachine32.png" height="32px" /></a></li><li class="menuItem"><a href=""><img src="/images/set3/shoe.png" height="32px" /></a></li>
+        </ul>
+    </div>
+    
+  </div>    
+</div>
+
+<script type="text/javascript" src="/scripts/gallery/gallery.js"></script> 

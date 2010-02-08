@@ -1,0 +1,5 @@
+/*
+Comes after TYPOGRIDPHY. Resets some of its styles and adds some more.
+*/
+.indexviewvideo .format object { position: absolute; top: 10px; margin: 0; }
+.indexviewvideo .format embed { position: absolute; top: 10px; margin: 0 0 0 187px; }

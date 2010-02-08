@@ -1,0 +1,27 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Modules | Discovery | Jgroups
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["modules", "Modules"], 
+    ["discovery", "Discovery"], 
+    ["jgroups", "JGroups"], 
+];
+</script>
+
+h1. JGroups Discovery Module
+
+p. "JGroups":http://www.jgroups.org is an excellent group communication library. Though providing many features, only a subset is used which maps to the Discovery module requirements. Namely, using JGroups, different nodes are identified within the cluster (joining and leaving), and JGroups is used for master election.
+
+h2. Configuration
+
+p. JGroups configuration is driven through a configuration file. Surprisingly, the configuration file is not part of the @config@ directory of ElasticSearch. The aim here is to simplify the configuration of JGroups and the configuration files are bundled within ElasticSearch library itself.
+
+p. There are two configurations that comes with ElasticSearch, the @udp@, @tcp@ and @tcp-nio@ (these are the same configuration files the comes with JGroups distribution). Using the @discovery.jgroups.config@ setting, the configuration file can be set. The values can be either @udp@, @tcp@ or @tcp-nio@ (which will then use the embedded configuration files), or the path to an external configuration file.
+
+p. The reason why there is usually no need to mess with the configuration files is because JGroups can be completely configured using system properties. The JGroups discovery module simplifies that a bit and allows to set JGroups level settings using the @discovery.jgroups@ prefix. For example, a common setting to use is to set the @jgroups.bind_addr@ system property. This setting can be set using ElasticSearch configuration by setting @discovery.jgroups.bind_addr@ (same rule applies to all other properties).
+
+p. A good source to JGroups configuration can be found on its "wiki":http://community.jboss.org/wiki/jgroups.

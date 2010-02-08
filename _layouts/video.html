@@ -1,0 +1,74 @@
+---
+layout: clean
+---
+
+<!-- <div style="height: 4em"></div> -->
+
+{% for video in site.categories.videos reversed %}
+<div id="videosvideo{{forloop.index}}" class="videosviewvideo">
+	<div class="video">
+        <div id="videosvideo_close{{forloop.index}}" class="closevideo">Close Video</div>
+        {{video.content}}
+    </div>
+</div>
+{% endfor %}
+
+<div class="videosholder">
+    <img src="/images/set3/video256.png">
+</div>
+
+<div class="eighteighty" style="margin: auto; padding: 1em 0 1em 0;">
+    <div class="video"><div id="carousel">
+        <ul>
+            {% for video in site.categories.videos %}
+        	<li id="videosvideolink{{forloop.index}}">
+        	    <img width="200px" height="100px" alt="" src="/videos/images/{{video.video_image}}" /><p>{{video.title}}</p>
+        	</li>
+            {% endfor %}
+        </ul>
+    </div></div>
+</div>
+
+<script type="text/javascript">
+$('#carousel').infiniteCarousel({
+    inView: 4,    
+    advance:1,
+	transitionSpeed: 800,
+	displayTime: 10000,
+	displayProgressBar: false,
+	imagePath: '/scripts/infinitecarousel/images/',
+    textholderHeight : .25,
+    padding:'10px',
+    prevNextInternal: false,
+    autoHideCaptions: false,
+    displayThumbnails: true
+});
+</script>
+
+<script type="text/javascript">
+{% for video in site.categories.videos reversed %}
+
+{% if video.title == page.title %}
+$('.videosholder').animate({
+    height : "570px"
+}, 1500)
+$("#videosvideo{{forloop.index}}").fadeIn("slow");
+_gaq.push(['_trackEvent', 'Videos', 'Play', '{{video.title}}'])
+{% endif %}
+
+$("#videosvideolink{{forloop.index}}").click(function () {
+    _gaq.push(['_trackEvent', 'Videos', 'Play', '{{video.title}}'])
+    $('.videosholder').animate({
+        height : "570px"
+    }, 1500)
+  $("#videosvideo{{forloop.index}}").fadeIn("slow");
+});
+$("#videosvideo_close{{forloop.index}}").click(function () {
+    $('.videosholder').animate({
+        height : "250px"
+    }, 1500)
+  $("#videosvideo{{forloop.index}}").fadeOut("slow");
+});
+
+{% endfor %}
+</script>

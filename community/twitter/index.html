@@ -1,0 +1,46 @@
+---
+layout: default
+title: Twitter
+---
+
+<div class="siteheadersep"></div>
+<div class="generic nineforty" style="text-align: center">
+    <h1>Twitter</h1>
+    <p style="margin-top: -20px"><a href="http://twitter.com/elasticsearch">follow us on twitter</a></p>
+
+    <div style="margin-top: -20px; margin-left: auto; margin-right: auto; width: 510px;">
+        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+        <script>
+        new TWTR.Widget({
+          version: 2,
+          type: 'search',
+          search: 'elasticsearch OR from:elasticsearch OR @elasticsearch',
+          interval: 6000,
+          title: 'You Know, for Search',
+          subject: 'elasticsearch',
+          width: 500,
+          height: 400,
+          theme: {
+            shell: {
+              background: '#ffffff',
+              color: '#ffffff'
+            },
+            tweets: {
+              background: '#ffffff',
+              color: '#000000',
+              links: '#6A8A22'
+            }
+          },
+          features: {
+            scrollbar: false,
+            loop: true,
+            live: true,
+            hashtags: true,
+            timestamp: true,
+            avatars: true,
+            behavior: 'default'
+          }
+        }).render().start();
+        </script>
+    </div>
+</div>

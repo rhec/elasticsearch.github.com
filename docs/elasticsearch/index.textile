@@ -1,0 +1,18 @@
+---
+layout: doc_es
+title: ElasticSearch Docs
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+];
+</script>
+
+h1. Elastic Search
+
+p. ElasticSearch is an open source, distributed, RESTful, Search Engine. A comprehensive "overview":/products/elasticsearch is provided on its product page.
+
+h2. Where to go from here
+
+p. The "setup":setup section includes instructions on how to "install":setup/installation Elastic Search, with quick "1 minute introduction":setup/oneminintro.

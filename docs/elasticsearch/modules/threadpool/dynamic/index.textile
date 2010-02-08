@@ -1,0 +1,27 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Modules | ThreadPool | Dynamic
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["modules", "Modules"], 
+    ["threadpool", "ThreadPool"], 
+    ["dynamic", "Dynamic"], 
+];
+</script>
+
+h1. Dynamic ThreadPool Module
+
+p. A bounded thread pool that reuses previously created free threads.
+
+h2. Settings
+
+p. Settings for the netty dynamic thread pool should be set for within @threadpool.dynamic@. For example, the @keepAlive@ setting should be set using @threadpool.dynamic.keepAlive@.
+
+|_. Setting |_. Description |
+|min|The minimum number of threads. Defaults to @1@.|
+|max|The maximum number of threads. Defaults to @100@.|
+|keepAlive|A time based settings controlling how long an unused thread can be kept in the pool. Defaults to @60s@.|
+|scheduledSize|The number of threads that will be used to execute scheduled tasks. Defaults to @20@.|

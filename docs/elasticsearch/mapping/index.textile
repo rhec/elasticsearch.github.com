@@ -1,0 +1,24 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Mapping
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["mapping", "Mapping"], 
+];
+</script>
+
+h1. Mapping
+
+p. Mapping is the process of defining how a JSON document should be mapped to the Search Engine, including its searchable characteristics. ElasticSearch allows for support of multiple typed mapping definitions registered with the same index, and different types registered with different indices.
+
+p. The following sections cover all the aspects of how mapping work:
+
+|_. Section |_. Description |
+|"core_types":core_types|The basic types support when mapping a JSON document.|
+|"object_type":object_type|Mapping JSON inner objects.|
+|"root_object_type":root_object_type|Mapping the root JSON object.|
+
+

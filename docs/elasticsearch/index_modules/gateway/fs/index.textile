@@ -1,0 +1,23 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Gateway | File System
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["gateway", "Gateway"], 
+    ["fs", "File System"], 
+];
+</script>
+
+h1. File System Index Gateway Module
+
+p. The file system index gateway allows to store the content of a shard (actual index + transaction log) on a shared file system.
+
+h2. location
+
+p. The location where the state of an index is stored can be controlled using the @index.gateway.fs.location@ setting. By default, it will be stored under the @work@ directory. Note, the @work@ directory is considered a temporal directory with ElasticSearch (meaning it is safe to @rm -rf@ it), the default location of the persistent gateway in work intentional, *it should be changed*.
+
+p. Explicitly specifying the location for a specific index is certainly possible, and the index will be stored there. More common scenario is to configure the global node level gateway to be "fs":../../../modules/gateway/fs. In this case, the location of the index gateway will automatically use location specified in the node level gateway (with the index name to differentiate between indices).

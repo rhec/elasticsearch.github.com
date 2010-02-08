@@ -1,8 +1,73 @@
-<html>
-<head>
-    <title>ElasticSearch - Open Source, Distributed, RESTful Search Engine
-</head>
-<body>
-    <h1>Coming Soon....</h1>
-</body>
-</html>
+---
+layout: clean
+title: Open Source, Distributed, RESTful Search Engine
+---
+
+<div id="wrapper"><div class="indexpage">
+    <div class="thumbnail">
+        <div class="video">
+            <div id="carousel">
+                <ul>
+                    {% for video in site.categories.videos reversed %}
+                    {% if video.video_type == 'intro' %}
+                	<li id="indexvideolink{{forloop.index}}">
+                	    <img width="200px" height="100px" alt="" src="/videos/images/{{video.video_image}}" /><p>{{video.title}}</p>
+                	</li>
+                	{% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tagline">
+    	<h2 class="hidden">Search Engine for the Cloud</h2>
+    </div>
+
+    <script type="text/javascript">
+    $('#carousel').infiniteCarousel({
+    	transitionSpeed: 800,
+    	displayTime: 10000,
+    	displayProgressBar: false,
+    	imagePath: '/scripts/infinitecarousel/images/',
+        textholderHeight : .25,
+        padding:'10px',
+        prevNextInternal: false,
+        autoHideCaptions: true,
+        displayThumbnails: false
+    });
+    </script>
+</div></div>
+
+{% for video in site.categories.videos reversed %}
+{% if video.video_type == 'intro' %}
+<div id="indexvideo{{forloop.index}}" class="indexviewvideo">
+	<div class="video">
+        <div id="indexvideo_close{{forloop.index}}" class="closevideo">Close Video</div>
+        {{video.content}}
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+
+<div id="indexseparator" style="background: #CCCCCC; height: 10px; margin-top: 350px;"></div>
+
+
+<script type="text/javascript">
+{% for video in site.categories.videos reversed %}
+{% if video.video_type == 'intro' %}
+$("#indexvideolink{{forloop.index}}").click(function () {
+    _gaq.push(['_trackEvent', 'Videos', 'Play', '{{video.title}}'])
+    $('#indexseparator').animate({
+        height : "220px"
+    }, 1500)
+    $("#indexvideo{{forloop.index}}").fadeIn("slow");
+});
+$("#indexvideo_close{{forloop.index}}").click(function () {
+    $('#indexseparator').animate({
+        height : "10px"
+    }, 1500)
+    $("#indexvideo{{forloop.index}}").fadeOut("slow");
+});
+{% endif %}
+{% endfor %}
+</script>

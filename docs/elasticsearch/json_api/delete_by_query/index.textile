@@ -1,0 +1,87 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON Delete By Query API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"],
+    ["delete_by_query", "Delete By Query"]
+];
+</script>
+
+h1. Delete By Query
+
+p. The delete by query API allows to delete documents from one or more indices and one or more types based on a query. The query can either be provided using a simple query string as a parameter, or using the "Query DSL":../query_dsl defined within the request body. Here is an example:
+
+<pre class="prettyprint">
+$ curl -XDELETE http://localhost:9200/twitter/tweet/_query?q=user:kimchy
+
+$ curl -XDELETE http://localhost:9200/twitter/tweet/_query -d \
+'
+{
+    term : { user : "kimchy" }
+}
+'
+</pre>
+
+p. Both above examples end up doing the same thing, which is delete all tweets from the twitter index for a certain user. The result of the commands is:
+
+<pre class="prettyprint lang-js">
+{
+    "ok" : true,
+    "_indices" : {
+        "twitter" : { 
+            "_shards" : {
+                "total" : 5,
+                "successful" : 5,
+                "failed" : 0
+            }
+        }
+    }
+}
+</pre>
+
+h2. Multiple Indices and Types
+
+p. The delete by query API can be applies to multiple types within an index, and across multiple indices. For example, we can delete all documents across all types within the twitter index:
+
+<pre class="prettyprint">
+$ curl -XDELETE http://localhost:9200/twitter/_query?q=user:kimchy
+</pre>
+
+p. We can also delete within specific types:
+
+<pre class="prettyprint">
+$ curl -XDELETE http://localhost:9200/twitter/tweet,user/_query?q=user:kimchy
+</pre>
+
+p. We can also delete all tweets with a certain tag across several indices (for example, when each user has his own index):
+
+<pre class="prettyprint">
+$ curl -XDELETE http://localhost:9200/kimchy,elasticsearch/_query?q=tag:wow
+</pre>
+
+p. Or even delete across all indices:
+
+<pre class="prettyprint">
+$ curl -XDELETE http://localhost:9200/_all/_query?q=tag:wow
+</pre>
+
+h2. Request Parameters
+
+p. When executing a delete by query using the query parameter @q@, the query passed is a query string using Lucene query parser. There are additional parameters that can be passed:
+
+|_. Name |_. Description |
+| @df@ | The default field to use when no field prefix is defined within the query. |
+| @analyzer@ | The analyzer name to be used when analyzing the query string. |
+| @defaultOperator@ | The default operator to be used, can be @AND@ or @OR@. Defaults to @OR@. |
+
+h2. Request Body
+
+p. The delete by query can use the "Query DSL":../query_dsl within its body in order to express the query that should be executed and delete all documents.
+
+h2. Distributed
+
+p. The delete by query API is broadcast across all primary shards, and from there, replicated across all shards replicas.

@@ -1,0 +1,32 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON API | Flush
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"],
+    ["admin", "Admin"],
+    ["indices", "Indices"],
+    ["flush", "Flush"]
+];
+</script>
+
+h1. Flush
+
+p. The flush API allows to flush one or more indices through an API. The flush process of an index basically frees memory from the index by flushing data to the index storage and clearing the internal transaction log. By default, ElasticSearch uses memory heuristics in order to automatically trigger flush operations as required in order to clear memory.
+
+<pre class="prettyprint">
+$ curl -XPOST http://localhost:9200/twitter/_flush
+</pre>
+
+h2. Multi Index
+
+p. The flush API can be applied to more than one index with a single call, or even on @_all@ the indices.
+
+<pre class="prettyprint">
+$ curl -XPOST http://localhost:9200/kimchy,elasticsearch/_flush
+
+$ curl -XPOST http://localhost:9200/_flush
+</pre>

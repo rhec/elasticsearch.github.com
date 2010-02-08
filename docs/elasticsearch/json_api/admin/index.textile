@@ -1,0 +1,20 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON Admin API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"],
+    ["admin", "Admin"]
+];
+</script>
+
+h1. Admin API
+
+p. This section describes the administration APIs ElasticSearch exposes over HTTP using JSON. The administration APIs are broken down into the following sections:
+
+|_. Section |_. Description |
+|"indices":indices|APIs that relate to the management of indices.|
+|"cluster":cluster|APIs that relate to the cluster.|

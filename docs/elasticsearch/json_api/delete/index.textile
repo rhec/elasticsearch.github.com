@@ -1,0 +1,41 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON Delete API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"],
+    ["delete", "Delete"]
+];
+</script>
+
+h1. Delete
+
+p. The delete API allows to delete a typed JSON document from a specific index based on its id. The following example deletes the JSON document from an index called twitter, under a type called tweet, with id valued 1:
+
+<pre class="prettyprint">
+$ curl -XDELETE http://localhost:9200/twitter/tweet/1
+</pre>
+
+p. The result of the above delete operation is:
+
+<pre class="prettyprint lang-js">
+{
+    "ok" : true,
+    "_index" : "twitter",
+    "_type" : "tweet",
+    "_id" : "1"
+}
+</pre>
+
+p(note). The delete operation will always return the the above result, even if the document did not exists. This is done for performance reasons.
+
+h2. Automatic for the Index
+
+p. The delete operation automatically creates an index if it has not been created before (check out the "create index API":../admin/indices/create_index for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "create mapping API":../admin/indices/create_mapping for manually creating type mapping). 
+
+h2. Distributed
+
+The delete operation gets hashed into a specific shard id. It then gets redirected into the primary shard within that id group, and replicated (if needed) to shard replicas within that id group.

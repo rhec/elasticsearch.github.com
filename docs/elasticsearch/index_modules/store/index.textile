@@ -1,0 +1,63 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Store
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["store", "Store"], 
+];
+</script>
+
+h1. Index Store Module
+
+p. The store module allows to control the storage type each index shard stores the index content at. Its important to note that the storage is temporal, for long term persistence of the index, check the "index gateway module":../gateway.
+
+p. The storage module allows to store the index either in memory or using file system. Typically, in non distributed systems, file system based storage is used to allow for large indices. In memory provides better performance at the cost of limited sizing of the index.
+
+p. With distributed systems, like ElasticSearch, the index can be sharded, meaning that we can basically break the index into many machines. This also means that we can use memory based storage for the index more easily and enjoy the performance benefits of it.
+
+p. Another typical reason for not using memory based storage for indices is the fact that when the process shuts down, all the indexed data basically goes away. With ElasticSearch, the storage is, in any case, considered temporal, and the "index gateway":../gateway is there to provide long term persistency of the index. Even without the long term persistency the gateway provides, the fact that each shard can have replicas means that the chances of loosing data in case of node failures (not complete cluster shutdown) decreases with the number of replicas we have.
+
+p. Another important aspect of memory based storage is the fact that ElasticSearch supports storing the index in memory *outside of the JVM heap space* using the "ByteBuffer":#ByteBuffer storage type. It translates to the fact that there is no need for extra large JVM heaps (with their own consequences) for storing the index in memory.
+
+p. The following sections lists all the different storage types supported.
+
+h2. Simple FS
+
+p. The @simplefs@ type is a plain forward implementation of file system storage (maps to Lucene @SimpleFsDirectory@) using random access file. This class has poor concurrent performance (multiple threads will bottleneck). Its usually better to use the "NIO FS":#NIO_FS or "MMap FS":#MMap_FS when file system is required.
+
+h2. NIO FS
+
+p. The @niofs@ type stores the shard index on the file system (maps to Lucene @NIOFSDirectory@) and allows for multiple threads to read from the same file concurrently. It is not recommended on Windows because of a bug in SUN Java implementation.
+
+h2. MMap FS
+
+p. The @mmapfs@ type stores the shard index on the file system (maps to Lucene @MMapDirectory@) using mmap. Memory mapping uses up a portion of the virtual memory address space in your process equal to the size of the file being mapped.  Before using this class, be sure your have plenty of virtual address space.
+
+h2. Memory
+
+p. The @memory@ type stores the index in memory with high level of configuration options:
+
+|_. Setting |_. Description |
+|index.store.memory.bufferSize|A size based setting allowing to configure the buffers (chunks) that each file is fragmented to. Defaults to @1k@.|
+|index.store.memory.cacheSize|A size based setting of the size of cached, already allocated buffers. Defaults to @20m@.|
+|index.store.memory.warmCache|Should the cache be warmed or not. Defaults to @true@.|
+
+
+h2. ByteBuffer (memory)
+
+p. The @bytebuffer@ type stores the index in memory using byte buffers, mainly allowing to use the *direct* option of byte buffer thus storing the index *outside of the JVM heap space*. The following settings are provided:
+
+|_. Setting |_. Description |
+|index.store.bytebuffer.direct|Should byte buffers be direct (allocated outside of the JVM heap space) or not. Defaults to @true@.|
+|index.store.bytebuffer.bufferSize|A size based setting allowing to configure the buffers (chunks) that each file is fragmented to. Defaults to @1k@.|
+|index.store.bytebuffer.cacheSize|A size based setting of the size of cached, already allocated buffers. Defaults to @20m@.|
+|index.store.bytebuffer.warmCache|Should the cache be warmed or not. Defaults to @true@.|
+
+
+h2. RAM
+
+p. The @ram@ type stores the index in memory (maps to Lucene @RAMDirectory@). Note, both the "Memory":#Memory and "ByteBuffer":#ByteBuffer will probably provide better alternatives for in memory storage.

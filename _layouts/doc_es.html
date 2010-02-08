@@ -1,0 +1,131 @@
+---
+layout: doc
+---
+
+<div class="generic doccontent fiveeighty">
+    {{content}}
+</div>
+
+<div class="twoeighty right-float">
+    <div class="generic sidebar">
+        <h3>Setup</h3>
+        <dl>
+          <dt><a href="/docs/elasticsearch/setup/installation" id="setup">Installation</a></dt>
+          <dd>Download and Installation</dd>
+          <dt><a href="/docs/elasticsearch/setup/oneminintro" id="setup">1 Minute Introduction</a></dt>
+          <dd>A quick introduction</dd>
+          <dt><a href="/docs/elasticsearch/setup/configuration" id="setup">Configuration</a></dt>
+          <dd>General configuration information</dd>
+          <dt><a href="/docs/elasticsearch/setup/dirlayout" id="setup">Directory Layout</a></dt>
+          <dd>Installation directory layout and what exists where</dd>
+        </dl>
+
+        <h3>Json Api</h3>
+        <dl>
+          <dt><a href="/docs/elasticsearch/json_api" id="json_api">Overview</a></dt>
+          <dd>JSON over HTTP RESTful API</dd>
+          <dt><a href="/docs/elasticsearch/json_api/index" id="json_api">Index</a></dt>
+          <dd>Index a JSON document</dd>
+          <dt><a href="/docs/elasticsearch/json_api/get" id="json_api">Get</a></dt>
+          <dd>Get a document by id</dd>
+          <dt><a href="/docs/elasticsearch/json_api/delete" id="json_api">Delete</a></dt>
+          <dd>Delete a document by id</dd>
+          <dt><a href="/docs/elasticsearch/json_api/delete_by_query" id="json_api">Delete By Query</a></dt>
+          <dd>Delete all documents using a query</dd>
+          <dt><a href="/docs/elasticsearch/json_api/count" id="json_api">Count</a></dt>
+          <dd>Count number of documents using a query</dd>
+          <dt><a href="/docs/elasticsearch/json_api/search" id="json_api">Search</a></dt>
+          <dd>Search documents based on a query</dd>
+          <div class="thinseparator"></div>
+          <dt><a href="/docs/elasticsearch/json_api/admin" id="json_api">Admin</a> | <a href="/docs/elasticsearch/json_api/admin/indices" id="json_api">Indices</a>
+          </dt>
+          <dd>Indices based API</dd>
+          <dl>
+              <dt><a href="/docs/elasticsearch/json_api/admin/indices/status" id="json_api">Status</a></dt>
+              <dd>Retrieve the status of one or more indices</dd>
+              <dt><a href="/docs/elasticsearch/json_api/admin/indices/create_index" id="json_api">Create Index</a></dt>
+              <dd>Create an index with optional settings</dd>
+              <dt><a href="/docs/elasticsearch/json_api/admin/indices/delete_index" id="json_api">Delete Index</a></dt>
+              <dd>Delete an index</dd>
+              <dt><a href="/docs/elasticsearch/json_api/admin/indices/create_mapping" id="json_api">Create Mapping</a></dt>
+              <dd>Creates type mapping definition in one or more indices</dd>
+              <dt><a href="/docs/elasticsearch/json_api/admin/indices/flush" id="json_api">Flush</a></dt>
+              <dd>Flushes one ore more indices (clear memory)</dd>
+              <dt><a href="/docs/elasticsearch/json_api/admin/indices/refresh" id="json_api">Refresh</a></dt>
+              <dd>Refresh one ore more indices</dd>
+              <dt><a href="/docs/elasticsearch/json_api/admin/indices/gateway_snapshot" id="json_api">Gateway Snapshot</a></dt>
+              <dd>Gateway snapshot one or more indices</dd>
+          </dl>
+          <div class="thinseparator"></div>
+          <dt><a href="/docs/elasticsearch/json_api/admin" id="json_api">Admin</a> | <a href="/docs/elasticsearch/json_api/admin/cluster" id="json_api">Cluster</a>
+          </dt>
+          <dd>Cluster based API</dd>
+          <dl>
+              <dt><a href="/docs/elasticsearch/json_api/admin/cluster/state" id="json_api">State</a></dt>
+              <dd>Retrieve the cluster state</dd>
+              <dt><a href="/docs/elasticsearch/json_api/admin/cluster/nodes_info" id="json_api">Nodes Info</a></dt>
+              <dd>Retrieve one or more nodes information</dd>
+          </dl>
+        </dl>
+
+        <h3>Mapping</h3>
+        <dl>
+          <dt><a href="/docs/elasticsearch/mapping" id="mapping">Overview</a></dt>
+          <dd>Mapping introduction</dd>
+          <dt><a href="/docs/elasticsearch/mapping/core_types" id="mapping">Core Types</a></dt>
+          <dd>Field level types supported</dd>
+          <dt><a href="/docs/elasticsearch/mapping/object_type" id="mapping">Object Type</a></dt>
+          <dd>Embedded JSON object mapping</dd>
+          <dt><a href="/docs/elasticsearch/mapping/array_type" id="mapping">Array Type</a></dt>
+          <dd>JSON array maping</dd>
+          <dt><a href="/docs/elasticsearch/mapping/root_object_type" id="mapping">Root Object Type</a></dt>
+          <dd>Root JSON object mapping</dd>
+        </dl>
+
+        <h3>Modules</h3>
+        <dl>
+          <dt><a href="/docs/elasticsearch/modules" id="modules">Overview</a></dt>
+          <dd>Modules introduction</dd>
+          <dt><a href="/docs/elasticsearch/modules/node" id="modules">Node</a></dt>
+          <dd>Node level settings and configuration</dd>
+          <dl>
+              <dt><a href="/docs/elasticsearch/modules/node/network" id="modules">Network</a></dt>
+              <dd>Network level settings</dd>
+              <dt><a href="/docs/elasticsearch/modules/node/data_node" id="modules">Data Node</a></dt>
+              <dd>Enable or disable nodes from storing actual data.</dd>
+          </dl>
+          <dt><a href="/docs/elasticsearch/modules/transport" id="modules">Transport</a></dt>
+          <dd>Internal communication layer between nodes</dd>
+          <dt><a href="/docs/elasticsearch/modules/http" id="modules">HTTP</a></dt>
+          <dd>HTTP based transport</dd>
+          <dt><a href="/docs/elasticsearch/modules/discovery" id="modules">Discovery</a></dt>
+          <dd>Discovery of nodes</dd>
+          <dt><a href="/docs/elasticsearch/modules/gateway" id="modules">Gateway</a></dt>
+          <dd>Persistent storage of cluster meta data</dd>
+          <dt><a href="/docs/elasticsearch/modules/memory_monitor" id="modules">Memory Monitor</a></dt>
+          <dd>Monitors and keep the memory allocated at bay</dd>
+          <dt><a href="/docs/elasticsearch/modules/jmx" id="modules">JMX</a></dt>
+          <dd>JMX monitoring</dd>
+          <dt><a href="/docs/elasticsearch/modules/threadpool" id="modules">ThreadPool</a></dt>
+          <dd>ThreadPool type and configuration</dd>
+        </dl>
+
+        <h3>Index Modules</h3>
+        <dl>
+          <dt><a href="/docs/elasticsearch/index_modules" id="index_modules">Overview</a></dt>
+          <dd>Index modules introduction</dd>
+          <dt><a href="/docs/elasticsearch/index_modules/store" id="index_modules">Store</a></dt>
+          <dd>Shard index storage type and settings</dd>
+          <dt><a href="/docs/elasticsearch/index_modules/analysis" id="index_modules">Analysis</a></dt>
+          <dd>Analysis based configuration and settings</dd>
+          <dt><a href="/docs/elasticsearch/index_modules/gateway" id="index_modules">Gateway</a></dt>
+          <dd>Persistent storage of indices</dd>
+          <dt><a href="/docs/elasticsearch/index_modules/mapper" id="index_modules">Mapper</a></dt>
+          <dd>Mapping registry and configuration</dd>
+          <dt><a href="/docs/elasticsearch/index_modules/engine" id="index_modules">Engine</a></dt>
+          <dd>The actual module that performs operations</dd>
+          <dt><a href="/docs/elasticsearch/index_modules/merge" id="index_modules">Merge</a></dt>
+          <dd>Shard (Lucene) index segment merge configuration</dd>
+        </dl>
+    </div>
+</div>

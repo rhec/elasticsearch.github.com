@@ -1,0 +1,27 @@
+---
+layout: default
+title: Download
+---
+
+<div class="siteheadersep"></div>
+<div class="nineforty" style="text-align: center">
+    <h1>Download</h1>
+</div>
+
+<div class="generic twoeighty" style="text-align: right">
+    <!-- <h2>ElasticSearch</h2> -->
+    <a href="/docs/elasticsearch"><img src="/images/logo-text.png" height="80px"></img></a>
+</div>
+<div class="generic foursixty end">
+    <p>
+        Latest stable release of ElasticSearch is <a href="/download/2010/02/08/0.4.0.html">0.4.0</a>. Master can be downloaded <a href="/download/master/">here</a>.
+    </p>
+    
+    <h3>Releases:</h3>
+    <p>
+        {% for download in site.categories.download %}
+        <a href="{{download.url}}">{{download.version}}</a>{{ unless forloop.last }},{{ endunless }}
+        {% endfor %}
+    </p>
+</div>
+

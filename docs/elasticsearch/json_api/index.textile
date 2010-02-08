@@ -1,0 +1,27 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"]
+];
+</script>
+
+h1. JSON API
+
+p. This section describes the APIs ElasticSearch exposes over HTTP using JSON. The following are the main APIs one would need in order to get started with ElasticSearch:
+
+|_. API |_. Description |
+|"index":index|Index a typed JSON document into a specific index and make it searchable.|
+|"delete":delete|Delete a typed JSON document from a specific index based on its id.|
+|"get":get|Get a typed JSON document from an index based on its id.|
+|"search":search|Execute a search query against one or more indices and get back search hits.|
+|"count":count|Execute a query against one or more indices and get hits count.|
+|"create_index":admin/indices/create_index|Creates an index with optional settings.|
+|"delete_index":admin/indices/delete_index|Deletes an index.|
+|"create_mapping":create_mapping|Register specific mapping definition for a specific type against one or more indices.|
+
+p. There is also an evolving "Administration JSON API":admin.

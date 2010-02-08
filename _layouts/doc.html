@@ -1,0 +1,57 @@
+---
+layout: default
+---
+
+<div class="doc">
+    <div class="generic breadCrumbHolder module">
+        <div id="breadCrumb" class="breadCrumb module">
+            <ul id="breadCrumbContent">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/docs/"><img src="/images/set3/help32.png" height="20px"></img></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    {{content}}
+</div>
+
+<script type="text/javascript">
+$(function(){
+    if ($(".doccontent h2").size() == 0) {
+        $(".doccontent h1").after("<div class=\"h2links\"></div");
+    } else {
+        $(".doccontent h1").after("<div class=\"h2links\">| </div");
+        $(".doccontent h2").each(function() {
+            $(".doccontent .h2links").append("<a href=\"#" + $(this).text().replace(/ /gi, "_") + "\">" + $(this).text() + "</a> | ");
+            $(this).wrap("<a class=\"h2link\" name=\"" + $(this).text().replace(/ /gi, "_")  + "\"></a>");
+        });
+    }
+})
+
+$(function(){
+  $(".sidebar").accordion({
+    header: 'h3', autoHeight: false, collapsible: true,
+    icons: {'header': 'ui-icon-triangle-expand', 'headerSelected': 'ui-icon-triangle-collapse'},
+    navigation: true, navigationFilter: function() {if ((typeof docBreadcrumb != "undefined") && (docBreadcrumb) && (docBreadcrumb.length > 1)) {return this.id == docBreadcrumb[1][0]}} });
+})
+
+// Build the breadcrumb if a page defines it
+if (docBreadcrumb) {
+    for (i = 0; i < docBreadcrumb.length; i++) {
+        var url = "/docs/";
+        for (j = 0; j <= i; j++) {
+            url += docBreadcrumb[j][0] + "/";
+        }
+        $("#breadCrumbContent").append("<li><a href=\"" + url + "\">" + docBreadcrumb[i][1] + "</a></li>");
+    }
+}
+
+$(document).ready(function()
+{
+	$("#breadCrumb").jBreadCrumb({minimumCompressionElements : 7});
+})
+</script>

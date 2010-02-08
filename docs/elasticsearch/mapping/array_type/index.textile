@@ -1,0 +1,71 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Mapping | Array Type
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["mapping", "Mapping"], 
+    ["array_type", "Array Type"], 
+];
+</script>
+
+h1. Array Type
+
+p. JSON documents allow to define an array (list) of fields or objects. Mapping array types could not be simpler since arrays gets automatically detected and mapping them can be done either with "Core Types":../core_types or "Object Type":../object_type mappings. For example, the following JSON defines several arrays:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        message : "some arrays in this tweet...",
+        tags : ["elasticsearch", "wow"],
+        lists : [
+            {
+                name : "progList",
+                description : "programming list"
+            },
+            {
+                name : "coolList",
+                description : "cool stuff list"
+            }
+        ]
+    }
+}
+</pre>
+
+p. The above JSON has the @tags@ property defining a list of a simple @string@ type, and the @lists@ property is an @object@ type array. Here is a sample explicit mapping:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        properties : {
+            message : {type : "string"},
+            tags : {type : "string", indexName : "tag"},
+            lists : {
+                properties : {
+                    name : {type : "string"}, 
+                    description : {type : "string"}
+                }
+            }
+        }
+    }
+}
+</pre>
+
+p. The fact that array types are automatically support can be shown by the fact that the following JSON document is perfectly fine:
+
+<pre class="prettyprint lang-js">
+{
+    tweet : {
+        message : "some arrays in this tweet...",
+        tags : "elasticsearch",
+        lists : {
+            name : "progList",
+            description : "programming list"
+        }
+    }
+}
+</pre>
+
+p. Note also, that thanks to the fact that we used the @indexName@ to use the non plural form (@tag@ instead of @tags@), we can actually refer to the field using the @indexName@ as well. For example, we can execute a query using @tweet.tags:wow@ or @tweet.tag:wow@. We could, of course, name the field as @tag@ and skip the @indexName@ all together).

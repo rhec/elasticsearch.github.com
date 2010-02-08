@@ -1,0 +1,120 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON Cluster State API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"],
+    ["admin", "Admin"],
+    ["cluster", "Cluster"],
+    ["state", "State"]
+];
+</script>
+
+h1. Cluster State
+
+p. The cluster state API allows to get a comprehensive state information of the whole cluster.
+
+<pre class="prettyprint">
+$ curl -XGET http://localhost:9200/_cluster/state
+</pre>
+
+p. Here is an example cluster state result:
+
+<pre class="prettyprint lang-js">
+{
+  "metadata" : {
+    "maxNumberOfShardsPerNode" : 100,
+    "indices" : {
+      "twitter" : {
+        "settings" : {
+          "setting" : {
+            "name" : "index.numberOfReplicas",
+            "value" : "1"
+          },
+          "setting" : {
+            "name" : "index.numberOfShards",
+            "value" : "2"
+          }
+        },
+        "mappings" : {
+        }
+      }
+    }
+  },
+  "routingTable" : {
+    "indices" : {
+      "twitter" : {
+        "shards" : {
+          "0" : [ {
+            "state" : "STARTED",
+            "primary" : true,
+            "nodeId" : "mackimchy.local-53946",
+            "relocatingNodeId" : null,
+            "shardId" : 0,
+            "index" : "twitter"
+          }, {
+            "state" : "UNASSIGNED",
+            "primary" : false,
+            "nodeId" : null,
+            "relocatingNodeId" : null,
+            "shardId" : 0,
+            "index" : "twitter"
+          } ],
+          "1" : [ {
+            "state" : "STARTED",
+            "primary" : true,
+            "nodeId" : "mackimchy.local-53946",
+            "relocatingNodeId" : null,
+            "shardId" : 1,
+            "index" : "twitter"
+          }, {
+            "state" : "UNASSIGNED",
+            "primary" : false,
+            "nodeId" : null,
+            "relocatingNodeId" : null,
+            "shardId" : 1,
+            "index" : "twitter"
+          } ]
+        }
+      }
+    }
+  },
+  "routingNodes" : {
+    "unassigned" : [ {
+      "state" : "UNASSIGNED",
+      "primary" : false,
+      "nodeId" : null,
+      "relocatingNodeId" : null,
+      "shardId" : 0,
+      "index" : "twitter"
+    }, {
+      "state" : "UNASSIGNED",
+      "primary" : false,
+      "nodeId" : null,
+      "relocatingNodeId" : null,
+      "shardId" : 1,
+      "index" : "twitter"
+    } ],
+    "nodes" : {
+      "mackimchy.local-53946" : [ {
+        "state" : "STARTED",
+        "primary" : true,
+        "nodeId" : "mackimchy.local-53946",
+        "relocatingNodeId" : null,
+        "shardId" : 0,
+        "index" : "twitter"
+      }, {
+        "state" : "STARTED",
+        "primary" : true,
+        "nodeId" : "mackimchy.local-53946",
+        "relocatingNodeId" : null,
+        "shardId" : 1,
+        "index" : "twitter"
+      } ]
+    }
+  }
+}
+</pre>

@@ -1,0 +1,32 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON Gateway Snapshot API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"],
+    ["admin", "Admin"],
+    ["indices", "Indices"],
+    ["gateway_snapshot", "Gateway Snapshot"]
+];
+</script>
+
+h1. Gateway Snapshot
+
+p. The gateway snapshot API allows to explicitly perform a snapshot through the gateway of one or more indices (backup them). By default, each index gateway periodically snapshot changes, though it can be disabled and be controlled completely through this API.
+
+<pre class="prettyprint">
+$ curl -XPOST http://localhost:9200/twitter/_gateway/snapshot
+</pre>
+
+h2. Multi Index
+
+p. The gateway snapshot API can be applied to more than one index with a single call, or even on @_all@ the indices.
+
+<pre class="prettyprint">
+$ curl -XPOST http://localhost:9200/kimchy,elasticsearch/_gateway/snapshot
+
+$ curl -XPOST http://localhost:9200/_gateway/snapshot
+</pre>

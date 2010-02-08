@@ -1,0 +1,26 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Modules
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["modules", "Modules"], 
+];
+</script>
+
+h1. Modules
+
+p. The modules section describes node level modules that can be configured. Node level modules are modules that are basically singletons on the node level, and different from "index modules":../index_modules which are create on a per index or even per index shard level allowing them to be configured on the index level.
+
+p. The following lists the available top level modules:
+
+|_. Module |_. Description |
+|"Node":node|Generic, node level settings.|
+|"Transport":transport|Internal communication layer between nodes.|
+|"HTTP":http|HTTP based communication layer.|
+|"Discovery":discovery|Discovery of nodes and cluster state.|
+|"Gateway":gateway|Long term persistent storage of cluster meta data.|
+|"JMX":jmx|JMX monitoring.|
+|"ThreadPool":threadpool|ThreadPool type and configuration.|

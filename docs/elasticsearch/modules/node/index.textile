@@ -1,0 +1,23 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Modules | Node
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["modules", "Modules"], 
+    ["node", "Node"], 
+];
+</script>
+
+h1. Node Module
+
+p. Though not explicitly a module, this section describes the node level settings and configuration options. A node is a single running ElasticSearch server.
+
+p. This sections covers the following:
+
+|_. Name |_. Description |
+|"network":network|Node level network settings.|
+|"data_node":data_node|Configure a node to hold local data or not.|
+

@@ -1,0 +1,17 @@
+---
+layout: blog
+title: Blog
+---
+
+<div class="bloglisting">
+    {% for post in site.categories.blog limit:10 %}
+        {% if post.nick == 'kimchy' %}
+        <div class="blogpost">
+            <h1><a href="{{post.url}}">{{post.title}}</a></h1>
+            <div class="content">
+                {{post.content}}
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>

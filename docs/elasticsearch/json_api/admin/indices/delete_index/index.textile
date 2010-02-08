@@ -1,0 +1,25 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON Delete Index API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"],
+    ["admin", "Admin"],
+    ["indices", "Indices"],
+    ["delete_index", "Delete Index"]
+];
+</script>
+
+h1. Delete Index
+
+p. The delete index API allows to delete an existing index.
+
+<pre class="prettyprint">
+$ curl -XDELETE http://localhost:9200/twitter/
+</pre>
+
+p. The above example deletes an index called @twitter@.
+

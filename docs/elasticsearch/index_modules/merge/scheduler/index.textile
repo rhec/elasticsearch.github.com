@@ -1,0 +1,32 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Merge | Scheduler
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["merge", "Merge"], 
+    ["scheduler", "Scheduler"], 
+];
+</script>
+
+h1. Index Merge Scheduler Module
+
+p. Merge schedulers controls the execution of merge operations once they are needed (according to the "merge policy":../policy). The following types are support with the default set to @ConcurrentMergeScheduler@.
+
+h2. ConcurrentMergeScheduler
+
+p. A merge scheduler that runs merges using a separated thread, until the maximum number of threads at which when a merge is needed, the thread(s) that are updating the index will pause until one or more merges completes.
+
+p. The scheduler supports the following settings:
+
+|_. Setting |_. Description |
+|index.merge.scheduler.maxThreadCount|The maximum number of threads to perform the merge operation. Defaults to @1@.|
+
+h2. SerialMergeScheduler
+
+p. A merge scheduler that simply does each merge sequentially using the calling thread (blocking the operations that triggered the merge, the index operation).
+
+

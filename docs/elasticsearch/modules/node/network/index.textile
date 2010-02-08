@@ -1,0 +1,32 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Modules | Node | Network
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["modules", "Modules"], 
+    ["node", "Node"], 
+    ["network", "Network"], 
+];
+</script>
+
+h1. Node Network Settings
+
+p. There are several modules within a Node that use network based configuration, for example, the "transport":../../transport and "http":../../http modules. Node level network settings allows to set common settings that will be shared among all network based modules (unless explicitly overridden in each module).
+
+p. The @network.bindHost@ setting allows to control the host different network component will bind on. By default, the bind host will be @anyLocalAddress@ (typically @0.0.0.0@ or @::0@).
+
+p. The @network.publishHost@ setting allows to control the host the node will publish itself within the cluster so other nodes will be able to connect to it. Of course, this can't be the @anyLocalAddress@, and by default, it will be the local ip address.
+
+p. Both settings allows to be configured with either explicit host address or host name. The settings also accept logical setting values explained in the following table:
+
+|_. Logical Host Setting Value |_. Description |
+|@#local:ip#@|Will be resolved to the local ip address.|
+|@#local:host#@|Will be resolved to the local host name.|
+|@#local:canonicalhost#@|Will be resolved to the local canonical host name.|
+|@#[netowrkInterface]:ip#@|Resolves to the ip address of the provided network interface. For example @en0:ip@.|
+|@#[netowrkInterface]:host#@|Resolves to the host name of the provided network interface. For example @en0:host@.|
+|@#[netowrkInterface]:canonicalhost#@|Resolves to the canonical host name of the provided network interface. For example @en0:canonicalhost@.|
+

@@ -1,0 +1,33 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Modules | HTTP | Netty
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["modules", "Modules"], 
+    ["http", "HTTP"], 
+    ["netty_transport", "Netty"], 
+];
+</script>
+
+h1. Netty HTTP Module
+
+p. "Netty":http://www.jboss.org/netty is an excellent asynchronous event-driven network application framework. The netty http implementation utilizes it in order to provide high performance, asynchronous based HTTP over TCP communication.
+
+h2. Settings
+
+p. Settings for the netty HTTP module should be set for within @http.netty@. For example, the @port@ setting should be set using @http.netty.port@.
+
+|_. Setting |_. Description |
+|port|A bind port range. Defaults to @9200-9300@.|
+|bindHost|The bind host. Defaults to the "network level settings":../../node/network.|
+|publishHost|The publish host. This is the host that other nodes will use to connect to this node. Defaults to the "network level settings":../../node/network.|
+|workerCount|The number of worker threads to use. Defaults to the number of available processors.|
+|tcpNoDelay|Enable or disable tcp no delay setting. Defaults to @true@.|
+|tcpKeepAlive|Enable or disable tcp keep alive. By default not explicitly set.|
+|reuseAddress|Should an address be reused or not. Defaults to @true@.|
+|tcpSendBufferSize|The size of the tcp send buffer size (in size setting format). By default not explicitly set.|
+|tcpReceiveBufferSize|The size of the tcp receive buffer size (in size setting format). By default not explicitly set.|
+|httpKeepAlive|How long a keep alive request is kept open with no traffic (in time setting format). Defaults to @30s@.|

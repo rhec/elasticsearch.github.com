@@ -1,0 +1,29 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Modules | Memory Monitor
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["modules", "Modules"], 
+    ["memory_monitor", "Memory Monitor"], 
+];
+</script>
+
+h1. Memory Monitor Module
+
+p. The memory monitor module is responsible for maintain the memory (heap) each node takes at bay. It does that by analyzing the current free heap memory, and based on that, start flushing shards data.
+
+h2. Alpha Memory Monitor
+
+p. The following settings control the @alpha@ memory monitor. All settings should be set within @monitor.memory.alpha@ (for example, the @interval@ should be set using @monitor.memory.alpha.interval@):
+
+|_. Setting |_. Description |
+|translogNumberOfOperationsThreshold|The number of transaction log operations (of a shard) after which a flush will be called (regardless of the memory state). Defaults to @5000@.|
+|upperMemoryThreshold|The upper memory threshold fraction out of the max memory allocated to the heap (@-Xmx@) above which shards will be flushed. Defaults to @0.8@.|
+|lowerMemoryThreshold|The lower memory threshold fraction out of the max memory allocated to the heap (@-Xmx@) to try and clean (flush) the memory to.|
+|interval|A time setting controlling the interval the memory monitor will run at. Defaults to @500ms@.|
+|cleanThreshold|After a clean was executed (flush), when next to try and clean if it is still required (according to the @upperMemoryThreshold@). Defaults to @10@, which means only after 10 intervals (10 * @interval@) another clean will be done.|
+|gcThreshold|The number of cleans that still did not manage to clean enough memory will cause a call to GC. Defaults to @5@.|
+|minimumFlushableSizeToClean|Each shard has a flushable size that can be cleaned. The setting controls the minimum value of it below which a shard will not be flushed. Defaults to @5m@.|

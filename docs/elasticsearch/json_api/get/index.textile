@@ -1,0 +1,41 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON GET API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"],
+    ["get", "Get"]
+];
+</script>
+
+h1. Get
+
+p. The get API allows to get a typed JSON document from the index based on its id. The following example gets a JSON document from an index called twitter, under a type called tweet, with id valued 1:
+
+<pre class="prettyprint">
+$ curl -XGET http://localhost:9200/twitter/tweet/1
+</pre>
+
+p. The result of the above get operation is:
+
+<pre class="prettyprint lang-js">
+{
+    "_index" : "twitter",
+    "_type" : "tweet",
+    "_id" : "1", 
+    "_source" : {
+        user : "kimchy",
+        postDate : "2009-11-15T14:12:12",
+        message : "trying out Elastic Search"
+    }
+}
+</pre>
+
+p. The above result includes the @_index@, @_type@, and @_id@ of the document we wish to retrieve, including the actual source of the document that was indexed.
+
+h2. Distributed
+
+The get operation gets hashed into a specific shard id. It then gets redirected to one of the replicas within that shard id and returns the result. The replicas are the primary shard and its replicas within that shard id group. This means that the more replicas we will have, the better GET scaling we will have.

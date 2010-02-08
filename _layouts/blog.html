@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div class="siteheadersep"></div>
+<div class="generic fiveeighty">
+    {{content}}
+</div>
+<div class="generic twoeighty right-float">
+    <div style="text-align: center;">
+        <a href="http://feeds.feedburner.com/elasticsearchblog"><img alt="subscribe to blog feed" src="/images/set3/rss2_128.png" height="100px"></img></a>&nbsp;
+        <a href="/community/twitter"><img  height="100px" alt="twitter" src="/images/set3/twitter128.png"></img></a>
+    </div>
+    <div>
+    <div class="separator"></div>
+    {% for post in site.categories.blog limit:10 %}
+        <h2 style="margin-bottom: 0.1em"><a href="{{post.url}}">{{post.title}}</a></h2>
+        <div style="margin-bottom: 1em">By <a href="/blog/{{post.nick}}">{{post.author}}</a> on {{post.date | date_to_string}}</div>
+    {% endfor %}
+    </div>
+    <div class="separator"></div>
+</div>

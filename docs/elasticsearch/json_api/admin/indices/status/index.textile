@@ -1,0 +1,153 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | JSON Indices Status API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["json_api", "JSON API"],
+    ["admin", "Admin"],
+    ["indices", "Indices"],
+    ["status", "Status"]
+];
+</script>
+
+h1. Indices Status
+
+p. The indices status API allows to get a comprehensive status information of one or more indices.
+
+<pre class="prettyprint">
+$ curl -XGET http://localhost:9200/twitter/_status
+</pre>
+
+p. Here is an example status result:
+
+<pre class="prettyprint lang-js">
+{
+  "ok" : true,
+  "indices" : {
+    "twitter" : {
+      "settings" : {
+        "setting" : {
+          "name" : "index.numberOfReplicas",
+          "value" : "1"
+        },
+        "setting" : {
+          "name" : "index.numberOfShards",
+          "value" : "2"
+        }
+      },
+      "storeSize" : "1.5kb",
+      "storeSizeInBytes" : 1580,
+      "estimatedFlushableMemorySize" : "512b",
+      "estimatedFlushableMemorySizeInBytes" : 512,
+      "translogOperations" : 2,
+      "docs" : {
+        "numDocs" : 1,
+        "maxDoc" : 1,
+        "deletedDocs" : 0
+      },
+      "shards" : {
+        "0" : [ {
+          "routing" : {
+            "state" : "STARTED",
+            "primary" : true,
+            "nodeId" : "mackimchy-65516",
+            "relocatingNodeId" : null,
+            "shardId" : 0,
+            "index" : "twitter"
+          },
+          "state" : "STARTED",
+          "storeSize" : "758b",
+          "storeSizeInBytes" : 758,
+          "estimatedFlushableMemorySize" : "256b",
+          "estimatedFlushableMemorySizeInBytes" : 256,
+          "translogId" : 0,
+          "translogOperations" : 1,
+          "docs" : {
+            "numDocs" : 1,
+            "maxDoc" : 1,
+            "deletedDocs" : 0
+          }
+        }, {
+          "routing" : {
+            "state" : "STARTED",
+            "primary" : false,
+            "nodeId" : "mackimchy-8933",
+            "relocatingNodeId" : null,
+            "shardId" : 0,
+            "index" : "twitter"
+          },
+          "state" : "STARTED",
+          "storeSize" : "738b",
+          "storeSizeInBytes" : 738,
+          "estimatedFlushableMemorySize" : "256b",
+          "estimatedFlushableMemorySizeInBytes" : 256,
+          "translogId" : 0,
+          "translogOperations" : 1,
+          "docs" : {
+            "numDocs" : 1,
+            "maxDoc" : 1,
+            "deletedDocs" : 0
+          }
+        } ],
+        "1" : [ {
+          "routing" : {
+            "state" : "STARTED",
+            "primary" : true,
+            "nodeId" : "mackimchy-65516",
+            "relocatingNodeId" : null,
+            "shardId" : 1,
+            "index" : "twitter"
+          },
+          "state" : "STARTED",
+          "storeSize" : "52b",
+          "storeSizeInBytes" : 52,
+          "estimatedFlushableMemorySize" : "0b",
+          "estimatedFlushableMemorySizeInBytes" : 0,
+          "translogId" : 0,
+          "translogOperations" : 0,
+          "docs" : {
+            "numDocs" : 0,
+            "maxDoc" : 0,
+            "deletedDocs" : 0
+          }
+        }, {
+          "routing" : {
+            "state" : "STARTED",
+            "primary" : false,
+            "nodeId" : "mackimchy-8933",
+            "relocatingNodeId" : null,
+            "shardId" : 1,
+            "index" : "twitter"
+          },
+          "state" : "STARTED",
+          "storeSize" : "32b",
+          "storeSizeInBytes" : 32,
+          "estimatedFlushableMemorySize" : "0b",
+          "estimatedFlushableMemorySizeInBytes" : 0,
+          "translogId" : 0,
+          "translogOperations" : 0,
+          "docs" : {
+            "numDocs" : 0,
+            "maxDoc" : 0,
+            "deletedDocs" : 0
+          }
+        } ]
+      }
+    }
+  }
+}
+</pre>
+
+
+h2. Multi Index
+
+p. The status API can be applied to more than one index with a single call, or even on @_all@ the indices.
+
+<pre class="prettyprint">
+$ curl -XGET http://localhost:9200/kimchy,elasticsearch/_status
+
+$ curl -XGET http://localhost:9200/_status
+</pre>

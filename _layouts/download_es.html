@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<div class="siteheadersep"></div>
+<div class="generic nineforty" style="text-align: center;">
+    <h1>{{page.title}}</h1>
+    <p>Your download will begin shortly, if it doesn't, <a href="{{page.download_url}}">click here</a>.</p>
+    <h2>While downloading:</h2>
+</div>
+
+<script type="text/javascript"> 
+_gaq.push(['_trackEvent', 'Downloads', 'ElasticSearch', '{{page.version}}'])
+var downloadLocation = '{{page.download_url}}';
+window.onload = function () {
+    t = setTimeout('document.location = downloadLocation', 1000);
+}
+</script>
+
+{% if page.download_type == 'source' %}
+<div class="generic twoeighty" style="text-align: right">
+    <h2>Build</h2>
+</div>
+<div class="generic foursixty end">
+    <p>The following will build and create a distribution placed under <code>build/distributions</code>.</p>
+<pre>
+$ gradlew clean devRelease
+</pre>
+</div>
+{% endif %}
+
+<div class="generic twoeighty break" style="text-align: right">
+    <h2>Getting Started</h2>
+</div>
+<div class="generic foursixty end">
+    <h3>Running:</h3>
+<pre>
+$ bin/elasticsearch -f
+</pre>
+    <h3>Index:</h3>
+<pre>
+$ curl -XPUT http://localhost:9200/twitter/user/kimchy -d \
+'{ name: "Shay Banon" }'
+
+$ curl -XPUT http://localhost:9200/twitter/tweet/1 -d \
+'{ user: "kimchy", postDate: "2009-11-15T13:12:00", message: "Trying out Elastic Search, so far so good?" }'
+
+$ curl -XPUT http://localhost:9200/twitter/tweet/2 -d \
+"{ user: "kimchy", postDate: "2009-11-15T14:12:12", message: "You know, for Search" }"
+</pre>
+
+    <h3>Get &amp; Search:</h3>
+<pre>
+$ curl -XGET http://localhost:9200/twitter/user/kimchy?pretty=true
+$ curl -XGET http://localhost:9200/twitter/tweet/1?pretty=true
+$ curl -XGET http://localhost:9200/twitter/tweet/_search?q=user:kimchy\&pretty=true
+</pre>
+</div>
+
+<div class="generic twoeighty break" style="text-align: right">
+    <h2>From Here...</h2>
+</div>
+<div class="generic foursixty end">
+    <p>Review the detailed <a href="/docs/elasticsearch/setup">Setup</a> docs, see some <a href="/videos">Videos</a>, read the <a href="/blog">Blog</a>, and engage with the <a href="/community">Community</a>.</p>
+</div>
