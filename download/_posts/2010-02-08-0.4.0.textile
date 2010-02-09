@@ -3,6 +3,6 @@ layout: download_es
 type: ElasticSearch
 version: 0.4.0
 title: ElasticSearch Download - 0.4.0
-download_url: http://cloud.github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.4.0.zip
+download_url: http://cloud.github.com/downloads/elasticsearch/elasticsearch/elasticsearch_0.4.0.zip
 ---
 
