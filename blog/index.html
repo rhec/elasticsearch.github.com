@@ -4,6 +4,15 @@ title: Blog
 ---
 
 {% for post in site.categories.blog limit:10 %}
+    <div style="float: right">
+        <script type="text/javascript">
+             var topsy_nick = "elasticsearch";
+             var topsy_theme = "jade";
+             var topsy_style = "big";
+             var topsy_url = "http://www.elasticsearch.com/{{post.url}}"
+        </script>
+        <script type="text/javascript" src="http://cdn.topsy.com/button.js"></script>
+    </div>
     <h1 style="margin-bottom: 0em;"><a href="{{post.url}}">{{post.title}}</a></h1>
     <div style="margin-bottom: 2em;">By <a href="/blog/{{post.nick}}">{{post.author}}</a> | {{post.date | date_to_string}}</div>
 
