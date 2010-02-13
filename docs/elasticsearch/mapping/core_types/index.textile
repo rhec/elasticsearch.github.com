@@ -172,7 +172,7 @@ p. The binary type is a base64 representation of binary data that can be stored 
     tweet : {
         properties : {
             image : {
-                type : "boolean",
+                type : "binary",
             }
         }
     }
