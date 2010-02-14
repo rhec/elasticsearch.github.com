@@ -22,7 +22,7 @@ layout: clean
         <ul>
             {% for video in site.categories.videos reversed %}
         	<li id="videosvideolink{{forloop.index}}">
-        	    <img width="200px" height="100px" alt="" src="/videos/images/{{video.video_image}}" /><p>{{video.title}}</p>
+        	    <img width="200px" height="100px" alt="" src="/videos/images/{{video.video_image}}" /><p><a href="{{video.url}}">{{video.title}}</a></p>
         	</li>
             {% endfor %}
         </ul>
