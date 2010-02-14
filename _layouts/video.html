@@ -20,7 +20,7 @@ layout: clean
 <div class="eighteighty" style="margin: auto; padding: 1em 0 1em 0;">
     <div class="video"><div id="carousel">
         <ul>
-            {% for video in site.categories.videos %}
+            {% for video in site.categories.videos reversed %}
         	<li id="videosvideolink{{forloop.index}}">
         	    <img width="200px" height="100px" alt="" src="/videos/images/{{video.video_image}}" /><p>{{video.title}}</p>
         	</li>
