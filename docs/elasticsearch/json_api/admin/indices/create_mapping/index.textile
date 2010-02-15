@@ -18,7 +18,7 @@ h1. Create Mapping
 p. The create mapping API allows to register specific mapping definition for a specific type.
 
 <pre class="prettyprint">
-$ curl -XPUT http://localhost:9200/twitter/tweet -d \
+$ curl -XPUT http://localhost:9200/twitter/tweet/_mapping -d \
 '
 {
     tweet : {
@@ -37,7 +37,7 @@ h2. Multi Index
 p. The create mapping API can be applied to more than one index with a single call, or even on @_all@ the indices.
 
 <pre class="prettyprint">
-$ curl -XPUT http://localhost:9200/kimchy,elasticsearch/tweet -d \
+$ curl -XPUT http://localhost:9200/kimchy,elasticsearch/tweet/_mapping -d \
 '
 {
     tweet : {
