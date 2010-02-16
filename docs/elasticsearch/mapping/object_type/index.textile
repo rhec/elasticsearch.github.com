@@ -39,7 +39,7 @@ p. The following is an example of explicit mapping for the above JSON:
     tweet : {
         properties : {
             person : {
-                type = "object"
+                type = "object",
                 properties : {
                     name : {
                         properties : {
@@ -73,7 +73,7 @@ p. This feature is by default turned on, and its the @dynamic@ nature of each ob
     tweet : {
         properties : {
             person : {
-                type = "object"
+                type = "object",
                 properties : {
                     name : {
                         dynamic : false,
@@ -112,7 +112,7 @@ p. The enabled flag allows to disable parsing and adding a named object complete
     tweet : {
         properties : {
             person : {
-                type = "object"
+                type = "object",
                 properties : {
                     name : {
                         type : "object",
