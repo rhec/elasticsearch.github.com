@@ -1,6 +1,6 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | JSON Query DSL API
+title: ElasticSearch Docs | REST Query DSL API
 ---
 
 <script type="text/javascript">

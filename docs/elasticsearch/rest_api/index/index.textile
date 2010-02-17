@@ -1,6 +1,6 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | JSON Index API
+title: ElasticSearch Docs | REST Index API
 ---
 
 <script type="text/javascript">

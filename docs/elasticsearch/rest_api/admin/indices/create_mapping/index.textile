@@ -1,6 +1,6 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | JSON Create Mapping API
+title: ElasticSearch Docs | REST Create Mapping API
 ---
 
 <script type="text/javascript">

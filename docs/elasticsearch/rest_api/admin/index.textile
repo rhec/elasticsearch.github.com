@@ -1,6 +1,6 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | JSON Admin API
+title: ElasticSearch Docs | REST Admin API
 ---
 
 <script type="text/javascript">
