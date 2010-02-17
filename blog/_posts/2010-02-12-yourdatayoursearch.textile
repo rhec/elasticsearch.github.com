@@ -5,6 +5,8 @@ author: Shay Banon
 nick: kimchy
 ---
 
+notextile. <img src="/blog/images/magnifying-glass-from-top-secret.gif" height="100px" class="left-img"></img>
+
 p. One of the main aspects when working with business data is to try and have all different components in an ever evolving system to understand the same data structure/format (or as close as possible). This was the main drive for me when developing the data model ElasticSearch supports and the different search and interaction with the data model once indexed.
 
 p. For example, lets assume we want build our own Amazon store, and want to provide search for it. The first thing we have are of course books:

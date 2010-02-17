@@ -20,8 +20,7 @@ p. The create index API allows to instantiate an index. ElasticSearch provides s
 <pre class="prettyprint">
 $ curl -XPUT http://localhost:9200/twitter/
 
-$ curl -XPUT http://localhost:9200/twitter/ -d \
-'
+$ curl -XPUT http://localhost:9200/twitter/ -d '
 index :
     numberOfShards : 3
     numberOfReplicas : 2
