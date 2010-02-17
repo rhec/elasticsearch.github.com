@@ -20,6 +20,6 @@ p. The following lists the available index level modules:
 |"analysis":analysis|Allows to configure and register different types of analyzers for both the indexing and search process.|
 |"engine":engine|An engine provides the ability to have different actual implementations of how basic operations are performed on the shard level index (index, and delete operations for example), think MySQL pluggable storage module|
 |"gateway":gateway|The index gateway allows to have long term persistence of an index. Think of it as Time Machine for an index, or as Write Behind in Data Grid concepts. The gateway, in a reliable asynchronous manner, persist changes to the gateway and recover from it.|
-|"mapper":mapper|The mapper module acts as a registry for the type mapping definitions added to an index using the "create mapping":/docs/elasticsearch/json_api/admin/indices/create_mapping.|
+|"mapper":mapper|The mapper module acts as a registry for the type mapping definitions added to an index using the "create mapping":/docs/elasticsearch/rest_api/admin/indices/create_mapping.|
 |"merge":merge|The merge module allow to configure both the "merge policy":merge/policy and "merge scheduler":merge/scheduler of a specific shard index.|
 |"store":store|The store module allows to control the storage type each index shard stores the index content at.|

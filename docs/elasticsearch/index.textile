@@ -18,7 +18,7 @@ h2. Where to go from here
 p. The "setup":setup section includes instructions on how to "install":setup/installation Elastic Search. From there, you can check the "introduction video":/videos/2010/02/07/es-introduction.html. The documentation is divided into the following sections:
 
 |_. Section |_. Description |
-|"json_api":json_api|Covers the RESTful JSON API, for example, index/delete/count/search operations and more.|
+|"rest_api":rest_api|Covers the REST API, for example, index/delete/count/search operations and more.|
 |"mapping":mapping|Covers the mapping definitions of types.|
 |"modules":modules|Covers the different node (top) level modules of ElasticSearch.|
 |"index_modules":index_modules|Covers the different index level modules and their respective settings.|

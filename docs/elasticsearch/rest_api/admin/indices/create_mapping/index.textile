@@ -6,7 +6,7 @@ title: ElasticSearch Docs | JSON Create Mapping API
 <script type="text/javascript">
 docBreadcrumb = [
     ["elasticsearch", "ElasticSearch"], 
-    ["json_api", "JSON API"],
+    ["rest_api", "REST API"],
     ["admin", "Admin"],
     ["indices", "Indices"],
     ["create_mapping", "Create Mapping"]

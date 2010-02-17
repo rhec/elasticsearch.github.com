@@ -1,12 +1,12 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | JSON API | Flush
+title: ElasticSearch Docs | REST API | Flush
 ---
 
 <script type="text/javascript">
 docBreadcrumb = [
     ["elasticsearch", "ElasticSearch"], 
-    ["json_api", "JSON API"],
+    ["rest_api", "REST API"],
     ["admin", "Admin"],
     ["indices", "Indices"],
     ["flush", "Flush"]

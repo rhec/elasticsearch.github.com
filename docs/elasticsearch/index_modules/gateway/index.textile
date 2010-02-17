@@ -17,7 +17,7 @@ p. The index gateway module allows to have long term persistence of an index. Th
 
 p. The index gateway works on a shard level. An index is broken down into shards, each shard id group (partition) can have one or more shard replicas. In each partition, a primary shard which adds extra responsibilities for that shard. One of those is working against the index gateway.
 
-p. When a primary shard is first allocated on a node (not when its relocated), it recovers its state from the index gateway. It can then, persist the changes done on the shard to the gateway. The process of persisting the changes to the gateway is called snapshot. It can either be performed explicitly using an "API":/docs/elasticsearch/json_api/admin/indices/gateway_snapshot, or periodically.
+p. When a primary shard is first allocated on a node (not when its relocated), it recovers its state from the index gateway. It can then, persist the changes done on the shard to the gateway. The process of persisting the changes to the gateway is called snapshot. It can either be performed explicitly using an "API":/docs/elasticsearch/rest_api/admin/indices/gateway_snapshot, or periodically.
 
 p. The index level gateway stores both the actual index files for a shard, as well as the transaction log of the specific shard.
 

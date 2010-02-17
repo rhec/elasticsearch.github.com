@@ -18,7 +18,7 @@ p. The robin engine is a high performance engine implementation applying operati
 
 h2. Refresh
 
-p. The near real time search feature is done by executing a scheduled refresh operation (the same one the "Refresh API":/docs/elasticsearch/json_api/admin/indices/refresh). The @index.engine.robin.refreshInterval@ setting is a time setting allowing to control the interval at which the refresh is executed. The default is @1s@. The setting can also be set to @-1@ in order to completely disable the automatic scheduling and control the refresh just through the API, it can be done.
+p. The near real time search feature is done by executing a scheduled refresh operation (the same one the "Refresh API":/docs/elasticsearch/rest_api/admin/indices/refresh). The @index.engine.robin.refreshInterval@ setting is a time setting allowing to control the interval at which the refresh is executed. The default is @1s@. The setting can also be set to @-1@ in order to completely disable the automatic scheduling and control the refresh just through the API, it can be done.
 
 h2. Flush
 

@@ -6,7 +6,7 @@ title: ElasticSearch Docs | JSON Delete By Query API
 <script type="text/javascript">
 docBreadcrumb = [
     ["elasticsearch", "ElasticSearch"], 
-    ["json_api", "JSON API"],
+    ["rest_api", "REST API"],
     ["delete_by_query", "Delete By Query"]
 ];
 </script>

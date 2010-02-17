@@ -1,18 +1,18 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | JSON API
+title: ElasticSearch Docs | REST API
 ---
 
 <script type="text/javascript">
 docBreadcrumb = [
     ["elasticsearch", "ElasticSearch"], 
-    ["json_api", "JSON API"]
+    ["rest_api", "REST API"]
 ];
 </script>
 
-h1. JSON API
+h1. REST API
 
-p. This section describes the APIs ElasticSearch exposes over HTTP using JSON. The following are the main APIs one would need in order to get started with ElasticSearch:
+p. This section describes the REST APIs ElasticSearch provides using JSON. The following are the main APIs one would need in order to get started with ElasticSearch:
 
 |_. API |_. Description |
 |"index":index|Index a typed JSON document into a specific index and make it searchable.|
@@ -24,4 +24,4 @@ p. This section describes the APIs ElasticSearch exposes over HTTP using JSON. T
 |"delete_index":admin/indices/delete_index|Deletes an index.|
 |"create_mapping":admin/indices/create_mapping|Register specific mapping definition for a specific type against one or more indices.|
 
-p. There is also an evolving "Administration JSON API":admin.
+p. There is also an evolving "Administration REST API":admin.
