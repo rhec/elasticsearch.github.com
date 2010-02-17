@@ -212,6 +212,7 @@ p.note {
 
 
 /* TWITTER */
+.twtr-hd {height: 1px; padding: 0px;}
 .twtr-tweet-text {font-size: 0.9em; font-family: Helvetica, Arial, sans-serif;}
 .twtr-tweet-text p a {
     padding:0 2px;

@@ -1,6 +1,45 @@
 <!-- FOOTER -->
 <div class="footerwrapper clear">
     <div class="footer">
+
+        {% if page.type == "main" %}
+        <div style="float: right">
+            <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+            <script>
+            new TWTR.Widget({
+              version: 2,
+              type: 'search',
+              search: 'elasticsearch OR from:elasticsearch OR @elasticsearch',
+              interval: 6000,
+              title: 'You Know, for Search',
+              subject: 'elasticsearch',
+              width: 500,
+              height: 150,
+              theme: {
+                shell: {
+                  background: '#ffffff',
+                  color: '#ffffff'
+                },
+                tweets: {
+                  background: '#ffffff',
+                  color: '#000000',
+                  links: '#6A8A22'
+                }
+              },
+              features: {
+                scrollbar: false,
+                loop: true,
+                live: true,
+                hashtags: true,
+                timestamp: true,
+                avatars: true,
+                behavior: 'default'
+              }
+            }).render().start();
+            </script>
+        </div>
+        {% endif %}
+
         <p>Copyright 2010 Elastic Search. All Rights Reserved.</p>
 		<ul class="footermenu">
 			<li><a href="/">Resources</a>
