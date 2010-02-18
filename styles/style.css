@@ -139,6 +139,14 @@ code {background: #444444; color: #EEEEEE; font-family: monospace; font-size: 1.
 .bordered-img {
     border:1px solid #ccc;
 }
+
+.fancy-bordered-img {
+    /* CSS3 Box Shadow */
+	-moz-box-shadow:0 0 3px #AAAAAA;
+	-webkit-box-shadow:0 0 3px #AAAAAA;
+	box-shadow:0 0 3px #AAAAAA;
+}
+
 .bordered-video {
 	/* CSS3 Box Shadow */
 	-moz-box-shadow:0 0 3px #AAAAAA;
