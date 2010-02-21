@@ -39,7 +39,7 @@ p. The result of the above index operation is:
 
 h2. Automatic for the Index
 
-p. The index operation automatically creates an index if it has not been created before (check out the "create index API":../admin/indices/create_index for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "create mapping API":../admin/indices/create_mapping for manually creating type mapping). 
+p. The index operation automatically creates an index if it has not been created before (check out the "create index API":../admin/indices/create_index for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "put mapping":../admin/indices/put_mapping API for manually creating type mapping). 
 
 p. The mapping itself is very flexible and is schema free, meaning that new fields / objects can be added and they will be automatically be added to the mapping definition of the specific type. Check out the "mapping":/docs/elasticsearch/mapping section for more information on mapping definitions.
 

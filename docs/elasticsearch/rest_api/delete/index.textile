@@ -34,7 +34,7 @@ p(note). The delete operation will always return the the above result, even if t
 
 h2. Automatic for the Index
 
-p. The delete operation automatically creates an index if it has not been created before (check out the "create index API":../admin/indices/create_index for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "create mapping API":../admin/indices/create_mapping for manually creating type mapping). 
+p. The delete operation automatically creates an index if it has not been created before (check out the "create index API":../admin/indices/create_index for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "put mapping":../admin/indices/put_mapping API for manually creating type mapping). 
 
 h2. Distributed
 

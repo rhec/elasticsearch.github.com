@@ -22,6 +22,6 @@ p. This section describes the REST APIs ElasticSearch provides using JSON. The f
 |"count":count|Execute a query against one or more indices and get hits count.|
 |"create_index":admin/indices/create_index|Creates an index with optional settings.|
 |"delete_index":admin/indices/delete_index|Deletes an index.|
-|"create_mapping":admin/indices/create_mapping|Register specific mapping definition for a specific type against one or more indices.|
+|"put_mapping":admin/indices/put_mapping|Register specific mapping definition for a specific type against one or more indices.|
 
 p. There is also an evolving "Administration REST API":admin.

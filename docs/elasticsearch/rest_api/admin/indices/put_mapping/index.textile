@@ -1,6 +1,6 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | REST Create Mapping API
+title: ElasticSearch Docs | REST Put Mapping API
 ---
 
 <script type="text/javascript">
@@ -9,13 +9,13 @@ docBreadcrumb = [
     ["rest_api", "REST API"],
     ["admin", "Admin"],
     ["indices", "Indices"],
-    ["create_mapping", "Create Mapping"]
+    ["put_mapping", "Put Mapping"]
 ];
 </script>
 
-h1. Create Mapping
+h1. Put Mapping
 
-p. The create mapping API allows to register specific mapping definition for a specific type.
+p. The put mapping API allows to register specific mapping definition for a specific type.
 
 <pre class="prettyprint">
 $ curl -XPUT http://localhost:9200/twitter/tweet/_mapping -d \
@@ -34,7 +34,7 @@ p. The above example creates a mapping called @tweet@ within the @twitter@ index
 
 h2. Multi Index
 
-p. The create mapping API can be applied to more than one index with a single call, or even on @_all@ the indices.
+p. The put mapping API can be applied to more than one index with a single call, or even on @_all@ the indices.
 
 <pre class="prettyprint">
 $ curl -XPUT http://localhost:9200/kimchy,elasticsearch/tweet/_mapping -d \

@@ -13,7 +13,7 @@ docBreadcrumb = [
 
 h1. Index Mapper Module
 
-p. The mapper module acts as a registry for the type mapping definitions added to an index using the "create mapping":/docs/elasticsearch/rest_api/admin/indices/create_mapping. It also handles the dynamic mapping support for types that have no explicit mappings pre defined. For more information about mapping definitions, check out the "mapping section":/docs/elasticsearch/mapping.
+p. The mapper module acts as a registry for the type mapping definitions added to an index using the "put mapping":/docs/elasticsearch/rest_api/admin/indices/put_mapping. It also handles the dynamic mapping support for types that have no explicit mappings pre defined. For more information about mapping definitions, check out the "mapping section":/docs/elasticsearch/mapping.
 
 h2. Dynamic Mappings
 
