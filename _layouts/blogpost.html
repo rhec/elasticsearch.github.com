@@ -2,18 +2,25 @@
 layout: blog
 ---
 
+<h1 style="margin-bottom: 0em;">{{page.title}}</h1>
+
 <div style="float: right">
     <script type="text/javascript">
          var topsy_nick = "elasticsearch";
          var topsy_theme = "jade";
-         var topsy_style = "big";
+         var topsy_style = "small";
+         var topsy_order = "retweet,count";
          var topsy_title = "{{page.title}}"
          var topsy_url = "http://www.elasticsearch.com/{{page.url}}"
     </script>
     <script type="text/javascript" src="http://cdn.topsy.com/button.js"></script>
+</div>    
+<div style="float: right">
+    <a name="fb_share" type="button_count" share_url="http://www.elasticsearch.com/{{page.url}}" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
 </div>
-<h1 style="margin-bottom: 0em;">{{page.title}}</h1>
+
 <div style="margin-bottom: 2em;">By <a href="/blog/{{page.nick}}">{{page.author}}</a> | {{page.date | date_to_string}}</div>
+
 
 {{content}}
 
