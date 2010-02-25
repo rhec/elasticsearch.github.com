@@ -7,7 +7,7 @@ nick: kimchy
 
 notextile. <img src="/blog/images/no_yes.jpeg" height="80px" class="left-img"></img>
 
-p. "NoSQL":http://en.wikipedia.org/wiki/NoSQL seems to be all the hype, helping people get away from databases into more (horizontally) scalable solutions while scarifying certain database characteristics (and gaining others, such as being schema free). And NoSQL products seems to start showing up everywhere such as "Cassandra":http://incubator.apache.org/cassandra/, "HBase":http://hadoop.apache.org/hbase/, "riak":http://riak.basho.com/, "mongodb":http://www.mongodb.org/, "Project Voldemort":http://project-voldemort.com/, and "Terrastore":http://code.google.com/p/terrastore/ to name a few.
+p. "NoSQL":http://en.wikipedia.org/wiki/NoSQL seems to be all the hype, helping people get away from databases into more (horizontally) scalable solutions while sacrificing certain database characteristics (and gaining others, such as being schema free). And NoSQL products seems to start showing up everywhere such as "Cassandra":http://incubator.apache.org/cassandra/, "HBase":http://hadoop.apache.org/hbase/, "riak":http://riak.basho.com/, "mongodb":http://www.mongodb.org/, "Project Voldemort":http://project-voldemort.com/, and "Terrastore":http://code.google.com/p/terrastore/ to name a few.
 
 p. To this list, I would also add long time (data) grid providers such as "GigaSpaces":http://www.gigaspaces.com, "Oracle Coherence":http://www.oracle.com/technology/products/coherence/index.html, and "IBM ObjectGrid":http://publib.boulder.ibm.com/infocenter/wxdinfo/v6r0/topic/com.ibm.websphere.xd.doc/info/prodovr/cobgojbectgrid.html. Products that are playing at a much higher playground than the previous ones (think NoSQL++).
 
