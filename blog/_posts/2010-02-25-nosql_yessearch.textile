@@ -55,14 +55,14 @@ p. Another example, which is already there to play with (proper documentation co
 <pre class="prettyprint lang-java">
 void onValueChanged(final String bucket, final String key, final byte[] value) {
     esClient.index(indexRequest("myIndex")
-                    .type(key)
+                    .type(bucket)
                     .id(key)
                     .source(value));
 }
 
 void onValueRemoved(final String bucket, final String key) {
     esClient.delete(deleteRequest("myIndex")
-                    .type(key)
+                    .type(bucket)
                     .id(key));
 }
 </pre>
