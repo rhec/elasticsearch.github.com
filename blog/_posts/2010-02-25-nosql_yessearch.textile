@@ -1,0 +1,74 @@
+---
+layout: blogpost
+title: NoSQL, Yes Search
+author: Shay Banon
+nick: kimchy
+---
+
+notextile. <img src="/blog/images/no_yes.jpeg" height="80px" class="left-img"></img>
+
+p. "NoSQL":http://en.wikipedia.org/wiki/NoSQL seems to be all the hype, helping people get away from databases into more (horizontally) scalable solutions while scarifying certain database characteristics (and gaining others, such as being schema free). And NoSQL products seems to start showing up everywhere such as "Cassandra":http://incubator.apache.org/cassandra/, "HBase":http://hadoop.apache.org/hbase/, "riak":http://riak.basho.com/, "mongodb":http://www.mongodb.org/, "Project Voldemort":http://project-voldemort.com/, and "Terrastore":http://code.google.com/p/terrastore/ to name a few.
+
+p. To this list, I would also add long time (data) grid providers such as "GigaSpaces":http://www.gigaspaces.com, "Oracle Coherence":http://www.oracle.com/technology/products/coherence/index.html, and "IBM ObjectGrid":http://publib.boulder.ibm.com/infocenter/wxdinfo/v6r0/topic/com.ibm.websphere.xd.doc/info/prodovr/cobgojbectgrid.html. Products that are playing at a much higher playground than the previous ones (think NoSQL++).
+
+p(note). As a side note, its great that the NoSQL solution is gaining steam. If in the past (3-4 years ago) I had to explain and educate why such concepts as collocation, master worker, map reduce, and in memory storage are very important when designing scalable systems, now they have become almost common knowledge.
+
+p. All products mentioned provide, in one form or another, the ability to query data. Some use SQL like queries, others use map reduce. At one point though, regardless of where or how you store your data, you would want to add search to it. What do I mean when I say search? I mean search in what you expect search engines to provide you with. Think of twitter solving their data storage problems, but not being able to search on all the tweets (preferably in real time).
+
+p. But now we find ourself in a problematic situation. We finally managed to solve the scaling requirements of our data storage, only to find that we need to add search to our system (hopefully, you are adding search from the get go, as its a must have feature in any application). And the search solution needs to scale. More over, since the dream scenario is that our search solution would allow us to search on *all* our data, it needs to scale as much as our NoSQL solution does.
+
+p. For this reason, a true, distributed, scalable search solution is required. And guess what, I think I know of one :). So how to we pull this off, the integration between elasticsearch and our chosen NoSQL solution?
+
+p. Well, we can start with the simplest solution. Anytime we update the NoSQL solution, we can go ahead and execute the same or a similar update to elasticsearch. Since elasticsearch has a REST API, it can basically integrate with any language that interacts with our chosen NoSQL. This is the simplest way to solve our problem.
+
+p. A more interesting solution would be to integrate search *into NoSQL*. Think of an indexing stored procedure running within our NoSQL cluster and every time something changes, the same change is applied to elasticsearch as well. Moreover, converting from either pure JSON, column based storage, or even Object based is just a matter of converting them into an indexable JSON that elasticsearch provides. And, thanks to the fact that elasticsearch data model is flexible (as explained in the "Your Data, Your Search":/blog/2010/02/12/yourdatayoursearch.html blog post), the conversion is extremely simple.
+
+p. As an example, with "GigaSpaces":http://www.gigaspaces.com, we can register an event container (against a customizable matching query/template) that will automatically apply any changes done in the data grid into elasticsearch, the code would generally look something like this (including a sneak peak at the upcoming elasticsearch Java API):
+
+<pre class="prettyprint lang-java">
+void onEvent(Object event, EntryArrivedRemoteEvent event) {
+    String index = "myIndex";
+    String type = event.getClass().getSimpleName();
+    String id = extractId(event);
+    switch (remoteEvent.getNotifyActionType()) {
+        case NOTIFY_LEASE_EXPIRATION:
+        case NOTIFY_TAKE:
+            esClient.delete(deleteRequest("myIndex")
+                            .type(type)
+                            .id(id));
+            break;
+        case NOTIFY_UPDATE:
+        case NOTIFY_WRITE:
+            esClient.index(indexRequest("myIndex")
+                            .type(type)
+                            .id(id)
+                            .source(toJson(event)));
+            break;
+    }
+}    
+</pre>
+
+p. When doing so, we can actually get all the features "GigaSpaces":http://www.gigaspaces.com provides as a high throughput, low latency, scalable data grid (among many other features), with the option to perform full text search on all/part of the data stored.
+
+p. Another example, which is already there to play with (proper documentation coming soon) is the integration done between "Terrastore":http://code.google.com/p/terrastore/ and elasticsearch. Since terrastore handles data in JSON format, there is no conversion needed and applying changes in terrastore is just a matter of registering an @EventListener@ (simplified version of "this code":http://code.google.com/p/terrastore/source/browse/src/main/java/terrastore/search/ElasticSearchListener.java?repo=search):
+
+<pre class="prettyprint lang-java">
+void onValueChanged(final String bucket, final String key, final byte[] value) {
+    esClient.index(indexRequest("myIndex")
+                    .type(key)
+                    .id(key)
+                    .source(value));
+}
+
+void onValueRemoved(final String bucket, final String key) {
+    esClient.delete(deleteRequest("myIndex")
+                    .type(key)
+                    .id(key));
+}
+</pre>
+
+p. At the end, your system of record can be a database, a NoSQL product, or something else entirely. With search becoming a requirement in any application built this days (real time search is all the buzz ;) ), a proper thought into how to solve this problem will help you in the long run. And remember, if your data needs scaling, you search solution *has to be able to scale as well*.
+
+-shay.banon
+
+p(note). If someone is interested (I sure as hell am) at getting the same integration into other NoSQL solutions, such as "Cassandra":http://incubator.apache.org/cassandra/, "HBase":http://hadoop.apache.org/hbase/, "riak":http://riak.basho.com/, "mongodb":http://www.mongodb.org/, and "Project Voldemort":http://project-voldemort.com/, drop a line at "elasticsearch":/community and lets go for it.
