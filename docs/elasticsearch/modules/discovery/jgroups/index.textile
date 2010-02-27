@@ -25,3 +25,18 @@ p. There are two configurations that comes with ElasticSearch, the @udp@, @tcp@ 
 p. The reason why there is usually no need to mess with the configuration files is because JGroups can be completely configured using system properties. The JGroups discovery module simplifies that a bit and allows to set JGroups level settings using the @discovery.jgroups@ prefix. For example, a common setting to use is to set the @jgroups.bind_addr@ system property. This setting can be set using ElasticSearch configuration by setting @discovery.jgroups.bind_addr@ (same rule applies to all other properties).
 
 p. A good source to JGroups configuration can be found on its "wiki":http://community.jboss.org/wiki/jgroups.
+
+h2. Multicast Disabled
+
+p. By default, JGroups work with multicast. If multicast is disabled in your system, here is an example of a configuration that can be used across two nodes without a gossip router (@10.0.0.1@ and @10.0.0.2@):
+
+<pre class="prettyprint">
+discovery:
+  jgroups:
+    config: tcp
+    bind_port: 9700
+    tcpping:
+      initial_hosts: 10.0.0.1[9700],10.0.0.2[9700]
+</pre>
+
+p. The @initial_hosts@ setting contains a (partial) list of the hosts that form the cluster. The list is not required to include all the hosts in the cluster, but its recommended to include in the list as much hosts as possible.
