@@ -1,0 +1,22 @@
+---
+layout: blogpost
+title: ElasticSearch 0.5.0 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.5.0@ has just been released. You can download it "here":/download. This release brings much improved stability, better handling of mapping definitions, and several features:
+
+p. Several new queries have been added, including @moreLikeThis@ , @moreLikeThisField@, @fieldQuery@, @queryString@ with multiple fields.
+
+p. "terms":/docs/elasticsearch/rest_api/terms API allowing to get terms (from one or more indices) of one or more fields and their respective document frequencies (how often they exists in documents). This can be very handy to implement things like tag clouds or simple auto suggest.
+
+p. "cluster_health":/docs/elasticsearch/rest_api/admin/cluster/health API for simple indication on the health of the cluster, as well as the ability to wait for the cluster to reach a health status.
+
+p. "moreLikeThis":/docs/elasticsearch/rest_api/more_like_this API to search for documents that are like a certain document.
+
+p. "Java API":/docs/elasticsearch/java_api exposing all of elasticsearch operations/actions using simple, transport based, async API to use with any JVM based language.
+
+p. There are many more minor features and bug fixes, all listed "here":http://github.com/elasticsearch/elasticsearch/issues/closed under the @v0.5.0@ tag.
+
+-shay.banon

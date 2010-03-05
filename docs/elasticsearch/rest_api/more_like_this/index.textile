@@ -1,0 +1,23 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST More Like This API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["moreLikeThis", "More Like This"]
+];
+</script>
+
+h1. More Like This
+
+p. The more like this (mlt) API allows to get documents that are "like" a specified document. Here is an example:
+
+<pre class="prettyprint">
+$ curl -XGET 'http://localhost:9200/twitter/tweet/1/_moreLikeThis?fields=tag,content&minDocFreq=1'
+</pre>
+
+p. The API simply results in executing a search request with @moreLikeThis@ query. This means that the body of the request can optionally include all the request body options in the search API (facets, from/to and so on).
+

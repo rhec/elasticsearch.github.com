@@ -16,7 +16,7 @@ h1. Terms
 p. The terms API allows to get terms (from one or more indices) of one or more fields and their respective document frequencies (how often they exists in documents). This can be very handy to implement things like tag clouds or simple auto suggest.
 
 <pre class="prettyprint">
-$ curl -XPUT 'http://localhost:9200/twitter/_terms?fields=tag,content&size=20&minFreq=12'
+$ curl -XGET 'http://localhost:9200/twitter/_terms?fields=tag,content&size=20&minFreq=12'
 </pre>
 
 h2. Request Parameters
