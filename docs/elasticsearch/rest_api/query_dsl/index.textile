@@ -23,7 +23,7 @@ p. Matches documents that have fields that contain a a term (*not analyzed*). Th
 
 <pre class="prettyprint lang-js">
 {
-    term : { "user" : "kimchy" }
+    "term" : { "user" : "kimchy" }
 }    
 </pre>
 
@@ -31,7 +31,7 @@ p. A boost can also be associated with the query:
 
 <pre class="prettyprint lang-js">
 {
-    term : { "user" : { value : "kimchy", boost : 2.0 } }
+    "term" : { "user" : { "value" : "kimchy", "boost" : 2.0 } }
 }    
 </pre>
 
@@ -41,8 +41,14 @@ p. Matches documents with fields that have terms within a certain range. The typ
 
 <pre class="prettyprint lang-js">
 {
-    range : {
-        age : { from : 10, to : 20, includeLower : true, includeUpper: false, boost : 2.0}
+    "range" : {
+        "age" : { 
+            "from" : 10, 
+            "to" : 20, 
+            "includeLower" : true, 
+            "includeUpper": false, 
+            "boost" : 2.0
+        }
     }
 }
 </pre>
@@ -53,7 +59,7 @@ p. Matches documents that have fields containing terms with a specified prefix. 
 
 <pre class="prettyprint lang-js">
 {
-    prefix : { "user" : "sh" }
+    "prefix" : { "user" : "sh" }
 }
 </pre>
 
@@ -61,7 +67,7 @@ p. A boost can also be associated with the query:
 
 <pre class="prettyprint lang-js">
 {
-    prefix : { "user" :  { prefix : "ki", boost : 2.0 } }
+    "prefix" : { "user" :  { "prefix" : "ki", "boost" : 2.0 } }
 }
 </pre>
 
@@ -71,7 +77,7 @@ p. Matches documents that have fields matching a wildcard expression. Supported 
 
 <pre class="prettyprint lang-js">
 {
-    wildcard : { "user" : "ki*y" }
+    "wildcard" : { "user" : "ki*y" }
 }
 </pre>
 
@@ -81,7 +87,7 @@ p. A query that matches all documents. Maps to Lucene @MatchAllDocsQuery@.
 
 <pre class="prettyprint lang-js">
 {
-    matchAll : { }
+    "matchAll" : { }
 }
 </pre>
 
@@ -89,7 +95,7 @@ p. Which can also have boost associated with it:
 
 <pre class="prettyprint lang-js">
 {
-    matchAll : { boost : 1.2 }
+    "matchAll" : { "boost" : 1.2 }
 }
 </pre>
 
@@ -99,9 +105,9 @@ p. A query that uses a query parser in order to parse its content. Here is an ex
 
 <pre class="prettyprint lang-js">
 {
-    queryString : { 
-        defaultField : "content", 
-        query : "this AND that OR thus"
+    "queryString" : { 
+        "defaultField" : "content", 
+        "query" : "this AND that OR thus"
     }
 }
 </pre>
@@ -121,6 +127,50 @@ p. The @queryString@ top level parameters include:
 | @phraseSlop@ | Sets the default slop for phrases. If zero, then exact phrase matches are required.  Default value is @0@.|
 | @boost@ | Sets the boost value of the query. Defaults to @1.0@. |
 
+p. The @queryString@ query can also run against multiple fields. The idea of running the @queryString@ query against multiple fields is by internally creating several queries for the same query string, each with @defaultField@ that match the fields provided. Since several queries are generated, combining them can be automatically done either using a @disMax@ query or a simple @bool@ query. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "queryString" : { 
+        "fields" : ["content", "name"], 
+        "query" : "this AND that OR thus",
+        "useDisMax" : true
+    }
+}
+</pre>
+
+p. When running the @queryString@ query against multiple fields, the following additional parameters are allowed:
+
+|_. Parameter |_. Description |
+| @useDisMax@ | Should the queries be combined using @disMax@ (set it to @true@), or a @bool@ query (set it to @false@). Defaults to @true@.|
+| @tieBreaker@ | When using @disMax@, the disjunction max tie breaker. Defaults to @0@. |
+
+h2. Field Query
+
+p. A query that executes a query string against a specific field. It is a simplified version of @queryString@ query (by setting the @defaultField@ to the field this query executed against). In its simplest form:
+
+<pre class="prettyprint lang-js">
+{
+    "field" : { 
+        "name.first" : "+something -else"
+    }
+}
+</pre>
+
+p. Most of the @queryString@ parameters are allowed with the @field@ query as well, in such a case, the query should be formatted as follows:
+
+<pre class="prettyprint lang-js">
+{
+    "field" : { 
+        "name.first" : {
+            "query" : "+something -else",
+            "boost" : 2.0,
+            "enablePositionIncrements", false
+        }
+    }
+}
+</pre>
+
 
 h2. Boolean Query
 
@@ -133,23 +183,25 @@ p. A query that matches documents matching boolean combinations of other queries
 
 <pre class="prettyprint lang-js">
 {
-    bool : {
-        must : {
-            term : { "user" : "kimchy" }
+    "bool" : {
+        "must" : {
+            "term" : { "user" : "kimchy" }
         },
-        mustNot : {
-            range : {
-                age : { from : 10, to : 20 }
+        "mustNot" : {
+            "range" : {
+                "age" : { "from" : 10, "to" : 20 }
             }
         },
-        should : {
-            term : { "tag" : "wow" }
-        },
-        should : {
-            term : { "tag" : "elasticsearch" }
-        },
-        minimumNumberShouldMatch : 1,
-        boost : 1.0
+        "should" : [
+            {
+                "term" : { "tag" : "wow" }
+            },
+            {
+                "term" : { "tag" : "elasticsearch" }
+            }
+        ]
+        "minimumNumberShouldMatch" : 1,
+        "boost" : 1.0
     }
 }
 </pre>
@@ -166,15 +218,15 @@ p. This query maps to Lucene @DisjunctionMaxQuery@.
 
 <pre class="prettyprint lang-js">
 {
-    disMax : {
-        tieBreakerMultiplier : 0.7,
-        boost: 1.2,
-        queries : [
+    "disMax" : {
+        "tieBreakerMultiplier" : 0.7,
+        "boost" : 1.2,
+        "queries" : [
             {
-                term : { age : 34 }
+                "term" : { "age" : 34 }
             },
             {
-                term : { age : 35 }
+                "term" : { "age" : 35 }
             }
         ]
     }
@@ -187,11 +239,11 @@ p. A query that wraps a filter and simply returns a constant score equal to the 
 
 <pre class="prettyprint lang-js">
 {
-    constantScore : {
-        filter : {
-            term : { "user" : "kimchy"}
+    "constantScore" : {
+        "filter" : {
+            "term" : { "user" : "kimchy"}
         },
-        boost : 1.2
+        "boost" : 1.2
     }
 }
 </pre>
@@ -204,13 +256,13 @@ p. A query that applies a filter to the results of another query. This query map
 
 <pre class="prettyprint lang-js">
 {
-    filteredQuery : {
-        query : {
-            term : { "tag" : "wow" }
+    "filteredQuery" : {
+        "query" : {
+            "term" : { "tag" : "wow" }
         },
-        filter : {
-            range : {
-                age : { from : 10, to : 20 }
+        "filter" : {
+            "range" : {
+                "age" : { "from" : 10, "to" : 20 }
             }
         }
     }
@@ -219,15 +271,78 @@ p. A query that applies a filter to the results of another query. This query map
 
 p. The filter object can hold only filter elements, not queries. Filters are much faster compared to queries since they don't perform any scoring, and they are cached within ElasticSearch.
 
+h2. MoreLikeThis Query
+
+p. More like this query find documents that are "like" provided text by running it against one or more fields.
+
+<pre class="prettyprint lang-js">
+{
+    "moreLikeThis" : {
+        "fields" : ["name.first", "name.last"],
+        "likeText" : "text like this one",
+        "minQueryFrequency" : 1,
+        "maxQueryTerms" : 12
+    }
+}
+</pre>
+
+p. The @moreLikeThis@ top level parameters include:
+
+|_. Parameter |_. Description |
+|@fields@|A list of the fields to run the more like this query against, *required*.|
+|@likeText@|The text to find documents like it, *required*.|
+|@percentTermsToMatch@|The percentage of terms to match on (float value). Defaults to @0.3@ (30 percent).|
+|@minTermFrequency@|The frequency below which terms will be ignored in the source doc. The default frequency is @2@.|
+|@maxQueryTerms@|The maximum number of query terms that will be included in any generated query. Defaults to @25@.|
+|@stopWords@|An array of stop words. Any word in this set is considered "uninteresting" and ignored. Even if your Analyzer allows stopwords, you might want to tell the MoreLikeThis code to ignore them, as for the purposes of document similarity it seems reasonable to assume that "a stop word is never interesting".|
+|@minDocFreq@|The frequency at which words will be ignored which do not occur in at least this many docs. Defaults to @5@.|
+|@maxDocFreq@|The maximum frequency in which words may still appear. Words that appear in more than this many docs will be ignored. Defaults to unbounded.|
+|@minWordLen@|The minimum word length below which words will be ignored. Defaults to @0@.|
+|@maxWordLen@|The maximum word length above which words will be ignored. Defaults to unbounded (@0@).|
+|@boostTerms@|Whether to boost terms in query based on "score" or not. Defaults to @false@.|
+|@boostTermsFactor@|Sets the boost factor to use when boosting terms. Defaults to @1@.|
+
+h2. MoreLikeThisField Query
+
+p. The @moreLikeThisField@ query is the same as the @moreLikeThis@ query, except it runs against a single field. It provides nicer query DSL over the generic @moreLikeThis@ query, and support typed fields query (automatically wraps typed fields with type filter to match onl on the specific type).
+
+<pre class="prettyprint lang-js">
+{
+    "moreLikeThisField" : {
+        "name.first" : {
+            "likeText" : "text like this one",
+            "minQueryFrequency" : 1,
+            "maxQueryTerms" : 12
+        }
+    }
+}
+</pre>
+
+p. The @moreLikeThisField@ top level parameters include:
+
+|_. Parameter |_. Description |
+|@likeText@|The text to find documents like it, *required*.|
+|@percentTermsToMatch@|The percentage of terms to match on (float value). Defaults to @0.3@ (30 percent).|
+|@minTermFrequency@|The frequency below which terms will be ignored in the source doc. The default frequency is @2@.|
+|@maxQueryTerms@|The maximum number of query terms that will be included in any generated query. Defaults to @25@.|
+|@stopWords@|An array of stop words. Any word in this set is considered "uninteresting" and ignored. Even if your Analyzer allows stopwords, you might want to tell the MoreLikeThis code to ignore them, as for the purposes of document similarity it seems reasonable to assume that "a stop word is never interesting".|
+|@minDocFreq@|The frequency at which words will be ignored which do not occur in at least this many docs. Defaults to @5@.|
+|@maxDocFreq@|The maximum frequency in which words may still appear. Words that appear in more than this many docs will be ignored. Defaults to unbounded.|
+|@minWordLen@|The minimum word length below which words will be ignored. Defaults to @0@.|
+|@maxWordLen@|The maximum word length above which words will be ignored. Defaults to unbounded (@0@).|
+|@boostTerms@|Whether to boost terms in query based on "score" or not. Defaults to @false@.|
+|@boostTermsFactor@|Sets the boost factor to use when boosting terms. Defaults to @1@.|
+
+
 h2. Term Filter
 
 p. Similar to term query, except that it acts as a filter. Can be placed within queries that accept a filter.
 
 <pre class="prettyprint lang-js">
 {
-    constantScore : {
-        filter : {
-            term : { "user" : "kimchy"}
+    "constantScore" : {
+        "filter" : {
+            "term" : { "user" : "kimchy"}
         },
     }
 }
@@ -239,10 +354,10 @@ p. Similar to range query, except that it acts as a filter. Can be placed within
 
 <pre class="prettyprint lang-js">
 {
-    constantScore : {
-        filter : {
-            range : {
-                age : { from : "10", to : "20", includeLower : true, includeUpper: false}
+    "constantScore" : {
+        "filter" : {
+            "range" : {
+                "age" : { "from" : "10", "to" : "20", "includeLower" : true, "includeUpper" : false}
             }
         }
     }
@@ -255,9 +370,9 @@ p. Similar to phrase query, except that it acts as a filter. Can be placed withi
 
 <pre class="prettyprint lang-js">
 {
-    constantScore : {
-        filter : {
-            prefix : { "user" : "ki" }
+    "constantScore" : {
+        "filter" : {
+            "prefix" : { "user" : "ki" }
         }
     }
 }
@@ -269,12 +384,12 @@ p. Wraps any query to be used as a filter. Can be placed within queries that acc
 
 <pre class="prettyprint lang-js">
 {
-    constantScore : {
-        filter : {
-            query : { 
-                queryString : { 
-                    defaultField : "content", 
-                    query : "this AND that OR thus"
+    "constantScore" : {
+        "filter" : {
+            "query" : { 
+                "queryString" : { 
+                    "defaultField" : "content", 
+                    "query" : "this AND that OR thus"
                 }
             }
         }
@@ -288,29 +403,31 @@ p. Similar in concept to Boolean query, except that the clauses are other filter
 
 <pre class="prettyprint lang-js">
 {
-    filteredQuery : {
-        query : {
-            queryString : { 
-                defaultField : "message", 
-                query : "elasticsearch"
+    "filteredQuery" : {
+        "query" : {
+            "queryString" : { 
+                "defaultField" : "message", 
+                "query" : "elasticsearch"
             }
         },
-        filter : {
-            bool : {
-                must : {
-                    term : { "tag" : "wow" }
+        "filter" : {
+            "bool" : {
+                "must" : {
+                    "term" : { "tag" : "wow" }
                 },
-                mustNot : {
-                    range : {
-                        age : { from : 10, to : 20 }
+                "mustNot" : {
+                    "range" : {
+                        "age" : { "from" : 10, "to" : 20 }
                     }
                 },
-                should : {
-                    term : { "tag" : "sometag" }
-                },
-                should : {
-                    term : { "tag" : "sometagtag" }
-                }
+                "should" : [
+                    {
+                        "term" : { "tag" : "sometag" }
+                    },
+                    {
+                        "term" : { "tag" : "sometagtag" }
+                    }
+                ]
             }
         }
     }

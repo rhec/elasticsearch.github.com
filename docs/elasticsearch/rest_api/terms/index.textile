@@ -1,0 +1,49 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Terms API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["terms", "Terms"]
+];
+</script>
+
+h1. Terms
+
+p. The terms API allows to get terms (from one or more indices) of one or more fields and their respective document frequencies (how often they exists in documents). This can be very handy to implement things like tag clouds or simple auto suggest.
+
+<pre class="prettyprint">
+$ curl -XPUT 'http://localhost:9200/twitter/_terms?fields=tag,content&size=20&minFreq=12'
+</pre>
+
+h2. Request Parameters
+
+p. The terms API accepts the following request parameters:
+
+|_. Name |_. Description |
+| @fields@ | A comma separated list of fields to get the terms for, *required*.|
+| @from@ | The lower bound (lex) term from which the iteration will start. Defaults to start from the first.|
+| @to@ | The upper bound (lex) term to which the iteration will end. Defaults to unbound (null). |
+| @fromInclusive@ | Should the first from (if set) be inclusive or not. Defaults to @true@ |
+| @toInclusive@ | Should the last to (if set) be inclusive or not. Defaults to @true@. |
+| @prefix@ | An optional prefix from which the terms iteration will start (in lex order). |
+| @regexp@ | An optional regular expression to filter out terms (only the ones that match the regexp will return). |
+| @minFreq@ | An optional minimum document frequency to filter out terms. |
+| @maxFreq@ | An optional maximum document frequency to filter out terms. |
+| @size@ | The number of term / doc freq pairs to return per field. Defaults to @10@. |
+| @sort@ | The type of sorting for term / doc freq. Can either be @term@ or @freq@. Defaults to @term@. |
+| @exact@ | Should the doc frequencies be exact frequencies. Exact frequencies takes into account deletes that have not been merged and cleaned (optimized). Note, when this is set to @true@ this operation might be an expensive operation. Defaults to @false@.|
+| @termsAsArray@ | Controls the JSON response format, if the terms should be the object name, or exist within an array. Defaults to @true@. |
+
+h2. Multi Index
+
+p. The terms API can be applied to more than one index with a single call, or even on @_all@ the indices.
+
+<pre class="prettyprint">
+$ curl -XPOST 'http://localhost:9200/kimchy,elasticsearch/_terms?fields=tag'
+
+$ curl -XPOST 'http://localhost:9200/_terms?fields=tag'
+</pre>

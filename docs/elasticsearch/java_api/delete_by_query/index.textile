@@ -1,0 +1,29 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Java Delete By Query API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["java_api", "Java API"],
+    ["delete_by_query", "Delete By Query"]
+];
+</script>
+
+h1. Delete By Query
+
+p. The delete by query API allows to delete documents from one or more indices and one or more types based on a query. The query can either be provided the "Query DSL":../query_dsl. Here is an example:
+
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.client.Requests.*;
+import static org.elasticsearch.index.query.json.JsonFilterBuilders.*;
+import static org.elasticsearch.index.query.json.JsonQueryBuilders.*;
+
+DeleteByQueryResponse response = client.deleteByQuery(deleteByQueryRequest("test")
+        .querySource(termQuery("_type", "type1"))
+        .actionGet();
+</pre>
+
+p. For more information on the delete by query operation, check out the REST "delete_by_query":/docs/elasticsearch/rest_api/delete_by_query docs.

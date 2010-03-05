@@ -1,0 +1,33 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Java Search API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["java_api", "Java API"],
+    ["search", "Search"]
+];
+</script>
+
+h1. Search
+
+The search API allows to execute a search query and get back search hits that match the query. It can be executed across one or more indices and across one or more types. The query can either be provided using the "Query DSL":../query_dsl. The body of the search request is built using the @SearchSourceBuilder@. Here is an example:
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.client.Requests.*;
+import static org.elasticsearch.index.query.json.JsonFilterBuilders.*;
+import static org.elasticsearch.index.query.json.JsonQueryBuilders.*;
+import static org.elasticsearch.search.builder.SearchSourceBuilder.*;
+
+SearchResponse response = client.search(searchRequest("test")
+        .searchType(DFS_QUERY_THEN_FETCH)
+        .source(searchSource()
+                    .query(termQuery("multi", "test"))
+                    .from(0).size(60).explain(true))
+        .actionGet();
+</pre>
+
+p. For more information on the search operation, check out the REST "search":/docs/elasticsearch/rest_api/search docs.
+

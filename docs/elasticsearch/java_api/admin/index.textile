@@ -1,0 +1,19 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Java Admin API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["java_api", "Java API"],
+    ["admin", "Admin"]
+];
+</script>
+
+h1. Admin API
+
+p. The Java admin API provides exactly the same functionality as the REST "admin":/docs/elasticsearch/rest_api/admin with all the different methods. Getting the indices admin is done using @Client#admin()#indices()@, and the cluster admin is done using @Client#admin()#cluster()@.
+
+p. Using the API follows the same principals as the other main APIs, and its parameters and usage have full javadoc.
+

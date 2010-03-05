@@ -1,0 +1,28 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Java Count API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["java_api", "Java API"],
+    ["count", "Count"]
+];
+</script>
+
+h1. Count
+
+p. The count API allows to easily execute a query and get the number of matches for that query. It can be executed across one or more indices and across one or more types. The query can be provided using the "Query DSL":../query_dsl.
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.client.Requests.*;
+import static org.elasticsearch.index.query.json.JsonFilterBuilders.*;
+import static org.elasticsearch.index.query.json.JsonQueryBuilders.*;
+
+CountResponse response = client.count(countRequest("test")
+        .querySource(termQuery("_type", "type1"))
+        .actionGet();
+</pre>
+
+p. For more information on the count operation, check out the REST "count":/docs/elasticsearch/rest_api/count docs.

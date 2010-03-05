@@ -1,0 +1,27 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Java Terms API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["java_api", "Java API"],
+    ["terms", "Terms"]
+];
+</script>
+
+h1. Terms
+
+p. The terms API allows to get terms (from one or more indices) of one or more fields and their respective document frequencies (how often they exists in documents). This can be very handy to implement things like tag clouds or simple auto suggest.
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.client.Requests.*;
+
+TermsResponse response = client.terms(termsRequest("test")
+                .fields("name", "content")
+                .sortType(FREQ))
+                .actionGet()
+</pre>
+
+p. For more information on the terms operation, check out the REST "terms":/docs/elasticsearch/rest_api/terms docs.

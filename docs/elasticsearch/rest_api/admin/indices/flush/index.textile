@@ -21,6 +21,13 @@ p. The flush API allows to flush one or more indices through an API. The flush p
 $ curl -XPOST http://localhost:9200/twitter/_flush
 </pre>
 
+h2. Request Parameters
+
+p. The flush API accepts the following request parameters:
+
+|_. Name |_. Description |
+| @refresh@ | Should a refresh be performed after the flush. Defaults to @false@. |
+
 h2. Multi Index
 
 p. The flush API can be applied to more than one index with a single call, or even on @_all@ the indices.

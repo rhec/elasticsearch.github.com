@@ -1,0 +1,36 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Java Index API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["java_api", "Java API"],
+    ["index", "Index"]
+];
+</script>
+
+h1. Index
+
+p. The index API allows to index a typed JSON document into a specific index and make it searchable. The following example index the JSON document into an index called twitter, under a type called tweet, with id valued 1:
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.client.Requests.*;
+import static org.elasticsearch.util.json.JsonBuilder.*;
+
+IndexResponse response = client.index(indexRequest("twitter")
+        .type("tweet")
+        .id("1")
+        .source(jsonBuilder()
+                    .startObject()
+                        .field("user", "kimchy")
+                        .field("postDate", new Date())
+                        .field("message", "trying out Elastic Search")
+                    .endObject()
+        )).actionGet();
+</pre>
+
+p. The source to be indexed is a binary array representing the json to be indexed. It can be easily built using elasticsearch @JsonBuilder@.
+
+p. For more information on the index operation, check out the REST "index":/docs/elasticsearch/rest_api/index docs.

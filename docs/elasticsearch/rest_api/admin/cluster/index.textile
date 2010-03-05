@@ -14,9 +14,10 @@ docBreadcrumb = [
 
 h1. Admin Cluster API
 
-p. This section describes administration APIs that revolve around the clsuter. The following are the APIs:
+p. This section describes administration APIs that revolve around the cluster. The following are the APIs:
 
 |_. API |_. Description |
+|"health":health|Retrieves the health of the cluster.|
 |"state":state|Retrieves the state of the cluster.|
 |"nodes_info":nodes_info|Retrieves the one or more (or all) nodes information.|
 

@@ -16,13 +16,12 @@ h1. Search
 The search API allows to execute a search query and get back search hits that match the query. It can be executed across one or more indices and across one or more types. The query can either be provided using a simple query string as a parameter, or using the "Query DSL":../query_dsl defined within the request body. Here is an example:
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/twitter/tweet/_search?q=user:kimchy
+$ curl -XGET 'http://localhost:9200/twitter/tweet/_search?q=user:kimchy'
 
-$ curl -XGET http://localhost:9200/twitter/tweet/_search -d \
-'
+$ curl -XGET 'http://localhost:9200/twitter/tweet/_search' -d '
 {
-    query : {
-        term : { user : "kimchy" }
+    "query" : {
+        "term" : { "user" : "kimchy" }
     }
 }
 '
@@ -45,9 +44,9 @@ p. Both above examples end up doing the same thing, which is search across all t
                 "_type" : "tweet",
                 "_id" : "1", 
                 "_source" : {
-                    user : "kimchy",
-                    postDate : "2009-11-15T14:12:12",
-                    message : "trying out Elastic Search"
+                    "user" : "kimchy",
+                    "postDate" : "2009-11-15T14:12:12",
+                    "message" : "trying out Elastic Search"
                 }
             }
         ]
@@ -60,25 +59,25 @@ h2. Multiple Indices and Types
 p. The search API can be applies to multiple types within an index, and across multiple indices. For example, we can search on all documents across all types within the twitter index:
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/_search?q=user:kimchy
+$ curl -XGET 'http://localhost:9200/_search?q=user:kimchy'
 </pre>
 
 p. We can also search within specific types:
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/twitter/tweet,user/_search?q=user:kimchy
+$ curl -XGET 'http://localhost:9200/twitter/tweet,user/_search?q=user:kimchy'
 </pre>
 
 p. We can also search all tweets with a certain tag across several indices (for example, when each user has his own index):
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/kimchy,elasticsearch/_search?q=tag:wow
+$ curl -XGET 'http://localhost:9200/kimchy,elasticsearch/_search?q=tag:wow'
 </pre>
 
 p. Or even search across all indices:
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/_all/_search?q=tag:wow
+$ curl -XGET 'http://localhost:9200/_search?q=tag:wow'
 </pre>
 
 h2. Request Parameters
@@ -108,7 +107,7 @@ p. The search request can also be executed with a search JSON DSL, which include
 
 p. The rest of the search request should be passed within the body itself.
 
-p(note). Both HTTP GET and HTTP POST can be used to execute count with body. Since not all clients support GET with body, POST is allowed as well.
+p(note). Both HTTP GET and HTTP POST can be used to execute search with body. Since not all clients support GET with body, POST is allowed as well.
 
 h3. Query
 
@@ -116,8 +115,8 @@ p. The query element allows to define a query using the "Query DSL":../query_dsl
 
 <pre class="prettyprint lang-js">
 {
-    query : {
-        term : { user : "kimchy" }
+    "query" : {
+        "term" : { "user" : "kimchy" }
     }
 }
 </pre>
@@ -128,9 +127,9 @@ p. Though both can be set as request parameters, they can also be set within the
 
 <pre class="prettyprint lang-js">
 {
-    from : 0, size : 10,
-    query : {
-        term : { user : "kimchy" }
+    "from" : 0, "size" : 10,
+    "query" : {
+        "term" : { "user" : "kimchy" }
     }
 }
 </pre>
@@ -141,9 +140,9 @@ p. Enables explanation for each hit on how its score was computed.
 
 <pre class="prettyprint lang-js">
 {
-    explain: true,
-    query : {
-        term : { user : "kimchy" }
+    "explain": true,
+    "query" : {
+        "term" : { "user" : "kimchy" }
     }
 }
 </pre>
@@ -154,9 +153,9 @@ p. Allows to selectively load specific *stored* fields for each document represe
 
 <pre class="prettyprint lang-js">
 {
-    fields : ["user", "postDate"],
-    query : {
-        term : { user : "kimchy" }
+    "fields" : ["user", "postDate"],
+    "query" : {
+        "term" : { "user" : "kimchy" }
     }
 }
 </pre>
@@ -167,13 +166,28 @@ p. Allows to add one or more sort on specific fields. Each sort can be reversed 
 
 <pre class="prettyprint lang-js">
 {
-    sort : {
-        postDate : {reverse : true},
-        user : { },
-        score : { }
+    "sort" : [
+        { "postDate" : {"reverse" : true} },
+        "user"
+        "score"
+    ]
+    "query" : {
+        "term" : { "user" : "kimchy" }
     }
-    query : {
-        term : { user : "kimchy" }
+}
+</pre>
+
+p. If you JSON parser support ordering without an array, the sort request can also be structured as follows:
+
+<pre class="prettyprint lang-js">
+{
+    "sort" : {
+        "postDate" : {"reverse" : true},
+        "user" : { },
+        "score" : { }
+    },
+    "query" : {
+        "term" : { "user" : "kimchy" }
     }
 }
 </pre>
@@ -184,25 +198,63 @@ p. Allows to add facet queries to be executed with the search. Facet queries are
 
 <pre class="prettyprint lang-js">
 {
-    facets : {
-        wowFacet : { 
-            query : {
-                term : { tag : "wow" }
+    "facets" : {
+        "wowFacet" : { 
+            "query" : {
+                "term" : { "tag" : "wow" }
             }
         },
-        esFacet : { 
-            query : {
-                term : { tag : "elasticsearch" }
+        "esFacet" : { 
+            "query" : {
+                "term" : { "tag" : "elasticsearch" }
             }
         }
     }
-    query : {
-        term : { user : "kimchy" }
+    "query" : {
+        "term" : { "user" : "kimchy" }
     }
 }
 </pre>
 
 p. The body of each @query@ element within each facet is a "Query DSL":../query_dsl. The name of each facet (@wowFacet@ and @esFacet@ in our case), will be used to return the facet count. After the @hits@ element within the response, the @facets@ element will include all the named facets.
+
+p. In the above example, the facets are bounded by the search query (the count is intersected with the search query). Sometimes, certain query facets should be executed without intersecting with the search query (globally). This can be done by setting the @global@ parameter to @true@, for example, now, the @esFacet@ will be executed globally:
+
+<pre class="prettyprint lang-js">
+{
+    "facets" : {
+        "wowFacet" : { 
+            "query" : {
+                "term" : { "tag" : "wow" }
+            }
+        },
+        "esFacet" : { 
+            "query" : {
+                "term" : { "tag" : "elasticsearch" }
+            },
+            "global" : true
+        }
+    }
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>
+
+
+h2. Index Boost
+
+p. Allows to configure different boost level per index when searching across more than one indices. This is very handy when hits coming from one index matter more than hits coming from another index (think social graph where each user has an index).
+
+<pre class="prettyprint lang-js">
+{
+    "indicesBoost" : {
+        "index1" : 1.4,
+        "index2" : 1.3
+    }
+}
+</pre>
+
 
 h2. Search Type
 

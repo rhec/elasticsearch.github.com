@@ -62,7 +62,7 @@ $ curl -XGET http://localhost:9200/kimchy,elasticsearch/_count?q=tag:wow
 p. Or even count across all indices:
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/_all/_count?q=tag:wow
+$ curl -XGET http://localhost:9200/_count?q=tag:wow
 </pre>
 
 h2. Request Parameters

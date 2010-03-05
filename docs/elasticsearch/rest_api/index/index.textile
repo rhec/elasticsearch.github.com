@@ -16,12 +16,11 @@ h1. Index
 p. The index API allows to index a typed JSON document into a specific index and make it searchable. The following example index the JSON document into an index called twitter, under a type called tweet, with id valued 1:
 
 <pre class="prettyprint">
-$ curl -XPUT http://localhost:9200/twitter/tweet/1 -d \
-'
+$ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '
 {
-    user : "kimchy",
-    postDate : "2009-11-15T14:12:12",
-    message : "trying out Elastic Search"
+    "user" : "kimchy",
+    "postDate" : "2009-11-15T14:12:12",
+    "message" : "trying out Elastic Search"
 }
 '
 </pre>
@@ -46,13 +45,12 @@ p. The mapping itself is very flexible and is schema free, meaning that new fiel
 p. Though explained on the "mapping":/docs/elasticsearch/mapping section, its important to note that the format of the JSON document can also include the type (very handy when using JSON mappers), for example:
 
 <pre class="prettyprint">
-$ curl -XPUT http://localhost:9200/twitter/tweet/1 -d \
-'
+$ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '
 {
-    tweet : {
-        user : "kimchy",
-        postDate : "2009-11-15T14:12:12",
-        message : "trying out Elastic Search"
+    "tweet" : {
+        "user" : "kimchy",
+        "postDate" : "2009-11-15T14:12:12",
+        "message" : "trying out Elastic Search"
     }
 }
 '
@@ -68,12 +66,11 @@ p(note). If the opType is set to create, and there is already an existing docume
 p. Here is an example of using the @opType@ parameter:
 
 <pre class="prettyprint">
-$ curl -XPUT http://localhost:9200/twitter/tweet/1?opType=create -d \
-'
+$ curl -XPUT 'http://localhost:9200/twitter/tweet/1?opType=create' -d '
 {
-    user : "kimchy",
-    postDate : "2009-11-15T14:12:12",
-    message : "trying out Elastic Search"
+    "user" : "kimchy",
+    "postDate" : "2009-11-15T14:12:12",
+    "message" : "trying out Elastic Search"
 }
 '
 </pre>
@@ -83,12 +80,11 @@ h2. Automatic Id Generation
 The index operation can be executed without specifying the id. In such a case, an id will be generated automatically for the document. In such a case, the @opType@ will automatically be set to @create@. Here is an example (note the *POST* used instead of *PUT*):
 
 <pre class="prettyprint">
-$ curl -XPOST http://localhost:9200/twitter/tweet/ -d \
-'
+$ curl -XPOST 'http://localhost:9200/twitter/tweet/' -d '
 {
-    user : "kimchy",
-    postDate : "2009-11-15T14:12:12",
-    message : "trying out Elastic Search"
+    "user" : "kimchy",
+    "postDate" : "2009-11-15T14:12:12",
+    "message" : "trying out Elastic Search"
 }
 '
 </pre>
@@ -113,12 +109,11 @@ h2. Timeout
 The primary shard that needs to perform the operation might not be available yet. For example, it might still be in the process of recovery from a gateway, or might be in the process of relocation. The timeout parameter allows to control how long the index operation will wait till the primary shard is available before exiting with an error. The parameter name is @timeout@ and the default value of it is 1 minute. Here is an example of setting it to 5 minutes:
 
 <pre class="prettyprint">
-$ curl -XPUT http://localhost:9200/twitter/tweet/1?timeout=5m -d \
-'
+$ curl -XPUT 'http://localhost:9200/twitter/tweet/1?timeout=5m' -d '
 {
-    user : "kimchy",
-    postDate : "2009-11-15T14:12:12",
-    message : "trying out Elastic Search"
+    "user" : "kimchy",
+    "postDate" : "2009-11-15T14:12:12",
+    "message" : "trying out Elastic Search"
 }
 '
 </pre>

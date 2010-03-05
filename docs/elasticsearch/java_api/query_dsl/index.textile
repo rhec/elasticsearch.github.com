@@ -1,0 +1,40 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Java Query DSL API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["java_api", "Java API"],
+    ["query_dsl", "Query DSL"]
+];
+</script>
+
+h1. Query DSL
+
+p. ElasticSearch provides a full Java query dsl in a similar manner to the REST "Query DSL":/docs/elasticsearch/rest_api/query_dsl. The factory for query builders is @JsonQueryBuilders@ and the factory for filter builders is @JsonFilterBuilders@. Here is an example:
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.index.query.json.JsonFilterBuilders.*;
+import static org.elasticsearch.index.query.json.JsonQueryBuilders.*;
+
+QueryBuilder qb1 = termQuery("name", "kimchy");
+
+QueryBuilder qb2 = boolQuery()
+                    .must(termQuery("content", "test1"))
+                    .must(termQuery("content", "test4"))
+                    .mustNot(termQuery("content", "test2"))
+                    .should(termQuery("content", "test3"));
+
+QueryBuilder qb3 = filteredQuery(
+            termQuery("name.first", "shay"), 
+            rangeFilter("age")
+                .from(23)
+                .to(54)
+                .includeLower(true)
+                .includeUpper(false)
+            );
+</pre>
+
+p. The @QueryBuilder@ can then be used with any API that accepts a query, such as @count@ and @search@.

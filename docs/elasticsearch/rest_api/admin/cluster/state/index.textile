@@ -18,7 +18,7 @@ h1. Cluster State
 p. The cluster state API allows to get a comprehensive state information of the whole cluster.
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/_cluster/state
+$ curl -XGET 'http://localhost:9200/_cluster/state'
 </pre>
 
 p. Here is an example cluster state result:

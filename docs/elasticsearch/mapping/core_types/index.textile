@@ -154,6 +154,8 @@ p. The boolean type Maps to the JSON boolean type. It ends up storing within the
 }
 </pre>
 
+p. The boolean type also supports passing the value as a number (in this case @0@ is @false@, all other values are @true@).
+
 p. The following table lists all the attributes that can be used with the boolean type:
 
 |_. Attribute |_. Description |

@@ -1,0 +1,26 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Java Get API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["java_api", "Java API"],
+    ["get", "Get"]
+];
+</script>
+
+h1. Get
+
+p. The get API allows to get a typed JSON document from the index based on its id. The following example gets a JSON document from an index called twitter, under a type called tweet, with id valued 1:
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.client.Requests.*;
+
+GetResponse response = client.get(getRequest("twitter")
+        .type("tweet")
+        .id("1")).actionGet();
+</pre>
+
+p. For more information on the index operation, check out the REST "get":/docs/elasticsearch/rest_api/get docs.

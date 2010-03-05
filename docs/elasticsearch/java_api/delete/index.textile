@@ -1,0 +1,26 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Java Delete API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["java_api", "Java API"],
+    ["delete", "Delete"]
+];
+</script>
+
+h1. Delete
+
+p. The delete API allows to delete a typed JSON document from a specific index based on its id. The following example deletes the JSON document from an index called twitter, under a type called tweet, with id valued 1:
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.client.Requests.*;
+
+DeleteResponse response = client.delete(deleteRequest("twitter")
+        .type("tweet")
+        .id("1")).actionGet();
+</pre>
+
+p. For more information on the index operation, check out the REST "delete":/docs/elasticsearch/rest_api/delete docs.
