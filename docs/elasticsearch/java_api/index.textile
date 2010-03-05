@@ -22,4 +22,4 @@ p. This section describes the Java API elasticsearch provides. All of elasticsea
 |"count":count|Execute a query against one or more indices and get hits count.|
 |"terms":terms|Extract terms and their document frequencies from one or more fields.|
 
-p. There is also an evolving "Administration REST API":admin.
+p. There is also an evolving "Administration Java API":admin.
