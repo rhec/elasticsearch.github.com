@@ -17,15 +17,15 @@ p. JSON documents are hierarchal in nature, allowing to define inner "object"s w
 
 <pre class="prettyprint lang-js">
 {
-    tweet {
-        person : {
-            name : {
-                firstName : "Shay",
-                lastName : "Banon"
+    "tweet" : {
+        "person" : {
+            "name" : {
+                "firstName" : "Shay",
+                "lastName" : "Banon"
             },
-            sid : "12345"
+            "sid" : "12345"
         },
-        message : "This is a tweet!"
+        "message" : "This is a tweet!"
     }
 }
 </pre>
