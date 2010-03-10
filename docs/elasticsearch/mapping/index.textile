@@ -18,6 +18,7 @@ p. The following sections cover all the aspects of how mapping work:
 
 |_. Section |_. Description |
 |"core_types":core_types|The basic types support when mapping a JSON document.|
+|"array_type":array_type|Mapping JSON array types.|
 |"object_type":object_type|Mapping JSON inner objects.|
 |"root_object_type":root_object_type|Mapping the root JSON object.|
 
