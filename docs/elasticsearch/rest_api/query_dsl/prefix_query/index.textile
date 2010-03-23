@@ -1,0 +1,31 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Prefix Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["prefix_query", "Prefix Query"],
+];
+</script>
+
+h1. Prefix Query
+
+p. Matches documents that have fields containing terms with a specified prefix. The prefix query maps to Lucene @PrefixQuery@. The following matches documents where the user field contains a term that starts with @ki@:
+
+<pre class="prettyprint lang-js">
+{
+    "prefix" : { "user" : "sh" }
+}
+</pre>
+
+p. A boost can also be associated with the query:
+
+<pre class="prettyprint lang-js">
+{
+    "prefix" : { "user" :  { "prefix" : "ki", "boost" : 2.0 } }
+}
+</pre>

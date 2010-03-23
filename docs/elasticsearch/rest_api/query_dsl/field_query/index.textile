@@ -1,0 +1,39 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Field Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["field_query", "Field Query"],
+];
+</script>
+
+h1. Field Query
+
+p. A query that executes a query string against a specific field. It is a simplified version of "queryString":../queryString_query query (by setting the @defaultField@ to the field this query executed against). In its simplest form:
+
+<pre class="prettyprint lang-js">
+{
+    "field" : { 
+        "name.first" : "+something -else"
+    }
+}
+</pre>
+
+p. Most of the @queryString@ parameters are allowed with the @field@ query as well, in such a case, the query should be formatted as follows:
+
+<pre class="prettyprint lang-js">
+{
+    "field" : { 
+        "name.first" : {
+            "query" : "+something -else",
+            "boost" : 2.0,
+            "enablePositionIncrements": false
+        }
+    }
+}
+</pre>

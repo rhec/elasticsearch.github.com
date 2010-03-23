@@ -1,0 +1,34 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Filtered Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["filtered_query", "Filtered Query"],
+];
+</script>
+
+h1. Filtered Query
+
+p. A query that applies a filter to the results of another query. This query maps to Lucene @FilteredQuery@.
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "term" : { "tag" : "wow" }
+        },
+        "filter" : {
+            "range" : {
+                "age" : { "from" : 10, "to" : 20 }
+            }
+        }
+    }
+}
+</pre>
+
+p. The filter object can hold only filter elements, not queries. Filters are much faster compared to queries since they don't perform any scoring, and they are cached within ElasticSearch.

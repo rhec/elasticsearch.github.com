@@ -1,0 +1,32 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Term Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["term_query", "Term Query"],
+];
+</script>
+
+h1. Term Query
+
+p. Matches documents that have fields that contain a a term (*not analyzed*). The term query maps to Lucene @TermQuery@. The following matches documents where the user field contains the term @kimchy@:
+
+<pre class="prettyprint lang-js">
+{
+    "term" : { "user" : "kimchy" }
+}    
+</pre>
+
+p. A boost can also be associated with the query:
+
+<pre class="prettyprint lang-js">
+{
+    "term" : { "user" : { "value" : "kimchy", "boost" : 2.0 } }
+}    
+</pre>
+

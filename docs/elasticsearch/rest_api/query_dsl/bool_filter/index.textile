@@ -1,0 +1,50 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Bool Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["bool_filter", "Bool Filter"],
+];
+</script>
+
+h1. Bool Filter
+
+p. A filter that matches documents matching boolean combinations of other queries. Similar in concept to Boolean query, except that the clauses are other filters. Can be placed within queries that accept a filter.
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "queryString" : { 
+                "defaultField" : "message", 
+                "query" : "elasticsearch"
+            }
+        },
+        "filter" : {
+            "bool" : {
+                "must" : {
+                    "term" : { "tag" : "wow" }
+                },
+                "mustNot" : {
+                    "range" : {
+                        "age" : { "from" : 10, "to" : 20 }
+                    }
+                },
+                "should" : [
+                    {
+                        "term" : { "tag" : "sometag" }
+                    },
+                    {
+                        "term" : { "tag" : "sometagtag" }
+                    }
+                ]
+            }
+        }
+    }
+}    
+</pre>

@@ -1,0 +1,27 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Prefix Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["prefix_filter", "Prefix Filter"],
+];
+</script>
+
+h1. Prefix Filter
+
+p. Filters documents that have fields containing terms with a specified prefix. Similar to phrase query, except that it acts as a filter. Can be placed within queries that accept a filter.
+
+<pre class="prettyprint lang-js">
+{
+    "constantScore" : {
+        "filter" : {
+            "prefix" : { "user" : "ki" }
+        }
+    }
+}
+</pre>

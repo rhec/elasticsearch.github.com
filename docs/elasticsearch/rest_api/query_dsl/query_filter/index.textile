@@ -1,0 +1,32 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Query Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["query_filter", "Query Filter"],
+];
+</script>
+
+h1. Query Filter
+
+p. Wraps any query to be used as a filter. Can be placed within queries that accept a filter.
+
+<pre class="prettyprint lang-js">
+{
+    "constantScore" : {
+        "filter" : {
+            "query" : { 
+                "queryString" : { 
+                    "defaultField" : "content", 
+                    "query" : "this AND that OR thus"
+                }
+            }
+        }
+    }
+}
+</pre>

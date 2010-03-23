@@ -1,0 +1,30 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Constant Score Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["constantScore_query", "Constant Score Query"],
+];
+</script>
+
+h1. Constant Score Query
+
+p. A query that wraps a filter and simply returns a constant score equal to the query boost for every document in the filter. Maps to Lucene @ConstantScoreQuery@.
+
+<pre class="prettyprint lang-js">
+{
+    "constantScore" : {
+        "filter" : {
+            "term" : { "user" : "kimchy"}
+        },
+        "boost" : 1.2
+    }
+}
+</pre>
+
+p. The filter object can hold only filter elements, not queries. Filters are much faster compared to queries since they don't perform any scoring, and they are cached within ElasticSearch.

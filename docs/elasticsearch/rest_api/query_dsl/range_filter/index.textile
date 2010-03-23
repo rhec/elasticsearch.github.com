@@ -1,0 +1,34 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Range Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["range_filter", "Range Filter"],
+];
+</script>
+
+h1. Range Filter
+
+p. Filters documents with fields that have terms within a certain range. Similar to range query, except that it acts as a filter. Can be placed within queries that accept a filter.
+
+<pre class="prettyprint lang-js">
+{
+    "constantScore" : {
+        "filter" : {
+            "range" : {
+                "age" : { 
+                    "from" : "10", 
+                    "to" : "20", 
+                    "includeLower" : true, 
+                    "includeUpper" : false
+                }
+            }
+        }
+    }
+}
+</pre>

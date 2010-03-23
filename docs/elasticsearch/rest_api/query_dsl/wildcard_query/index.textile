@@ -1,0 +1,23 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Wildcard Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["wildcard_query", "Wildcard Query"],
+];
+</script>
+
+h1. Wildcard Query
+
+p. Matches documents that have fields matching a wildcard expression. Supported wildcards are @*@, which matches any character sequence (including the empty one), and @?@, which matches any single character. Note this query can be slow, as it needs to iterate over many terms. In order to prevent extremely slow wildcard queries, a wildcard term should not start with one of the wildcards @*@ or @?@. The wildcard query maps to Lucene @WildcardQuery@.
+
+<pre class="prettyprint lang-js">
+{
+    "wildcard" : { "user" : "ki*y" }
+}
+</pre>

@@ -1,0 +1,31 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Match All Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["matchAll_query", "Match All Query"],
+];
+</script>
+
+h1. Match All Query
+
+p. A query that matches all documents. Maps to Lucene @MatchAllDocsQuery@.
+
+<pre class="prettyprint lang-js">
+{
+    "matchAll" : { }
+}
+</pre>
+
+p. Which can also have boost associated with it:
+
+<pre class="prettyprint lang-js">
+{
+    "matchAll" : { "boost" : 1.2 }
+}
+</pre>
