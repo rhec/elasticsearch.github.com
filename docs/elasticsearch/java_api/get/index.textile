@@ -24,3 +24,18 @@ GetResponse response = client.get(getRequest("twitter")
 </pre>
 
 p. For more information on the index operation, check out the REST "get":/docs/elasticsearch/rest_api/get docs.
+
+h2. Operation Threading
+
+p. The get API allows to set the threading model the operation will be performed when the actual execution of the API is performed on the same node (the API is executed on a shard that is allocated on the same server).
+
+p. The options are to execute the operation on a different thread, or to execute it on the calling thread (note that the API is still async). By default, @operationThreaded@ is set to @true@ which means the operation is executed on a different thread. Here is an example that sets it to @false@:
+
+<pre class="prettyprint lang-java">
+import static org.elasticsearch.client.Requests.*;
+
+GetResponse response = client.get(getRequest("twitter")
+        .operationThreaded(false)
+        .type("tweet")
+        .id("1")).actionGet();
+</pre>
