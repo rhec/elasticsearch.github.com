@@ -19,5 +19,7 @@ p. The more like this (mlt) API allows to get documents that are "like" a specif
 $ curl -XGET 'http://localhost:9200/twitter/tweet/1/_moreLikeThis?fields=tag,content&minDocFreq=1'
 </pre>
 
-p. The API simply results in executing a search request with @moreLikeThis@ query. This means that the body of the request can optionally include all the request body options in the search API (facets, from/to and so on).
+p. The API simply results in executing a search request with "moreLikeThis":../query_dsl/moreLikeThis_query query (http parameters match the parameters to the @moreLikeThis@ query). This means that the body of the request can optionally include all the request body options in the "search API":../search (facets, from/to and so on).
+
+p. When no @fields@ are specified, all the fields of the document will be used in the @moreLikeThis@ query generated.
 
