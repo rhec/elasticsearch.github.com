@@ -1,0 +1,39 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Mapping | Dynamic Mapping
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["mapping", "Mapping"], 
+    ["dynamic_mapping", "Dynamic Mapping"], 
+];
+</script>
+
+h1. Dynamic Mapping
+
+p. Dynamic mappings allow to automatically apply generic mapping definition to types that do not have mapping pre defined. This is mainly done thanks to the fact that the "object mapping":../object_type and namely the "root object mapping":../root_object_type allow for schema-less dynamic addition of unmapped fields.
+
+p. The dynamic mapping definition is plain mapping definition that is embedded within ElasticSearch:
+
+<pre class="prettyprint lang-js">
+{
+    "_default_" : {
+    }
+}
+</pre>
+
+p. Pretty short, no? Basically, everything is defaulted, especially the dynamic nature of the root object mapping. The dynamic mapping definition can be overridden in several manners. The simplest manner is to simply define a file called @dynamic-mapping.json@ and placed it under the @config@ directory (which can be configured to exist in a different location). It can also be explicitly set using the @index.mapper.dynamicMappingLocation@ setting.
+
+p. Dynamic mappings can be completely disabled by setting @index.mapper.dynamic@ to @false@.
+
+p. As an example, here is how we can change the default "dateFormats":../object_type#dateFormats used in the root and inner object types:
+
+<pre class="prettyprint lang-js">
+{
+    "_default_" : {
+        "dateFormats" : ["yyyy-MM-dd", "dd-MM-yyyy", "dateOptionalTime"],
+    }
+}
+</pre>
