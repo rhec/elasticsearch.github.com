@@ -17,17 +17,17 @@ p. JSON documents allow to define an array (list) of fields or objects. Mapping 
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        message : "some arrays in this tweet...",
-        tags : ["elasticsearch", "wow"],
-        lists : [
+    "tweet" : {
+        "message" : "some arrays in this tweet...",
+        "tags" : ["elasticsearch", "wow"],
+        "lists" : [
             {
-                name : "progList",
-                description : "programming list"
+                "name" : "progList",
+                "description" : "programming list"
             },
             {
-                name : "coolList",
-                description : "cool stuff list"
+                "name" : "coolList",
+                "description" : "cool stuff list"
             }
         ]
     }
@@ -38,14 +38,14 @@ p. The above JSON has the @tags@ property defining a list of a simple @string@ t
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            message : {type : "string"},
-            tags : {type : "string", indexName : "tag"},
-            lists : {
-                properties : {
-                    name : {type : "string"}, 
-                    description : {type : "string"}
+    "tweet" : {
+        "properties" : {
+            "message" : {"type" : "string"},
+            "tags" : {"type" : "string", "indexName" : "tag"},
+            "lists" : {
+                "properties" : {
+                    "name" : {"type" : "string"}, 
+                    "description" : {"type" : "string"}
                 }
             }
         }
@@ -57,12 +57,12 @@ p. The fact that array types are automatically support can be shown by the fact 
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        message : "some arrays in this tweet...",
-        tags : "elasticsearch",
-        lists : {
-            name : "progList",
-            description : "programming list"
+    "tweet" : {
+        "message" : "some arrays in this tweet...",
+        "tags" : "elasticsearch",
+        "lists" : {
+            "name" : "progList",
+            "description" : "programming list"
         }
     }
 }

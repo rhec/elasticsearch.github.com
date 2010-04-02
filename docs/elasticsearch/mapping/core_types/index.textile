@@ -19,12 +19,12 @@ p. The following sample tweet JSON document will be used to explain the core typ
 
 <pre class="prettyprint lang-js">
 {
-    tweet {
-        user : "kimchy"
-        message : "This is a tweet!",
-        postDate : "2009-11-15T14:12:12",
-        priority : 4,
-        rank : 12.3
+    "tweet" {
+        "user" : "kimchy"
+        "message" : "This is a tweet!",
+        "postDate" : "2009-11-15T14:12:12",
+        "priority" : 4,
+        "rank" : 12.3
     }
 }
 </pre>
@@ -33,13 +33,13 @@ p. Explicit mapping for the above JSON tweet can be:
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            user : {type : "string", index : "not_analyzed"},
-            message : {type : "string", nullValue : "na"},
-            postDate : {type : "date"},
-            priority : {type : "integer"},
-            rank : {type : "float"}
+    "tweet" : {
+        "properties" : {
+            "user" : {"type" : "string", "index" : "not_analyzed"},
+            "message" : {"type" : "string", "nullValue" : "na"},
+            "postDate" : {"type" : "date"},
+            "priority" : {"type" : "integer"},
+            "rank" : {"type" : "float"}
         }
     }
 }
@@ -52,13 +52,13 @@ p. The text based string type is the most basic type, and contains one or more c
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            message : {
-                type : "string",
-                store : "yes",
-                index : "analyzed",
-                nullValue : "na"
+    "tweet" : {
+        "properties" : {
+            "message" : {
+                "type" : "string",
+                "store" : "yes",
+                "index" : "analyzed",
+                "nullValue" : "na"
             }
         }
     }
@@ -88,11 +88,11 @@ p. A number based type supporting @float@, @double@, @integer@, and @long@. It u
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            rank : {
-                type : "float",
-                nullValue : 1.0
+    "tweet" : {
+        "properties" : {
+            "rank" : {
+                "type" : "float",
+                "nullValue" : 1.0
             }
         }
     }
@@ -116,11 +116,11 @@ p. The date type is a special type which maps to JSON string type. It follows a 
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            postDate : {
-                type : "date",
-                format : "YYYY-MM-dd"
+    "tweet" : {
+        "properties" : {
+            "postDate" : {
+                "type" : "date",
+                "format" : "YYYY-MM-dd"
             }
         }
     }
@@ -144,10 +144,10 @@ p. The boolean type Maps to the JSON boolean type. It ends up storing within the
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            hesMySpecialTweet : {
-                type : "boolean",
+    "tweet" : {
+        "properties" : {
+            "hesMySpecialTweet" : {
+                "type" : "boolean",
             }
         }
     }
@@ -171,10 +171,10 @@ p. The binary type is a base64 representation of binary data that can be stored 
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            image : {
-                type : "binary",
+    "tweet" : {
+        "properties" : {
+            "image" : {
+                "type" : "binary",
             }
         }
     }

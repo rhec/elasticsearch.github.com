@@ -21,7 +21,7 @@ $ curl -XDELETE http://localhost:9200/twitter/tweet/_query?q=user:kimchy
 $ curl -XDELETE http://localhost:9200/twitter/tweet/_query -d \
 '
 {
-    term : { user : "kimchy" }
+    "term" : { "user" : "kimchy" }
 }
 '
 </pre>

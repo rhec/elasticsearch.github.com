@@ -19,8 +19,8 @@ p. The root object mapping allows to index a JSON document that either starts wi
 
 <pre class="prettyprint lang-js">
 {
-    tweet {
-        message : "This is a tweet!"
+    "tweet" {
+        "message" : "This is a tweet!"
     }
 }
 </pre>
@@ -29,7 +29,7 @@ p. But, also the following JSON can be indexed:
 
 <pre class="prettyprint lang-js">
 {
-    message : "This is a tweet!"
+    "message" : "This is a tweet!"
 }
 </pre>
 
@@ -41,9 +41,9 @@ p. The root object allows to define type mapping level analyzers for index and s
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        indexAnalyzer : "standard",
-        searchAnalyzer : "standard"
+    "tweet" : {
+        "indexAnalyzer" : "standard",
+        "searchAnalyzer" : "standard"
     }
 }
 </pre>
@@ -56,8 +56,8 @@ p. Boosting is the process of enhancing the relevancy of a document or field. Fi
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        boostField : {name : "_boost", nullValue : 1.0}
+    "tweet" : {
+        "boostField" : {"name" : "_boost", "nullValue" : 1.0}
     }
 }
 </pre>
@@ -66,9 +66,9 @@ p. The above mapping defines mapping for a field named @_boost@. If the @_boost@
 
 <pre class="prettyprint lang-js">
 {
-    tweet {
-        _boost : 2.2,
-        message : "This is a tweet!"
+    "tweet" {
+        "_boost" : 2.2,
+        "message" : "This is a tweet!"
     }
 }
 </pre>

@@ -36,21 +36,21 @@ p. The following is an example of explicit mapping for the above JSON:
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            person : {
-                type = "object",
-                properties : {
-                    name : {
-                        properties : {
-                            firstName : {type : "string"},
-                            lastName : {type : "string"}
+    "tweet" : {
+        "properties" : {
+            "person" : {
+                "type" : "object",
+                "properties" : {
+                    "name" : {
+                        "properties" : {
+                            "firstName" : {"type" : "string"},
+                            "lastName" : {"type" : "string"}
                         }
                     },
-                    sid : {type : "string", index : "not_analyzed"}
+                    "sid" : {"type" : "string", "index" : "not_analyzed"}
                 }
             }
-            message : {type : "string"}
+            "message" : {"type" : "string"}
         }
     }
 }
@@ -70,22 +70,22 @@ p. This feature is by default turned on, and its the @dynamic@ nature of each ob
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            person : {
-                type = "object",
-                properties : {
-                    name : {
-                        dynamic : false,
-                        properties : {
-                            firstName : {type : "string"},
-                            lastName : {type : "string"}
+    "tweet" : {
+        "properties" : {
+            "person" : {
+                "type" : "object",
+                "properties" : {
+                    "name" : {
+                        "dynamic" : false,
+                        "properties" : {
+                            "firstName" : {"type" : "string"},
+                            "lastName" : {"type" : "string"}
                         }
                     },
-                    sid : {type : "string", index : "not_analyzed"}
+                    "sid" : {"type" : "string", "index" : "not_analyzed"}
                 }
             }
-            message : {type : "string"}
+            "message" : {"type" : "string"}
         }
     }
 }
@@ -109,19 +109,19 @@ p. The enabled flag allows to disable parsing and adding a named object complete
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            person : {
-                type = "object",
-                properties : {
-                    name : {
-                        type : "object",
-                        enabled : false
+    "tweet" : {
+        "properties" : {
+            "person" : {
+                "type" : "object",
+                "properties" : {
+                    "name" : {
+                        "type" : "object",
+                        "enabled" : false
                     },
-                    sid : {type : "string", index : "not_analyzed"}
+                    "sid" : {"type" : "string", "index" : "not_analyzed"}
                 }
             }
-            message : {type : "string"}
+            "message" : {"type" : "string"}
         }
     }
 }
@@ -135,33 +135,33 @@ p. In the "core_types":../core_types section, a field can have a @indexName@ ass
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        properties : {
-            person : {
-                properties : {
-                    name : {
-                        field1 : {
-                            type : "string", 
-                            pathType : "full"
+    "tweet" : {
+        "properties" : {
+            "person" : {
+                "properties" : {
+                    "name" : {
+                        "field1" : {
+                            "type" : "string", 
+                            "pathType" : "full"
                         }, 
-                        field2 : {
-                            type : "string", 
-                            pathType : "full", 
-                            indexName : "field2Index"
+                        "field2" : {
+                            "type" : "string", 
+                            "pathType" : "full", 
+                            "indexName" : "field2Index"
                         },
-                        field3 : {
-                            type : "string", 
-                            pathType : "justName"
+                        "field3" : {
+                            "type" : "string", 
+                            "pathType" : "justName"
                         },
-                        field4 : {
-                            type : "string", 
-                            pathType : "justName", 
-                            indexName : "field4Index"
+                        "field4" : {
+                            "type" : "string", 
+                            "pathType" : "justName", 
+                            "indexName" : "field4Index"
                         }
                     },
                 }
             }
-            message : {type : "string"}
+            "message" : {"type" : "string"}
         }
     }
 }
@@ -185,10 +185,10 @@ p. @dateFormats@ is the ability to set one or more date formats that will be use
 
 <pre class="prettyprint lang-js">
 {
-    tweet : {
-        dateFormats : ["yyyy-MM-dd", "dd-MM-yyyy"],
-        properties : {
-            message : {type : "string"}
+    "tweet" : {
+        "dateFormats" : ["yyyy-MM-dd", "dd-MM-yyyy"],
+        "properties" : {
+            "message" : {"type" : "string"}
         }
     }
 }
