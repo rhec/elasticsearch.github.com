@@ -16,9 +16,9 @@ h1. Delete By Query
 p. The delete by query API allows to delete documents from one or more indices and one or more types based on a query. The query can either be provided using a simple query string as a parameter, or using the "Query DSL":../query_dsl defined within the request body. Here is an example:
 
 <pre class="prettyprint">
-$ curl -XDELETE http://localhost:9200/twitter/tweet/_query?q=user:kimchy
+$ curl -XDELETE 'http://localhost:9200/twitter/tweet/_query?q=user:kimchy'
 
-$ curl -XDELETE http://localhost:9200/twitter/tweet/_query -d \
+$ curl -XDELETE 'http://localhost:9200/twitter/tweet/_query' -d \
 '
 {
     "term" : { "user" : "kimchy" }
@@ -48,25 +48,25 @@ h2. Multiple Indices and Types
 p. The delete by query API can be applies to multiple types within an index, and across multiple indices. For example, we can delete all documents across all types within the twitter index:
 
 <pre class="prettyprint">
-$ curl -XDELETE http://localhost:9200/twitter/_query?q=user:kimchy
+$ curl -XDELETE 'http://localhost:9200/twitter/_query?q=user:kimchy'
 </pre>
 
 p. We can also delete within specific types:
 
 <pre class="prettyprint">
-$ curl -XDELETE http://localhost:9200/twitter/tweet,user/_query?q=user:kimchy
+$ curl -XDELETE 'http://localhost:9200/twitter/tweet,user/_query?q=user:kimchy'
 </pre>
 
 p. We can also delete all tweets with a certain tag across several indices (for example, when each user has his own index):
 
 <pre class="prettyprint">
-$ curl -XDELETE http://localhost:9200/kimchy,elasticsearch/_query?q=tag:wow
+$ curl -XDELETE 'http://localhost:9200/kimchy,elasticsearch/_query?q=tag:wow'
 </pre>
 
 p. Or even delete across all indices:
 
 <pre class="prettyprint">
-$ curl -XDELETE http://localhost:9200/_all/_query?q=tag:wow
+$ curl -XDELETE 'http://localhost:9200/_all/_query?q=tag:wow'
 </pre>
 
 h2. Request Parameters

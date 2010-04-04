@@ -18,7 +18,7 @@ h1. Delete Index
 p. The delete index API allows to delete an existing index.
 
 <pre class="prettyprint">
-$ curl -XDELETE http://localhost:9200/twitter/
+$ curl -XDELETE 'http://localhost:9200/twitter/'
 </pre>
 
 p. The above example deletes an index called @twitter@.

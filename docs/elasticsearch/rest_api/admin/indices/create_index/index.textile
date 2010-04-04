@@ -18,9 +18,9 @@ h1. Create Index
 p. The create index API allows to instantiate an index. ElasticSearch provides support for multiple indices, including executing operations across several indices. Each index created can have specific settings associated with it.
 
 <pre class="prettyprint">
-$ curl -XPUT http://localhost:9200/twitter/
+$ curl -XPUT 'http://localhost:9200/twitter/'
 
-$ curl -XPUT http://localhost:9200/twitter/ -d '
+$ curl -XPUT 'http://localhost:9200/twitter/' -d '
 index :
     number_of_shards : 3
     number_of_replicas : 2
@@ -30,7 +30,7 @@ index :
 p. The above second example curl shows how an index called @twitter@ can be created with specific settings for it using "YAML":http://www.yaml.org. In this case, creating an index with 3 shards, each with 2 replicas. The index settings can also defined with "JSON":http://www.json.org:
 
 <pre class="prettyprint">
-$ curl -XPUT http://localhost:9200/twitter/ -d \
+$ curl -XPUT 'http://localhost:9200/twitter/' -d \
 '
 { 
     index : {

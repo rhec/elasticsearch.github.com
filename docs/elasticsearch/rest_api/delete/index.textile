@@ -16,7 +16,7 @@ h1. Delete
 p. The delete API allows to delete a typed JSON document from a specific index based on its id. The following example deletes the JSON document from an index called twitter, under a type called tweet, with id valued 1:
 
 <pre class="prettyprint">
-$ curl -XDELETE http://localhost:9200/twitter/tweet/1
+$ curl -XDELETE 'http://localhost:9200/twitter/tweet/1'
 </pre>
 
 p. The result of the above delete operation is:

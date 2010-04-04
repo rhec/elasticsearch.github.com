@@ -20,4 +20,5 @@ p. This section describes administration APIs that revolve around the cluster. T
 |"health":health|Retrieves the health of the cluster.|
 |"state":state|Retrieves the state of the cluster.|
 |"nodes_info":nodes_info|Retrieves the one or more (or all) nodes information.|
+|"nodes_shutdown":nodes_shutdown|Shuts down one or more (or all) nodes.|
 

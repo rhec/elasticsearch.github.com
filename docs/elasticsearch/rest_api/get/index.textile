@@ -16,7 +16,7 @@ h1. Get
 p. The get API allows to get a typed JSON document from the index based on its id. The following example gets a JSON document from an index called twitter, under a type called tweet, with id valued 1:
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/twitter/tweet/1
+$ curl -XGET 'http://localhost:9200/twitter/tweet/1'
 </pre>
 
 p. The result of the above get operation is:
@@ -41,7 +41,7 @@ h2. Fields
 p. The get operation allows to specify a set of fields that will be returned (by default, its the @_source@ field) by passing the @fields@ parameter. For example:
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/twitter/tweet/1?fields=title,content
+$ curl -XGET 'http://localhost:9200/twitter/tweet/1?fields=title,content'
 </pre>
 
 p(note). The fields specified must be stored in order to retrieve them.

@@ -18,7 +18,7 @@ h1. Indices Status
 p. The indices status API allows to get a comprehensive status information of one or more indices.
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/twitter/_status
+$ curl -XGET 'http://localhost:9200/twitter/_status'
 </pre>
 
 p. Here is an example status result:
