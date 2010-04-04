@@ -76,7 +76,7 @@ p. When executing a delete by query using the query parameter @q@, the query pas
 |_. Name |_. Description |
 | @df@ | The default field to use when no field prefix is defined within the query. |
 | @analyzer@ | The analyzer name to be used when analyzing the query string. |
-| @defaultOperator@ | The default operator to be used, can be @AND@ or @OR@. Defaults to @OR@. |
+| @default_operator@ | The default operator to be used, can be @AND@ or @OR@. Defaults to @OR@. |
 
 h2. Request Body
 

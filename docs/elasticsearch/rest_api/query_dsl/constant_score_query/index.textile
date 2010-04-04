@@ -8,7 +8,7 @@ docBreadcrumb = [
     ["elasticsearch", "ElasticSearch"], 
     ["rest_api", "REST API"],
     ["query_dsl", "Query DSL"],
-    ["constantScore_query", "Constant Score Query"],
+    ["constant_score_query", "Constant Score Query"],
 ];
 </script>
 
@@ -18,7 +18,7 @@ p. A query that wraps a filter and simply returns a constant score equal to the 
 
 <pre class="prettyprint lang-js">
 {
-    "constantScore" : {
+    "constant_score" : {
         "filter" : {
             "term" : { "user" : "kimchy"}
         },

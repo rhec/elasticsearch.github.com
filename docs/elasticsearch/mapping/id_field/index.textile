@@ -1,0 +1,27 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Mapping | Root Object Type | Id Field
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["mapping", "Mapping"], 
+    ["root_object_type", "Root Object Type"], 
+    ["id_field", "Id Field"], 
+];
+</script>
+
+h1. Id Field
+
+p. Each document indexed is associated with an id and a type. The id, when indexing, is automatically indexed into an @_id@ field. By default, the @_id@ field is indexed (but *not* analyzed) and not stored. This means that the @_id@ field can be used to query against it.
+
+p. The @_id@ field allows to store it as well, for example:
+
+<pre class="prettyprint lang-js">
+{
+    "tweet" : {
+        "_id" : {"store" : "yes"}
+    }
+}
+</pre>

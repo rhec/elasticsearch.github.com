@@ -33,7 +33,7 @@ p. As an example, here is how we can change the default "dateFormats":../object_
 <pre class="prettyprint lang-js">
 {
     "_default_" : {
-        "dateFormats" : ["yyyy-MM-dd", "dd-MM-yyyy", "dateOptionalTime"],
+        "date_formats" : ["yyyy-MM-dd", "dd-MM-yyyy", "date_optional_time"],
     }
 }
 </pre>

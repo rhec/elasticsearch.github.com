@@ -32,7 +32,7 @@ p. The cluster health is status is: @green@, @yellow@ or @red@. On the shard lev
 p. One of the main benefits of the API is the ability to wait until the cluster reaches a certain health level. For example, the following Will wait till the cluster reaches the @green@ level for 50 seconds (if it reaches the @green@ status beforehand, it will return):
 
 <pre class="prettyprint">
-$ curl -XGET 'http://localhost:9200/_cluster/health?waitForStatus=green&timeout=50s'
+$ curl -XGET 'http://localhost:9200/_cluster/health?wait_for_status=green&timeout=50s'
 </pre>
 
 h2. Request Parameters
@@ -41,7 +41,6 @@ p. The cluster health API accepts the following request parameters:
 
 |_. Name |_. Description |
 |@level@|Can be one of @cluster@, @indices@ or @shards@. Controls the details level of the health information returned. Defaults to @cluster@.|
-|@waitForStatus@|One of @green@, @yellow@ or @red@. Will wait (until the timeout provided) until the status of the cluster changes to the one provided. By default, will not wait for any status.|
-|@waitForRelocatingShards@|A number controlling to how many relocating shards to wait for. Usually will be @0@ to indicate to wait till all relocation have happened. Defaults to not to wait.|
-|@timeout@|A time based parameter controlling how long to wait if one of the waitForXXX are provided. Defaults to @30s@.|
-
+|@wait_for_status@|One of @green@, @yellow@ or @red@. Will wait (until the timeout provided) until the status of the cluster changes to the one provided. By default, will not wait for any status.|
+|@wait_for_relocating_shards@|A number controlling to how many relocating shards to wait for. Usually will be @0@ to indicate to wait till all relocation have happened. Defaults to not to wait.|
+|@timeout@|A time based parameter controlling how long to wait if one of the wait_for_XXX are provided. Defaults to @30s@.|

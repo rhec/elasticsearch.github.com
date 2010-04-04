@@ -33,11 +33,10 @@ p. The type of the index gateway to use when an index is created can be controll
 
 p. The default type used is decided based on the node level "gateway":../../modules/gateway. For example, if its @none@, then by default, the index is created with @none@ index gateway. If it is @fs@, then the index is created with @fs@ index gateway. This makes things simpler to configure as usually when wanting persistent indices, the global gateway should be configured as well, and usually it will use the same type of gateway.
 
-h2. snapshotInterval
+h2. snapshot_interval
 
-p. The @index.gateway.snapshotInterval@ is a time setting allowing to configure the interval at which snapshotting of the index shard to the gateway will take place. Note, only primary shards start this scheduled snapshotting process. It defaults to @10s@, and can be disabled by setting it to @-1@.
+p. The @index.gateway.snapshot_interval@ is a time setting allowing to configure the interval at which snapshotting of the index shard to the gateway will take place. Note, only primary shards start this scheduled snapshotting process. It defaults to @10s@, and can be disabled by setting it to @-1@.
 
-h2. snapshotOnClose
+h2. snapshot_on_close
 
-p. When a primary shard is shut down explicitly (not relocated), the @index.gateway.snapshotOnClose@ flag can control if while shutting down, a gateway snapshot should be performed. It defaults to @true@.
-
+p. When a primary shard is shut down explicitly (not relocated), the @index.gateway.snapshot_on_close@ flag can control if while shutting down, a gateway snapshot should be performed. It defaults to @true@.

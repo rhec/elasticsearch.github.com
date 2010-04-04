@@ -23,7 +23,7 @@ p. A merge scheduler that runs merges using a separated thread, until the maximu
 p. The scheduler supports the following settings:
 
 |_. Setting |_. Description |
-|index.merge.scheduler.maxThreadCount|The maximum number of threads to perform the merge operation. Defaults to @1@.|
+|index.merge.scheduler.max_thread_count|The maximum number of threads to perform the merge operation. Defaults to @1@.|
 
 h2. SerialMergeScheduler
 

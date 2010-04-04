@@ -35,6 +35,17 @@ p. But, also the following JSON can be indexed:
 
 p. The above can be done since the API for the index operation already includes the type the JSON document belongs to.
 
+h2. Special Fields
+
+p. Each document created has special fields that are either created or managed automatically, with specific mappings allowing to control their behavior. The fields are:
+
+|_. Field | Description |
+|"_id":../id_field|Allow to control the automatically created @_id@ field.|
+|"_type":../type_field|Allow to control the automatically created @_type@ field.|
+|"_boost":../boost_field|Allow to control the boosting of a document using an external value.|
+|"_source":../source_field|Allow to control the @_source@ field storing the actual JSON indexed.|
+|"_all":../all_field|Allows to automatically create an @_all@ field that includes all the other fields.|
+
 h2. Index / Search Analyzers
 
 p. The root object allows to define type mapping level analyzers for index and search that will be used with all different fields that do not explicitly set analyzers on their own. Here is an example:
@@ -42,34 +53,10 @@ p. The root object allows to define type mapping level analyzers for index and s
 <pre class="prettyprint lang-js">
 {
     "tweet" : {
-        "indexAnalyzer" : "standard",
-        "searchAnalyzer" : "standard"
+        "index_analyzer" : "standard",
+        "search_analyzer" : "standard"
     }
 }
 </pre>
 
-p. The above simply explicitly defines both the @indexAnalyzer@ and @searchAnalyzer@ that will be used. There is also an option to use the @analyzer@ attribute to set both the @searchAnalyzer@ and @indexAnalyzer@.
-
-h2. Boost Field
-
-p. Boosting is the process of enhancing the relevancy of a document or field. Field level mapping allows to define explicit boost level on a specific field. The boost field mapping allows to define a boost field mapping where *its content will control the boost level of the document*. For example:
-
-<pre class="prettyprint lang-js">
-{
-    "tweet" : {
-        "boostField" : {"name" : "_boost", "nullValue" : 1.0}
-    }
-}
-</pre>
-
-p. The above mapping defines mapping for a field named @_boost@. If the @_boost@ field exists within the JSON document indexed, its value will control the boost level of the document indexed. For example, the following JSON document will be indexed with a boost value of @2.2@:
-
-<pre class="prettyprint lang-js">
-{
-    "tweet" {
-        "_boost" : 2.2,
-        "message" : "This is a tweet!"
-    }
-}
-</pre>
-
+p. The above simply explicitly defines both the @index_analyzer@ and @search_analyzer@ that will be used. There is also an option to use the @analyzer@ attribute to set both the @search_analyzer@ and @index_analyzer@.

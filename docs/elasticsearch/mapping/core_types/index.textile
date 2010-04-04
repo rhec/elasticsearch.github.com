@@ -36,7 +36,7 @@ p. Explicit mapping for the above JSON tweet can be:
     "tweet" : {
         "properties" : {
             "user" : {"type" : "string", "index" : "not_analyzed"},
-            "message" : {"type" : "string", "nullValue" : "na"},
+            "message" : {"type" : "string", "null_value" : "na"},
             "postDate" : {"type" : "date"},
             "priority" : {"type" : "integer"},
             "rank" : {"type" : "float"}
@@ -58,7 +58,7 @@ p. The text based string type is the most basic type, and contains one or more c
                 "type" : "string",
                 "store" : "yes",
                 "index" : "analyzed",
-                "nullValue" : "na"
+                "null_value" : "na"
             }
         }
     }
@@ -70,17 +70,17 @@ p. The above mapping defines a @string@ @message@ property/field within the @twe
 p. The following table lists all the attributes that can be used with the @string@ type:
 
 |_. Attribute |_. Description |
-|indexName|The name of the field that will be stored in the index. Defaults to the property/field name.|
+|index_name|The name of the field that will be stored in the index. Defaults to the property/field name.|
 |store|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
 |index|Set to @analyzed@ for the field to be indexed and searchable after being broken down into token using an analyzer. @not_analyzed@ means that its still searchable, but does not go through any analysis process or broken down into tokens. @no@ means that it won't be searchable at all. Defaults to @analyzed@.|
-|termVector|Possible values are @no@, @yes@, @with_offsets@, @with_positions@, @with_positions_offsets@. Defaults to @no@.|
+|term_vector|Possible values are @no@, @yes@, @with_offsets@, @with_positions@, @with_positions_offsets@. Defaults to @no@.|
 |boost|The boost value. Defaults to @1.0@.|
-|nullValue|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
-|omitNorms|Boolean value if norms should be omitted or not. Defaults to @false@.|
-|omitTermFreqAndPositions|Boolean value if term freq and positions should be omitted. Defaults to @false@.|
+|null_value|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
+|omit_norms|Boolean value if norms should be omitted or not. Defaults to @false@.|
+|omit_term_freq_and_positions|Boolean value if term freq and positions should be omitted. Defaults to @false@.|
 |analyzer|The analyzer used to analyze the text contents when @analyzed@ during indexing and when searching using a query string. Defaults to the globally configured analyzer.|
-|indexAnalyzer|The analyzer used to analyze the text contents when @analyzed@ during indexing.|
-|searchAnalyzer|The analyzer used to analyze the field when part of a query string.|
+|index_analyzer|The analyzer used to analyze the text contents when @analyzed@ during indexing.|
+|search_analyzer|The analyzer used to analyze the field when part of a query string.|
 
 h2. Number
 
@@ -92,7 +92,7 @@ p. A number based type supporting @float@, @double@, @integer@, and @long@. It u
         "properties" : {
             "rank" : {
                 "type" : "float",
-                "nullValue" : 1.0
+                "null_value" : 1.0
             }
         }
     }
@@ -103,12 +103,12 @@ p. The following table lists all the attributes that can be used with a numbered
 
 |_. Attribute |_. Description |
 |type|The type of the number. Can be @float@, @double@, @integer@, @long@. Required.|
-|indexName|The name of the field that will be stored in the index. Defaults to the property/field name.|
+|index_name|The name of the field that will be stored in the index. Defaults to the property/field name.|
 |store|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
 |index|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if its not indexed and not stored, there is nothing to do with it.|
-|precisionStep|The precision step (number of terms generated for each number value). Defaults to @4@.|
+|precision_step|The precision step (number of terms generated for each number value). Defaults to @4@.|
 |boost|The boost value. Defaults to @1.0@.|
-|nullValue|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
+|null_value|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
 
 h2. Date
 
@@ -130,13 +130,13 @@ p. The date type is a special type which maps to JSON string type. It follows a 
 p. The following table lists all the attributes that can be used with a date type:
 
 |_. Attribute |_. Description |
-|indexName|The name of the field that will be stored in the index. Defaults to the property/field name.|
+|index_name|The name of the field that will be stored in the index. Defaults to the property/field name.|
 |format|The "date format":../date_format.|
 |store|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
 |index|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if its not indexed and not stored, there is nothing to do with it.|
-|precisionStep|The precision step (number of terms generated for each number value). Defaults to @4@.|
+|precision_step|The precision step (number of terms generated for each number value). Defaults to @4@.|
 |boost|The boost value. Defaults to @1.0@.|
-|nullValue|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
+|null_value|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
 
 h2. Boolean
 
@@ -146,7 +146,7 @@ p. The boolean type Maps to the JSON boolean type. It ends up storing within the
 {
     "tweet" : {
         "properties" : {
-            "hesMySpecialTweet" : {
+            "hes_my_special_tweet" : {
                 "type" : "boolean",
             }
         }
@@ -159,11 +159,11 @@ p. The boolean type also supports passing the value as a number (in this case @0
 p. The following table lists all the attributes that can be used with the boolean type:
 
 |_. Attribute |_. Description |
-|indexName|The name of the field that will be stored in the index. Defaults to the property/field name.|
+|index_name|The name of the field that will be stored in the index. Defaults to the property/field name.|
 |store|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
 |index|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if its not indexed and not stored, there is nothing to do with it.|
 |boost|The boost value. Defaults to @1.0@.|
-|nullValue|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
+|null_value|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
 
 h2. Binary
 
@@ -184,4 +184,4 @@ p. The binary type is a base64 representation of binary data that can be stored 
 p. The following table lists all the attributes that can be used with the binary type:
 
 |_. Attribute |_. Description |
-|indexName|The name of the field that will be stored in the index. Defaults to the property/field name.|
+|index_name|The name of the field that will be stored in the index. Defaults to the property/field name.|

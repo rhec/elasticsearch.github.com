@@ -21,8 +21,7 @@ p. Wraps any query to be used as a filter. Can be placed within queries that acc
     "constantScore" : {
         "filter" : {
             "query" : { 
-                "queryString" : { 
-                    "defaultField" : "content", 
+                "query_string" : { 
                     "query" : "this AND that OR thus"
                 }
             }

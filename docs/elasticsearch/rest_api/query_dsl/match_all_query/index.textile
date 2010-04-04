@@ -8,7 +8,7 @@ docBreadcrumb = [
     ["elasticsearch", "ElasticSearch"], 
     ["rest_api", "REST API"],
     ["query_dsl", "Query DSL"],
-    ["matchAll_query", "Match All Query"],
+    ["match_all_query", "Match All Query"],
 ];
 </script>
 
@@ -18,7 +18,7 @@ p. A query that matches all documents. Maps to Lucene @MatchAllDocsQuery@.
 
 <pre class="prettyprint lang-js">
 {
-    "matchAll" : { }
+    "match_all" : { }
 }
 </pre>
 
@@ -26,6 +26,6 @@ p. Which can also have boost associated with it:
 
 <pre class="prettyprint lang-js">
 {
-    "matchAll" : { "boost" : 1.2 }
+    "match_all" : { "boost" : 1.2 }
 }
 </pre>

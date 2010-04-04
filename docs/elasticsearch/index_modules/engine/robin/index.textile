@@ -27,6 +27,6 @@ p. The flush operation flushes all the changes done against the index (using Luc
 h2. Settings
 
 |_. Setting |_. Description |
-|index.engine.robin.refreshInterval|A time setting controlling how often the refresh operation will be executed. Defaults to @1s@. Can be set to @-1@ in order to disable it.|
-|index.engine.robin.ramBufferSize|The amount of temporal "index" stored in by Lucene in memory. Defaults to @64mb@.|
-|index.engine.robin.termIndexInterval|Set the interval between indexed terms.  Large values cause less memory to be used by a reader / searcher, but slow random-access to terms. Small values cause more memory to be used by a reader / searcher, and speed random-access to terms. Defaults to @128@.|
+|index.engine.robin.refresh_interval|A time setting controlling how often the refresh operation will be executed. Defaults to @1s@. Can be set to @-1@ in order to disable it.|
+|index.engine.robin.ram_buffer_size|The amount of temporal "index" stored in by Lucene in memory. Defaults to @64mb@.|
+|index.engine.robin.term_index_interval|Set the interval between indexed terms.  Large values cause less memory to be used by a reader / searcher, but slow random-access to terms. Small values cause more memory to be used by a reader / searcher, and speed random-access to terms. Defaults to @128@.|

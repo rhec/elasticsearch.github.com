@@ -21,13 +21,12 @@ h2. Settings
 p. Settings for the netty HTTP module should be set for within @http.netty@. For example, the @port@ setting should be set using @http.netty.port@.
 
 |_. Setting |_. Description |
-|port|A bind port range. Defaults to @9200-9300@.|
-|bindHost|The bind host. Defaults to the "network level settings":../../node/network.|
-|publishHost|The publish host. This is the host that other nodes will use to connect to this node. Defaults to the "network level settings":../../node/network.|
-|workerCount|The number of worker threads to use. Defaults to the number of available processors.|
-|tcpNoDelay|Enable or disable tcp no delay setting. Defaults to @true@.|
-|tcpKeepAlive|Enable or disable tcp keep alive. By default not explicitly set.|
-|reuseAddress|Should an address be reused or not. Defaults to @true@.|
-|tcpSendBufferSize|The size of the tcp send buffer size (in size setting format). By default not explicitly set.|
-|tcpReceiveBufferSize|The size of the tcp receive buffer size (in size setting format). By default not explicitly set.|
-|httpKeepAlive|How long a keep alive request is kept open with no traffic (in time setting format). Defaults to @30s@.|
+|@port@|A bind port range. Defaults to @9200-9300@.|
+|@bind_host@|The bind host. Defaults to the "network level settings":../../node/network.|
+|@publish_host@|The publish host. This is the host that other nodes will use to connect to this node. Defaults to the "network level settings":../../node/network.|
+|@worker_count@|The number of worker threads to use. Defaults to the number of available processors.|
+|@tcp_no_delay@|Enable or disable tcp no delay setting. Defaults to @true@.|
+|@tcp_keep_alive@|Enable or disable tcp keep alive. By default not explicitly set.|
+|@reuse_address@|Should an address be reused or not. Defaults to @true@.|
+|@tcp_send_buffer_size@|The size of the tcp send buffer size (in size setting format). By default not explicitly set.|
+|@tcp_receive_buffer_size@|The size of the tcp receive buffer size (in size setting format). By default not explicitly set.|

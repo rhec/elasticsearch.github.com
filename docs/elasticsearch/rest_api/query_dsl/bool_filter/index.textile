@@ -21,7 +21,7 @@ p. A filter that matches documents matching boolean combinations of other querie
     "filtered" : {
         "query" : {
             "queryString" : { 
-                "defaultField" : "message", 
+                "default_field" : "message", 
                 "query" : "elasticsearch"
             }
         },
@@ -30,7 +30,7 @@ p. A filter that matches documents matching boolean combinations of other querie
                 "must" : {
                     "term" : { "tag" : "wow" }
                 },
-                "mustNot" : {
+                "must_not" : {
                     "range" : {
                         "age" : { "from" : 10, "to" : 20 }
                     }

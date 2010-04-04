@@ -31,6 +31,10 @@ h2. Pretty Results
 
 p. When appending @?pretty=true@ to any request made, the JSON returned will be pretty formatted (use it for debugging only!).
 
-h2. Boolean Parameters
+h2. Boolean Values
 
-p. All REST APIs parameters (both request parameters and body) support providing boolean "false" as the values: @false@, @0@ and @off@. All other values are considered "true". Note, this is not related to fields within a document treated as boolean fields.
+p. All REST APIs parameters (both request parameters and JSON body) support providing boolean "false" as the values: @false@, @0@ and @off@. All other values are considered "true". Note, this is not related to fields within a document treated as boolean fields.
+
+h2. Number Values
+
+p. All REST APIs support providing numbered parameters as @string@ on top of supporting the native JSON number types.

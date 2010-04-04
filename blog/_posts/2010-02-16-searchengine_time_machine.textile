@@ -24,8 +24,8 @@ p. In case of ElasticSearch, an index is broken down into shards, and each shard
 <pre class="prettyprint">
 $ curl -XPUT http://localhost:9200/twitter/ -d '
 index :
-    numberOfShards : 3
-    numberOfReplicas : 2
+    number_of_shards : 3
+    number_of_replicas : 2
 '
 </pre>
 

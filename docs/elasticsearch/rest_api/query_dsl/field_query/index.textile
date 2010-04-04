@@ -14,7 +14,7 @@ docBreadcrumb = [
 
 h1. Field Query
 
-p. A query that executes a query string against a specific field. It is a simplified version of "queryString":../queryString_query query (by setting the @defaultField@ to the field this query executed against). In its simplest form:
+p. A query that executes a query string against a specific field. It is a simplified version of "query_string":../query_string_query query (by setting the @default_field@ to the field this query executed against). In its simplest form:
 
 <pre class="prettyprint lang-js">
 {
@@ -24,7 +24,7 @@ p. A query that executes a query string against a specific field. It is a simpli
 }
 </pre>
 
-p. Most of the @queryString@ parameters are allowed with the @field@ query as well, in such a case, the query should be formatted as follows:
+p. Most of the @query_string@ parameters are allowed with the @field@ query as well, in such a case, the query should be formatted as follows:
 
 <pre class="prettyprint lang-js">
 {
@@ -32,7 +32,7 @@ p. Most of the @queryString@ parameters are allowed with the @field@ query as we
         "name.first" : {
             "query" : "+something -else",
             "boost" : 2.0,
-            "enablePositionIncrements": false
+            "enable_position_increments": false
         }
     }
 }

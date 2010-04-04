@@ -59,14 +59,14 @@ $ curl -XPUT 'http://localhost:9200/twitter/tweet/1' -d '
 
 h2. Operation Type
 
-p. The index operation will automatically replace an existing document within the same index that has the same type and id. If you know in advance that this is a new document, then the @opType@ parameter can be set to @create@. The benefit is a slight improvement in performance since there is no need to check and possibly delete the existing document.
+p. The index operation will automatically replace an existing document within the same index that has the same type and id. If you know in advance that this is a new document, then the @op_type@ parameter can be set to @create@. The benefit is a slight improvement in performance since there is no need to check and possibly delete the existing document.
 
-p(note). If the opType is set to create, and there is already an existing document with the same type and id within the index, the index will now hold *two* documents with the same id and type. 
+p(note). If the @op_type@ is set to create, and there is already an existing document with the same type and id within the index, the index will now hold *two* documents with the same id and type. 
 
-p. Here is an example of using the @opType@ parameter:
+p. Here is an example of using the @op_type@ parameter:
 
 <pre class="prettyprint">
-$ curl -XPUT 'http://localhost:9200/twitter/tweet/1?opType=create' -d '
+$ curl -XPUT 'http://localhost:9200/twitter/tweet/1?op_type=create' -d '
 {
     "user" : "kimchy",
     "postDate" : "2009-11-15T14:12:12",

@@ -18,12 +18,10 @@ p. The count API allows to easily execute a query and get the number of matches 
 <pre class="prettyprint">
 $ curl -XGET http://localhost:9200/twitter/tweet/_count?q=user:kimchy
 
-$ curl -XGET http://localhost:9200/twitter/tweet/_count -d \
-'
+$ curl -XGET http://localhost:9200/twitter/tweet/_count -d '
 {
-    term : { user : "kimchy" }
-}
-'
+    "term" : { "user" : "kimchy" }
+}'
 </pre>
 
 p. Both above examples end up doing the same thing, which is count the number of tweets from the twitter index for a certain user. The result of the commands is:
@@ -72,7 +70,7 @@ p. When executing count using the query parameter @q@, the query passed is a que
 |_. Name |_. Description |
 | @df@ | The default field to use when no field prefix is defined within the query. |
 | @analyzer@ | The analyzer name to be used when analyzing the query string. |
-| @defaultOperator@ | The default operator to be used, can be @AND@ or @OR@. Defaults to @OR@. |
+| @default_operator@ | The default operator to be used, can be @AND@ or @OR@. Defaults to @OR@. |
 
 h2. Request Body
 

@@ -1,0 +1,19 @@
+---
+layout: default
+title: Community
+---
+
+<div class="siteheadersep"></div>
+<div class="generic sevenhun end" style="padding-left: 80px">
+    <p>
+        <a href="http://groups.google.com/a/elasticsearch.com/group/users/">ElasticSearch User</a> is where ElasticSearch users come to <em>seek help, announce projects, and discuss</em> all kind of matters surrounding the framework and the community.
+    </p>
+    <p class="note">
+        You need to <a href="http://groups.google.com/a/elasticsearch.com/group/users/subscribe">register</a> with your google account to the list. At the bottom left side pane, enter your google account user (email) continue with the login process. Below you can find an embedded nabble mirror of the mailing list. You still need to <a href="http://groups.google.com/a/elasticsearch.com/group/users/subscribe">register</a> to the google groups mailing list in order to post.
+    </p>
+</div>
+
+<div class="nineforty">
+    <a id="nabblelink" href="http://n3.nabble.com/ElasticSearch-Users-f115913.html">ElasticSearch Users</a>
+    <script src="http://n3.nabble.com/embed/f115913"></script>
+</div>

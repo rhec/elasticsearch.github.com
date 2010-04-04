@@ -1,0 +1,27 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Mapping | Root Object Type | Source Field
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["mapping", "Mapping"], 
+    ["root_object_type", "Root Object Type"], 
+    ["source_field", "Source Field"], 
+];
+</script>
+
+h1. Source Field
+
+p. The @_source@ field is an automatically generated field that stores the actual JSON that was used as the indexed document. It is not indexed (searchable), just stored. When executed "fetch" requests, like get or search, the @_source@ field is returned by default.
+
+p. Though very handy to have around, the source field does incur storage overhead within the index. For this reason, it can be disabled. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "tweet" : {
+        "_source" : {"enabled" : false}
+    }
+}
+</pre>

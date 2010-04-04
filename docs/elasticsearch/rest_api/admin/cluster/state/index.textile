@@ -26,16 +26,16 @@ p. Here is an example cluster state result:
 <pre class="prettyprint lang-js">
 {
   "metadata" : {
-    "maxNumberOfShardsPerNode" : 100,
+    "max_number_of_shards_per_node" : 100,
     "indices" : {
       "twitter" : {
         "settings" : {
           "setting" : {
-            "name" : "index.numberOfReplicas",
+            "name" : "index.number_of_replicas",
             "value" : "1"
           },
           "setting" : {
-            "name" : "index.numberOfShards",
+            "name" : "index.number_of_shards",
             "value" : "2"
           }
         },
@@ -44,74 +44,74 @@ p. Here is an example cluster state result:
       }
     }
   },
-  "routingTable" : {
+  "routing_table" : {
     "indices" : {
       "twitter" : {
         "shards" : {
           "0" : [ {
             "state" : "STARTED",
             "primary" : true,
-            "nodeId" : "mackimchy.local-53946",
-            "relocatingNodeId" : null,
-            "shardId" : 0,
+            "node" : "mackimchy.local-53946",
+            "relocating_node" : null,
+            "shard" : 0,
             "index" : "twitter"
           }, {
             "state" : "UNASSIGNED",
             "primary" : false,
-            "nodeId" : null,
-            "relocatingNodeId" : null,
-            "shardId" : 0,
+            "node" : null,
+            "relocating_node" : null,
+            "shard" : 0,
             "index" : "twitter"
           } ],
           "1" : [ {
             "state" : "STARTED",
             "primary" : true,
-            "nodeId" : "mackimchy.local-53946",
-            "relocatingNodeId" : null,
-            "shardId" : 1,
+            "node" : "mackimchy.local-53946",
+            "relocating_node" : null,
+            "shard" : 1,
             "index" : "twitter"
           }, {
             "state" : "UNASSIGNED",
             "primary" : false,
-            "nodeId" : null,
-            "relocatingNodeId" : null,
-            "shardId" : 1,
+            "node" : null,
+            "relocating_node" : null,
+            "shard" : 1,
             "index" : "twitter"
           } ]
         }
       }
     }
   },
-  "routingNodes" : {
+  "routing_nodes" : {
     "unassigned" : [ {
       "state" : "UNASSIGNED",
       "primary" : false,
-      "nodeId" : null,
-      "relocatingNodeId" : null,
-      "shardId" : 0,
+      "node" : null,
+      "relocating_node" : null,
+      "shard" : 0,
       "index" : "twitter"
     }, {
       "state" : "UNASSIGNED",
       "primary" : false,
-      "nodeId" : null,
-      "relocatingNodeId" : null,
-      "shardId" : 1,
+      "node" : null,
+      "relocating_node" : null,
+      "shard" : 1,
       "index" : "twitter"
     } ],
     "nodes" : {
       "mackimchy.local-53946" : [ {
         "state" : "STARTED",
         "primary" : true,
-        "nodeId" : "mackimchy.local-53946",
-        "relocatingNodeId" : null,
-        "shardId" : 0,
+        "node" : "mackimchy.local-53946",
+        "relocating_node" : null,
+        "shard" : 0,
         "index" : "twitter"
       }, {
         "state" : "STARTED",
         "primary" : true,
-        "nodeId" : "mackimchy.local-53946",
-        "relocatingNodeId" : null,
-        "shardId" : 1,
+        "node" : "mackimchy.local-53946",
+        "relocating_node" : null,
+        "shard" : 1,
         "index" : "twitter"
       } ]
     }

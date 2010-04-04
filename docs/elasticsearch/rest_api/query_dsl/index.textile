@@ -13,9 +13,9 @@ docBreadcrumb = [
 
 h1. Query DSL
 
-p. ElasticSearch provides a full query dsl based on JSON to define queries. In general, there are basic queries such as @term@ or @prefix@. There are also compound queries like the @bool@ query. Queries can also have filters associated with them such as the @filteredQuery@ or @constantScore@ queries, with specific filter queries. 
+p. ElasticSearch provides a full query dsl based on JSON to define queries. In general, there are basic queries such as @term@ or @prefix@. There are also compound queries like the @bool@ query. Queries can also have filters associated with them such as the @filtered@ or @constant_score@ queries, with specific filter queries. 
 
-p(note). Filters are very handy since they perform an order of magnitude better then plain queries since no scoring is required and they are automatically cached by ElasticSearch.
+p(note). Filters are very handy since they perform an order of magnitude better then plain queries since no scoring is required and they are automatically cached.
 
 h2. Queries
 
@@ -24,15 +24,15 @@ h2. Queries
 |"range":range_query|Matches documents with fields that have terms within a certain range.|
 |"prefix":prefix_query|Matches documents that have fields containing terms with a specified prefix.|
 |"wildcard":wildcard_query|Matches documents that have fields matching a wildcard expression.|
-|"matchAll":matchAll_query|A query that matches all documents.|
-|"queryString":queryString_query|A query that uses a query parser in order to parse a query string.|
+|"match_all":match_all_query|A query that matches all documents.|
+|"query_string":query_string_query|A query that uses a query parser in order to parse a query string.|
 |"field":field_query|A query that executes a query string against a specific field.|
 |"bool":bool_query|A query that matches documents matching boolean combinations of other queries.|
-|"disMax":disMax_query|A query that generates the union of documents produced by its subqueries, and that scores each document with the maximum score for that document as produced by any subquery, plus a tie breaking increment for any additional matching subqueries.|
-|"constantScore":constantScore_query|A query that wraps a filter and simply returns a constant score equal to the query boost for every document in the filter.|
+|"dis_max":dis_max_query|A query that generates the union of documents produced by its subqueries, and that scores each document with the maximum score for that document as produced by any subquery, plus a tie breaking increment for any additional matching subqueries.|
+|"constant_score":constant_score_query|A query that wraps a filter and simply returns a constant score equal to the query boost for every document in the filter.|
 |"filtered":filtered_query|A query that applies a filter to the results of another query.|
-|"moreLikeThis":moreLikeThis_query|More like this query find documents that are "like" provided text by running it against one or more fields.|
-|"moreLikeThisField":moreLikeThisField_query|More like this query find documents that are "like" provided text by running it against a field.|
+|"more_like_this":more_like_this_query|More like this query find documents that are "like" provided text by running it against one or more fields.|
+|"more_like_this_field":more_like_this_field_query|More like this query find documents that are "like" provided text by running it against a field.|
 
 h2. Filters
 

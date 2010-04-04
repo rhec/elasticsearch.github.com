@@ -36,6 +36,16 @@ p. The result of the above get operation is:
 
 p. The above result includes the @_index@, @_type@, and @_id@ of the document we wish to retrieve, including the actual source of the document that was indexed.
 
+h2. Fields
+
+p. The get operation allows to specify a set of fields that will be returned (by default, its the @_source@ field) by passing the @fields@ parameter. For example:
+
+<pre class="prettyprint">
+$ curl -XGET http://localhost:9200/twitter/tweet/1?fields=title,content
+</pre>
+
+p(note). The fields specified must be stored in order to retrieve them.
+
 h2. Distributed
 
 The get operation gets hashed into a specific shard id. It then gets redirected to one of the replicas within that shard id and returns the result. The replicas are the primary shard and its replicas within that shard id group. This means that the more replicas we will have, the better GET scaling we will have.

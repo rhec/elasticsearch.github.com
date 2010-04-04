@@ -13,15 +13,15 @@ p. For example, lets assume we want build our own Amazon store, and want to prov
 
 <pre class="prettyprint lang-js">
 {
-    book : {
-        isbn : "0812504321"
-        name : "Call of the Wild",
-        author : {
-            firstName : "Jack",
-            lastName : "London"
+    "book" : {
+        "isbn" : "0812504321"
+        "name" : "Call of the Wild",
+        "author" : {
+            "first_name" : "Jack",
+            "last_name" : "London"
         },
-        pages : 128,
-        tag : ["fiction", "children"]
+        "pages" : 128,
+        "tag" : ["fiction", "children"]
     }
 }
 </pre>
@@ -30,19 +30,19 @@ p. The above is a very simple representation of a book in JSON, but already you 
 
 p. In our case, we can first throw this book into ElasticSearch to index it by simple HTTP PUT it into @localhost:9200/amazon/book/0812504321@. We index it into an index called @amazon@, and a type called @book@. Once we did that, we can simple search for it, for example using GET on @localhost:9200/amazon/book/_search?q=tag:fiction@.
 
-p. But, as mentioned before, ElasticSearch *understands* the structure of the JSON book, which means we can execute the following search to find all the books that were authored by someone with firstName of Jack: @localhost:9200/amazon/book/_search?q=author.firstName:Jack@.
+p. But, as mentioned before, ElasticSearch *understands* the structure of the JSON book, which means we can execute the following search to find all the books that were authored by someone with first name of Jack: @localhost:9200/amazon/book/_search?q=author.first_name:Jack@.
 
 p. Now, after our Amazon store has great search support for books and we are successful, we decide to start selling music as well. For example:
 
 <pre class="prettyprint lang-js">
 {
-    cd : {
-        asin : "B00192IV0O"
-        name : "THE E.N.D. (Energy Never Dies)",
-        artist : "Black Eyed Peas",
-        label : "Interscope",
-        releaseDate: "2009-06-09",
-        tag : ["hip-hop", "pop-rap"]
+    "cd" : {
+        "asin" : "B00192IV0O"
+        "name" : "THE E.N.D. (Energy Never Dies)",
+        "artist" : "Black Eyed Peas",
+        "label" : "Interscope",
+        "release_date": "2009-06-09",
+        "tag" : ["hip-hop", "pop-rap"]
     }
 }
 </pre>

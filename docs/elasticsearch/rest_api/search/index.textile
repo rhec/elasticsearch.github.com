@@ -87,14 +87,14 @@ p. When executing search using the query parameter @q@, the query passed is a qu
 |_. Name |_. Description |
 | @df@ | The default field to use when no field prefix is defined within the query. |
 | @analyzer@ | The analyzer name to be used when analyzing the query string. |
-| @defaultOperator@ | The default operator to be used, can be @AND@ or @OR@. Defaults to @OR@. |
+| @default_operator@ | The default operator to be used, can be @AND@ or @OR@. Defaults to @OR@. |
 | @explain@ | For each hit, contain an explanation of how to scoring of the hits was computed. |
 | @fields@ | The selective fields of the document to return for each hit (fields must be stored), comma delimited. Defaults to the internal @_source@ field. |
 | @field@ | Same as fields above, but each parameter contains a single field name to load. There can be several @field@ parameters. |
 | @sort@ | Sorting to perform. Can either be in the form of @fieldName@, or @fieldName:reverse@ (for reverse sorting). The fieldName can either be an actual field within the document, or the special @score@ name to indicate sorting based on scores. There can be several @sort@ parameters (order is important). |
 | @from@ | The starting from index of the hits to return. Defaults to @0@. |
 | @size@ | The number of hits to return. Defaults to @10@. |
-| @searchType@ | The type of the search operation to perform. Can be @dfs_query_then_fetch@, @dfs_query_and_fetch@, @query_then_fetch@, @query_and_fetch@. Defaults to @query_then_fetch@. |
+| @search_type@ | The type of the search operation to perform. Can be @dfs_query_then_fetch@, @dfs_query_and_fetch@, @query_then_fetch@, @query_and_fetch@. Defaults to @query_then_fetch@. |
 
 h2. Request Body
 
@@ -103,7 +103,7 @@ p. The search request can also be executed with a search JSON DSL, which include
 |_. Name |_. Description |
 | @from@ | The starting from index of the hits to return. Defaults to @0@. |
 | @size@ | The number of hits to return. Defaults to @10@. |
-| @searchType@ | The type of the search operation to perform. Can be @dfs_query_then_fetch@, @dfs_query_and_fetch@, @query_then_fetch@, @query_and_fetch@. Defaults to @query_then_fetch@. |
+| @search_type@ | The type of the search operation to perform. Can be @dfs_query_then_fetch@, @dfs_query_and_fetch@, @query_then_fetch@, @query_and_fetch@. Defaults to @query_then_fetch@. |
 
 p. The rest of the search request should be passed within the body itself.
 
@@ -199,12 +199,12 @@ p. Allows to add facet queries to be executed with the search. Facet queries are
 <pre class="prettyprint lang-js">
 {
     "facets" : {
-        "wowFacet" : { 
+        "wow_facet" : { 
             "query" : {
                 "term" : { "tag" : "wow" }
             }
         },
-        "esFacet" : { 
+        "es_facet" : { 
             "query" : {
                 "term" : { "tag" : "elasticsearch" }
             }
@@ -216,19 +216,19 @@ p. Allows to add facet queries to be executed with the search. Facet queries are
 }
 </pre>
 
-p. The body of each @query@ element within each facet is a "Query DSL":../query_dsl. The name of each facet (@wowFacet@ and @esFacet@ in our case), will be used to return the facet count. After the @hits@ element within the response, the @facets@ element will include all the named facets.
+p. The body of each @query@ element within each facet is a "Query DSL":../query_dsl. The name of each facet (@wow_facet@ and @es_facet@ in our case), will be used to return the facet count. After the @hits@ element within the response, the @facets@ element will include all the named facets.
 
-p. In the above example, the facets are bounded by the search query (the count is intersected with the search query). Sometimes, certain query facets should be executed without intersecting with the search query (globally). This can be done by setting the @global@ parameter to @true@, for example, now, the @esFacet@ will be executed globally:
+p. In the above example, the facets are bounded by the search query (the count is intersected with the search query). Sometimes, certain query facets should be executed without intersecting with the search query (globally). This can be done by setting the @global@ parameter to @true@, for example, now, the @es_facet@ will be executed globally:
 
 <pre class="prettyprint lang-js">
 {
     "facets" : {
-        "wowFacet" : { 
+        "wow_facet" : { 
             "query" : {
                 "term" : { "tag" : "wow" }
             }
         },
-        "esFacet" : { 
+        "es_facet" : { 
             "query" : {
                 "term" : { "tag" : "elasticsearch" }
             },
@@ -248,7 +248,7 @@ p. Allows to configure different boost level per index when searching across mor
 
 <pre class="prettyprint lang-js">
 {
-    "indicesBoost" : {
+    "indices_boost" : {
         "index1" : 1.4,
         "index2" : 1.3
     }

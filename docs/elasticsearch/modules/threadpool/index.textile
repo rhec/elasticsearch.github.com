@@ -19,4 +19,5 @@ p. The type of the thread pool can be controlled using @threadpool.type@ setting
 
 |_. Type |_. Description |
 |"cached":cached|A cached unbounded thread pool.|
-|"dynamic":dynamic|A bounded dynamic thread pool.|
+|"scaling":scaling|A bounded scaling thread pool.|
+|"blocking":blocking|A bounded blocking thread pool.|

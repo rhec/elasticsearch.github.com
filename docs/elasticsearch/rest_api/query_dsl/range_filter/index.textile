@@ -24,8 +24,8 @@ p. Filters documents with fields that have terms within a certain range. Similar
                 "age" : { 
                     "from" : "10", 
                     "to" : "20", 
-                    "includeLower" : true, 
-                    "includeUpper" : false
+                    "include_lower" : true, 
+                    "include_upper" : false
                 }
             }
         }

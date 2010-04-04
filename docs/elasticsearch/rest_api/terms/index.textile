@@ -24,19 +24,19 @@ h2. Request Parameters
 p. The terms API accepts the following request parameters:
 
 |_. Name |_. Description |
-| @fields@ | A comma separated list of fields to get the terms for, *required*.|
+| @fields@ | A comma separated list of fields to get the terms for. Defaults to the @_all@ field.|
 | @from@ | The lower bound (lex) term from which the iteration will start. Defaults to start from the first.|
 | @to@ | The upper bound (lex) term to which the iteration will end. Defaults to unbound (null). |
-| @fromInclusive@ | Should the first from (if set) be inclusive or not. Defaults to @true@ |
-| @toInclusive@ | Should the last to (if set) be inclusive or not. Defaults to @true@. |
+| @from_inclusive@ | Should the first from (if set) be inclusive or not. Defaults to @true@ |
+| @to_inclusive@ | Should the last to (if set) be inclusive or not. Defaults to @true@. |
 | @prefix@ | An optional prefix from which the terms iteration will start (in lex order). |
 | @regexp@ | An optional regular expression to filter out terms (only the ones that match the regexp will return). |
-| @minFreq@ | An optional minimum document frequency to filter out terms. |
-| @maxFreq@ | An optional maximum document frequency to filter out terms. |
+| @min_freq@ | An optional minimum document frequency to filter out terms. |
+| @max_freq@ | An optional maximum document frequency to filter out terms. |
 | @size@ | The number of term / doc freq pairs to return per field. Defaults to @10@. |
 | @sort@ | The type of sorting for term / doc freq. Can either be @term@ or @freq@. Defaults to @term@. |
 | @exact@ | Should the doc frequencies be exact frequencies. Exact frequencies takes into account deletes that have not been merged and cleaned (optimized). Note, when this is set to @true@ this operation might be an expensive operation. Defaults to @false@.|
-| @termsAsArray@ | Controls the JSON response format, if the terms should be the object name, or exist within an array. Defaults to @true@. |
+| @terms_as_array@ | Controls the JSON response format, if the terms should be the object name, or exist within an array. Defaults to @true@. |
 
 h2. Multi Index
 

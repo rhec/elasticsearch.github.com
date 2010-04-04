@@ -21,5 +21,10 @@ p. The following sections cover all the aspects of how mapping work:
 |"array_type":array_type|Mapping JSON array types.|
 |"object_type":object_type|Mapping JSON inner objects.|
 |"root_object_type":root_object_type|Mapping the root JSON object.|
+|"id_field":id_field|Allow to control the automatically created @_id@ field|
+|"type_field":type_field|Allow to control the automatically created @_type@ field|
+|"boost_field":boost_field|Allow to control the boosting of a document using an external value.|
+|"source_field":source_field|Allow to control the @_source@ field storing the actual JSON indexed.|
+|"all_field":all_field|Allows to automatically create an @_all@ field that includes all the other fields.|
 
 

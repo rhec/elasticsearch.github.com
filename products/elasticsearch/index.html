@@ -46,14 +46,14 @@ $ curl -XPUT http://localhost:9200/twitter/user/kimchy -d '{ "name" : "Shay Bano
 $ curl -XPUT http://localhost:9200/twitter/tweet/1 -d '
 { 
     "user": "kimchy", 
-    "postDate": "2009-11-15T13:12:00", 
+    "post_date": "2009-11-15T13:12:00", 
     "message": "Trying out Elastic Search, so far so good?" 
 }'
 
 $ curl -XPUT http://localhost:9200/twitter/tweet/2 -d '
 { 
     "user": "kimchy", 
-    "postDate": "2009-11-15T14:12:12", 
+    "post_date": "2009-11-15T14:12:12", 
     "message": "You know, for Search" 
 }'
 </pre>
@@ -112,7 +112,7 @@ $ curl -XGET http://localhost:9200/twitter/tweet/2
   "_index" : "twitter",
   "_type" : "tweet",
   "_id" : "2", 
-  "_source" : { "user": "kimchy", "postDate": "2009-11-15T14:12:12", "message": "You know, for Search" }
+  "_source" : { "user": "kimchy", "post_date": "2009-11-15T14:12:12", "message": "You know, for Search" }
 }
 </pre>                
             </div>
@@ -151,7 +151,7 @@ $ curl -XGET http://localhost:9200/twitter/tweet/_search -d '
 $ curl -XGET http://localhost:9200/twitter/_search?pretty=true -d '
 { "query" : { 
         "range" : { 
-            "postDate" : { 
+            "post_date" : { 
                 "from" : "2009-11-15T13:00:00", 
                 "to" : "2009-11-15T14:30:00" 
             } 
@@ -180,10 +180,10 @@ $ curl -XPUT http://localhost:9200/kimchy
 $ curl -XPUT http://localhost:9200/elasticsearch
 
 $ curl -XPUT http://localhost:9200/elasticsearch/tweet/1 -d \
-'{ "postDate": "2009-11-15T14:12:12", "message": "Zug Zug", "tag": "warcraft" }'
+'{ "post_date": "2009-11-15T14:12:12", "message": "Zug Zug", "tag": "warcraft" }'
 
 $ curl -XPUT http://localhost:9200/kimchy/tweet/1 -d \
-'{ "postDate": "2009-11-15T14:12:12", "message": "Whatyouwant?", "tag": "warcraft" }'
+'{ "post_date": "2009-11-15T14:12:12", "message": "Whatyouwant?", "tag": "warcraft" }'
 
 $ curl -XGET http://localhost:9200/kimchy,elasticsearch/tweet/_search?q=tag:warcraft
 
@@ -208,14 +208,14 @@ $ curl -XPUT http://localhost:9200/kimchy/ -d \
 '
 index :
     store:
-        type: ram
+        type: memory
 '
 
 $ curl -XPUT http://localhost:9200/elasticsearch/ -d \
 ' {
     "index" : {
-        "numberOfShards" : 2,
-        "numberOfReplicas" : 3
+        "number_of_shards" : 2,
+        "number_of_replicas" : 3
     }
 }'
 </pre>

@@ -29,21 +29,21 @@ p. The following is a sample response:
 
 <pre class="prettyprint lang-js">
 {
-  "clusterName" : "elasticsearch",
+  "cluster_name" : "elasticsearch",
   "mackimchy.local-6526" : {
     "name" : "Binary",
-    "transportAddress" : "inet[/10.0.0.1:9301]",
+    "transport_address" : "inet[/10.0.0.1:9301]",
     "dataNode" : true
   },
   "mackimchy.local-7408" : {
     "name" : "Moira Brandon",
-    "transportAddress" : "inet[/10.0.0.1:9302]",
-    "dataNode" : true
+    "transport_address" : "inet[/10.0.0.1:9302]",
+    "data_node" : true
   },
   "mackimchy.local-53946" : {
     "name" : "Isbisa",
-    "transportAddress" : "inet[10.0.0.1/10.0.0.1:9300]",
-    "dataNode" : true
+    "transport_address" : "inet[10.0.0.1/10.0.0.1:9300]",
+    "data_node" : true
   }
 }
 </pre>

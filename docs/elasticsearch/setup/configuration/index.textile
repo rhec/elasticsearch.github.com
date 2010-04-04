@@ -21,15 +21,15 @@ p. The configuration format is "YAML":http://www.yaml.org/, here is an example o
 
 <pre class="prettyprint">
 network :
-    bindHost : 10.0.0.4
+    bind_host : 10.0.0.4
 </pre>
 
-p. Internally, all settings are collapsed into "namespaced" settings. For example, the above gets collapsed into @network.bindHost@. This means that its easy to support other configuration formats, for example, "JSON":http://www.json.org. If JSON is a preferred configuration format, simply rename the @elasticsearch.yml@ file to @elasticsearch.json@ and add:
+p. Internally, all settings are collapsed into "namespaced" settings. For example, the above gets collapsed into @network.bind_host@. This means that its easy to support other configuration formats, for example, "JSON":http://www.json.org. If JSON is a preferred configuration format, simply rename the @elasticsearch.yml@ file to @elasticsearch.json@ and add:
 
 <pre class="prettyprint">
 {
     network : {
-        bindHost : "10.0.0.4"
+        bind_host : "10.0.0.4"
     }
 }
 </pre>
@@ -37,7 +37,7 @@ p. Internally, all settings are collapsed into "namespaced" settings. For exampl
 p. It also means that its easy to provide the settings externally either using the @ES_JAVA_OPTS@ or as parameters to the @elasticsearch@ command, for example:
 
 <pre class="prettyprint">
-$ elasticsearch -f -Dnetwork.bindHost=10.0.0.4
+$ elasticsearch -f -Dnetwork.bind_host=10.0.0.4
 </pre>
 
 p. The location of the configuration file can be set externally using a system property:

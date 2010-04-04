@@ -26,8 +26,8 @@ h2. Request Parameters
 p. The optimize API accepts the following request parameters:
 
 |_. Name |_. Description |
-| @maxNumSegments@ | The number of segments to optimize to. To fully optimize the index, set it to @1@. Defaults to half the number configured by the merge policy (which in turn defaults to @10@).|
-| @onlyExpungeDeletes@ | Should the optimize process only expunge segments with deletes in it. In Lucene, a document is not deleted from a segment, just marked as deleted. During a merge process of segments, a new segment is created that does have those deletes. This flag allow to only merge segments that have deletes. Defaults to @false@.|
+| @max_num_segments@ | The number of segments to optimize to. To fully optimize the index, set it to @1@. Defaults to half the number configured by the merge policy (which in turn defaults to @10@).|
+| @only_expunge_deletes@ | Should the optimize process only expunge segments with deletes in it. In Lucene, a document is not deleted from a segment, just marked as deleted. During a merge process of segments, a new segment is created that does have those deletes. This flag allow to only merge segments that have deletes. Defaults to @false@.|
 | @refresh@ | Should a refresh be performed after the optimize. Defaults to @false@. |
 | @flush@ | Should a flush be performed after the optimize. Defaults to @false@. |
 
