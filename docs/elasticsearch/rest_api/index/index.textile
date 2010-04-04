@@ -75,6 +75,19 @@ $ curl -XPUT 'http://localhost:9200/twitter/tweet/1?op_type=create' -d '
 '
 </pre>
 
+p. Another option to specify @create@ is to use the following uri:
+
+<pre class="prettyprint">
+$ curl -XPUT 'http://localhost:9200/twitter/tweet/1/_create' -d '
+{
+    "user" : "kimchy",
+    "postDate" : "2009-11-15T14:12:12",
+    "message" : "trying out Elastic Search"
+}
+'
+</pre>
+
+
 h2. Automatic Id Generation
 
 The index operation can be executed without specifying the id. In such a case, an id will be generated automatically for the document. In such a case, the @opType@ will automatically be set to @create@. Here is an example (note the *POST* used instead of *PUT*):
