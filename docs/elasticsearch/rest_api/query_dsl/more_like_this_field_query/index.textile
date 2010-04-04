@@ -28,6 +28,8 @@ p. The @more_like_this_field@ query is the same as the @more_like_this@ query, e
 }
 </pre>
 
+p(note). @more_like_this_field@ can be shortened to @mlt_field@.
+
 p. The @more_like_this_field@ top level parameters include:
 
 |_. Parameter |_. Description |
