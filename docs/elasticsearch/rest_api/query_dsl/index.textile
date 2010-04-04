@@ -33,6 +33,8 @@ h2. Queries
 |"filtered":filtered_query|A query that applies a filter to the results of another query.|
 |"more_like_this":more_like_this_query|More like this query find documents that are "like" provided text by running it against one or more fields.|
 |"more_like_this_field":more_like_this_field_query|More like this query find documents that are "like" provided text by running it against a field.|
+|"fuzzy_like_this":fuzzy_like_this_query|Fuzzy like this query find documents that are "like" provided text by running it against one or more fields.|
+|"fuzzy_like_this_field":fuzzy_like_this_field_query|Fuzzy like this query find documents that are "like" provided text by running it against a field.|
 
 h2. Filters
 
