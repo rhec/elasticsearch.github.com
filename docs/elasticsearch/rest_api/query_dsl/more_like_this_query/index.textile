@@ -27,6 +27,8 @@ p. More like this query find documents that are "like" provided text by running 
 }
 </pre>
 
+p(note). @more_like_this@ can be shortened to @mlt@.
+
 p. The @more_like_this@ top level parameters include:
 
 |_. Parameter |_. Description |
