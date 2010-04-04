@@ -43,6 +43,6 @@ p. The @memory@ type stores the index in memory with the following configuration
 
 |_. Setting |_. Description |
 |@index.store.memory.direct@|Will the index be stored outside the heap (direct) or within the heap. Defaults to @true@ which means it will be stored outside the heap.|
-|@index.store.memory.buffer_size@|A size based setting allowing to configure the buffers (chunks) that each file is fragmented to. Defaults to @1k@.|
+|@index.store.memory.buffer_size@|A size based setting allowing to configure the buffers (chunks) that each file is fragmented to. Defaults to @100k@.|
 |@index.store.memory.cache_size@|A size based setting of the size of cached, already allocated buffers. Defaults to @20m@.|
 |@index.store.memory.warm_cache@|Should the cache be warmed or not. Defaults to @true@.|
