@@ -85,8 +85,8 @@ p. The @TransportClient@ connects remotely to an elasticsearch cluster using the
 // on startup    
     
 Client client = new TransportClient()
-        .addTransportAddress(new InetSocketTransportAddress("host1", 9800))
-        .addTransportAddress(new InetSocketTransportAddress("host2", 9800));
+        .addTransportAddress(new InetSocketTransportAddress("host1", 9300))
+        .addTransportAddress(new InetSocketTransportAddress("host2", 9300));
 
 // on shutdown
 
