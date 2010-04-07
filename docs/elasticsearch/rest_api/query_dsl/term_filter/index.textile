@@ -14,14 +14,14 @@ docBreadcrumb = [
 
 h1. Term Filter
 
-p. Filters documents that have fields that contain a a term (*not analyzed*). Similar to term query, except that it acts as a filter. Can be placed within queries that accept a filter, for example:
+p. Filters documents that have fields that contain a term (*not analyzed*). Similar to term query, except that it acts as a filter. Can be placed within queries that accept a filter, for example:
 
 <pre class="prettyprint lang-js">
 {
-    "constantScore" : {
+    "constant_score" : {
         "filter" : {
             "term" : { "user" : "kimchy"}
-        },
+        }
     }
 }
 </pre>

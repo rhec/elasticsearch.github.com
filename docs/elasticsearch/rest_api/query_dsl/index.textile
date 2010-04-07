@@ -40,6 +40,7 @@ h2. Filters
 
 |_. API |_. Description |
 |"term":term_filter|Filters documents that have fields that contain a a term (*not analyzed*).|
+|"terms":terms_filter|Filters documents that have fields that match any of the listed terms (*not analyzed*).|
 |"range":range_filter|Filters documents with fields that have terms within a certain range.|
 |"prefix":prefix_filter|Filters documents that have fields containing terms with a specified prefix.|
 |"bool":bool_filter|A filter that matches documents matching boolean combinations of other queries.|
