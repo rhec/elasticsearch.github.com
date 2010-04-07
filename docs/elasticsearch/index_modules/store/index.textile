@@ -21,19 +21,48 @@ p. With distributed systems, like ElasticSearch, the index can be sharded, meani
 
 p. Another typical reason for not using memory based storage for indices is the fact that when the process shuts down, all the indexed data basically goes away. With ElasticSearch, the storage is, in any case, considered temporal, and the "index gateway":../gateway is there to provide long term persistency of the index. Even without the long term persistency the gateway provides, the fact that each shard can have replicas means that the chances of loosing data in case of node failures (not complete cluster shutdown) decreases with the number of replicas we have.
 
-p. Another important aspect of memory based storage is the fact that ElasticSearch supports storing the index in memory *outside of the JVM heap space* using the "ByteBuffer":#ByteBuffer storage type. It translates to the fact that there is no need for extra large JVM heaps (with their own consequences) for storing the index in memory.
+p. Another important aspect of memory based storage is the fact that ElasticSearch supports storing the index in memory *outside of the JVM heap space* using the "Memory":#Memory storage type. It translates to the fact that there is no need for extra large JVM heaps (with their own consequences) for storing the index in memory.
 
 p. The following sections lists all the different storage types supported.
 
-h2. Simple FS
+h2. File System
 
-p. The @simplefs@ type is a plain forward implementation of file system storage (maps to Lucene @SimpleFsDirectory@) using random access file. This class has poor concurrent performance (multiple threads will bottleneck). Its usually better to use the "NIO FS":#NIO_FS or "MMap FS":#MMap_FS when file system is required.
+p. File system based storage, includes different internal types of how to work with the file system. This is the default storage used. Out of the different types, the best one suited will be automatically chosen (@niofs@ on non windows, and @simplefs@ on windows).
 
-h2. NIO FS
+p. Regardless of the actual file system type chosen, specific index files can be stored in memory for faster access. Lucene breaks the index into several files, each holding different type of information (see more "here":http://lucene.apache.org/java/3_0_1/fileformats.html). Here is a sample memory configuration:
+
+<pre class="prettyprint">
+index :
+    store:
+        fs:
+            memory:
+                enabled: true
+</pre>
+
+p. By default, all files with no extension, the @.del@ and @.gen@ files are stored in memory. The extensions can be configured using the @index.store.fs.memory.extensions@ setting, which accepts an array. The @fs.memory@ itself is simply an additional @memory@ store, so all configuration settings allowed on it can be set on the @fs.memory@ as well. Here is a more complete configuration sample:
+
+<pre class="prettyprint">
+index :
+    store:
+        fs:
+            memory:
+                enabled : true
+                extensions : ["", "del", "gen", "tis", "tii"]
+                direct: true
+                buffer_size: 50kb
+</pre>
+
+p. The following are the different file system based storage types:
+
+h3. Simple FS
+
+p. The @simplefs@ type is a plain forward implementation of file system storage (maps to Lucene @SimpleFsDirectory@) using random access file. This class has poor concurrent performance (multiple threads will bottleneck). Its usually better to use the @niofs@ when file system is required.
+
+h3. NIO FS
 
 p. The @niofs@ type stores the shard index on the file system (maps to Lucene @NIOFSDirectory@) and allows for multiple threads to read from the same file concurrently. It is not recommended on Windows because of a bug in SUN Java implementation.
 
-h2. MMap FS
+h3. MMap FS
 
 p. The @mmapfs@ type stores the shard index on the file system (maps to Lucene @MMapDirectory@) using mmap. Memory mapping uses up a portion of the virtual memory address space in your process equal to the size of the file being mapped.  Before using this class, be sure your have plenty of virtual address space.
 
