@@ -26,5 +26,6 @@ p. The following sections cover all the aspects of how mapping work:
 |"boost_field":boost_field|Allow to control the boosting of a document using an external value.|
 |"source_field":source_field|Allow to control the @_source@ field storing the actual JSON indexed.|
 |"all_field":all_field|Allows to automatically create an @_all@ field that includes all the other fields.|
+|"attachment":attachment|A plugin extension to index @attachment@ types.|
 
 
