@@ -23,3 +23,10 @@ p. This section describes the Java API elasticsearch provides. All of elasticsea
 |"terms":terms|Extract terms and their document frequencies from one or more fields.|
 
 p. There is also an evolving "Administration Java API":admin.
+
+
+h2. Maven Repository
+
+p. ElasticSearch is hosted on "Sonatype":http://www.sonatype.org/, with both a "releases repo":http://oss.sonatype.org/content/repositories/releases/ and a "snapshots repo":oss.sonatype.org/content/repositories/snapshots.
+
+p(note). ElasticSearch distribution jar file also include its sources, so ivy users can easily use it also as the source/javadoc resource.

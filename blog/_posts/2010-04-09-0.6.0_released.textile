@@ -1,0 +1,30 @@
+---
+layout: blogpost
+title: ElasticSearch 0.6.0 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.6.0@ has just been released. You can download it "here":/download. This release brings much improved stability, and several features:
+
+p. First, a big rename has occurred. All the JSON API now uses "underscore casing" instead of "CamelCase casing". This makes elasticsearch more streamlined with other JSON based REST APIs out there.
+
+p. The JSON API is much more flexible now, supporting numbers provided as strings, and boolean values provided as either numbers or strings. This makes using elasticsearch from dynamic languages more easy.
+
+p. @_all@ field support has been added, automatically creating a field that includes all the different fields in the JSON document for simpler searching (no need to explicitly specify the field name to search on). One of the nice things about the @_all@ field is that it takes boost level setting of different fields into account. More information on the @_all@ field can be found "here":/docs/elasticsearch/mapping/all_field.
+
+p. Highlighting is now supported as part of the search request.
+
+p. Simpler Query DSL including support for @fuzzy_like_this@ queries and @gt/lt/gte/lte@ on @range@ queries.
+
+p. "Index Aliases":/docs/elasticsearch/rest_api/admin/indices/aliases API allows to create aliases associated with a single index or more and executing other APIs using it instead of the actual index names.
+
+p. A new plugin system has been develop allowing to easily extend elasticsearch with the first plugin being the @attachments@ plugin allowing to index "attachments" such as documents, images, mails, and so on.
+
+p. Internal changes to how communication is handled between nodes resulting in much smaller messages passing around over the low level transport layer and a lower latency/overhead for each API. 
+
+p. Many bug fixes and performance enhancements slowly making elasticsearch as rock solid as it should be!
+
+p. Last but not least, elasticsearch is now on Maven repository, with a "releases repo":http://oss.sonatype.org/content/repositories/releases/ and a "snapshots repo":http://oss.sonatype.org/content/repositories/snapshots.
+
+-shay.banon
