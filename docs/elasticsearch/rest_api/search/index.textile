@@ -268,16 +268,25 @@ p. ElasticSearch is very flexible and allows to control the type of search to ex
 
 h3. Query And Fetch
 
-The most naive (and possibly fastest) implementation is to simply execute the query on all relevant shards and return the results. Each shard returns @size@ results. Since each shard already returns @size@ hits, this type actually returns @size@ times @number of shards@ results back to the caller.
+p. The most naive (and possibly fastest) implementation is to simply execute the query on all relevant shards and return the results. Each shard returns @size@ results. Since each shard already returns @size@ hits, this type actually returns @size@ times @number of shards@ results back to the caller.
 
 h3. Query Then Fetch
 
-The query is executed against all shards, but only enough information is returned (*not the document content*). The results are then sorted and ranked, and based on it, *only the relevant shards* are asked for the actual document content. The return number of hits is exactly as specified in @size@, since they are the only ones that are fetched. This is very handy when the index has a lot of shards (not replicas, shard id groups).
+p. The query is executed against all shards, but only enough information is returned (*not the document content*). The results are then sorted and ranked, and based on it, *only the relevant shards* are asked for the actual document content. The return number of hits is exactly as specified in @size@, since they are the only ones that are fetched. This is very handy when the index has a lot of shards (not replicas, shard id groups).
 
 h3. Dfs, Query And Fetch
 
-Same as "Query And Fetch", except for an initial scatter phase which goes and computes the distributed term frequencies for more accurate scoring.
+p. Same as "Query And Fetch", except for an initial scatter phase which goes and computes the distributed term frequencies for more accurate scoring.
 
 h3. Dfs, Query Then Fetch
 
-Same as "Query Then Fetch", except for an initial scatter phase which goes and computes the distributed term frequencies for more accurate scoring.
+p. Same as "Query Then Fetch", except for an initial scatter phase which goes and computes the distributed term frequencies for more accurate scoring.
+
+h2. Scrolling
+
+p. A search request can be scrolled by specifying the @scroll@ parameter. The @scroll@ parameter is a time value parameter (for example: @scroll=5m@), indicating for how long the nodes that participate in the search will maintain relevant resources in order to continue and support it. This is very similar in its idea to opening a cursor against a database.
+
+p. A @scroll_id@ is returned from the first search request (and from continuos) scroll requests. The @scroll_id@ should be used when scrolling (and thats it, no other parameter is required).
+
+p(note). Scrolling is not intended for real time user requests, it is intended for cases like scrolling over large portions of data that exists within elasticsearch to reindex it for example.
+
