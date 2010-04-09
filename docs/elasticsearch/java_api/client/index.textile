@@ -13,66 +13,61 @@ docBreadcrumb = [
 
 h1. Client
 
-p. Obtaining an elaticsearch @Client@ is simple. The most common way to get a client is by starting an embedded @Server@ which acts as a node within the cluster. Another manner is by using a @TransportClient@ which connects to the cluster without being part of it.
+p. Obtaining an elasticsearch @Client@ is simple. The most common way to get a client is by starting an embedded @Node@ which acts as a node within the cluster. Another manner is by using a @TransportClient@ which connects to the cluster without being part of it.
 
-h2. Server Client
+h2. Node Client
 
-p. A Server based client is the simplest form to get a @Client@ to start executing operations against elasticsearch.
+p. A Node based client is the simplest form to get a @Client@ to start executing operations against elasticsearch.
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.server.ServerBuilder.*;
+import static org.elasticsearch.node.NodeBuilder.*;
 import static org.elasticsearch.util.settings.ImmutableSettings.Builder.*;
 import static org.elasticsearch.util.settings.ImmutableSettings.*;
 
 // on startup
 
-Server server = serverBuilder().server();
+Node node = nodeBuilder().node();
 Client client = server.client();
 
 // on shutdown
 
-server.close();
+node.close();
 </pre>
 
-p. When starting a @Server@, it joins the elasticsearch cluster (you can have different clusters by simple setting the @cluster.name@ setting). The benefit of using the @Client@ is the fact that operations are automatically routed to the node(s) the operations need to be executed on, without performing a "double hop". For example, the index operation will automatically be executed on the shard that it will end up existing at.
+p. When starting a @Node@, it joins the elasticsearch cluster (you can have different clusters by simple setting the @cluster.name@ setting, or explicitly using the @clusterName@ method on the builder). The benefit of using the @Client@ is the fact that operations are automatically routed to the node(s) the operations need to be executed on, without performing a "double hop". For example, the index operation will automatically be executed on the shard that it will end up existing at.
 
-p. When starting a @Server@, one of the common settings to consider is if it should hold data or not. In other words, should indices and shards be allocated to it. Many times we would like to have the clients just be clients, without shards being allocated to them. This is simple to configure by setting the @node.data@ setting to @false@:
+p. When starting a @Node@, one of the common settings to consider is if it should hold data or not. In other words, should indices and shards be allocated to it. Many times we would like to have the clients just be clients, without shards being allocated to them. This is simple to configure by setting either @node.data@ setting to @false@ or @node.client@ to @true@ (the @NodeBuilder@ respective helper methods on it):
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.server.ServerBuilder.*;
+import static org.elasticsearch.node.NodeBuilder.*;
 import static org.elasticsearch.util.settings.ImmutableSettings.Builder.*;
 import static org.elasticsearch.util.settings.ImmutableSettings.*;
 
 // on startup
 
-Server server = serverBuilder()
-                    .settings(settingsBuilder().put("node.data", false))
-                    .server();
-Client client = server.client();
+Node node = nodeBuilder().client(true).node();
+Client client = node.client();
 
 // on shutdown
 
-server.close();
+node.close();
 </pre>
 
-p. Another common usage is to start the @Server@ and use the @Client@ in unit/integration tests. In such a case, we would like to start a "local" @Server@ (with a "local" discovery and transport). Again, this is just a matter of a simple setting when starting the @Server@. Note, "local" here means local on the JVM (well, actually class loader) level, meaning that two *local* servers started within the same JVM will discover themselves and form a cluster.
+p. Another common usage is to start the @Node@ and use the @Client@ in unit/integration tests. In such a case, we would like to start a "local" @Node@ (with a "local" discovery and transport). Again, this is just a matter of a simple setting when starting the @Node@. Note, "local" here means local on the JVM (well, actually class loader) level, meaning that two *local* servers started within the same JVM will discover themselves and form a cluster.
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.server.ServerBuilder.*;
+import static org.elasticsearch.node.NodeBuilder.*;
 import static org.elasticsearch.util.settings.ImmutableSettings.Builder.*;
 import static org.elasticsearch.util.settings.ImmutableSettings.*;
 
 // on startup
 
-Server server = serverBuilder()
-                    .settings(settingsBuilder()
-                                .put("node.local", true))
-                    .server();
-Client client = server.client();
+Node node = nodeBuilder().local(true).node();
+Client client = node.client();
 
 // on shutdown
 
-server.close();
+node.close();
 </pre>
 
 
