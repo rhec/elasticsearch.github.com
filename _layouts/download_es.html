@@ -6,11 +6,37 @@ layout: default
 <div class="generic nineforty" style="text-align: center;">
     <h1>{{page.title}}</h1>
     <p>Your download will begin shortly, if it doesn't, <a href="{{page.download_url}}">click here</a>.</p>
-    {% if page.download_source_url != null  %}
-    <p>Download source <a href="{{page.download_source_url}}">here</a>.</p>
-    {% endif  %}
+    
     <h2>While downloading:</h2>
 </div>
+
+{% if page.download_type != 'source' %}
+
+<div class="generic twoeighty break" style="text-align: right">
+    <h2>Download Plugins</h2>
+</div>
+<div class="generic foursixty end">
+    <p>
+        {% if page.download_attachment_url != null  %}
+        <a href="{{page.download_attachment_url}}">Attachments</a> - Add attachment type (docs, html, ...) indexing.
+        {% endif  %}
+    </p>
+</div>
+
+<div class="generic twoeighty break" style="text-align: right">
+    <h2>Download Source</h2>
+</div>
+<div class="generic foursixty end">
+    <p>
+        {% if page.download_source_url != null  %}
+        <a href="{{page.download_source_url}}">Source</a> can be downloaded and built (distributions are placed under <code>build/distributions</code>) using:
+        {% endif  %}
+<pre>
+$ gradlew
+</pre>
+    </p>
+</div>
+{% endif %}
 
 <script type="text/javascript"> 
 _gaq.push(['_trackEvent', 'Downloads', 'ElasticSearch', '{{page.version}}'])
@@ -26,9 +52,6 @@ window.onload = function () {
 </div>
 <div class="generic foursixty end">
     <p>The following will build and create a distribution placed under <code>build/distributions</code>.</p>
-<pre>
-$ gradlew
-</pre>
 </div>
 {% endif %}
 
