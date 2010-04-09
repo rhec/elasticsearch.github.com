@@ -1,0 +1,65 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Index Aliases API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["admin", "Admin"],
+    ["indices", "Indices"],
+    ["aliases", "Aliases"]
+];
+</script>
+
+h1. Index Aliases
+
+p. APIs in elasticsearch accept an index name when working against a specific index, and several indices when applicable. The index aliases API allow to alias an index with a name, with all APIs automatically converting the alias name to the actual index name. An alias can also be mapped to more than one index, and when specifying it, the alias will automatically expand to the aliases indices. 
+
+p. Here is a sample of associating the alias @alias1@ with index @test1@:
+
+<pre class="prettyprint">
+$ curl -XPUT 'http://localhost:9200/_aliases' -d '
+{
+    "actions" : [
+        { "add" : { "index" : "test1", "alias" : "alias1" } }
+    ]
+}'
+</pre>
+
+p. An alias can also be removed, for example:
+
+<pre class="prettyprint">
+$ curl -XPUT 'http://localhost:9200/_aliases' -d '
+{
+    "actions" : [
+        { "remove" : { "index" : "test1", "alias" : "alias1" } }
+    ]
+}'
+</pre>
+
+p. Renaming an index is a simple @remove@ then @add@ operation within the same API:
+
+<pre class="prettyprint">
+$ curl -XPUT 'http://localhost:9200/_aliases' -d '
+{
+    "actions" : [
+        { "remove" : { "index" : "test1", "alias" : "alias1" } }
+        { "add" : { "index" : "test1", "alias" : "alias2" } }
+    ]
+}'
+</pre>
+
+p. Associating an alias with more then one index are simply several @add@ actions:
+
+<pre class="prettyprint">
+$ curl -XPUT 'http://localhost:9200/_aliases' -d '
+{
+    "actions" : [
+        { "add" : { "index" : "test1", "alias" : "alias1" } }
+        { "add" : { "index" : "test2", "alias" : "alias1" } }
+    ]
+}'
+</pre>
+

@@ -19,6 +19,7 @@ p. This section describes administration APIs that revolve around indices. The f
 |_. API |_. Description |
 |"create_index":create_index|Creates an index using optional settings.|
 |"delete_index":delete_index|Deletes an index.|
+|"aliases":aliases|Aliasing one or more index.|
 |"put_mapping":put_mapping|Register specific mapping definition for a specific type against one or more indices.|
 |"status":status|Retrieves the status of the indices.|
 |"flush":flush|Flush the state of the index (clears memory).|

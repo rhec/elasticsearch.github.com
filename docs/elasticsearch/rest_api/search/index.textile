@@ -168,7 +168,9 @@ p. Allows to add one or more sort on specific fields. Each sort can be reversed 
 {
     "sort" : [
         { "postDate" : {"reverse" : true} },
-        "user"
+        "user",
+        { "name" : "desc" },
+        { "age" : "desc" },
         "score"
     ]
     "query" : {
