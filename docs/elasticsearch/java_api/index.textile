@@ -29,4 +29,6 @@ h2. Maven Repository
 
 p. ElasticSearch is hosted on "Sonatype":http://www.sonatype.org/, with both a "releases repo":http://oss.sonatype.org/content/repositories/releases/ and a "snapshots repo":oss.sonatype.org/content/repositories/snapshots.
 
+p. It requires the "jboss repo":http://repository.jboss.com/maven2/ to be added as well.
+
 p(note). ElasticSearch distribution jar file also include its sources, so ivy users can easily use it also as the source/javadoc resource.
