@@ -1,0 +1,74 @@
+---
+layout: blogpost
+title: ElasticSearch Just Got Groovy
+author: Shay Banon
+nick: kimchy
+---
+
+notextile. <img src="http://media.xircles.codehaus.org/_projects/groovy/_logos/medium.png" height="60px" class="left-img"></img>
+
+p. Just pushed into master (upcoming 0.7 release) a "Groovy":http://groovy.codehaus.org/ client wrapper on-top of the "Java API":/docs/elasticsearch/java_api elasticsearch provides.
+
+p. Using elasticsearch with dynamic languages makes a lot of sense, especially thanks to its "domain driven approach":/blog/2010/02/12/yourdatayoursearch.html, and thanks to the fact that Groovy runs on the JVM, it can make use of the native elasticsearch Java API. Here are some examples:
+
+p. Creating a node (that acts as a client) within the cluster is simple using the @GNodeBuilder@:
+
+<pre class="prettyprint">
+def nodeBuilder = new org.elasticsearch.groovy.node.GNodeBuilder()
+nodeBuilder.settings {
+    node {
+        client = true
+    }
+}
+def gNode = nodeBuilder.node()
+def client = gNode.client
+</pre>
+
+p. Note, right from the start, the domain driven settings applied. Settings in elasticsearch can be defined using @JSON@, and, by utilizing Grails @JsonBuilder@, they can be expressed as a Groovy @Closure@.
+
+p. Next, lets index some data:
+
+<pre class="prettyprint">
+def future = client.index {
+    index "twitter"
+    type "tweet"
+    id "1"
+    source {
+        user = "kimchy"
+        message = "elasticsearch is groovy"
+    }
+}
+
+// a listener can be added to the future
+future.successs = {IndexResponse response ->
+    println "Indexed $response.index/$response.type/$response.id"
+}
+
+// or, we can wait for the response
+println "Indexed $future.response.index/$future.response.type/$future.response.id"
+</pre>
+
+p. Here, we indexed a tweet into an index called @twitter@, the type is a @tweet@ and under id @1@. Note that the indexed @JSON@ is expressed using the same @JsonBuilder@. 
+
+p. Also, all operations in elasticsearch are asynchronous allowing to either register a listener (on success/failure) or work with an @ActionFuture@. The @future@ in the Groovy case is an enhanced Groovy future called @GActionFuture@. It allows to wait for the @response@, or register @Closure@ that will be called on a successful index, failed index, or both.
+
+p. All APIs are used exactly the same as the above index one. Let me finish with an example of the Search API, which shows the power of the search query DSL:
+
+<pre class="prettyprint">
+def search = client.search {
+    indices "twitter"
+    types "tweet"
+    source {
+        query {
+            term(user: "kimchy")
+        }
+    }
+}
+
+println "Search returned $search.response.hits.totalHits total hits"
+println "First hit tweet message is $search.response.hits[0].source.message"
+</pre>
+
+p. As you can see, using elasticsearch from Groovy is groovy ;). Someone up for building a grails plugin utilizing this?
+
+-shay.banon
