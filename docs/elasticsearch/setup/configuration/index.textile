@@ -28,8 +28,8 @@ p. Internally, all settings are collapsed into "namespaced" settings. For exampl
 
 <pre class="prettyprint">
 {
-    network : {
-        bind_host : "10.0.0.4"
+    "network" : {
+        "bind_host" : "10.0.0.4"
     }
 }
 </pre>
@@ -39,6 +39,17 @@ p. It also means that its easy to provide the settings externally either using t
 <pre class="prettyprint">
 $ elasticsearch -f -Dnetwork.bind_host=10.0.0.4
 </pre>
+
+p. Another option is to use the @${...}@ notation within the configuration file which will resolve to an environment setting, for example:
+
+<pre class="prettyprint">
+{
+    "network" : {
+        "bind_host" : "${ES_NET_BIND_HOST}"
+    }
+}
+</pre>
+
 
 p. The location of the configuration file can be set externally using a system property:
 
