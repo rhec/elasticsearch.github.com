@@ -21,13 +21,11 @@ p. A Node based client is the simplest form to get a @Client@ to start executing
 
 <pre class="prettyprint lang-java">
 import static org.elasticsearch.node.NodeBuilder.*;
-import static org.elasticsearch.util.settings.ImmutableSettings.Builder.*;
-import static org.elasticsearch.util.settings.ImmutableSettings.*;
 
 // on startup
 
 Node node = nodeBuilder().node();
-Client client = server.client();
+Client client = node.client();
 
 // on shutdown
 
@@ -40,8 +38,6 @@ p. When starting a @Node@, one of the common settings to consider is if it shoul
 
 <pre class="prettyprint lang-java">
 import static org.elasticsearch.node.NodeBuilder.*;
-import static org.elasticsearch.util.settings.ImmutableSettings.Builder.*;
-import static org.elasticsearch.util.settings.ImmutableSettings.*;
 
 // on startup
 
@@ -57,8 +53,6 @@ p. Another common usage is to start the @Node@ and use the @Client@ in unit/inte
 
 <pre class="prettyprint lang-java">
 import static org.elasticsearch.node.NodeBuilder.*;
-import static org.elasticsearch.util.settings.ImmutableSettings.Builder.*;
-import static org.elasticsearch.util.settings.ImmutableSettings.*;
 
 // on startup
 
