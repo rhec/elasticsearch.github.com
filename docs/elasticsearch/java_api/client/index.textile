@@ -1,13 +1,13 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | REST API
+title: ElasticSearch Docs | Java API | Client
 ---
 
 <script type="text/javascript">
 docBreadcrumb = [
     ["elasticsearch", "ElasticSearch"], 
     ["java_api", "Java API"],
-    ["java_api", "Client"]
+    ["client", "Client"]
 ];
 </script>
 

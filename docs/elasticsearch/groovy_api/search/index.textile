@@ -1,0 +1,36 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Groovy Client | Search API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["groovy_api", "Groovy API"],
+    ["search", "Search"]
+];
+</script>
+
+h1. Search
+
+p. The search API is very similar to the "Java search API":/docs/elasticsearch/java_api/search. The Groovy extension allows to provide the search source to execute as a @Closure@ including the query itself (similar to GORM criteria builder):
+
+<pre class="prettyprint">
+def search = node.client.search {
+    indices "test"
+    types "type1"
+    source {
+        query {
+            term(test: "value")
+        }
+    }
+}
+
+search.response.hits.each {SearchHit hit -> 
+    println "Got hit $hit.id from $hit.index/$hit.type"
+}
+</pre>
+
+p. The format of the search @Closure@ follows the same JSON syntax as the "REST API Search":/docs/elasticsearch/rest_api/search request.
+
+p. The source of each hit returned (if selected) can be treated as a map (@SearchHit#getSource@).

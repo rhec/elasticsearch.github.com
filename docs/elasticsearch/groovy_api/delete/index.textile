@@ -1,0 +1,24 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Groovy Client | Delete API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["groovy_api", "Groovy API"],
+    ["delete", "Delete"]
+];
+</script>
+
+h1. Delete
+
+p. The delete API is very similar to the "Java delete API":/docs/elasticsearch/java_api/delete, here is an example:
+
+<pre class="prettyprint">
+def deleteF = node.client.delete {
+    index "test"
+    type "type1"
+    id "1"
+}
+</pre>

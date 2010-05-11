@@ -1,0 +1,30 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Groovy Client | Count API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["groovy_api", "Groovy API"],
+    ["count", "Count"]
+];
+</script>
+
+h1. Count
+
+p. The count API is very similar to the "Java count API":/docs/elasticsearch/java_api/count. The Groovy extension allows to provide the query to execute as a @Closure@ (similar to GORM criteria builder):
+
+<pre class="prettyprint">
+def count = client.count {
+    indices "test"
+    types "type1"
+    query {
+        term {
+            test = "value"
+        }
+    }
+}
+</pre>
+
+p. The query follows the same "JSON Query DSL":/docs/elasticsearch/rest_api/query_dsl provided for the REST API.

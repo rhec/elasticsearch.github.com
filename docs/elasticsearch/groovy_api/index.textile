@@ -1,18 +1,20 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | Java API
+title: ElasticSearch Docs | Groovy API
 ---
 
 <script type="text/javascript">
 docBreadcrumb = [
     ["elasticsearch", "ElasticSearch"], 
-    ["java_api", "Java API"]
+    ["groovy_api", "Groovy API"]
 ];
 </script>
 
-h1. Java API
+h1. Groovy API
 
-p. This section describes the Java API elasticsearch provides. All of elasticsearch APIs are executed using a "Client":client, and are completely asynchronous in nature (either accepts a listener, or return a future).
+p. This section describes the "Groovy":http://groovy.codehaus.org/ API elasticsearch provides. All of elasticsearch APIs are executed using a "GClient":client, and are completely asynchronous in nature (either accepts a listener, or return a future).
+
+p. The Groovy API is a wrapper on top of the "Java API":/docs/elasticsearch/java_api exposing it in a groovier manner. The execution options for each API follow a similar manner and covered in "the anatomy of a Groovy API":anatomy. The following section lists more detailed explanation of the more common APIs:
 
 |_. API |_. Description |
 |"index":index|Index a typed JSON document into a specific index and make it searchable.|
@@ -20,10 +22,6 @@ p. This section describes the Java API elasticsearch provides. All of elasticsea
 |"get":get|Get a typed JSON document from an index based on its id.|
 |"search":search|Execute a search query against one or more indices and get back search hits.|
 |"count":count|Execute a query against one or more indices and get hits count.|
-|"terms":terms|Extract terms and their document frequencies from one or more fields.|
-
-p. There is also an evolving "Administration Java API":admin.
-
 
 h2. Maven Repository
 

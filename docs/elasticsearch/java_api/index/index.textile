@@ -17,7 +17,7 @@ p. The index API allows to index a typed JSON document into a specific index and
 
 <pre class="prettyprint lang-java">
 import static org.elasticsearch.client.Requests.*;
-import static org.elasticsearch.util.json.JsonBuilder.*;
+import static org.elasticsearch.util.xcontent.XContentBuilder.*;
 
 IndexResponse response = client.index(indexRequest("twitter")
         .type("tweet")
@@ -31,7 +31,7 @@ IndexResponse response = client.index(indexRequest("twitter")
         )).actionGet();
 </pre>
 
-p. The source to be indexed is a binary array representing the json to be indexed. It can be easily built using elasticsearch @JsonBuilder@.
+p. The source to be indexed is a binary array representing the json to be indexed. It can be easily built using elasticsearch special @XContent@ JSON Builder.
 
 p. For more information on the index operation, check out the REST "index":/docs/elasticsearch/rest_api/index docs.
 
@@ -47,7 +47,7 @@ p. The options are to execute the operation on a different thread, or to execute
 
 <pre class="prettyprint lang-java">
 import static org.elasticsearch.client.Requests.*;
-import static org.elasticsearch.util.json.JsonBuilder.*;
+import static org.elasticsearch.util.xcontent.XContentFactory.*;
 
 IndexResponse response = client.index(indexRequest("twitter")
         .operationThreaded(false)
