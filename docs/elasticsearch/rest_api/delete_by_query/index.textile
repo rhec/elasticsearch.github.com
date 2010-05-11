@@ -80,7 +80,7 @@ p. When executing a delete by query using the query parameter @q@, the query pas
 
 h2. Request Body
 
-p. The delete by query can use the "Query DSL":../query_dsl within its body in order to express the query that should be executed and delete all documents.
+p. The delete by query can use the "Query DSL":../query_dsl within its body in order to express the query that should be executed and delete all documents. The body content can also be passed as a REST parameter named @source@.
 
 h2. Distributed
 

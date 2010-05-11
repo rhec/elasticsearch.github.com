@@ -27,6 +27,10 @@ p. This section describes the REST APIs ElasticSearch provides using JSON. The f
 
 p. There is also an evolving "Administration REST API":admin.
 
+h2. Exported REST Layers
+
+p. The REST API is exposed using "HTTP":/docs/elasticsearch/modules/http, "Memcached":/docs/elasticsearch/modules/memcached.
+
 h2. Pretty Results
 
 p. When appending @?pretty=true@ to any request made, the JSON returned will be pretty formatted (use it for debugging only!).

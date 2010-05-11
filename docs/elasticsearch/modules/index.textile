@@ -18,8 +18,9 @@ p. The following lists the available top level modules:
 
 |_. Module |_. Description |
 |"Node":node|Generic, node level settings.|
-|"Transport":transport|Internal communication layer between nodes.|
+|"Transport":transport|Native communication layer between nodes.|
 |"HTTP":http|HTTP based communication layer.|
+|"Memcached":memcached|Memcached based communication layer.|
 |"Discovery":discovery|Discovery of nodes and cluster state.|
 |"Gateway":gateway|Long term persistent storage of cluster meta data.|
 |"JMX":jmx|JMX monitoring.|
