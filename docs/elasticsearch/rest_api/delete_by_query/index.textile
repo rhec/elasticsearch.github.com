@@ -1,6 +1,6 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | REST Delete By Query API
+title: ElasticSearch Docs | REST API | Delete By Query
 ---
 
 <script type="text/javascript">

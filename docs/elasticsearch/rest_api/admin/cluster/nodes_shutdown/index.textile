@@ -1,6 +1,6 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | REST Nodes Shutdown API
+title: ElasticSearch Docs | REST API Admin | Cluster | Nodes Shutdown
 ---
 
 <script type="text/javascript">

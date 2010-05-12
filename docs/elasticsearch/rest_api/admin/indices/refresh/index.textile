@@ -1,6 +1,6 @@
 ---
 layout: doc_es
-title: ElasticSearch Docs | REST Refresh API
+title: ElasticSearch Docs | REST API | Admin | Indices | Refresh
 ---
 
 <script type="text/javascript">
