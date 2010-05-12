@@ -1,0 +1,26 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Nodes Stats API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["admin", "Admin"],
+    ["cluster", "Cluster"],
+    ["nodes_stats", "Nodes Stats"]
+];
+</script>
+
+h1. Nodes Stats
+
+p. The cluster nodes stats API allows to retrieve one or more (or all) of the cluster nodes statistics.
+
+<pre class="prettyprint">
+$ curl -XGET 'http://localhost:9200/_cluster/nodes/stats'
+
+$ curl -XGET 'http://localhost:9200/_cluster/nodes/nodeId1,nodeId2/stats'
+</pre>
+
+p. The first command retrieves stats of all the nodes in the cluster. The second commands selectively retrieves nodes stats of only @nodeId1@ and @nodeId2@.
