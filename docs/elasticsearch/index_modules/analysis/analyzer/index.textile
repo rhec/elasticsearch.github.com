@@ -1,0 +1,43 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Analyzer
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["analyzer", "Analyzer"], 
+];
+</script>
+
+h1. Analyzer
+
+p. Analyzers in general are broken down into a @Tokenizer@ with zero or more @TokenFilter@ applied to it. The analysis module allows to register @TokenFilters@, @Tokenizers@ and @Analyzers@ under logical names which can then be referenced either in mapping definitions or in certain APIs. Here is a list of analyzer types:
+
+|_. Type |_. Description |
+|"standard":standard|An analyzer that is built of using "Standard Tokenizer":../tokenizer/standard, with "Standard Token Filter":../tokenfilter/standard, "Lower Case Token Filter":../tokenfilter/lowercase, and "Stop Token Filter":../tokefilter/stop.|
+|"simple":simple|An analyzer that is built using a "Lower Case Tokenizer":../tokenizer/lowercase.|
+|"stop":stop|An analyzer that is built using a "Lower Case Tokenizer":../tokenizer/lowercase, with "Stop Token Filter":../tokenfilter/stop.|
+|"whitespace":whitespace|An analyzer that is built using a "Whitespace Tokenizer":../tokenizer/whitespace.|
+|"keyword":keyword|An analyzer that "tokenizes" an entire stream as a single token. This is useful for data like zip codes, ids and so on. Note, when using mapping definitions, it make more sense to simply mark the field as @not_analyzed@.|
+|"custom":custom|An analyzer that allows to combine a @Tokenizer@ with zero or more @Token Filters@. The custom analyzer accepts a logical/registered name of the tokenizer to use, and a list of logical/registered names of token filters.|
+
+h2. Default Analyzers
+
+p. An analyzer is registered under a logical name and can then be referenced from mapping definitions or certain APIs. When none are defined, defaults are used. There is an option to define which analyzers will be used as default when none can be derived.
+
+p. The @default@ logical name allows to configure an analyzer that will be used both for indexing and for searching APIs. The @default_index@ logical name can be used to configure a default analyzer that will be used just when indexing, and the @default_search@ can be used to configure a default analyzer that will be used just when indexing.
+
+
+h2. Built in Analyzers
+
+p. If not explicitly defined (for example, by configuring an analyzer with the same logical name), the following analyzers are automatically registered (under their respective logical names) and available for use:
+
+|_. Analyzer Logical Name |_. Description |
+|@standard@|A "Standard Analyzer":standard registered with default settings.|
+|@simple@|A "Simple Analyzer":simple registered with default settings.|
+|@stop@|A "Stop Analyzer":stop registered with default settings.|
+|@whitespace@|A "Whitespace Analyzer":whitespace registered with default settings.|
+|@keyword@|A "Keyword Analyzer":keyword registered with default settings.|

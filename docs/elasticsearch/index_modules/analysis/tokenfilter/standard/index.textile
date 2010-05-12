@@ -1,0 +1,18 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Token Filter | Standard
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenfilter", "Token Filter"], 
+    ["standard", "Standard"], 
+];
+</script>
+
+h1. Standard Token Filter
+
+p. A token filter of type @standard@ that normalizes tokens extracted with the "Standard Tokenizer":../../tokenizer/standard.

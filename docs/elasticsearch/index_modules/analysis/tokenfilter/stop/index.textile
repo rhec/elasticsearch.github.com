@@ -1,0 +1,25 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Token Filter | Stop
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenfilter", "Token Filter"], 
+    ["lowercase", "Lowercase"], 
+];
+</script>
+
+h1. Stop Token Filter
+
+p. A token filter of type @stop@ that removes stop words from token streams.
+
+p. The following are settings that can be set for a @stop@ token filter type:
+
+|_. Setting |_. Description |
+|@stopwords@|A list of stop words to use. Defaults to english stop words.|
+|@enable_position_increments@|Set to @true@ if token positions should record the removed stop words, @false@ otherwise. Defaults to @true@.|
+|@ignore_case@|Set to @true@ to lower case all words first. Defaults to @false@.|

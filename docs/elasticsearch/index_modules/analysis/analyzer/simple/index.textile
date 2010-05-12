@@ -1,0 +1,18 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Analyzer | Simple
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["analyzer", "Analyzer"], 
+    ["simple", "Simple"], 
+];
+</script>
+
+h1. Simple Analyzer
+
+p. An analyzer of type @simple@ that is built using a "Lower Case Tokenizer":../../tokenizer/lowercase.

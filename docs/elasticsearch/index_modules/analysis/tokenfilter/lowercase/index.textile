@@ -1,0 +1,18 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Token Filter | Lowercase
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenfilter", "Token Filter"], 
+    ["lowercase", "Lowercase"], 
+];
+</script>
+
+h1. Lowercase Token Filter
+
+p. A token filter of type @lowercase@ that normalizes token text to lower case.

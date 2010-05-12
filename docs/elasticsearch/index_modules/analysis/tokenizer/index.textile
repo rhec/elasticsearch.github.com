@@ -1,0 +1,39 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Tokenizer
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenizer", "Tokenizer"], 
+];
+</script>
+
+h1. Tokenizer
+
+p. Tokenizers act as the first stage of the analysis process (used within an @Analyzer@). The following tokenizer types can be used:
+
+|_. Type |_. Description |
+|"standard":standard|A tokenizer providing grammar based tokenizer that is a good tokenizer for most European language documents.|
+|"keyword":keyword|A tokenizer that emits the entire input as a single input.|
+|"letter":letter|A tokenizer that divides text at non-letters.|
+|"lowercase":lowercase| A tokenizer that performs the function of "Letter Tokenizer":letter and "Lower Case Token Filter":../tokenfilter/lowercase together.|
+|"whitespace":whitespace|A tokenizer that divides text at whitespace.|
+|"nGram":ngram|A tokenizer of type NGram.|
+|"edgeNGram":edgengram|A tokenizer of type Edge NGram.|
+
+h2. Built In Tokenizers
+
+p. If not explicitly defined (for example, by configuring a tokenizer with the same logical name), the following tokenizers are automatically registered (under their respective logical names) and available for use:
+
+|_. Tokenizer Logical Name |_. Description |
+|@standard@|A "Standard Tokenizer":standard registered with default settings.|
+|@keyword@|A "Keyword Tokenizer":keyword registered with default settings.|
+|@letter@|A "Letter Tokenizer":letter registered with default settings.|
+|@lowercase@|A "Lower Case Tokenizer":lowercase registered with default settings.|
+|@whitespace@|A "Whitespace Tokenizer":whitespace registered with default settings.|
+|@nGram@|A "NGram Tokenizer":ngram registered with default settings.|
+|@edgeNGram@|A "EdgeNGram Tokenizer":edgengram registered with default settings.|

@@ -1,0 +1,24 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Token Filter | NGram
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenfilter", "Token Filter"], 
+    ["ngram", "NGram"], 
+];
+</script>
+
+h1. NGram Filter
+
+p. A token filter of type @nGram@.
+
+p. The following are settings that can be set for a @nGram@ token filter type:
+
+|_. Setting |_. Description |
+|@min_gram@|Defaults to @1@.|
+|@max_gram@|Defaults to @2@.|

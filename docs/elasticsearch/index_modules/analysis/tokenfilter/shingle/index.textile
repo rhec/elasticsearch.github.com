@@ -1,0 +1,24 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Token Filter | Shingle
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenfilter", "Token Filter"], 
+    ["shingle", "Shingle"], 
+];
+</script>
+
+h1. Shingle Filter
+
+p. A token filter of type @shingle@.
+
+p. The following are settings that can be set for a @shingle@ token filter type:
+
+|_. Setting |_. Description |
+|@max_shingle_size@|Defaults to @2@.|
+|@output_unigrams@|Defaults to @true@.|

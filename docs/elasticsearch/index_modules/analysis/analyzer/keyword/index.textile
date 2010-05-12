@@ -1,0 +1,18 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Analyzer | Keyword
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["analyzer", "Analyzer"], 
+    ["keyword", "Keyword"], 
+];
+</script>
+
+h1. Keyword Analyzer
+
+p. An analyzer of type @keyword@ that "tokenizes" an entire stream as a single token. This is useful for data like zip codes, ids and so on. Note, when using mapping definitions, it make more sense to simply mark the field as @not_analyzed@.

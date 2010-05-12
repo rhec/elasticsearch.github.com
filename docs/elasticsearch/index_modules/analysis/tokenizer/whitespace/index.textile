@@ -1,0 +1,18 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Tokenizer | Whitespace
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenizer", "Tokenizer"], 
+    ["whitespace", "Whitespace"], 
+];
+</script>
+
+h1. Whitespace Tokenizer
+
+p. A tokenizer of type @whitespace@ that divides text at whitespace.

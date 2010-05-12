@@ -1,0 +1,23 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Analyzer | Stop
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["analyzer", "Analyzer"], 
+    ["stop", "Stop"], 
+];
+</script>
+
+h1. Stop Analyzer
+
+p. An analyzer of type @stop@ that is built using a "Lower Case Tokenizer":../../tokenizer/lowercase, with "Stop Token Filter":../../tokenfilter/stop.
+
+p. The following are settings that can be set for a @stop@ analyzer type:
+
+|_. Setting |_. Description |
+|@stopwords@|A list of stopword to initialize the stop filter with. Defaults to the english stop words.|

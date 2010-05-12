@@ -1,0 +1,24 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Tokenizer | NGram
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenizer", "Tokenizer"], 
+    ["ngram", "NGram"], 
+];
+</script>
+
+h1. NGram Tokenizer
+
+p. A tokenizer of type @nGram@.
+
+p. The following are settings that can be set for a @nGram@ tokenizer type:
+
+|_. Setting |_. Description |
+|@min_gram@|Defaults to @1@.|
+|@max_gram@|Defaults to @2@.|

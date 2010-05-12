@@ -1,0 +1,24 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Analyzer | Standard
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["analyzer", "Analyzer"], 
+    ["standard", "Standard"], 
+];
+</script>
+
+h1. Standard Analyzer
+
+p. An analyzer of type @standard@ that is built of using "Standard Tokenizer":../../tokenizer/standard, with "Standard Token Filter":../../tokenfilter/standard, "Lower Case Token Filter":../../tokenfilter/lowercase, and "Stop Token Filter":../../tokefilter/stop.
+
+p. The following are settings that can be set for a @standard@ analyzer type:
+
+|_. Setting |_. Description |
+|@stopwords@|A list of stopword to initialize the stop filter with. Defaults to the english stop words.|
+|@max_token_length@|The maximum token length. If a token is seen that exceeds this length then it is discarded. Defaults to @255@.|

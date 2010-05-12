@@ -1,0 +1,24 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Token Filter | Length
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenfilter", "Token Filter"], 
+    ["length", "Length"], 
+];
+</script>
+
+h1. Length Token Filter
+
+p. A token filter of type @length@ that removes words that are too long or too short for the stream.
+
+p. The following are settings that can be set for a @length@ token filter type:
+
+|_. Setting |_. Description |
+|@min@|The minimum number. Defaults to @0@.|
+|@min@|The maximum number. Defaults to @Integer.MAX_VALUE@.|

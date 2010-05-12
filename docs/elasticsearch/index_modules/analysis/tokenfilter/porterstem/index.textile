@@ -1,0 +1,20 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Token Filter | Porter Stem
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenfilter", "Token Filter"], 
+    ["porterstem", "Porter"], 
+];
+</script>
+
+h1. Porter Filter
+
+p. A token filter of type @porterStem@ that transforms the token stream as per the Porter stemming algorithm. 
+
+p. Note, the input to the stemming filter must already be in lower case, so you will need to use "Lower Case Token Filter":../lowercase or "Lower Case Tokenizer":../../tokenizer/lowercase farther down the Tokenizer chain in order for this to work properly!. For example, when using custom analyzer, make sure the @lowercase@ filter comes before the @porterStem@ filter in the list of filters.

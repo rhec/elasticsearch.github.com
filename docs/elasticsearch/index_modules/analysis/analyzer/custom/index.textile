@@ -1,0 +1,48 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Analyzer | Custom
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["analyzer", "Analyzer"], 
+    ["custom", "Custom"], 
+];
+</script>
+
+h1. Custom Analyzer
+
+p. An analyzer of type @custom@ that allows to combine a @Tokenizer@ with zero or more @Token Filters@. The custom analyzer accepts a logical/registered name of the tokenizer to use, and a list of logical/registered names of token filters.
+
+p. The following are settings that can be set for a @custom@ analyzer type:
+
+|_. Setting |_. Description |
+|@tokenizer@|The logical / registered name of the tokenizer to use.|
+|@filter@|An optional list of logical / registered name of token filters.|
+
+p. Here is an example:
+
+<pre class="prettyprint">
+index :
+    analysis :
+        analyzer : 
+            myAnalyzer2 :
+                type : custom
+                tokenizer : myTokenizer1
+                filter : [myTokenFilter1, myTokenFilter2]
+        tokenizer :
+            myTokenizer1 :
+                type : standard
+                max_token_length : 900
+        filter :
+            myTokenFilter1 :
+                type : stop
+                stopwords : [stop1, stop2, stop3, stop4]
+            myTokenFilter2 :
+                type : length
+                min : 0
+                max : 2000
+</pre>

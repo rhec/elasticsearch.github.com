@@ -1,0 +1,43 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Token Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenfilter", "Token Filter"], 
+];
+</script>
+
+h1. Token Filter
+
+p. Token filters act as the additional stages of the analysis process (used within an @Analyzer@). The following token filters types can be used:
+
+|_. Type |_. Description |
+|"stop":stop|A token filter that removes stop words from token streams.|
+|"asciifolding":asciifolding|A token filter that converts alphabetic, numeric, and symbolic Unicode characters which are not in the first 127 ASCII characters (the "Basic Latin" Unicode block) into their ASCII equivalents, if one exists.|
+|"length":length|A token filter that removes words that are too long or too short for the stream.|
+|"lowercase":lowercase|A token filter that normalizes token text to lower case.|
+|"porterstem":porterstem|A token filter that transforms the token stream as per the Porter stemming algorithm. |
+|"standard":standard|A token filter that normalizes tokens extracted with the "Standard Tokenizer":../tokenizer/standard.|
+|"nGram":ngram|An NGram token filter.|
+|"edgeNGram":edgengram|An Edge NGram token filter.|
+|"shingle":shingle|A shingle token filter.|
+
+h2. Built in Token Filters
+
+p. If not explicitly defined (for example, by configuring a token filter with the same logical name), the following token filters are automatically registered (under their respective logical names) and available for use:
+
+|_. Token Filter Logical Name |_. Description |
+|@stop@|A "Stop Token Filter":stop registered with default settings.|
+|@asciifolding@|A "ASCII Folding Token Filter":asciifolding registered with default settings.|
+|@length@|A "Length Token Filter":length registered with default settings.|
+|@lowercase@|A "Lower Case Token Filter":lowercase registered with default settings.|
+|@porterstem@|A "Porter Stem Token Filter":porterstem registered with default settings.|
+|@standard@|A "Standard Token Filter":standard registered with default settings.|
+|@nGram@|A "NGram Token Filter":ngram registered with default settings.|
+|@edgeNGram@|A "EdgeNGram Token Filter":edgengram registered with default settings.|
+|@shingle@|A "Shingle Token Filter":shingle registered with default settings.|

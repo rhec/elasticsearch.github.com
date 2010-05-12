@@ -1,0 +1,18 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Analyzer | Whitespace
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["analyzer", "Analyzer"], 
+    ["whitespace", "Whitespace"], 
+];
+</script>
+
+h1. Whitespace Analyzer
+
+p. An analyzer of type @whitespace@ that is built using a "Whitespace Tokenizer":../../tokenizer/whitespace.

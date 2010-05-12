@@ -1,0 +1,25 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Tokenizer | Edge NGram
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenizer", "Tokenizer"], 
+    ["edgengram", "Edge NGram"], 
+];
+</script>
+
+h1. Edge NGram Tokenizer
+
+p. A tokenizer of type @edgeNGram@.
+
+p. The following are settings that can be set for a @edgeNGram@ tokenizer type:
+
+|_. Setting |_. Description |
+|@min_gram@|Defaults to @1@.|
+|@max_gram@|Defaults to @2@.|
+|@side@|Either @front@ or @back@.|

@@ -1,0 +1,18 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Tokenizer | Lowercase
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["tokenizer", "Tokenizer"], 
+    ["lowercase", "Lowercase"], 
+];
+</script>
+
+h1. Lowercase Tokenizer
+
+p. A tokenizer of type @lowercase@ that performs the function of "Letter Tokenizer":../letter and "Lower Case Token Filter":../../tokenfilter/lowercase together. It divides text at non-letters and converts them to lower case.  While it is functionally equivalent to the combination of "Letter Tokenizer":../letter and "Lower Case Token Filter":../../tokenfilter/lowercase, there is a performance advantage to doing the two tasks at once, hence this (redundant) implementation.
