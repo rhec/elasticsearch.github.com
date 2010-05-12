@@ -1,0 +1,54 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Nodes Restart API
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["admin", "Admin"],
+    ["cluster", "Cluster"],
+    ["nodes_restart", "Nodes Restart"]
+];
+</script>
+
+h1. Nodes Restart
+
+p. The nodes restart API allows to restart one or more (or all) nodes in the cluster. Here is an example of shutting the @_local@ node the request is directed to:
+
+<pre class="prettyprint">
+$ curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_restart'
+</pre>
+
+p. Specific node(s) can be restarted as well using their respective node ids:
+
+<pre class="prettyprint">
+$ curl -XPOST 'http://localhost:9200/_cluster/nodes/nodeId1,nodeId2/_restart'
+</pre>
+
+p. The master (of the cluster) can also be restarted using:
+
+<pre class="prettyprint">
+$ curl -XPOST 'http://localhost:9200/_cluster/nodes/_master/_restart'
+</pre>
+
+p. Finally, all nodes can be restarted using either options below:
+
+<pre class="prettyprint">
+$ curl -XPOST 'http://localhost:9200/_cluster/nodes/_restart'
+
+$ curl -XPOST 'http://localhost:9200/_cluster/nodes/_all/_restart'
+</pre>
+
+h2. Delay
+
+p. By default, the restart will be executed after a 1 seconds delay (@1s@). The delay can be customized by setting the @delay@ parameter in a time value format. For example:
+
+<pre class="prettyprint">
+$ curl -XPOST 'http://localhost:9200/_cluster/nodes/_local/_restart?delay=10s'
+</pre>
+
+h2. Restart Execution
+
+p. When the node is started using the service wrapper, a restart will cause a full JVM exit and a new JVM will be created. This is the preferable manner to perform the restart. When not started using the service wrapper, the node will perform an internal restart within the same JVM.
