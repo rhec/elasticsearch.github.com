@@ -13,9 +13,11 @@ docBreadcrumb = [
 
 h1. Date Format
 
-p. When defining a @date@ type, or when defining @dateFormats@ in the @object@ mapping, the value of it is the actual date format that will be used to parse the string representation of the date. There are built in formats supported, as well as complete custom one.
+p. When defining a @date@ type, or when defining @date_formats@ in the @object@ mapping, the value of it is the actual date format that will be used to parse the string representation of the date. There are built in formats supported, as well as complete custom one.
 
 p. The parsing of dates uses "Joda":http://joda-time.sourceforge.net/. The default date parsing used if no format is specified is "ISODateTimeFormat.dateOptionalTimeParser()":http://joda-time.sourceforge.net/api-release/org/joda/time/format/ISODateTimeFormat.html#dateOptionalTimeParser().
+
+p. An extension to the format allow to define several formats using @||@ separator. This allows to define less strict formats that can be used, for example, the @yyyy/MM/dd HH:mm:ss||yyyy/MM/dd@ format will parse both @yyyy/MM/dd HH:mm:ss@ and @yyyy/MM/dd@. The first format will also act as the one that converts back from milliseconds to a string representation.
 
 h2. Built In Formats
 
