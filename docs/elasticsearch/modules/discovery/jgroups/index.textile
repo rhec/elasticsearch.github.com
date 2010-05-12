@@ -16,6 +16,8 @@ h1. JGroups Discovery Module
 
 p. "JGroups":http://www.jgroups.org is an excellent group communication library. Though providing many features, only a subset is used which maps to the Discovery module requirements. Namely, using JGroups, different nodes are identified within the cluster (joining and leaving), and JGroups is used for master election.
 
+p. JGroups is provided as a plugin to replace the built in Zen discovery.
+
 h2. Configuration
 
 p. JGroups configuration is driven through a configuration file. Surprisingly, the configuration file is not part of the @config@ directory of ElasticSearch. The aim here is to simplify the configuration of JGroups and the configuration files are bundled within ElasticSearch library itself.

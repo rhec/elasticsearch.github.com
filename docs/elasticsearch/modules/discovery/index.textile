@@ -20,6 +20,7 @@ p. Note, ElasticSearch is a peer to peer based system, nodes communicate with on
 p. The discovery module is an abstraction on top of an actual implementation of discovery. The following are supported:
 
 |_. Type |_. Description |
+|"zen":zen|A built in discovery implementation. The default discovery.|
 |"jgroups":jgroups|A discovery implementation using "JGroups":http://www.jgroups.org.|
 
 h2. Settings
