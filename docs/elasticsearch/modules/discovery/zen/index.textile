@@ -39,7 +39,7 @@ p. Multicast can be disabled by setting @multicast.enabled@ to @false@.
 
 h3. Unicast
 
-p. The unicast discovery allows to perform the discovery when multicast is not enabled. It basically requires a list of hosts to use that will act as gossip routers. It allows for the following settings:
+p. The unicast discovery allows to perform the discovery when multicast is not enabled. It basically requires a list of hosts to use that will act as gossip routers. It provides the following settings with the @discovery.zen.ping.unicast@ prefix:
 
 |_. Setting |_. Description |
 |@hosts@|Either an array setting or a comma delimited setting. Each value is either in the form of @host:port@, or in the form of @host[port1-port2]@.|
