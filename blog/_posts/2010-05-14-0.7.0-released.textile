@@ -1,0 +1,51 @@
+---
+layout: blogpost
+title: ElasticSearch 0.7.0 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.7.0@ has just been released. You can download it "here":/download. This release brings much improved stability, and several features:
+
+h2. Zen Discovery
+
+p. A discovery module called "zen":/docs/elasticsearch/modules/discovery/zen built from the ground up to work well, and fast with elasticsearch. This is now the default discovery module, with the jgroups discovery module moving to be provided as a plugin.
+
+h2. Groovy Client
+
+p. A native groovy client providing a Groovyfied API build on top of the native Java API. More details provided in the "ElasticSearch Just Got Groovy":/blog/2010/04/19/elasticseach_just_got_groovy.html blog post. As a side note, anybody up for building a Scala/JRbuy client?
+
+h2. Cloud
+
+p. First and foremost, native cloud support, providing zero conf cloud discovery ( No Special Node (tm) ) and the ability to persist long term index storage on different cloud providers blob stores. More information can be found in the "Here Comes the Cloud":/blog/2010/05/11/here-comes-the-cloud.html blog post.
+
+h2. Memcached Transport
+
+p. For that extra oomph when HTTP is not fast enough (mainly from other languages), elasticsearch supports a subset of the memcached protocol. Basically, the implementation implements REST on top of memcached (as much as possible). More info can be found "here":/docs/elasticsearch/modules/memcached.
+
+h2. Simpler Plugin Management
+
+p. Many things in elasticsearch are implemented as a plugin. For example, the cloud support or memcached support are implemented as plugins. Now, installing a plugin is as simple as issuing the following command:
+
+<pre class="prettyprint">
+bin/plugin -install cloud
+bin/plugin -install transport-memcached
+</pre>
+
+h2. Analysis ICU
+
+p. Better support when working with unicode through the ICU analysis plugin. More info "here":/docs/elasticsearch/index_modules/analysis/icu.
+
+h2. More APIs
+
+p. More information on nodes using the new Node stats API, as well as the ability to restart a node.
+
+h2. JVM Clients
+
+p. Simpler dependency management, requiring only lucene as a dependency.
+
+h2. XContent
+
+p. Though currently mainly for internal use, an abstraction on top of @JSON@ has been created, inspired by @JSON@ called @XContent@. There is support a @JSON@ implementation for it, but also support for @XSON@, which is a binary @JSON@ format for faster and smaller (message footprint) messages. The Java API already uses it automatically (not for indexed documents), and both the REST API and the indexed documents can be either in @JSON@ or @XSON@ format. @XSON@ format will be documented in the near future to allow for non JVM based clients to use it.
+
+-shay.banon
