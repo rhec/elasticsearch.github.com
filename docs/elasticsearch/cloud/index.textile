@@ -14,4 +14,8 @@ h1. Cloud
 
 p. ElasticSearch provides native integration with the "cloud" using the cloud plugin. The integration allows to perform native "discovery":discvoery using the cloud compute API (such as Amazon EC2 or Rackspace CloudServers), and storing the "gateway":gateway on cloud providers blob stores (such as Amazon S3 or Rackspace CloudFiles).
 
-p. Installing the plugin is done by running @bin/plugin install cloud@ (which downloads the cloud plugin and installs it under the @plugins@ directory).
+p. Installing the plugin (which downloads the cloud plugin and installs it under the @plugins@ directory) is done using:
+
+<pre class="prettyprint">
+bin/plugin install cloud
+</pre>

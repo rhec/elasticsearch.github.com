@@ -51,3 +51,10 @@ index :
                 min : 0
                 max : 2000
 </pre>
+
+h2. Plugins
+
+p. The following is a list of plugins extending the built in analyzers, tokenizers and token filters:
+
+|_. Plugin |_. Description |
+|"icu":icu|A plugin that uses "ICU"::http://icu-project.org/ for unicode normalization, collation and folding.|
