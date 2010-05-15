@@ -13,9 +13,9 @@ docBreadcrumb = [
 
 h1. memcached Module
 
-p. The memcached module is allows to expose ElasticSearch "REST API":/docs/elasticsearch/rest_api over the memcached protocol (as closely as possible). 
+p. The memcached module allows to expose ElasticSearch "REST API":/docs/elasticsearch/rest_api over the memcached protocol (as closely as possible). 
 
-p. It is provided as a plugin called @transport-memcached@ and installing is as simply as executing @plugin install transport-memcached@ or downloading the memcached plugin and placing it under the @plugins@ directory.
+p. It is provided as a plugin called @transport-memcached@ and installing is as simply as executing @plugin -install transport-memcached@ or downloading the memcached plugin and placing it under the @plugins@ directory.
 
 p. The memcached protocol supports both the binary and the text protocol, automatically detecting the correct one to use.
 
@@ -44,7 +44,7 @@ h2. Implementation
 p. The memcached module is an abstraction on top of an actual implementation of memcached. The following are supported:
 
 |_. Type |_. Description |
-|"netty":netty|An http implementation using "Netty":http://www.jboss.org/netty.|
+|"netty":netty|A memcached implementation using "Netty":http://www.jboss.org/netty.|
 
 h2. Settings
 
