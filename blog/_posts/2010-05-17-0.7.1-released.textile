@@ -1,0 +1,18 @@
+---
+layout: blogpost
+title: ElasticSearch 0.7.1 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.7.1@ has just been released. You can download it "here":/download. This release fixed a major bug when indexing large documents resulting in storing additional null bytes (and returning them).
+
+p. Version @0.7.1@ also brings a major feature to elasticsearch, recovery throttling. In elasticsearch, there are two types of recovery. The first, is recovery from the gateway. This happens only when the first shard is allocated in the cluster. The second recovery happens when nodes move or allocate shards around. The recovery process in both cases include recovering both each shard index files, and the transaction log.
+
+p. Up until version @0.7.1@, elasticsearch would basically go full force in performing the recovery. If a new node would join the cluster, all the possible shards would be allocated to it, and all will perform recovery in parallel. More over, each single shard index file recovery will happen in parallel as well.
+
+p. This can lead to a heavy load on the nodes, making them less responsive for on going operations performed on them. From version @0.7.1@, recovery throttling is enabled, basically allowing only for a controlled number of concurrent recovery operations, and concurrent stream (single shard index file) recovery operation. Both counts are maintained on the node level, regardless of the number of indices or shards.
+
+p. The @indices.recovery.throttler.concurrent_recoveries@ setting controls the number of concurrent recoveries allowed (shard recoveries). It defaults to the number of cores. The @indices.recovery.throttler.concurrent_streams@ control the concurrent shard index file recoveries, and defaults to the number of cores as well.
+
+-shay.banon
