@@ -39,14 +39,16 @@ h3. QUIT
 
 p. The memcached @QUIT@ command is supported and disconnects the client.
 
-h2. Implementation
-
-p. The memcached module is an abstraction on top of an actual implementation of memcached. The following are supported:
-
-|_. Type |_. Description |
-|"netty":netty|A memcached implementation using "Netty":http://www.jboss.org/netty.|
-
 h2. Settings
+
+p. The following are the settings the can be configured for memcached:
+
+|_. Setting |_. Description |
+|@memcached.port@|A bind port range. Defaults to @11211-11311@.|
+
+p. It also shares the uses the common "network settings":../node/network.
+
+h2. Disable memcached
 
 p. The memcached module can be completely disabled and not started using by setting @memcached.enabled@ to @false@. By default it is enabled once it is detected as a plugin.
 

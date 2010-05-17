@@ -17,7 +17,18 @@ p. The transport module is used for internal communication between nodes within 
 
 p. The transport mechanism is completely asynchronous in nature, meaning that there is no blocking thread waiting for a response. The benefit of using asynchronous communication is first solving the "C10k problem":http://en.wikipedia.org/wiki/C10k_problem, as well as being the idle solution for scatter (broadcast) / gather operations such as search in ElasticSearch.
 
-p. The transport module is an abstraction on top of an actual implementation of transport. The following transports are supported:
+h2. TCP Transport
 
-|_. Type |_. Description |
-|"netty":netty|A transport implementation using "Netty":http://www.jboss.org/netty.|
+p. The TCP transport is an implementation of the transport module using TCP. It allows for the following settings:
+
+|_. Setting |_. Description |
+|@transport.tcp.port@|A bind port range. Defaults to @9300-9400@.|
+|@transport.tcp.connect_timeout@|The socket connect timeout setting (in time setting format). Defaults to @1s@.|
+|@transport.tcp.connections_per_node@|The number of open connections from this node to another node. Defaults to @5@|
+
+p. It also shares the uses the common "network settings":../node/network.
+
+h2. Local Transport
+
+p. This is a handy transport to use when running integration tests within the JVM. It is automatically enabled when using @NodeBuilder#local(true)@.
+

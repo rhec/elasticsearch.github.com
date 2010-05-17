@@ -19,12 +19,17 @@ p. The http mechanism is completely asynchronous in nature, meaning that there i
 
 p. When possible, consider using "HTTP keep alive":http://en.wikipedia.org/wiki/Keepalive#HTTP_Keepalive when connecting for better performance and try to get your favorite client not to do "HTTP chunking":http://en.wikipedia.org/wiki/Chunked_transfer_encoding.
 
-p. The http module is an abstraction on top of an actual implementation of http. The following are supported:
-
-|_. Type |_. Description |
-|"netty":netty|An http implementation using "Netty":http://www.jboss.org/netty.|
-
 h2. Settings
+
+p. The following are the settings the can be configured for HTTP:
+
+|_. Setting |_. Description |
+|@http.port@|A bind port range. Defaults to @9300-9400@.|
+|@http.max_content_length@|The max content of an HTTP request. Defaults to @100mb@|
+
+p. It also shares the uses the common "network settings":../node/network.
+
+h2. Disable HTTP
 
 p. The http module can be completely disabled and not started using by setting @http.enabled@ to @false@. This make sense when creating non "data nodes":../node/data_node which accept HTTP requests, and communicate with data nodes using the internal "transport":../transport.
 

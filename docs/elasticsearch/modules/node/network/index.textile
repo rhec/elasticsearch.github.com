@@ -28,3 +28,13 @@ p. Both settings allows to be configured with either explicit host address or ho
 |@#local#@|Will be resolved to the local ip address.|
 |@#[netowrkInterface]#@|Resolves to the ip address of the provided network interface. For example @#en0#@.|
 
+h2. TCP Settings
+
+p. Any component that uses TCP (like the HTTP, Transport and Memcached) share the following allowed settings:
+
+|_. Setting |_. Description |
+|@network.tcp.no_delay@|Enable or disable tcp no delay setting. Defaults to @true@.|
+|@network.tcp.keep_alive@|Enable or disable tcp keep alive. By default not explicitly set.|
+|@network.tcp.reuse_address@|Should an address be reused or not. Defaults to @true@ on none windows machines.|
+|@network.tcp.send_buffer_size@|The size of the tcp send buffer size (in size setting format). By default not explicitly set.|
+|@network.tcp.receive_buffer_size@|The size of the tcp receive buffer size (in size setting format). By default not explicitly set.|
