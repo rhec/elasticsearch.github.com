@@ -17,8 +17,8 @@ The search API allows to execute a search query and get back search hits that ma
 
 <pre class="prettyprint lang-java">
 import static org.elasticsearch.client.Requests.*;
-import static org.elasticsearch.index.query.json.JsonFilterBuilders.*;
-import static org.elasticsearch.index.query.json.JsonQueryBuilders.*;
+import static org.elasticsearch.index.query.xcontent.FilterBuilders.*;
+import static org.elasticsearch.index.query.xcontent.QueryBuilders.*;
 import static org.elasticsearch.search.builder.SearchSourceBuilder.*;
 
 SearchResponse response = client.search(searchRequest("test")

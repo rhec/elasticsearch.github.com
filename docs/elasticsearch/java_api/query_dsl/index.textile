@@ -13,11 +13,11 @@ docBreadcrumb = [
 
 h1. Query DSL
 
-p. ElasticSearch provides a full Java query dsl in a similar manner to the REST "Query DSL":/docs/elasticsearch/rest_api/query_dsl. The factory for query builders is @JsonQueryBuilders@ and the factory for filter builders is @JsonFilterBuilders@. Here is an example:
+p. ElasticSearch provides a full Java query dsl in a similar manner to the REST "Query DSL":/docs/elasticsearch/rest_api/query_dsl. The factory for query builders is @QueryBuilders@ and the factory for filter builders is @FilterBuilders@. Here is an example:
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.index.query.json.JsonFilterBuilders.*;
-import static org.elasticsearch.index.query.json.JsonQueryBuilders.*;
+import static org.elasticsearch.index.query.xcontent.FilterBuilders.*;
+import static org.elasticsearch.index.query.xcontent.QueryBuilders.*;
 
 QueryBuilder qb1 = termQuery("name", "kimchy");
 
