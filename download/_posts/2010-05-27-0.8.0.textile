@@ -1,0 +1,8 @@
+---
+layout: download_es
+type: ElasticSearch
+version: 0.8.0
+title: ElasticSearch Download - 0.8.0
+download_url: http://github.com/downloads/elasticsearch/elasticsearch/elasticsearch-0.8.0.zip
+download_source_url: http://github.com/elasticsearch/elasticsearch/zipball/v0.8.0
+---

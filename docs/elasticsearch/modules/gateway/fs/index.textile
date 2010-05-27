@@ -12,7 +12,7 @@ docBreadcrumb = [
 ];
 </script>
 
-h1. Fie System Gateway Module
+h1. Fie System Gateway
 
 p. The file system based gateway stores the cluster meta data in a file system. Note, since its a distributed system, the file system should be shared between all different nodes.
 

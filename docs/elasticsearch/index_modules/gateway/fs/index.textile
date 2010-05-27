@@ -12,7 +12,7 @@ docBreadcrumb = [
 ];
 </script>
 
-h1. File System Index Gateway Module
+h1. File System Index Gateway
 
 p. The file system index gateway allows to store the content of a shard (actual index + transaction log) on a shared file system.
 
