@@ -1,0 +1,22 @@
+---
+layout: blogpost
+title: ElasticSearch 0.8.0 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.8.0@ has just been released. You can download it "here":/download. This release includes several bug fixes and memory footprint improvements, and one major feature, Hadoop integration. This allows to use Hadoop HDFS as elasticsearch gateway storage, and enabling it is as simple as:
+
+p. Installing the hadoop plugin using @bin/plugin -install hadoop@.
+
+p. Changing the configuration to include:
+
+<pre class="prettyprint">
+gateway:
+    type: hdfs
+    hdfs:
+        uri: hdfs://host:port
+        path: path/to/folder
+</pre>
+
+-shay.banon
