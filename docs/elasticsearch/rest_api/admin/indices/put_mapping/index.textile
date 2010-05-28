@@ -31,8 +31,6 @@ $ curl -XPUT 'http://localhost:9200/twitter/tweet/_mapping' -d '
 
 p. The above example creates a mapping called @tweet@ within the @twitter@ index. The mapping simply defines that the @message@ field should be stored (by default, fields are not stored, just indexed) so we can retrieve it later on using selective loading. More information on how to define type mappings can be found in the "mapping":/docs/elasticsearch/mapping section. 
 
-p. The put mapping operation automatically creates an index if it has not been created before (check out the "create index API":../create_index for manually creating an index).
-
 h2. Merging &amp; Conflicts
 
 p. When an existing mapping already exists under the given type, the two mapping definitions, the one already defined, and the new ones are merged. The @ignore_conflicts@ parameters can be used to control if conflicts should be ignored or not, by default, it is set to @false@ which means conflicts are *not* ignored.
