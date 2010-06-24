@@ -40,7 +40,7 @@ h2. Automatic for the Index
 
 p. The index operation automatically creates an index if it has not been created before (check out the "create index API":../admin/indices/create_index for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "put mapping":../admin/indices/put_mapping API for manually creating type mapping). 
 
-p. The mapping itself is very flexible and is schema free, meaning that new fields / objects can be added and they will be automatically be added to the mapping definition of the specific type. Check out the "mapping":/docs/elasticsearch/mapping section for more information on mapping definitions.
+p. The mapping itself is very flexible and is schema free, meaning that new fields / objects can be added and they will automatically be added to the mapping definition of the specific type. Check out the "mapping":/docs/elasticsearch/mapping section for more information on mapping definitions.
 
 p. Though explained on the "mapping":/docs/elasticsearch/mapping section, its important to note that the format of the JSON document can also include the type (very handy when using JSON mappers), for example:
 
@@ -119,7 +119,7 @@ The index operation gets hashed into a specific shard id. It then gets redirecte
 
 h2. Timeout
 
-The primary shard that needs to perform the operation might not be available yet. For example, it might still be in the process of recovery from a gateway, or might be in the process of relocation. The timeout parameter allows to control how long the index operation will wait till the primary shard is available before exiting with an error. The parameter name is @timeout@ and the default value of it is 1 minute. Here is an example of setting it to 5 minutes:
+The primary shard that needs to perform the operation might not be available yet. For example, it might still be in the process of recovery from a gateway, or might be in the process of relocation. The timeout parameter allows to control how long the index operation will wait till the primary shard is available before exiting with an error. The parameter name is @timeout@ with a default value of 1 minute. Here is an example of setting it to 5 minutes:
 
 <pre class="prettyprint">
 $ curl -XPUT 'http://localhost:9200/twitter/tweet/1?timeout=5m' -d '

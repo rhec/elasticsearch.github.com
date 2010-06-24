@@ -24,7 +24,7 @@ $ curl -XGET 'http://localhost:9200/twitter/tweet/_count' -d '
 }'
 </pre>
 
-p. Both above examples end up doing the same thing, which is count the number of tweets from the twitter index for a certain user. The result of the commands is:
+p. Both examples above end up doing the same thing, which is count the number of tweets from the twitter index for a certain user. The result of the commands is:
 
 <pre class="prettyprint lang-js">
 {
@@ -39,7 +39,7 @@ p. Both above examples end up doing the same thing, which is count the number of
 
 h2. Multiple Indices and Types
 
-p. The count API can be applies to multiple types within an index, and across multiple indices. For example, we can count all documents across all types within the twitter index:
+p. The count API can be applied to multiple types within an index, and across multiple indices. For example, we can count all documents across all types that match a @user@ field with value @kimchy@:
 
 <pre class="prettyprint">
 $ curl -XGET 'http://localhost:9200/_count?q=user:kimchy'

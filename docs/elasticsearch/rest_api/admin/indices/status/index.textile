@@ -147,7 +147,7 @@ h2. Multi Index
 p. The status API can be applied to more than one index with a single call, or even on @_all@ the indices.
 
 <pre class="prettyprint">
-$ curl -XGET http://localhost:9200/kimchy,elasticsearch/_status
+$ curl -XGET 'http://localhost:9200/kimchy,elasticsearch/_status'
 
-$ curl -XGET http://localhost:9200/_status
+$ curl -XGET 'http://localhost:9200/_status'
 </pre>

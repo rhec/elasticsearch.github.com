@@ -17,11 +17,12 @@ h1. Admin Indices API
 p. This section describes administration APIs that revolve around indices. The following are the APIs:
 
 |_. API |_. Description |
+|"status":status|Retrieves the status of the indices.|
 |"create_index":create_index|Creates an index using optional settings.|
 |"delete_index":delete_index|Deletes an index.|
 |"aliases":aliases|Aliasing one or more index.|
 |"put_mapping":put_mapping|Register specific mapping definition for a specific type against one or more indices.|
-|"status":status|Retrieves the status of the indices.|
 |"flush":flush|Flush the state of the index (clears memory).|
 |"refresh":refresh|Refresh one or more (or all) indices making all operations performed against the index since the last refresh searchable.|
 |"gateway_snapshot":gateway_snapshot|Explicitly perform a snapshot through the gateway of one or more indices (backup them).|
+|"optimize":optimize|Optimize one or more indices.|

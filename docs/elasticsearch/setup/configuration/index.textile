@@ -78,7 +78,7 @@ index :
         type: memory
 </pre>
 
-p. This means that every index that gets created on the specific node started with the mentioned configuration will store the index in memory <b>unless the index explicitly set it</b>. In other words, any index level settings override what is set in the node configuration. Of course, the above can also be set as a "collapsed" setting, for example:
+p. This means that every index that gets created on the specific node started with the mentioned configuration will store the index in memory <b>unless the index explicitly sets it</b>. In other words, any index level settings override what is set in the node configuration. Of course, the above can also be set as a "collapsed" setting, for example:
 
 <pre class="prettyprint">
 $ elasticsearch -f -Dindex.store.type=memory
@@ -88,5 +88,5 @@ p. All of the index level configuration can be found within each "index module":
 
 h2. Logging
 
-ElasticSearch uses "slf4j":http://www.slf4j.org/ as its logging abstraction and comes, out of the box, with "log4j":http://logging.apache.org/log4j/. It tries to simplify log4j configuration by using "YAML":http://www.yaml.org/ to configure it, and the logging configuration file is @config/logging.yml@ file.
+ElasticSearch uses an internal logging abstraction and comes, out of the box, with "log4j":http://logging.apache.org/log4j/. It tries to simplify log4j configuration by using "YAML":http://www.yaml.org/ to configure it, and the logging configuration file is @config/logging.yml@ file.
 
