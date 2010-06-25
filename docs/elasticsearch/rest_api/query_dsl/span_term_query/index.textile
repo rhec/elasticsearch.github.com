@@ -1,0 +1,32 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Span Term Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["span_term_query", "Span Term Query"],
+];
+</script>
+
+h1. Span Term Query
+
+p. Matches spans containing a term. The span term query maps to Lucene @SpanTermQuery@. Here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "span_term" : { "user" : "kimchy" }
+}    
+</pre>
+
+p. A boost can also be associated with the query:
+
+<pre class="prettyprint lang-js">
+{
+    "span_term" : { "user" : { "value" : "kimchy", "boost" : 2.0 } }
+}    
+</pre>
+

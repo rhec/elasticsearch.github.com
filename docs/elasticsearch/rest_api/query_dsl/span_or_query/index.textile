@@ -1,0 +1,31 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Span Or Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["span_or_query", "Span Or Query"],
+];
+</script>
+
+h1. Span Or Query
+
+p. Matches the union of its span clauses. The span or query maps to Lucene @SpanOrQuery@. Here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "span_or" : {
+        "clauses" : [
+            { "span_term" : { "field" : "value1" } },
+            { "span_term" : { "field" : "value2" } },
+            { "span_term" : { "field" : "value3" } }
+        ]
+    }
+}
+</pre>
+
+p. The @clauses@ element is a list of one or more other span type queries.

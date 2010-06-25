@@ -35,6 +35,11 @@ h2. Queries
 |"more_like_this_field":more_like_this_field_query|More like this query find documents that are "like" provided text by running it against a field.|
 |"fuzzy_like_this":fuzzy_like_this_query|Fuzzy like this query find documents that are "like" provided text by running it against one or more fields.|
 |"fuzzy_like_this_field":fuzzy_like_this_field_query|Fuzzy like this query find documents that are "like" provided text by running it against a field.|
+|"span_term":span_term_query|Matches spans containing a term.|
+|"span_first":span_first_query|Matches spans near the beginning of a field.|
+|"span_near":span_near_query|Matches spans which are near one another.|
+|"span_not":span_not_query|Removes matches which overlap with another span query.|
+|"span_or":span_or_query|Matches the union of its span query clauses.|
 
 h2. Filters
 

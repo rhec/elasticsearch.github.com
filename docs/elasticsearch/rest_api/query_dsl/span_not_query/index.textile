@@ -1,0 +1,32 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Span Not Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["span_not_query", "Span Not Query"],
+];
+</script>
+
+h1. Span Not Query
+
+p. Removes matches which overlap with another span query. The span not query maps to Lucene @SpanNotQuery@. Here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "span_not" : {
+        "include" : {
+            "span_term" : { "field1" : "value1" }
+        },
+        "exclude" : {
+            "span_term" : { "field2" : "value2" }
+        }
+    }
+}
+</pre>
+
+p. The @include@ and @exclude@ clauses can be any span type query. The @include@ clause is the span query whose matches are filtered, and the @exclude@ clause is the span query whose matches must not overlap those returned.
