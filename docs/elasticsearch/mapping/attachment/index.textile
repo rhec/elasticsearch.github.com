@@ -37,6 +37,18 @@ p. In this case, the JSON to index can be:
 }
 </pre>
 
+p. Or it is possible to use more elaborated JSON if content type or resource name need to be set explicitly:
+
+<pre class="prettyprint lang-js">
+{
+    "my_attachment" : {
+        "_content_type" : "application/pdf",
+        "_name" : "resource/name/of/my.pdf",
+        "content" : "... base64 encoded attachment ..."
+    }
+}
+</pre>
+
 p. The @attachment@ type not only indexes the content of the doc, but also automatically adds meta data on the attachment as well (when available). The metadata supported are: @date@, @title@, @author@, and @keywords@. They can be queried using the "dot notation", for example: @my_attachment.author@.
 
 p. Both the meta data and the actual content are simple core type mappers (string, date, ...), thus, they can be controlled in the mappings. For example:
