@@ -75,7 +75,7 @@ p. The following table lists all the attributes that can be used with the @strin
 |@index@|Set to @analyzed@ for the field to be indexed and searchable after being broken down into token using an analyzer. @not_analyzed@ means that its still searchable, but does not go through any analysis process or broken down into tokens. @no@ means that it won't be searchable at all. Defaults to @analyzed@.|
 |@term_vector@|Possible values are @no@, @yes@, @with_offsets@, @with_positions@, @with_positions_offsets@. Defaults to @no@.|
 |@boost@|The boost value. Defaults to @1.0@.|
-|null_value|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
+|@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
 |@omit_norms@|Boolean value if norms should be omitted or not. Defaults to @false@.|
 |@omit_term_freq_and_positions@|Boolean value if term freq and positions should be omitted. Defaults to @false@.|
 |@analyzer@|The analyzer used to analyze the text contents when @analyzed@ during indexing and when searching using a query string. Defaults to the globally configured analyzer.|
@@ -166,7 +166,7 @@ p. The following table lists all the attributes that can be used with the boolea
 |@store@|Set to @yes@ the store actual field in the index, @no@ to not store it. Defaults to @no@ (note, the JSON document itself is stored, and it can be retrieved from it).|
 |@index@|Set to @no@ if the value should not be indexed. In this case, @store@ should be set to @yes@, since if its not indexed and not stored, there is nothing to do with it.|
 |@boost@|The boost value. Defaults to @1.0@.|
-|@null_value@|When there is a (JSON) null value for the field, use the @nullValue@ as the field value. Defaults to not adding the field at all.|
+|@null_value@|When there is a (JSON) null value for the field, use the @null_value@ as the field value. Defaults to not adding the field at all.|
 |@include_in_all@|Should the field be included in the @_all@ field (if enabled). Defaults to @true@ or to the parent @object@ type setting.|
 
 h2. Binary
@@ -188,4 +188,4 @@ p. The binary type is a base64 representation of binary data that can be stored 
 p. The following table lists all the attributes that can be used with the binary type:
 
 |_. Attribute |_. Description |
-|index_name|The name of the field that will be stored in the index. Defaults to the property/field name.|
+|@index_name@|The name of the field that will be stored in the index. Defaults to the property/field name.|
