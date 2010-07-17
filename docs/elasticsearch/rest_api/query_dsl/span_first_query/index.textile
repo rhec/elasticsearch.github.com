@@ -20,7 +20,7 @@ p. Matches spans near the beginning of a field. The span first query maps to Luc
 {
     "span_first" : {
         "match" : {
-            "span_first" : { "user" : "kimchy" }
+            "span_term" : { "user" : "kimchy" }
         },
         "end" : 3
     }
