@@ -1,0 +1,101 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Admin | Indices | Get Mapping
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["admin", "Admin"],
+    ["indices", "Indices"],
+    ["get_mapping", "Get Mapping"]
+];
+</script>
+
+<div class="newversion">New feature in 0.9.0</div>
+
+h1. Get Mapping
+
+p. The get mapping API allows to retrieve mapping definition of index or index/type.
+
+<pre class="prettyprint">
+$ curl -XGET 'http://localhost:9200/twitter/tweet/_mapping'
+</pre>
+
+The following is example output:
+
+<pre class="prettyprint">
+{
+  "twitter" : {
+    "tweet" : {
+      "_boost" : {
+        "name" : "_boost"
+      },
+      "dynamic" : true,
+      "enabled" : true,
+      "date_formats" : [ "dateOptionalTime", "yyyy/MM/dd HH:mm:ss||yyyy/MM/dd" ],
+      "_source" : {
+        "enabled" : true,
+        "name" : "_source"
+      },
+      "_id" : {
+        "store" : "no"
+      },
+      "path" : "full",
+      "properties" : {
+        "message" : {
+          "omit_term_freq_and_positions" : false,
+          "index_name" : "message",
+          "index" : "analyzed",
+          "omit_norms" : false,
+          "store" : "no",
+          "boost" : 1.0,
+          "term_vector" : "no",
+          "type" : "string"
+        },
+        "postDate" : {
+          "omit_term_freq_and_positions" : true,
+          "index_name" : "postDate",
+          "index" : "not_analyzed",
+          "omit_norms" : true,
+          "store" : "no",
+          "boost" : 1.0,
+          "format" : "dateOptionalTime",
+          "precision_step" : 4,
+          "term_vector" : "no",
+          "type" : "date"
+        },
+        "user" : {
+          "omit_term_freq_and_positions" : false,
+          "index_name" : "user",
+          "index" : "analyzed",
+          "omit_norms" : false,
+          "store" : "no",
+          "boost" : 1.0,
+          "term_vector" : "no",
+          "type" : "string"
+        }
+      },
+      "_all" : {
+        "enabled" : true,
+        "store" : "no",
+        "term_vector" : "no"
+      },
+      "type" : "object"
+    }
+  }
+}
+</pre>
+
+h2. Multi Index and Type
+
+p. The get mapping API can be used to get more than one index mapping with a single call. Also @_all@ can be used to get mappings for all indices. The following are some examples:
+
+<pre class="prettyprint">
+$ curl -XGET 'http://localhost:9200/twitter,kimchy/_mapping'
+
+$ curl -XGET 'http://localhost:9200/_all/tweet,book/_mapping'
+
+$ curl -XGET 'http://localhost:9200/_all/_mapping'
+</pre>

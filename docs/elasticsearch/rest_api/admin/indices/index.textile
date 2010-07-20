@@ -22,7 +22,8 @@ p. This section describes administration APIs that revolve around indices. The f
 |"delete_index":delete_index|Deletes an index.|
 |"aliases":aliases|Aliasing one or more index.|
 |"put_mapping":put_mapping|Register specific mapping definition for a specific type against one or more indices.|
+|"get_mapping":get_mapping|Retrieves mapping definition of index or index/type.|
 |"flush":flush|Flush the state of the index (clears memory).|
 |"refresh":refresh|Refresh one or more (or all) indices making all operations performed against the index since the last refresh searchable.|
 |"gateway_snapshot":gateway_snapshot|Explicitly perform a snapshot through the gateway of one or more indices (backup them).|
-|"optimize":optimize|Optimize one or more indices.|
+|"optimize":optimize|Optimize one ore more indices.|
