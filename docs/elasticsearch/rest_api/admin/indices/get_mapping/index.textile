@@ -88,14 +88,20 @@ The following is example output:
 }
 </pre>
 
-h2. Multi Index and Type
+h2. Multiple Indices and Types
 
-p. The get mapping API can be used to get more than one index mapping with a single call. Also @_all@ can be used to get mappings for all indices. The following are some examples:
+p. The get mapping API can be used to get more than one index or type mapping with a single call. General usage of the API follows the following syntax: @host:port/{index}/{type}/_mapping@ where both @{index}@ and @{type}@ can stand for comma-separated list of names. To get mappings for all indices you can use @_all@ for @{index}@. The following are some examples:
 
 <pre class="prettyprint">
 $ curl -XGET 'http://localhost:9200/twitter,kimchy/_mapping'
 
 $ curl -XGET 'http://localhost:9200/_all/tweet,book/_mapping'
+</pre>
 
+p. If you want to get mappings of all indices and types then the following two examples are equivalent:
+
+<pre class="prettyprint">
 $ curl -XGET 'http://localhost:9200/_all/_mapping'
+
+$ curl -XGET 'http://localhost:9200/_mapping'
 </pre>
