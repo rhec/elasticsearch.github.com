@@ -304,10 +304,10 @@ p. By default, the highlighting will wrap highlighted text in @<em>@ and @</em>@
 p. There can be a single tag or more, and the "importance" is ordered. There are also built in "tag" schemas, with currently a single schema called @styled@ with @pre_tags@ of:
 
 <pre class="prettyprint">
-<em class="hlt1">, <em class="hlt2">, <em class="hlt2">,
-<em class="hlt3">, <em class="hlt4">, <em class="hlt5">,
-<em class="hlt6">, <em class="hlt7">, <em class="hlt8">,
-<em class="hlt9">
+<em class="hlt1">, <em class="hlt2">, <em class="hlt3">,
+<em class="hlt4">, <em class="hlt5">, <em class="hlt6">,
+<em class="hlt7">, <em class="hlt8">, <em class="hlt9">,
+<em class="hlt10">
 </pre>
 
 p. And post tag of @</em>@. If you think of more nice to have built in tag schemas, just send an email to the mailing list or open an issue. Here is an example of switching tag schemas:
@@ -316,7 +316,7 @@ p. And post tag of @</em>@. If you think of more nice to have built in tag schem
 {
     "query" : {...},
     "highlight" : {
-        "tag_schema" : "styled",
+        "tags_schema" : "styled",
         "fields" : {
             "_all" : {}
         }
