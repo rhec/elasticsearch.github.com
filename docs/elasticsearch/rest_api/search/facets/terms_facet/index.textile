@@ -34,3 +34,23 @@ p. Allow to specify field facets that return the N most frequent terms. For exam
 </pre>
 
 p(note). It is preferred to have the terms facet executed on a non analyzed field, or a field without a large number of terms it breaks to.
+
+h2. Exluding Terms
+
+p. It is possible to specify a set of terms that should be excluded from the terms facet request result:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : { }
+    },
+    "facets" : {
+        "tag" : {
+            "terms" : {
+                "field" : "tag",
+                "exclude" : ["term1", "term2"]
+            }
+        }
+    }
+}
+</pre>
