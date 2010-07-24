@@ -1,0 +1,26 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | Explain
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["from_size", "From  / Size"],
+];
+</script>
+
+h1. Explain
+
+p. Enables explanation for each hit on how its score was computed.
+
+<pre class="prettyprint lang-js">
+{
+    "explain": true,
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>

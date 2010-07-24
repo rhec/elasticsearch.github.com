@@ -1,0 +1,26 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["query", "Query"],
+];
+</script>
+
+h1. Query
+
+p. The query element within the search request body allows to define a query using the "Query DSL":../../query_dsl.
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>
+

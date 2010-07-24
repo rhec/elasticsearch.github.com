@@ -1,0 +1,59 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | Facets
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["facets", "Facets"],
+];
+</script>
+
+h1. Facets
+
+p. Facets allow to provide aggregated data based on the search request. For example, a facet can return the most popular terms within the search query.
+
+|_. Facet |_. Description |
+|"query":query_facet|A facet returning a count matching the facet query.|
+|"terms":terms_facet|A facet returning the N most frequent terms.|
+|"histogram":histogram_facet|A histogram facet across numeric fields.|
+|"statistical":statistical_facet|Compute statistical data for numeric fields or scripts.|
+
+h2. global
+
+p. All facets can be configured to either executed globally (not bounded by the search query), or not (bounded by the search query). By default, facets are not global. Setting a facet to run globally can be done using:
+
+<pre class="prettyprint lang-js">
+{
+    "facets" : {
+        "wow_facet" : {
+            "facet_type" : {
+                ...
+            },
+            "global" : true
+        }
+    }
+}    
+</pre>
+
+h2. filter
+
+p. All facets can be configured with an additional filter (explained in the Query DSL section), which will further reduce the documents they execute on. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "facets" : {
+        "wow_facet" : {
+            "facet_type" : {
+                ...
+            },
+            "filter" : {
+                "term" : { "user" : "kimchy"}
+            }
+        }
+    }
+}    
+</pre>

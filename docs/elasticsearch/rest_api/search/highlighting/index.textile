@@ -1,0 +1,93 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | Highlighting
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["highlighting", "Highlighting"],
+];
+</script>
+
+h1. Highlighting
+
+p. Allow to highlight search results on one or more fields. The implementation uses the lucene fast-vector-highlighter. The search request body:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {...},
+    "highlight" : {
+        "fields" : {
+            "_all" : {}
+        }
+    }
+}
+</pre>
+
+p. In the above case, the @_all@ field will be highlighted for each search hit (there will be another element in each search each, called highlight, which includes the highlighted fields and the highlighted fragments).
+
+p. Note, in order to highlight, the field in question must be @stored@ and have @term_vector@ of @with_positions_offsets@. In the above case, the mapping should include:
+
+<pre class="prettyprint lang-js">
+{
+    "type_name" : {
+        "_all" : {"store" : "yes", "term_vector" : "with_positions_offsets"}
+    }
+}
+</pre>
+
+p(note). The @_all@ field can be an easy to use candidate for highlighting.
+
+p. By default, the highlighting will wrap highlighted text in @<em>@ and @</em>@. This can be controlled by setting @pre_tags@ and @post_tags@, for example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {...},
+    "highlight" : {
+        "pre_tags" : ["<tag1>", "<tag2>"],
+        "post_tags" : ["</tag1>", "</tag2>"],
+        "fields" : {
+            "_all" : {}
+        }
+    }
+}
+</pre>
+
+p. There can be a single tag or more, and the "importance" is ordered. There are also built in "tag" schemas, with currently a single schema called @styled@ with @pre_tags@ of:
+
+<pre class="prettyprint">
+<em class="hlt1">, <em class="hlt2">, <em class="hlt3">,
+<em class="hlt4">, <em class="hlt5">, <em class="hlt6">,
+<em class="hlt7">, <em class="hlt8">, <em class="hlt9">,
+<em class="hlt10">
+</pre>
+
+p. And post tag of @</em>@. If you think of more nice to have built in tag schemas, just send an email to the mailing list or open an issue. Here is an example of switching tag schemas:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {...},
+    "highlight" : {
+        "tags_schema" : "styled",
+        "fields" : {
+            "_all" : {}
+        }
+    }
+}
+</pre>
+
+p. Each field highlighted can control the size of the highlighted fragment in characters (defaults to @100@), and the maximum number of fragments to return (defaults to @5@). For example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {...},
+    "highlight" : {
+        "fields" : {
+            "_all" : {"fragment_size" : 150, "number_of_fragments" : 3}
+        }
+    }
+}
+</pre>

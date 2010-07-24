@@ -1,0 +1,26 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | Fields
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["fields", "Fields"],
+];
+</script>
+
+h1. Fields
+
+p. Allows to selectively load specific *stored* fields for each document represented by a search hit. Defaults to load the internal @_source@ field.
+
+<pre class="prettyprint lang-js">
+{
+    "fields" : ["user", "postDate"],
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>

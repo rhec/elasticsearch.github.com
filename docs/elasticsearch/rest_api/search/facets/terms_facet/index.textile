@@ -1,0 +1,36 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | Facets | Terms Facet
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["facets", "Facets"],
+    ["terms_facet", "Terms Facet"],
+];
+</script>
+
+h1. Terms Facet
+
+p. Allow to specify field facets that return the N most frequent terms. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : {  }
+    },
+    "facets" : {
+        "tag" : {
+            "terms" : {
+                "field" : "tag",
+                "size" : 10
+            },
+        }
+    }
+}
+</pre>
+
+p(note). It is preferred to have the terms facet executed on a non analyzed field, or a field without a large number of terms it breaks to.

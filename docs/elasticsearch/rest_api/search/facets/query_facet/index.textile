@@ -1,0 +1,30 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | Facets | Query Facet
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["facets", "Facets"],
+    ["query_facet", "Query Facet"],
+];
+</script>
+
+h1. Query Facet
+
+p. A facet query allows to return a count of the hits matching the facet query. The query itself can be expressed using the Query DSL. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "facets" : {
+        "wow_facet" : {
+            "query" : {
+                "term" : { "tag" : "wow" }
+            }
+        }
+    }
+}    
+</pre>

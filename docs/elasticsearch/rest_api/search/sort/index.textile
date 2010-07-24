@@ -1,0 +1,47 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | Sort
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["sort", "Sort"],
+];
+</script>
+
+h1. Sort
+
+p. Allows to add one or more sort on specific fields. Each sort can be reversed as well. The sort is defined on a per field level, with special field name for @_score@ to sort by score.
+
+<pre class="prettyprint lang-js">
+{
+    "sort" : [
+        { "postDate" : {"reverse" : true} },
+        "user",
+        { "name" : "desc" },
+        { "age" : "desc" },
+        "_score"
+    ]
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>
+
+p. If the JSON parser support ordering without an array, the sort request can also be structured as follows:
+
+<pre class="prettyprint lang-js">
+{
+    "sort" : {
+        "postDate" : {"reverse" : true},
+        "user" : { },
+        "_score" : { }
+    },
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>

@@ -1,0 +1,39 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | Indices And Types
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["indices_types", "Indices And Types"],
+];
+</script>
+
+h1. Indices and Types
+
+p. The search API can be applies to multiple types within an index, and across multiple indices. For example, we can search on all documents across all types within the twitter index:
+
+<pre class="prettyprint">
+$ curl -XGET 'http://localhost:9200/_search?q=user:kimchy'
+</pre>
+
+p. We can also search within specific types:
+
+<pre class="prettyprint">
+$ curl -XGET 'http://localhost:9200/twitter/tweet,user/_search?q=user:kimchy'
+</pre>
+
+p. We can also search all tweets with a certain tag across several indices (for example, when each user has his own index):
+
+<pre class="prettyprint">
+$ curl -XGET 'http://localhost:9200/kimchy,elasticsearch/_search?q=tag:wow'
+</pre>
+
+p. Or even search across all indices:
+
+<pre class="prettyprint">
+$ curl -XGET 'http://localhost:9200/_search?q=tag:wow'
+</pre>

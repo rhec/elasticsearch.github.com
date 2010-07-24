@@ -1,0 +1,72 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | Facets | Statistical Facet
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["facets", "Facets"],
+    ["statistical_facet", "Statistical Facet"],
+];
+</script>
+
+h1. Statistical Facet
+
+p. Statistical facet allows to compute statistical data on a numeric fields. The statistical data include count, total, sum of squares, mean (average), minimum, maximum, variance, and standard deviation. Here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : {}
+    },
+    "facets" : {
+        "stat1" : {
+            "statistical" : {
+                "field" : "num1",
+            }
+        }
+    }
+}    
+</pre>
+
+h2. Script field
+
+p. When using @field@, the numeric value of the field is used to compute the statistical information. Sometimes, several fields values represent the statistics we want to compute, or some sort of mathematical evaluation. The script field allows to define a script to evaluate, with its value used to compute the statistical information. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : {}
+    },
+    "facets" : {
+        "stat1" : {
+            "statistical" : {
+                "script" : "doc['num1'].value + doc['num2'].value"
+            }
+        }
+    }
+}    
+</pre>
+
+p. Parameters can also be provided to the different scripts (preferable if the script is the same, with different values for a specific parameter, like "factor"):
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : {}
+    },
+    "facets" : {
+        "stat1" : {
+            "statistical" : {
+                "script" : "(doc['num1'].value + doc['num2'].value) * factor",
+                "params" : {
+                    "factor" : 5
+                }
+            }
+        }
+    }
+}    
+</pre>

@@ -1,0 +1,26 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Search | From / Size
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["search", "Search"],
+    ["from_size", "From  / Size"],
+];
+</script>
+
+h1. From / Size
+
+p. Though can be set as request parameters, they can also be set within the search body. @from@ defaults to @0@, and @size@ defaults to @10@.
+
+<pre class="prettyprint lang-js">
+{
+    "from" : 0, "size" : 10,
+    "query" : {
+        "term" : { "user" : "kimchy" }
+    }
+}
+</pre>
