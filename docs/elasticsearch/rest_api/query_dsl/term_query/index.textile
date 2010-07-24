@@ -30,3 +30,11 @@ p. A boost can also be associated with the query:
 }    
 </pre>
 
+p. Or :
+
+<pre class="prettyprint lang-js">
+{
+    "term" : { "user" : { "term" : "kimchy", "boost" : 2.0 } }
+}    
+</pre>
+

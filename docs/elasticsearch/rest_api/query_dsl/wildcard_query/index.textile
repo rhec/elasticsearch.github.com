@@ -21,3 +21,20 @@ p. Matches documents that have fields matching a wildcard expression. Supported 
     "wildcard" : { "user" : "ki*y" }
 }
 </pre>
+
+p. A boost can also be associated with the query:
+
+<pre class="prettyprint lang-js">
+{
+    "wildcard" : { "user" : { "value" : "ki*y", "boost" : 2.0 } }
+}    
+</pre>
+
+p. Or :
+
+<pre class="prettyprint lang-js">
+{
+    "wildcard" : { "user" : { "wildcard" : "ki*y", "boost" : 2.0 } }
+}    
+</pre>
+

@@ -26,6 +26,14 @@ p. A boost can also be associated with the query:
 
 <pre class="prettyprint lang-js">
 {
+    "prefix" : { "user" :  { "value" : "ki", "boost" : 2.0 } }
+}
+</pre>
+
+p. Or :
+
+<pre class="prettyprint lang-js">
+{
     "prefix" : { "user" :  { "prefix" : "ki", "boost" : 2.0 } }
 }
 </pre>
