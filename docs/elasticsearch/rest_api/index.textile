@@ -20,7 +20,6 @@ p. This section describes the REST APIs ElasticSearch provides using JSON. The f
 |"get":get|Get a typed JSON document from an index based on its id.|
 |"search":search|Execute a search query against one or more indices and get back search hits.|
 |"count":count|Execute a query against one or more indices and get hits count.|
-|"terms":terms|Extract terms and their document frequencies from one or more fields.|
 |"create_index":admin/indices/create_index|Creates an index with optional settings.|
 |"delete_index":admin/indices/delete_index|Deletes an index.|
 |"put_mapping":admin/indices/put_mapping|Register specific mapping definition for a specific type against one or more indices.|

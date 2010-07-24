@@ -20,7 +20,6 @@ p. This section describes the Java API elasticsearch provides. All of elasticsea
 |"get":get|Get a typed JSON document from an index based on its id.|
 |"search":search|Execute a search query against one or more indices and get back search hits.|
 |"count":count|Execute a query against one or more indices and get hits count.|
-|"terms":terms|Extract terms and their document frequencies from one or more fields.|
 
 p. There is also an evolving "Administration Java API":admin.
 
