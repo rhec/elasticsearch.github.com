@@ -1,0 +1,45 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Custom Score Query
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["custom_score_query", "Custom Score Query"],
+];
+</script>
+
+h1. Custom Score Query
+
+p. @custom_score@ query allows to wrap another query and customize the scoring of it optionally with a computation derived from other field values in the doc (numeric ones) using "script expression":../../../modules/scripting. Here is a simple sample:
+
+<pre class="prettyprint lang-js">
+"custom_score" : {
+    "query" : {
+        ....
+    },
+    "script" : "score * doc['my_numeric_field'].value"
+}
+</pre>
+
+p. On top of the different scripting field values and expression, the @score@ script parameter can be used to retrieve the score based on the wrapped query.
+
+h2. Script Parameters
+
+p. Scripts are cached for faster execution. If the script has parameters that it needs to take into account, it is preferable to use the same script, and provide parameters to it:
+
+<pre class="prettyprint lang-js">
+"custom_score" : {
+    "query" : {
+        ....
+    },
+    "params" : {
+        "param1" : 2,
+        "param2" : 3.1
+    }
+    "script" : "score * doc['my_numeric_field'].value / pow(param1, param2)"
+}
+</pre>

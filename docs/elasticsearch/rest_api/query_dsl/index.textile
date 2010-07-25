@@ -40,6 +40,7 @@ h2. Queries
 |"span_near":span_near_query|Matches spans which are near one another.|
 |"span_not":span_not_query|Removes matches which overlap with another span query.|
 |"span_or":span_or_query|Matches the union of its span query clauses.|
+|"custom_score":custom_score_query|Wraps another query and provides custom scripted score computation.|
 
 h2. Filters
 
