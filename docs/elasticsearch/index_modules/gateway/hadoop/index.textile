@@ -14,8 +14,4 @@ docBreadcrumb = [
 
 h1. Hadoop HDFS Index Gateway
 
-p. The Hadoop HDFS index gateway allows to store the content of a shard (actual index + transaction log) on HDFS.
-
-h2. Settings
-
-p. The Hadoop HDFS index gateway worked with the "global HDFS gateway":/docs/elasticsearch/modules/gateway/hadoop. It is used automatically when the global gateway is configured  to use Hadoop, and will automatically use the path configured for the global one. If different path is required for a specific index, it can be set using @index.gateway.hdfs.path@ setting.
+p. The Hadoop HDFS index gateway allows to store the content of a shard (actual index + transaction log) on HDFS. The path itself is derived from the node level HDFS gateway.

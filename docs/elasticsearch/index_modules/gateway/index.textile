@@ -23,7 +23,7 @@ p. The index level gateway stores both the actual index files for a shard, as we
 
 p. Note, there are two levels of high availability when using ElasticSearch distributed model. The first, is the ability create an index with several replicas per shard. The second level, in case of a complete cluster shutdown / failure, is the gateway support. The fact that the gateway works in a periodic mode and not persisted on every change is very safe, since there is always the shard replicas that will be used in case of a node failure, even before the gateway comes into play.
 
-h2. indexGatewayType
+h2. Gateway Type
 
 p. The type of the index gateway to use when an index is created can be controlled using the @index.gateway.type@ setting. The following types are supported:
 

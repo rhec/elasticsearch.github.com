@@ -27,4 +27,11 @@ p. The type of the gateway to use can be set using the @gateway.type@ setting. T
 
 p. The gateway set on the node level will automatically control the "index gateway":../../index_modules/gateway to use. For example, if the @fs@ gateway is used, then automatically, each index created on the node will also use its own respective index level @fs@ gateway. In this case, if in an index should not persist its state, it should be explicitly set to @none@.
 
+h2. Recovery After Nodes / Time
+
+p. In many cases, the actual cluster meta data should only be recovered after specific nodes have started in the cluster, or a timeout has passed. This is handy when restarting the cluster, and each node local index storage still exists to be reused and not recovered from the gateway (which reduces the time it takes to recover from the gateway).
+
+p. The @gateway.recover_after_nodes@ setting (which accepts a number) and @gateway.recovery_after_time@ setting (which accepts a time value) can be to control it.
+
+p. Note, once the meta data has been recovered from the gateway (which indices to create, mappings and so on), then this setting is no longer effective until the next full restart of the cluster.
 
