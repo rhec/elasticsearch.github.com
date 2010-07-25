@@ -16,12 +16,12 @@ h1. Count
 p. The count API allows to easily execute a query and get the number of matches for that query. It can be executed across one or more indices and across one or more types. The query can be provided using the "Query DSL":../query_dsl.
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.client.Requests.*;
 import static org.elasticsearch.index.query.xcontent.FilterBuilders.*;
 import static org.elasticsearch.index.query.xcontent.QueryBuilders.*;
 
-CountResponse response = client.count(countRequest("test")
-        .querySource(termQuery("_type", "type1"))
+CountResponse response = client.prepareCount("test")
+        .setQuery(termQuery("_type", "type1"))
+        .execute()
         .actionGet();
 </pre>
 

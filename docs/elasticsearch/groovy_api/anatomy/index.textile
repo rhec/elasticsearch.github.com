@@ -13,7 +13,7 @@ docBreadcrumb = [
 
 h1. Anatomy of a Groovy API
 
-p. One a "GClient":../client has been obtained, all of ElasticSearch APIs can be executed on it. Each Groovy API is exposed using three different mechanisms.
+p. Once a "GClient":../client has been obtained, all of ElasticSearch APIs can be executed on it. Each Groovy API is exposed using three different mechanisms.
 
 h2. Closure Request
 
@@ -76,27 +76,14 @@ println "Indexed $indexR.response.id into $indexR.response.index/$indexR.respons
 
 h2. Java Like
 
-p. The last option is to provide an actual instance of the API request, and an @ActionListener@ for the callback. This is exactly like the Java API:
+p. The last option is to provide an actual instance of the API request, and an @ActionListener@ for the callback. This is exactly like the Java API with the added @gexecute@ which returns the @GActionFuture@:
 
 <pre class="prettyprint">
-client.index(new IndexRequest(
-        index: "test",
-        type: "type1",
-        id: "1",
-        source: {
-            test = "value"
-            complex {
-                value1 = "value1"
-                value2 = "value2"
-            }
-        }), 
-    new ActionListener<IndexResponse>() {
-        void onResponse(IndexResponse response) {
-            // handle success
-        }
-
-        void onFailure(Throwable e) {
-            // handle failure
-        }
-})
+def indexR = node.client.prepareIndex("test", "type1", "1").setSource({
+    test = "value"
+    complex {
+        value1 = "value1"
+        value2 = "value2"
+    }
+}).gexecute()
 </pre>

@@ -17,12 +17,12 @@ p. The delete by query API allows to delete documents from one or more indices a
 
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.client.Requests.*;
 import static org.elasticsearch.index.query.xcontent.FilterBuilders.*;
 import static org.elasticsearch.index.query.xcontent.QueryBuilders.*;
 
-DeleteByQueryResponse response = client.deleteByQuery(deleteByQueryRequest("test")
-        .querySource(termQuery("_type", "type1"))
+DeleteByQueryResponse response = client.prepareDeleteByQuery("test")
+        .setQuery(termQuery("_type", "type1"))
+        .execute()
         .actionGet();
 </pre>
 

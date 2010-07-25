@@ -16,11 +16,9 @@ h1. Delete
 p. The delete API allows to delete a typed JSON document from a specific index based on its id. The following example deletes the JSON document from an index called twitter, under a type called tweet, with id valued 1:
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.client.Requests.*;
-
-DeleteResponse response = client.delete(deleteRequest("twitter")
-        .type("tweet")
-        .id("1")).actionGet();
+DeleteResponse response = client.prepareDelete("twitter", "tweet", "1")
+        .execute()
+        .actionGet();
 </pre>
 
 p. For more information on the index operation, check out the REST "delete":/docs/elasticsearch/rest_api/delete docs.
@@ -32,10 +30,8 @@ p. The delete API allows to set the threading model the operation will be perfor
 p. The options are to execute the operation on a different thread, or to execute it on the calling thread (note that the API is still async). By default, @operationThreaded@ is set to @true@ which means the operation is executed on a different thread. Here is an example that sets it to @false@:
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.client.Requests.*;
-
-DeleteResponse response = client.delete(deleteRequest("twitter")
-        .operationThreaded(false)
-        .type("tweet")
-        .id("1")).actionGet();
+DeleteResponse response = client.prepareDelete("twitter", "tweet", "1")
+        .setOperationThreaded(false)
+        .execute()
+        .actionGet();
 </pre>
