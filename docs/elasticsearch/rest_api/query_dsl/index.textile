@@ -50,3 +50,6 @@ h2. Filters
 |"prefix":prefix_filter|Filters documents that have fields containing terms with a specified prefix.|
 |"bool":bool_filter|A filter that matches documents matching boolean combinations of other queries.|
 |"query":query_filter|Wraps any query to be used as a filter.|
+|"and":and_filter|A filter that matches documents using @AND@ boolean operator on other queries.|
+|"or":or_filter|A filter that matches documents using @OR@ boolean operator on other queries.|
+|"not":not_filter|A filter that filters out matched documents using a query.|
