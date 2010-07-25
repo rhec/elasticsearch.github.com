@@ -35,3 +35,5 @@ p. The @gateway.recover_after_nodes@ setting (which accepts a number) and @gatew
 
 p. Note, once the meta data has been recovered from the gateway (which indices to create, mappings and so on), then this setting is no longer effective until the next full restart of the cluster.
 
+p. Operations are blocked while the cluster meta data has not been recovered in order not to mix with the actual cluster meta data that will be recovered once the settings has been reached.
+
