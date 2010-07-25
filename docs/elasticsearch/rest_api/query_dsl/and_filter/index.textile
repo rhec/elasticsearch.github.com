@@ -1,0 +1,44 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | And Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["and_filter", "And Filter"]
+];
+</script>
+
+h1. And Filter
+
+p. A filter that matches documents using @AND@ boolean operator on other queries. This filter is more performant then "bool":../bool_filter filter. Can be placed within queries that accept a filter.
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "term" : { "name.first" : "shay" }
+        },
+        "filter" : {
+            "and" : {
+                "filters" : [
+                    {
+                        "range" : { 
+                            "postDate" : { 
+                                "from" : "2010-03-01",
+                                "to" : "2010-04-01"
+                            }
+                        }
+                    },
+                    {
+                        "prefix" : { "name.second" : "ba" }
+                    }
+                ]
+            }
+        }
+    }
+}
+</pre>

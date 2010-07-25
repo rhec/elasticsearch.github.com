@@ -1,0 +1,39 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Or Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["or_filter", "Or Filter"]
+];
+</script>
+
+h1. Or Filter
+
+p. A filter that matches documents using @OR@ boolean operator on other queries. This filter is more performant then "bool":../bool_filter filter. Can be placed within queries that accept a filter.
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "term" : { "name.first" : "shay" }
+        },
+        "filter" : {
+            "or" : {
+                "filters" : [
+                    {
+                        "term" : { "name.second" : "banon" }
+                    },
+                    {
+                        "term" : { "name.nick" : "kimchy" }
+                    }
+                ]
+            }
+        }
+    }
+}
+</pre>
