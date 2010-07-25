@@ -31,6 +31,18 @@ search.response.hits.each {SearchHit hit ->
 }
 </pre>
 
+p. It can also be execute using the "Java API" while still using a closure for the query:
+
+<pre class="prettyprint">
+def search = node.client.prepareSearch("test").setQuery({
+        term(test: "value")
+}).gexecute();
+
+search.response.hits.each {SearchHit hit -> 
+    println "Got hit $hit.id from $hit.index/$hit.type"
+}
+</pre>
+
 p. The format of the search @Closure@ follows the same JSON syntax as the "REST API Search":/docs/elasticsearch/rest_api/search request.
 
 p. The source of each hit returned (if selected) can be treated as a map (@SearchHit#getSource@).
