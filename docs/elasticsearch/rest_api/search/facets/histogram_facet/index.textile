@@ -77,7 +77,7 @@ p. The histogram facet allows to use a different key and value. The key is used 
 
 h2. Script Key and Value
 
-p. Sometimes, some munging of both the key and the value are needed. In the key case, before it is rounded into a bucket, and for the value, when the statistical data is computed per bucket. Here is an example:
+p. Sometimes, some munging of both the key and the value are needed. In the key case, before it is rounded into a bucket, and for the value, when the statistical data is computed per bucket "scripts":../../../../modules/scripting can be used. Here is an example:
 
 <pre class="prettyprint lang-js">
 {

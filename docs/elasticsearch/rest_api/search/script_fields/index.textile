@@ -14,7 +14,7 @@ docBreadcrumb = [
 
 h1. Script Fields
 
-p. Allows to return a script evaluation (based on different fields) for each hit, for example:
+p. Allows to return a "script evaluation":../../../modules/scripting (based on different fields) for each hit, for example:
 
 <pre class="prettyprint lang-js">
 {
