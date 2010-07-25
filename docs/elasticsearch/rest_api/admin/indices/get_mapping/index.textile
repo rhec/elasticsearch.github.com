@@ -13,8 +13,6 @@ docBreadcrumb = [
 ];
 </script>
 
-<div class="newversion">New feature in 0.9.0</div>
-
 h1. Get Mapping
 
 p. The get mapping API allows to retrieve mapping definition of index or index/type.

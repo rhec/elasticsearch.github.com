@@ -299,10 +299,6 @@ p.note {
     background: white;
 }
 
-.newversion {
-    padding: 5pt; margin-top: 5pt; float: right; font-size: 125%; background-color: yellow;
-}
-
 /* SITE HEADER */
 .siteheaderwrapper {width: 100%; height: 96px; background: url(/images/green.gif) repeat top left;}
     .siteheaderwrapper .siteheader {width:96em; margin:0 auto;}
