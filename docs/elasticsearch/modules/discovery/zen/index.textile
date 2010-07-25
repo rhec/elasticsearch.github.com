@@ -46,10 +46,11 @@ p. The unicast discovery allows to perform the discovery when multicast is not e
 
 p. The unicast discovery uses the "transport":../../transport module to perform the discovery.
 
-
 h2. Master Election
 
 p. As part of the initial ping process a master of the cluster is either elected or joined to. This is done automatically. The @discovery.zen.initial_ping_timeout@ (which defaults to @3s@) allows to configure the election to handle cases of slow or congested networks (higher values assure less chance of failure).
+
+p. Nodes can be excluded from becoming a master by setting @zen.master@ to @false@. Note, once a node is a client node (@node.client@ set to @true@), it will not be allowed to become a master (@zen.master@ is automatically set to @false@).
 
 h2. Fault Detection
 
