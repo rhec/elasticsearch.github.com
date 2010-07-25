@@ -24,6 +24,7 @@ h2. Queries
 |"range":range_query|Matches documents with fields that have terms within a certain range.|
 |"prefix":prefix_query|Matches documents that have fields containing terms with a specified prefix.|
 |"wildcard":wildcard_query|Matches documents that have fields matching a wildcard expression.|
+|"fuzzy":fuzzy_query|A fuzzy based query that uses similarity based on Levenshtein (edit distance) algorithm.|
 |"match_all":match_all_query|A query that matches all documents.|
 |"query_string":query_string_query|A query that uses a query parser in order to parse a query string.|
 |"field":field_query|A query that executes a query string against a specific field.|
