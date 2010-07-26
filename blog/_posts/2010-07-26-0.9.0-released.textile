@@ -1,0 +1,44 @@
+---
+layout: blogpost
+title: ElasticSearch 0.9.0 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.9.0@ has just been released. You can download it "here":/download. This is a major release for elasticsearch, both in terms of feature set as well as stability.
+
+p. Major partial list of features include:
+
+h2. Facets Support
+
+p. "Facets":/docs/elasticsearch/rest_api/search/facets allow to provide aggregated data view correlating to the search query executed. ElasticSearch now comes with several facets implementations, including the typical "terms" facets (allowing to get the most popular terms, and how often they occur), statistical facets providing statistical information on numeric fields including count, total, mean, min, max, variance, sum of squares, and standard deviation. And, the coolest facet type, histogram facets, which based on a field, break it into buckets and provide data on the relevant buckets derived from the same field, another field, or a script.
+
+h2. Scripting Support
+
+p. Added as a general feature within elasticsearch, "scripting":/docs/elasticsearch/modules/scripting allows to define scripts that are evaluated at runtime and can be used in different elasticsearch features, such as facets, script search fields, script filter, and so on.
+
+h2. More Queries and Filters
+
+p. Additional queries and filters have been added. Thanks to the Query DSL of elasticsearch, adding queries is a snap. Queries include fuzzy query, custom score query (based on scripts), script filter, and/or/not filters, and more.
+
+h2. Improved Gateway Recovery
+
+p. A major feature in elasticsearch, allowing to reuse existing index files when recovering from the gateway after a full cluster restart significantly reducing the time it takes to recover from the gateway. This include additions to the gateway behavior including the ability to control when the initial recovery will happen as a factor of the number of nodes in the cluster and time. Also, the shutdown API has been enhanced to better handle full cluster shutdown.
+
+h2. Script Search Fields
+
+p. The ability to load custom data (based on non stored fields) as part of the search request.
+
+h2. Improves Fluent Java / Groovy API
+
+p. The Java / Groovy API has been greatly enhanced to provide more fluent API execution.
+
+h2. AWS Cloud Specific Plugin
+
+p. The cloud API has been rewritten to use directly the amazon AWS API, providing better stability and features when using AWS. The cloud plugin now only works with Amazon AWS.
+
+h2. Stability, Bug Squashing, and Memory Usage Improvements
+
+p. A lot of work has going into improved stability of elasticsearch, better memory management, and major bugs squashing. ElasticSearch is being used by several companies to index very large amount of data with large cluster size successfully with snapshot versions of 0.9.
+
+-shay.banon
