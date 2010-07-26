@@ -23,7 +23,7 @@ p. Most scripting revolve around the use of specific document fields data. The @
 
 |_. Expression |_. Description |
 |@doc['field_name'].value@|The native value of the field. For example, if its a short type, it will be short.|
-|doc['field_name'].values|The native array values of the field. For example, if its a short type, it will be short[]. Remember, a field can have several values within a single doc. Returns an empty array if the field has no values.|
+|@doc['field_name'].values@|The native array values of the field. For example, if its a short type, it will be short[]. Remember, a field can have several values within a single doc. Returns an empty array if the field has no values.|
 |@doc['field_name'].stringValue@|The string value of the field.|
 |@doc['field_name'].doubleValue@|The converted double of the field. Replace `double` with `int`, `long`, `float`, `short`, `byte` for the respective values.|
 |@doc['field_name'].doubleValues@|A converted double values array.|
