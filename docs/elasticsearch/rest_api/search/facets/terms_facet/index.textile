@@ -54,3 +54,24 @@ p. It is possible to specify a set of terms that should be excluded from the ter
     }
 }
 </pre>
+
+h2. Regex Patterns
+
+p. The terms API allows to define regex expression that will control which terms will be included in the faceted list, here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : { }
+    },
+    "facets" : {
+        "tag" : {
+            "terms" : {
+                "field" : "tag",
+                "regex" : "_regex expression here_"
+                "regex_flags" : "DOTALL"
+            }
+        }
+    }
+}
+</pre>
