@@ -43,4 +43,5 @@ p. The cluster health API accepts the following request parameters:
 |@level@|Can be one of @cluster@, @indices@ or @shards@. Controls the details level of the health information returned. Defaults to @cluster@.|
 |@wait_for_status@|One of @green@, @yellow@ or @red@. Will wait (until the timeout provided) until the status of the cluster changes to the one provided. By default, will not wait for any status.|
 |@wait_for_relocating_shards@|A number controlling to how many relocating shards to wait for. Usually will be @0@ to indicate to wait till all relocation have happened. Defaults to not to wait.|
+|@wait_for_nodes@|The request waits until the specified number @N@ of nodes is available. It also accepts @>=N@, @<=N@, @>N@ and @<N@. Alternatively, it is possible to use @ge(N)@, @le(N)@, @gt(N)@ and @lt(N)@ notation.|
 |@timeout@|A time based parameter controlling how long to wait if one of the wait_for_XXX are provided. Defaults to @30s@.|
