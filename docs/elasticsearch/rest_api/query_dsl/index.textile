@@ -46,6 +46,7 @@ h2. Queries
 h2. Filters
 
 |_. API |_. Description |
+|"script":script_filter|A filter defined by a custom script.|
 |"term":term_filter|Filters documents that have fields that contain a term (*not analyzed*).|
 |"terms":terms_filter|Filters documents that have fields that match any of the listed terms (*not analyzed*).|
 |"range":range_filter|Filters documents with fields that have terms within a certain range.|

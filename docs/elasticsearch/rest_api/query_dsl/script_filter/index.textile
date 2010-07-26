@@ -1,0 +1,50 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Script Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["script_filter", "Script Filter"],
+];
+</script>
+
+h1. Script Filter
+
+p. A filter allowing to define "scripts":../../modules/scripting as filters. For example:
+
+<pre class="prettyprint lang-js">
+"filtered" : {
+    "query" : {
+        ...
+    }, 
+    "filter" : {
+        "script" : {
+            "script" : "doc['num1'].value > 1"
+        }
+    }
+}
+</pre>
+
+h2. Custom Parameters
+
+p. Scripts are compiled and cached for faster execution. If the same script can be used, just with different parameters provider, it is preferable to use the ability to pass parameters to the script itself, for example:
+
+<pre class="prettyprint lang-js">
+"filtered" : {
+    "query" : {
+        ...
+    }, 
+    "filter" : {
+        "script" : {
+            "script" : "doc['num1'].value > param1"
+            "params" : {
+                "param1" : 5
+            }
+        }
+    }
+}
+</pre>
