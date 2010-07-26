@@ -1,0 +1,35 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Cloud | AWS | S3 Gateway
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["cloud", "Cloud"], 
+    ["aws", "AWS"], 
+    ["s3_gateway", "S3 Gateway"], 
+];
+</script>
+
+h1. S3 Gateway
+
+p. s3 based gateway allows to do long term reliable async persistency of the index directly to Amazon s3. Here is how it can be configured:
+
+<pre class="prettyprint lang-js">
+cloud:
+    aws:
+        access_key: AKIAIQBF2RECL7FJWGJQ
+        secret_key: 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
+
+
+gateway:
+    type: s3
+    s3:
+        bucket: bucket_name
+</pre>
+
+p. The following are a list of settings (prefixed with @gateway.s3@) that can further control the s3 gateway:
+
+|_. Setting |_. Description |
+|@chunk_size@|Big files are broken down into chunks (to overcome AWS 5g limit). Default set to @100m@.|

@@ -1,0 +1,35 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Cloud | AWS | EC2 Discovery
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["cloud", "Cloud"], 
+    ["aws", "AWS"], 
+    ["ec2_discovery", "EC2 Discovery"], 
+];
+</script>
+
+h1. EC2 Discovery
+
+p. ec2 discovery allows to use the ec2 APIs to perform automatic discovery (similar to multicast in non hostile multicast environments). Here is a simple sample configuration:
+
+<pre class="prettyprint lang-js">
+cloud:
+    aws:
+        access_key: AKIAIQBF2RECL7FJWGJQ
+        secret_key: vEXyMThREXeRMm/b/LRzEB8jWwvzQeXgjqMX+6br
+
+discovery:
+    type: ec2
+</pre>
+
+p. The following are a list of settings (prefixed with @discovery.ec2@) that can further control the discovery:
+
+|_. Setting |_. Description |
+|@groups@|Either a comma separated list or array based list of (security) groups. Only instances with the provided security groups will be used in the cluster discovery.|
+|@host_type@|The type of host type to use to communicate with other instances. Can be one of @private_ip@, @public_ip@, @private_dns@, @public_dns@. Defaults to @private_ip@.|
+|@availability_zones@|Either a comma separated list or array based list of availability zones. Only instances within the provided availability zones will be used in the cluster discovery.|
+
