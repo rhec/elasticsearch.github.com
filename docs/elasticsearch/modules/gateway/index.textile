@@ -23,7 +23,7 @@ p. The type of the gateway to use can be set using the @gateway.type@ setting. T
 |none|No state is stored.|
 |"fs":fs|File system based storage.|
 |"hadoop":hadoop|Hadoop HDFS based storage.|
-|"cloud":/docs/elasticsearch/cloud/gateway|Cloud blob store (Amazon S3, Rackspace CloudFiles) gateway.|
+|"cloud":/docs/elasticsearch/cloud/|Cloud blob store gateway.|
 
 p. The gateway set on the node level will automatically control the "index gateway":../../index_modules/gateway to use. For example, if the @fs@ gateway is used, then automatically, each index created on the node will also use its own respective index level @fs@ gateway. In this case, if in an index should not persist its state, it should be explicitly set to @none@.
 
