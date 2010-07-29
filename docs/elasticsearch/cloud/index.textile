@@ -25,7 +25,7 @@ p. One of the main problems with running distributed systems on the cloud is dis
 
 p. Unicast discovery is problematic when used on the cloud. Machines can come and go, and their IP is not static. Cloud providers work around that by providing the ability to have a set of "elastic IPs". But, at the end, the management of the cloud installation becomes a pain. At least two servers must be associated with an elastic IP and become a special exception case which needs to be managed. This goes completely against "zero conf" discovery and heavily complicates the cloud installation.
 
-p. ElasticSearch "zen" discovery module was built from the ground up to work well in cloud environments (and integrate well with other elasticsearch modules). The cloud extension to it provides "zero conf" discovery in cloud environments.
+p. ElasticSearch "zen":../modules/discovery/zen discovery module was built from the ground up to work well in cloud environments (and integrate well with other elasticsearch modules). The cloud extension to it provides "zero conf" discovery in cloud environments.
 
 p. In a nutshell, when running on the cloud, the list of machines that are already running on the cloud is available through cloud APIs. This information can be used to perform "zero conf" discovery. This follows the motto that the should be embraced by any system running on the cloud: _All Machines are Created Equal_.
 

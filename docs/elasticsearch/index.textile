@@ -20,6 +20,8 @@ p. The "setup":setup section includes instructions on how to "install":setup/ins
 |_. Section |_. Description |
 |"rest_api":rest_api|Covers the REST API, for example, index/delete/count/search operations and more.|
 |"java_api":java_api|Covers the full native Java API.|
+|"groovy_api":groovy_api|Covers the full native Groovy API.|
 |"mapping":mapping|Covers the mapping definitions of types.|
 |"modules":modules|Covers the different node (top) level modules of ElasticSearch.|
 |"index_modules":index_modules|Covers the different index level modules and their respective settings.|
+|"cloud":cloud|Covers cloud based discovery and gateway support.|
