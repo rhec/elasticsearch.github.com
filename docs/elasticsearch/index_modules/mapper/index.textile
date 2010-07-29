@@ -31,3 +31,5 @@ p. The default mapping definition is plain mapping definition that is embedded w
 p. Pretty short, no? Basically, everything is defaulted, especially the dynamic nature of the root object mapping. The default mapping definition can be overridden in several manners. The simplest manner is to simply define a file called @default-mapping.json@ and placed it under the @config@ directory (which can be configured to exist in a different location). It can also be explicitly set using the @index.mapper.default_mapping_location@ setting.
 
 p. Dynamic creation of mappings for unmapped types can be completely disabled by setting @index.mapper.dynamic@ to @false@.
+
+h2. 

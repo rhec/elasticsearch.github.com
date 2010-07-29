@@ -13,7 +13,7 @@ docBreadcrumb = [
 
 h1. Built In Mappings
 
-p. Creating new mappings can be done using the @put_mapping@ API. When a document is indexed with no mapping associated with it in the specific index, the "dynamic mapping":../dynamic_mapping feature will kick in an automatically create mapping definition for it.
+p. Creating new mappings can be done using the @put_mapping@ API. When a document is indexed with no mapping associated with it in the specific index, the "dynamic / default mapping":../dynamic_mapping feature will kick in an automatically create mapping definition for it.
 
 p. Mappings can also be provided on the node level, meaning that each index created will automatically be started with all the mappings defined within a certain location.
 
