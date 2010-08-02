@@ -41,7 +41,7 @@ p. All facets can be configured to either executed globally (not bounded by the 
 
 h2. filter
 
-p. All facets can be configured with an additional filter (explained in the Query DSL section), which will further reduce the documents they execute on. For example:
+p. All facets can be configured with an additional filter (explained in the "Query DSL":../../query_dsl#Filters section), which will further reduce the documents they execute on. For example:
 
 <pre class="prettyprint lang-js">
 {
