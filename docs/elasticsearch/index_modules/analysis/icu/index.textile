@@ -24,7 +24,7 @@ p. The plugin includes the following analysis components:
 
 h2. ICU Normalization
 
-p. Normalizes characters as explained "here":http://userguide.icu-project.org/transforms/normalization. it registers itself by default under @icu_normalizer@ or @icuNormalizer@ using the default settings. Allows for the name parameter to be provided which can include the following values: @nfc@, @nfkc@, and @nfkc_cf@. Here is a sample settings:
+p. Normalizes characters as explained "here":http://userguide.icu-project.org/transforms/normalization. It registers itself by default under @icu_normalizer@ or @icuNormalizer@ using the default settings. Allows for the name parameter to be provided which can include the following values: @nfc@, @nfkc@, and @nfkc_cf@. Here is a sample settings:
 
 <pre class="prettyprint">
 {
@@ -95,8 +95,8 @@ p. And here is a sample of custom collation:
             },
             "filter" : {
                 "myCollator" : {
-                    type : "icu_collator",
-                    language : "en"
+                    "type" : "icu_collation",
+                    "language" : "en"
                 }
             }
         }
