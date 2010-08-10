@@ -19,8 +19,8 @@ p. s3 based gateway allows to do long term reliable async persistency of the ind
 <pre class="prettyprint lang-js">
 cloud:
     aws:
-        access_key: AKIAIQBF2RECL7FJWGJQ
-        secret_key: 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
+        access_key: AKVAIQBF2RECL7FJWGJQ
+        secret_key: vExyMThREXeRMm/b/LRzEB8jWwvzQeXgjqMX+6br
 
 
 gateway:
