@@ -75,3 +75,7 @@ p. The terms API allows to define regex expression that will control which terms
     }
 }
 </pre>
+
+h2. Memory Considerations
+
+p. Term facet causes the relevant field values to be loaded into memory. This means that per shard, there should be enough memory to contain them. It is advisable to explicitly set the fields to be @not_analyzed@ or make sure the number of unique tokens a field can have is not large.
