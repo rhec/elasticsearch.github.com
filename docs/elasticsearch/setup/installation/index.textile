@@ -13,7 +13,7 @@ docBreadcrumb = [
 
 h1. Installation
 
-p. After "downloading":/products/download the latest release and extracting it, ElasticSearch can be started using:
+p. After "downloading":/download the latest release and extracting it, ElasticSearch can be started using:
 
 <pre class="prettyprint lang-sh">
 $ bin/elasticsearch
