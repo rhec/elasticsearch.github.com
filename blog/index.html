@@ -7,23 +7,15 @@ title: Blog
     <h1 style="margin-bottom: 0em;"><a href="{{post.url}}">{{post.title}}</a></h1>
 
     <div style="float: right">
-        <script type="text/javascript">
-             var topsy_nick = "elasticsearch";
-             var topsy_theme = "jade";
-             var topsy_style = "small";
-             var topsy_order = "retweet,count";
-             var topsy_title = "{{page.title}}"
-             var topsy_url = "http://www.elasticsearch.com/{{post.url}}"
-        </script>
-        <script type="text/javascript" src="http://cdn.topsy.com/button.js"></script>
+        <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.elasticsearch.com/{{post.url}}" data-text="{{post.title}}" data-count="horizontal" data-via="elasticsearch" data-related="kimchy:Shay Banon: Founder of elasticsearch">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     </div>    
     <div style="float: right">
         <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.elasticsearch.com%2F{{ post.url | replace:'/','%2F' }}&amp;layout=button_count&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:90px; height:21px;"></iframe>
     </div>
-    <div style="float: right; padding-right: 30px; padding-top: 2px;">
+    <!-- <div style="float: right; padding-right: 30px; padding-top: 2px;">
         <a title="Post on Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="small-count" data-url="http://www.elasticsearch.com/{{post.url}}"></a>
         <script type="text/javascript" src="http://www.google.com/buzz/api/button.js"></script>
-    </div>
+    </div> -->
 
 
     <div style="margin-bottom: 2em;">By <a href="/blog/{{post.nick}}">{{post.author}}</a> | {{post.date | date_to_string}}</div>
