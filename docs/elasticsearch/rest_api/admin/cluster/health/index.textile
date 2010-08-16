@@ -45,3 +45,46 @@ p. The cluster health API accepts the following request parameters:
 |@wait_for_relocating_shards@|A number controlling to how many relocating shards to wait for. Usually will be @0@ to indicate to wait till all relocation have happened. Defaults to not to wait.|
 |@wait_for_nodes@|The request waits until the specified number @N@ of nodes is available. It also accepts @>=N@, @<=N@, @>N@ and @<N@. Alternatively, it is possible to use @ge(N)@, @le(N)@, @gt(N)@ and @lt(N)@ notation.|
 |@timeout@|A time based parameter controlling how long to wait if one of the wait_for_XXX are provided. Defaults to @30s@.|
+
+p. The following is example of getting cluster health at the @shards@ level:
+
+<pre class='prettyprint'>
+$ curl -XGET 'http://localhost:9200/_cluster/health/twitter?level=shards'
+</pre>
+
+And respective response:
+
+<pre class='prettyprint lang-js'>
+{
+  "status" : "green",
+  "timed_out" : false,
+  "number_of_nodes" : 2,
+  "active_primary_shards" : 2,
+  "active_shards" : 4,
+  "relocating_shards" : 0,
+  "indices" : {
+    "twitter" : {
+      "status" : "green",
+      "number_of_shards" : 2,
+      "number_of_replicas" : 1,
+      "active_primary_shards" : 2,
+      "active_shards" : 4,
+      "relocating_shards" : 0,
+      "shards" : {
+        "0" : {
+          "status" : "green",
+          "primary_active" : true,
+          "active_shards" : 2,
+          "relocating_shards" : 0
+        },
+        "1" : {
+          "status" : "green",
+          "primary_active" : true,
+          "active_shards" : 2,
+          "relocating_shards" : 0
+        }
+      }
+    }
+  }
+}
+</pre>

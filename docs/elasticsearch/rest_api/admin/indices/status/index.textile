@@ -26,22 +26,22 @@ p. Here is an example status result:
 <pre class="prettyprint lang-js">
 {
   "ok" : true,
+  "_shards" : {
+    "total" : 4,
+    "successful" : 4,
+    "failed" : 0
+  },
   "indices" : {
     "twitter" : {
+      "aliases" : [ ],
       "settings" : {
-        "setting" : {
-          "name" : "index.number_of_replicas",
-          "value" : "1"
-        },
-        "setting" : {
-          "name" : "index.number_of_shards",
-          "value" : "2"
-        }
+        "index.number_of_replicas" : "1",
+        "index.number_of_shards" : "2"
       },
-      "store_size" : "1.5kb",
-      "store_size_in_bytes" : 1580,
-      "estimated_flushable_memory_size" : "512b",
-      "estimated_flushable_memory_size_in_bytes" : 512,
+      "store_size" : "1.7kb",
+      "store_size_in_bytes" : 1776,
+      "estimated_flushable_memory_size" : "0b",
+      "estimated_flushable_memory_size_in_bytes" : 0,
       "translog_operations" : 2,
       "docs" : {
         "num_docs" : 1,
@@ -53,52 +53,9 @@ p. Here is an example status result:
           "routing" : {
             "state" : "STARTED",
             "primary" : true,
-            "node" : "mackimchy-65516",
+            "node" : "5dad331d-7c16-4ae3-bb83-3b9c67b981dc",
             "relocating_node" : null,
             "shard" : 0,
-            "index" : "twitter"
-          },
-          "state" : "STARTED",
-          "store_size" : "758b",
-          "store_size_in_bytes" : 758,
-          "estimated_flushable_memory_size" : "256b",
-          "estimated_flushable_memory_size_in_bytes" : 256,
-          "translog_id" : 0,
-          "translog_operations" : 1,
-          "docs" : {
-            "num_docs" : 1,
-            "max_doc" : 1,
-            "deleted_docs" : 0
-          }
-        }, {
-          "routing" : {
-            "state" : "STARTED",
-            "primary" : false,
-            "node" : "mackimchy-8933",
-            "relocating_node" : null,
-            "shard" : 0,
-            "index" : "twitter"
-          },
-          "state" : "STARTED",
-          "store_size" : "738b",
-          "store_size_in_bytes" : 738,
-          "estimated_flushable_memory_size" : "256b",
-          "estimated_flushable_memory_size_in_bytes" : 256,
-          "translog_id" : 0,
-          "translog_operations" : 1,
-          "docs" : {
-            "num_docs" : 1,
-            "max_doc" : 1,
-            "deleted_docs" : 0
-          }
-        } ],
-        "1" : [ {
-          "routing" : {
-            "state" : "STARTED",
-            "primary" : true,
-            "node" : "mackimchy-65516",
-            "relocating_node" : null,
-            "shard" : 1,
             "index" : "twitter"
           },
           "state" : "STARTED",
@@ -106,7 +63,7 @@ p. Here is an example status result:
           "store_size_in_bytes" : 52,
           "estimated_flushable_memory_size" : "0b",
           "estimated_flushable_memory_size_in_bytes" : 0,
-          "translog_id" : 0,
+          "translog_id" : 1281989629222,
           "translog_operations" : 0,
           "docs" : {
             "num_docs" : 0,
@@ -117,9 +74,9 @@ p. Here is an example status result:
           "routing" : {
             "state" : "STARTED",
             "primary" : false,
-            "node" : "mackimchy-8933",
+            "node" : "260c5cbd-a4f7-4b8d-95fc-9cc558ef8ac6",
             "relocating_node" : null,
-            "shard" : 1,
+            "shard" : 0,
             "index" : "twitter"
           },
           "state" : "STARTED",
@@ -127,11 +84,54 @@ p. Here is an example status result:
           "store_size_in_bytes" : 32,
           "estimated_flushable_memory_size" : "0b",
           "estimated_flushable_memory_size_in_bytes" : 0,
-          "translog_id" : 0,
+          "translog_id" : 1281989629222,
           "translog_operations" : 0,
           "docs" : {
             "num_docs" : 0,
             "max_doc" : 0,
+            "deleted_docs" : 0
+          }
+        } ],
+        "1" : [ {
+          "routing" : {
+            "state" : "STARTED",
+            "primary" : true,
+            "node" : "5dad331d-7c16-4ae3-bb83-3b9c67b981dc",
+            "relocating_node" : null,
+            "shard" : 1,
+            "index" : "twitter"
+          },
+          "state" : "STARTED",
+          "store_size" : "856b",
+          "store_size_in_bytes" : 856,
+          "estimated_flushable_memory_size" : "0b",
+          "estimated_flushable_memory_size_in_bytes" : 0,
+          "translog_id" : 1281989629239,
+          "translog_operations" : 1,
+          "docs" : {
+            "num_docs" : 1,
+            "max_doc" : 1,
+            "deleted_docs" : 0
+          }
+        }, {
+          "routing" : {
+            "state" : "STARTED",
+            "primary" : false,
+            "node" : "260c5cbd-a4f7-4b8d-95fc-9cc558ef8ac6",
+            "relocating_node" : null,
+            "shard" : 1,
+            "index" : "twitter"
+          },
+          "state" : "STARTED",
+          "store_size" : "836b",
+          "store_size_in_bytes" : 836,
+          "estimated_flushable_memory_size" : "0b",
+          "estimated_flushable_memory_size_in_bytes" : 0,
+          "translog_id" : 1281989629239,
+          "translog_operations" : 1,
+          "docs" : {
+            "num_docs" : 1,
+            "max_doc" : 1,
             "deleted_docs" : 0
           }
         } ]
