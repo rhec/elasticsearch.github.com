@@ -1,0 +1,178 @@
+---
+layout: blogpost
+title: Geo Location and Search
+author: Shay Banon
+nick: kimchy
+---
+
+notextile. <img src="/images/set3/map.png" height="120px" class="left-img"></img>
+
+p. One of the coolest search technology combinations out there are the ability to combine geo and search. Queries such as give me all the restaurants that serves meat ([insert your query here]) within 20 miles from me, or create a distance heat map of them, is slowly becoming a must have for any content website. This is becoming even more relevant with new browsers supporting "Geolocation API":http://html5demos.com/geo.
+
+p. Already in "master":http://github.com/elasticsearch/elasticsearch (and in the upcoming @0.9.1@ release), elasticsearch comes with rich support for geo location. Lets take a drive down the geo support path:
+
+h2. Indexing Location Aware Documents
+
+p. In general, documents indexed are not required to define any predefined mapping in order to use geo location features, but they should conform to a convention if none is defined. For example, lets take an example of a "pin" that we want to index its location and maybe some tags its associated with:
+
+<pre class="prettyprint lang-js">
+{
+    "pin" : {
+        "location" : {
+            "lat" : 40.12,
+            "lon" : -71.34
+        },
+        "tag" : ["food", "family"],
+        "text" : "my favorite family restaurant"
+    }
+}
+</pre>
+
+p. The @location@ element is a "geo enabled" location since it has @lat@ and @lon@ properties. Once one follows the above conventions, all geo location features are enabled for @pin.location@.
+
+p. If explicit setting is still required, then its easy to define a mapping that defines a certain property as a @geo_point@. Here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "pin" : {
+        "properties" : {
+            "location" : {
+                "type" : "geo_point"
+            }
+        }
+    }
+}
+</pre>
+
+p. By defining the @location@ property as @geo_point@, this means that now we can index location data in many different formats, starting from the lat/lon example above, up to @geohash@. For information on all the available formats, check out "278":http://github.com/elasticsearch/elasticsearch/issues/278.
+
+h2. Find By Location
+
+p. The first thing after indexing location aware documents, is being able to query them. There are several ways to be able to query such information, the simplest one is by "distance"::http://github.com/elasticsearch/elasticsearch/issues/279. Here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "field" : { "text" : "restaurant" }
+        },
+        "filter" : {
+            "geo_distance" : {
+                "distance" : "12km"
+                "pin.location" : {
+                    "lat" : 40,
+                    "lon" : -70
+                }
+            }
+        }
+    }
+}
+</pre>
+
+p. The above will search for all documents with @text@ of @restaurant@ that exists within @12km@ of the provided location. The location point can accept several different formats as well, detailed at "279":http://github.com/elasticsearch/elasticsearch/issues/279.
+
+p. The next query supported is a "bounding box query":http://github.com/elasticsearch/elasticsearch/issues/290, allowing to restrict the results into a geo box defined by the top left, and bottom right coordinates. Here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "field" : { "text" : "restaurant" }
+        },
+        "filter" : {
+            "geo_bounding_box" : {
+                "pin.location" : {
+                    "top_left" : {
+                        "lat" : 40.73,
+                        "lon" : -74.1
+                    },
+                    "bottom_right" : {
+                        "lat" : 40.717,
+                        "lon" : -73.99
+                    }
+                }
+            }
+        }
+    }
+}
+</pre>
+
+p. The last, and the most advance form of geo query is a "polygon based search":http://github.com/elasticsearch/elasticsearch/issues/294, here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "field" : { "text" : "restaurant" }
+        },
+        "filter" : {
+            "geo_polygon" : {
+                "pin.location" : {
+                    "points" : [
+                        {"lat" : 40, "lon" : -70},
+                        {"lat" : 30, "lon" : -80},
+                        {"lat" : 20, "lon" : -90}
+                    ]
+                }
+            }
+        }
+    }
+}
+</pre>
+
+h2. Sorting
+
+p. The ability to sort results not just by ranking (how relevant is the document to the query), but also by distance allows for much greater geo usability. There is now a new @_geo_distance@ "sort type":http://github.com/elasticsearch/elasticsearch/issues/306 allowing to sort based on a distance from a specific location:
+
+<pre class="prettyprint lang-js">
+{
+    "sort" : [
+        {
+            "_geo_distance" : {
+                "pin.location" : [-40, 70],
+                "order" : "asc",
+                "unit" : "km"
+            }
+        }
+    ],
+    "query" : {
+        "field" : { "text" : "restaurant" }
+    }
+}
+</pre>
+
+p. On top of that, elasticsearch will now return all the values per hit of fields sorted on, allowing to easily display this important information.
+
+h2. Faceting
+
+p. Faceting, the ability to show an aggregated views on top of the search results go hand in hand with geo. For example, one would like to get the number of hits matching the search query within 10 miles, 20 miles, and above from his location. The "geo distance":http://github.com/elasticsearch/elasticsearch/issues/286 facet provides just that:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "field" : { "text" : "restaurant" }
+    },
+    "facets" : {
+        "geo1" : {
+            "geo_distance" : {
+                "pin.location" : {
+                    "lat" : 40,
+                    "lon" : -70
+                },
+                "ranges" : [
+                    { "to" : 10 },
+                    { "from" : 10, "to" : 20 },
+                    { "from" : 20, "to" : 100 },
+                    { "from" : 100 }
+                ]
+            }
+        }
+    }
+}
+</pre>
+
+h2. Summary
+
+p. The combination of search with geo is a natural one, and slowly becoming critical to any (web) application, especially with HTML 5 and mobile devices becoming more and more widespread. elasticsearch upcoming geo support brings this integration into a whole new level, and enables application to provide rich geo and search functionality easily (ohh, and scale ;) ).
+
+-shay.banon
