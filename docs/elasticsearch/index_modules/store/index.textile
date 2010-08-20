@@ -13,7 +13,7 @@ docBreadcrumb = [
 
 h1. Index Store Module
 
-p. The store module allows to control the storage type each index shard stores the index content at. Its important to note that the storage is temporal, for long term persistence of the index, check the "index gateway module":../gateway.
+p. The store module allows to control the storage type each index shard stores the index content at. It's important to note that the storage is temporal, for long term persistence of the index, check the "index gateway module":../gateway.
 
 p. The storage module allows to store the index either in memory or using file system. Typically, in non distributed systems, file system based storage is used to allow for large indices. In memory provides better performance at the cost of limited sizing of the index.
 
@@ -29,7 +29,7 @@ h2. File System
 
 p. File system based storage, includes different internal types of how to work with the file system. This is the default storage used. Out of the different types, the best one suited will be automatically chosen (@niofs@ on non windows, and @simplefs@ on windows).
 
-p. Regardless of the actual file system type chosen, specific index files can be stored in memory for faster access. Lucene breaks the index into several files, each holding different type of information (see more "here":http://lucene.apache.org/java/3_0_1/fileformats.html). Here is a sample memory configuration:
+p. Regardless of the actual file system type chosen, specific index files can be stored in memory for faster access. Lucene breaks the index into several files, each holding different type of information (see more "here":http://lucene.apache.org/java/3_0_2/fileformats.html). Here is a sample memory configuration:
 
 <pre class="prettyprint">
 index :
