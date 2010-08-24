@@ -23,6 +23,8 @@ p. Analyzers in general are broken down into a @Tokenizer@ with zero or more @To
 |"whitespace":whitespace|An analyzer that is built using a "Whitespace Tokenizer":../tokenizer/whitespace.|
 |"keyword":keyword|An analyzer that "tokenizes" an entire stream as a single token. This is useful for data like zip codes, ids and so on. Note, when using mapping definitions, it make more sense to simply mark the field as @not_analyzed@.|
 |"custom":custom|An analyzer that allows to combine a @Tokenizer@ with zero or more @Token Filters@. The custom analyzer accepts a logical/registered name of the tokenizer to use, and a list of logical/registered names of token filters.|
+|"pattern":pattern|An analyzer that breaks text into terms using a regular expression.|
+|"lang":lang|Language based analyzers.|
 
 h2. Default Analyzers
 

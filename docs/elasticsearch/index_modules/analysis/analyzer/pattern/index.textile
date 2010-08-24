@@ -1,0 +1,28 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Analyzer | Pattern
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["analyzer", "Analyzer"], 
+    ["pattern", "Pattern"], 
+];
+</script>
+
+h1. Pattern Analyzer
+
+p. An analyzer of type @pattern@ that can flexibly separate text into terms via a regular expression. Accepts the following settings:
+
+p. The following are settings that can be set for a @pattern@ analyzer type:
+
+|_. Setting |_. Description |
+|@lowercase@|Should terms be lowercased or not. Defaults to @true@.|
+|@pattern@|The regular expression pattern, defaults to @\W+@.|
+|@flags@|The regular expression flags.|
+
+
+

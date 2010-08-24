@@ -1,0 +1,62 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Analyzer | Language
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["analyzer", "Analyzer"], 
+    ["keyword", "Keyword"], 
+];
+</script>
+
+h1. Language Analyzers
+
+p. A set of analyzers aimed at analyzing specific language text.
+
+h2. Russian Analyzer
+
+p. The @russian@ analyzer is built on top of @russian_letter@ tokenizer and @lowercase@, @stop@ and @russian_stem@ filters. It comes with default @stopwords@ but they can be set.
+
+h2. Arabic Analyzer
+
+p. The @arabic@ analyzer is built on top of @arabic_letter@ tokenizer, and @lowercase@, @stop@, @arabic_normalizer@ and @arabic_stem@ filters.
+
+h2. Brazilian Analyzer
+
+p. The @brazilian@ analyzer is built on top of @standard@ tokenizer, and @lowercase@, @standard@, @stop@, and @brazilian_stem@ filters.
+
+h2. Chinese Analyzer
+
+p. The @chinese@ analyzer is built on top of @chinese@ tokenizer and @chinese@ filter.
+
+h2. Cjk Analyzer
+
+p. The @cjk@ analyzer is built on top of @cjk@ tokenizer and @stop@ filter.
+
+h2. Dutch Analyzer
+
+p. The @dutch@ analyzer is built on top of @standard@ tokenizer, and @standard@, @stop@ and @dutch_stem@ filters.
+
+h2. French Analyzer
+
+p .The @french@ analyzer is built on top of @standard@ tokenizer, and @standard@, @stop@, @french_stem@ and @lowercase@ filters.
+
+h2. German Analyzer
+
+p. The @german@ analyzer is built on top of @standard@ tokenizer, and @standard@, @lowercase@, @stop@, @german_stem@ filters.
+
+h2. Greek Analyzer
+
+p. The @greek@ analyzer is built on top of @standard@ tokenizer, and @greek_lowercase@, @stop@ filters.
+
+h2. Persian Analyzer
+
+p. The @persian@ analyzer is built on top of @arabic_letter@ tokenizer and @lowercase@, @arabic_normalization@, @persian_normalization@ and @stop@ filters.
+
+h2. Thai Analyzer
+
+p. The @thai@ analyzer is built on top of @standard@ tokenizer, and @standard@, @thai_word@, @stop@ filters.
