@@ -27,7 +27,7 @@ p. Ability to compress the @_source@ field with extensive optimization at decomp
 
 h2. New Gateway Structure
 
-p. A new gateway structure reducing the chances of gateway corruption as well as building the basis for future options such as saving versions of the gateway and allowing to recover from them.
+p. A new gateway structure reducing the chances of gateway corruption as well as building the basis for future options such as saving versions of the gateway and allowing to recover from them. Here is the "upgrade script":http://gist.github.com/546494.
 
 h2. Transport Compression
 
