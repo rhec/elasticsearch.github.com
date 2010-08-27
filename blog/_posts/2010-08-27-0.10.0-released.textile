@@ -1,0 +1,40 @@
+---
+layout: blogpost
+title: ElasticSearch 0.10.0 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.10.0@ has just been released. You can download it "here":/download. This is a major release for elasticsearch, both in terms of feature set as well as stability.
+
+p. Major partial list of features include:
+
+h2. Geo Support
+
+p. Geo location support has been added, allowing to have geo query based capabilities (distance, bounding box, polygon) as well as facet support (distance based). More info can be found "here":/blog/2010/08/16/geo_location_and_search.html.
+
+h2. Update Number of Replicas Dynamically
+
+p. Allow to change the number of replicas an index has using a simple API.
+
+h2. More Facets
+
+p. Range, filter, and more term facet options.
+
+h2. More Mapping Options
+
+p. Ability to compress the @_source@ field with extensive optimization at decompression only when needed (for example, decompressing directly down into the REST stream).
+
+h2. New Gateway Structure
+
+p. A new gateway structure reducing the chances of gateway corruption as well as building the basis for future options such as saving versions of the gateway and allowing to recover from them.
+
+h2. Transport Compression
+
+p. The ability to configure the communication between nodes to work in a compressed mode, as well as different components using it by default (for example, peer recovery fetches the index in compressed mode).
+
+h2. Minor Enhancements, Bugs Squashing
+
+p.  A lot of work has going into improved stability of elasticsearch, better memory management, and major bugs squashing. ElasticSearch is being used by several companies to index very large amount of data with large cluster size successfully with snapshot versions of 0.10.
+
+-shay.banon
