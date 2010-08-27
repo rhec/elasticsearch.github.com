@@ -35,6 +35,27 @@ p. Allow to specify field facets that return the N most frequent terms. For exam
 
 p(note). It is preferred to have the terms facet executed on a non analyzed field, or a field without a large number of terms it breaks to.
 
+h2. Ordering
+
+p. Allow to control the ordering of the terms facets, to be ordered by @count@, @term@, @reverse_count@ or @reverse_term@. The default is @count@. Here is an example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : {  }
+    },
+    "facets" : {
+        "tag" : {
+            "terms" : {
+                "field" : "tag",
+                "size" : 10,
+                "order" : "term"
+            }
+        }
+    }
+}
+</pre>
+
 h2. Excluding Terms
 
 p. It is possible to specify a set of terms that should be excluded from the terms facet request result:
@@ -70,6 +91,52 @@ p. The terms API allows to define regex expression that will control which terms
                 "field" : "tag",
                 "regex" : "_regex expression here_"
                 "regex_flags" : "DOTALL"
+            }
+        }
+    }
+}
+</pre>
+
+h2. Term Scripts
+
+p. Allow to define a script for terms facet to control the actual term that will be used in the term facet collection, and also optionally control its inclusion or not.
+
+p. The script can either return a boolean value, with @true@ to include it in the facet collection, and @false@ to exclude it from the facet collection.
+
+p. Another option is for the script to return a @string@ controlling the term that will be used to count against. The script execution will include the term variable which is the current field term used.
+
+p. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : {  }
+    },
+    "facets" : {
+        "tag" : {
+            "terms" : {
+                "field" : "tag",
+                "size" : 10,
+                "script" : "term + 'aaa'"
+            }
+        }
+    }
+}
+</pre>
+
+p. And using the boolean feature:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : {  }
+    },
+    "facets" : {
+        "tag" : {
+            "terms" : {
+                "field" : "tag",
+                "size" : 10,
+                "script" : "term == 'aaa' ? true : false"
             }
         }
     }

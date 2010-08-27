@@ -1,0 +1,144 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Geo Distance Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["geo_distance_filter", "Geo Distance Filter"],
+];
+</script>
+
+h1. Geo Distance Filter
+
+p. Filters documents that include only hits that exists within a specific distance from a geo point. Assuming the following indexed json:
+
+<pre class="prettyprint lang-js">
+{
+    "pin" : {
+        "location" : {
+            "lat" : 40.12,
+            "lon" : -71.34
+        }
+    }
+}
+</pre>
+
+p. Then the following simple query can be executed with a @geo_distance@ filter:
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "match_all" : {}
+        },
+        "filter" : {
+            "geo_distance" : {
+                "distance" : "12km"
+                "pin.location" : {
+                    "lat" : 40,
+                    "lon" : -70
+                }
+            }
+        }
+    }
+}    
+</pre>
+
+h2. Accepted Formats
+
+p. In much the same way the @geo_point@ type can accept different representation of the geo point, the filter can accept it as well:
+
+h3. Lat Lon As Properties
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "match_all" : {}
+        },
+        "filter" : {
+            "geo_distance" : {
+                "distance" : "12km"
+                "pin.location" : {
+                    "lat" : 40,
+                    "lon" : -70
+                }
+            }
+        }
+    }
+}
+</pre>
+
+h3. Lat Lon As Array
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "match_all" : {}
+        },
+        "filter" : {
+            "geo_distance" : {
+                "distance" : "12km"
+                "pin.location" : [40, -70]
+            }
+        }
+    }
+}
+</pre>
+
+h3. Lat Lon As String
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "match_all" : {}
+        },
+        "filter" : {
+            "geo_distance" : {
+                "distance" : "12km"
+                "pin.location" : "40,-70"
+            }
+        }
+    }
+}
+</pre>
+
+h3. Geohash
+
+<pre class="prettyprint lang-js">
+{
+    "filtered" : {
+        "query" : {
+            "match_all" : {}
+        },
+        "filter" : {
+            "geo_distance" : {
+                "distance" : "12km"
+                "pin.location" : "drm3btev3e86"
+            }
+        }
+    }
+}
+</pre>
+
+h2. Options
+
+The following are options allowed on the filter:
+
+|_. Option |_. Description |
+|@distance@|The distance to include hits in the filter. The distance can be a numeric value, and then the @distance_unit@ (either @mi@/@miles@ or @km@ can be set) controlling the unit. Or a single string with the unit as well.|
+|@distance_type@|How to compute the distance. Can either be @arc@ (better precision) or @plane@ (faster). Defaults to @arc@.|
+
+h2. @geo_point@ Type
+
+p. The filter does not require the @geo_point@ type to be set. It assumes that the location object indexed includes a @lat@ and @lon@ numeric values. The @geo_point@ type follows these rules and allows for more flexible indexing options / structure, but is not required.
+
+h2. Multi Location Per Document
+
+p. The @geo_distance@ filter can work with multiple locations / points per document. Once a single location / point matches the filter, the document will be included in the filter.

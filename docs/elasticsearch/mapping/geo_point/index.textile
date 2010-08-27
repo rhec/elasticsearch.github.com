@@ -1,0 +1,87 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Mapping | Geo Point Type
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["mapping", "Mapping"], 
+    ["geo_point_type", "Geo Point Type"], 
+];
+</script>
+
+h1. Geo Point Type
+
+p. Mapper type called @geo_point@ to support geo based points. The declaration looks as follows:
+
+<pre class="prettyprint lang-js">
+{
+    "pin" : {
+        "properties" : {
+            "location" : {
+                "type" : "geo_point"
+            }
+        }
+    }
+}
+</pre>
+
+h2. Input Structure
+
+The above mapping defines a @geo_point@, which accepts different formats. The following formats are supported:
+
+h3. Lat Lon as Properties
+
+<pre class="prettyprint lang-js">
+{
+    "pin" : {
+        "location" : {
+            "lat" : 40.12,
+            "lon" : -71.34
+        }
+    }
+}
+</pre>
+
+h3. Lat Lon as Array
+
+<pre class="prettyprint lang-js">
+{
+    "pin" : {
+        "location" : [40.12, -71.34]
+    }
+}
+</pre>
+
+h3. Lat Lon as String
+
+<pre class="prettyprint lang-js">
+{
+    "pin" : {
+        "location" : "41.12,-71.34"
+    }
+}
+</pre>
+
+h3. Geohash
+
+<pre class="prettyprint lang-js">
+{
+    "pin" : {
+        "location" : "drm3btev3e86"
+    }
+}
+</pre>
+
+h2. Indexed Fields
+
+The @geo_point@ type creates two floating point fields, called @lat@ and @lon@. In our example above, two fields will be create, the first @location.lat@ and the second is @location.lon@. Though probably not needed, there is an option also to create a third field called @geohash@ with the @geohash@ value (represented as @location.geohash@). In most cases, those specific fields are not needed when using geo capabilities, and only @location@ will be needed (for example, with @geo_distance@ filter).
+
+h2. Mapping Options
+
+|_. Option |_. Description |
+|@resolution@|Controls the floating point resolution of the stored fields. Defaults to 64, but can also be 32.|
+|@geohash@|Set to true to store also the geohash in the index. defaults to false.|
+|@geohash_precision@|Sets the geohash precision, defaults to 12.|
+

@@ -1,0 +1,27 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Char Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["charfilter", "Char Filter"], 
+];
+</script>
+
+h1. Char Filter
+
+p. Char filters allow to filter out the stream of text before it gets tokenized (used within an @Analyzer@). The following char filters types can be used:
+
+|_. Type |_. Description |
+|"html_strip":html_strip|A char filter that removes HTML elements from text.|
+
+h2. Built in Char Filters
+
+p. If not explicitly defined (for example, by configuring a char filter with the same logical name), the following char filters are automatically registered (under their respective logical names) and available for use:
+
+|_. Token Filter Logical Name |_. Description |
+|@html_strip@/@htmlStrip@|An "HTML Strip":html_strip registered with default settings.|

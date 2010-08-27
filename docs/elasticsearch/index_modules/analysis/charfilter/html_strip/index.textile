@@ -1,0 +1,18 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Analysis | Char Filter | HTML Strip
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["analysis", "Analysis"], 
+    ["charfilter", "Char Filter"], 
+    ["html_strip", "HTML Strip"], 
+];
+</script>
+
+h1. HTML Strip Char Filter
+
+p. A char filter of type @html_strip@ stripping out HTML elements from an analyzed text.

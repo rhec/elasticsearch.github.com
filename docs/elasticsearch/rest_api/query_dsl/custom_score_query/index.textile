@@ -21,11 +21,11 @@ p. @custom_score@ query allows to wrap another query and customize the scoring o
     "query" : {
         ....
     },
-    "script" : "score * doc['my_numeric_field'].value"
+    "script" : "_score * doc['my_numeric_field'].value"
 }
 </pre>
 
-p. On top of the different scripting field values and expression, the @score@ script parameter can be used to retrieve the score based on the wrapped query.
+p. On top of the different scripting field values and expression, the @_score@ script parameter can be used to retrieve the score based on the wrapped query.
 
 h2. Script Parameters
 
@@ -40,6 +40,6 @@ p. Scripts are cached for faster execution. If the script has parameters that it
         "param1" : 2,
         "param2" : 3.1
     }
-    "script" : "score * doc['my_numeric_field'].value / pow(param1, param2)"
+    "script" : "_score * doc['my_numeric_field'].value / pow(param1, param2)"
 }
 </pre>

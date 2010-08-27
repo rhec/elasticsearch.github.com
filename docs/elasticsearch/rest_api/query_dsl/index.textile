@@ -56,3 +56,6 @@ h2. Filters
 |"and":and_filter|A filter that matches documents using @AND@ boolean operator on other queries.|
 |"or":or_filter|A filter that matches documents using @OR@ boolean operator on other queries.|
 |"not":not_filter|A filter that filters out matched documents using a query.|
+|"geo_distance":geo_distance_filter|Filters documents based on a distance from a geo point.|
+|"geo_bounding_box":geo_bounding_box_filter|Filters documents that falls within a bounding box.|
+|"geo_polygon":geo_polygon_filter|Filters documents that falls within a geo polygon.|

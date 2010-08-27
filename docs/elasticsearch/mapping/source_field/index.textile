@@ -25,3 +25,10 @@ p. Though very handy to have around, the source field does incur storage overhea
     }
 }
 </pre>
+
+h2. Compression
+
+p. The source field can be compressed (LZF) when stored in the index. This can greatly reduce the index size, as well as possibly improving performance (when decompression overhead is better than loading a bigger source from disk). There is a special care taken to decompress the source only when needed, for example, decompressing it directly into the REST stream result.
+
+p. In order to enable compression, the @compress@ option should be set to @true@. By default it is set to @false@. Note, this can be changed on an existing index, as a mix of compressed and uncompressed sources is supported.
+

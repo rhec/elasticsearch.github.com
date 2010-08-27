@@ -24,3 +24,6 @@ p. Allows to selectively load specific *stored* fields for each document represe
     }
 }
 </pre>
+
+p. @*@ can be used to load all stored fields from the document.
+

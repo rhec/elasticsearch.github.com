@@ -18,9 +18,12 @@ p. Facets allow to provide aggregated data based on the search request. For exam
 
 |_. Facet |_. Description |
 |"query":query_facet|A facet returning a count matching the facet query.|
+|"filter":filter_facet|A facet returning a count matching the facet filter.|
 |"terms":terms_facet|A facet returning the N most frequent terms.|
 |"histogram":histogram_facet|A histogram facet across numeric fields.|
 |"statistical":statistical_facet|Compute statistical data for numeric fields or scripts.|
+|"range":range_facet|A facet computing counts and totals for documents falling within specific range.|
+|"geo_distance":geo_distance_facet|A facet computing counts and totals for documents falling within specific range distances.|
 
 h2. global
 
@@ -50,7 +53,7 @@ p. All facets can be configured with an additional filter (explained in the "Que
             "facet_type" : {
                 ...
             },
-            "filter" : {
+            "facet_filter" : {
                 "term" : { "user" : "kimchy"}
             }
         }

@@ -25,3 +25,4 @@ p. The following lists the available top level modules:
 |"Gateway":gateway|Long term persistent storage of cluster meta data.|
 |"JMX":jmx|JMX monitoring.|
 |"ThreadPool":threadpool|ThreadPool type and configuration.|
+|"Indices":indices|Indices level settings and configuration.|

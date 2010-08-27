@@ -15,13 +15,14 @@ docBreadcrumb = [
 
 h1. Custom Analyzer
 
-p. An analyzer of type @custom@ that allows to combine a @Tokenizer@ with zero or more @Token Filters@. The custom analyzer accepts a logical/registered name of the tokenizer to use, and a list of logical/registered names of token filters.
+p. An analyzer of type @custom@ that allows to combine a @Tokenizer@ with zero or more @Token Filters@, and zero or more @Char Filters@. The custom analyzer accepts a logical/registered name of the tokenizer to use, and a list of logical/registered names of token filters.
 
 p. The following are settings that can be set for a @custom@ analyzer type:
 
 |_. Setting |_. Description |
 |@tokenizer@|The logical / registered name of the tokenizer to use.|
 |@filter@|An optional list of logical / registered name of token filters.|
+|@char_filter@|An optional list of logical / registered name of char filters.|
 
 p. Here is an example:
 
@@ -33,6 +34,7 @@ index :
                 type : custom
                 tokenizer : myTokenizer1
                 filter : [myTokenFilter1, myTokenFilter2]
+                char_filter : [my_html]
         tokenizer :
             myTokenizer1 :
                 type : standard
@@ -45,4 +47,9 @@ index :
                 type : length
                 min : 0
                 max : 2000
+        char_filter :
+              my_html :
+                type : html_strip
+                escaped_tags : [xxx, yyy]
+                read_ahead : 1024
 </pre>

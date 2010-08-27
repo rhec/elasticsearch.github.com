@@ -23,16 +23,14 @@ p. A filter that matches documents using @OR@ boolean operator on other queries.
             "term" : { "name.first" : "shay" }
         },
         "filter" : {
-            "or" : {
-                "filters" : [
-                    {
-                        "term" : { "name.second" : "banon" }
-                    },
-                    {
-                        "term" : { "name.nick" : "kimchy" }
-                    }
-                ]
-            }
+            "or" : [
+                {
+                    "term" : { "name.second" : "banon" }
+                },
+                {
+                    "term" : { "name.nick" : "kimchy" }
+                }
+            ]
         }
     }
 }
