@@ -91,3 +91,19 @@ p. Each field highlighted can control the size of the highlighted fragment in ch
     }
 }
 </pre>
+
+p. On top of this it is possible to specify that highlighted fragments are order by score:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {...},
+    "highlight" : {
+        "order" : "score",
+        "fields" : {
+            "_all" : {"fragment_size" : 150, "number_of_fragments" : 3}
+        }
+    }
+}
+</pre>
+
+p. Note the score of text fragment in this case is calculated by Lucene highlighting framework. For implementation details you can check @ScoreOrderFragmentsBuilder.java@ class.
