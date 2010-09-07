@@ -16,7 +16,7 @@ h1. Index
 p. The index API allows to index a typed JSON document into a specific index and make it searchable. The following example index the JSON document into an index called twitter, under a type called tweet, with id valued 1:
 
 <pre class="prettyprint lang-java">
-import static org.elasticsearch.util.xcontent.XContentFactory.*;
+import static org.elasticsearch.common.xcontent.XContentFactory.*;
 
 IndexResponse response = client.prepareIndex("twitter", "tweet", "1")
         .setSource(jsonBuilder()
