@@ -14,7 +14,7 @@ docBreadcrumb = [
 
 h1. Indices and Types
 
-p. The search API can be applies to multiple types within an index, and across multiple indices. For example, we can search on all documents across all types within the twitter index:
+p. The search API can be applied to multiple types within an index, and across multiple indices. For example, we can search on all documents across all types within the twitter index:
 
 <pre class="prettyprint">
 $ curl -XGET 'http://localhost:9200/twitter/_search?q=user:kimchy'
