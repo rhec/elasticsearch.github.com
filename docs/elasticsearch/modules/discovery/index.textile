@@ -21,7 +21,7 @@ p. The discovery module is an abstraction on top of an actual implementation of 
 
 |_. Type |_. Description |
 |"zen":zen|A built in discovery implementation. The default discovery.|
-|"cloud":/docs/elasticsearch/cloud/discovery|Cloud based discovery.|
+|"aws/ec2":/docs/elasticsearch/cloud/aws/ec2_discovery|AWS ec2 based discovery.|
 
 h2. Settings
 
