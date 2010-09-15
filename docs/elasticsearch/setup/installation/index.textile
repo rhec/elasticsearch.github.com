@@ -45,9 +45,15 @@ p. Another feature is the ability to pass @-X@ and @-D@ directly to the script. 
 $ bin/elasticsearch -f -Xmx2g -Xms2g -Des.index.storage.type=memory
 </pre>
 
+h2. Important Configurations
+
+h3. File Descriptors
+
+p. Make sure to increate the number of open files descriptors on the machine (or for the user running elasticsearch). Setting it to 32k or even 64k is recommended.
+
 h2. Running As a Service
 
-p. ElasticSearch can be run as a service using the @elasticsearch@ script located under @bin/service@ location. The script accepts a single parameter with the following values:
+p. ElasticSearch can be run as a service using the @elasticsearch@ script located under @bin/service@ location. The repo for it is located "here":http://github.com/elasticsearch/elasticsearch-servicewrapper. The script accepts a single parameter with the following values:
 
 |_. Parameter |_. Description |
 |@console@|Run the elasticsearch in the foreground.|
