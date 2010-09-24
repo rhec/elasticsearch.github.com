@@ -59,7 +59,7 @@ p. Allow to sort by @_geo_distance@. Here is an example:
     "sort" : [
         {
             "_geo_distance" : {
-                "pin.location" : [-40, 70],
+                "pin.location" : [40, -70],
                 "order" : "asc",
                 "unit" : "km"
             }

@@ -37,7 +37,7 @@ p. Then the following simple query can be executed with a @geo_distance@ filter:
         },
         "filter" : {
             "geo_distance" : {
-                "distance" : "12km"
+                "distance" : "200km"
                 "pin.location" : {
                     "lat" : 40,
                     "lon" : -70
@@ -62,7 +62,7 @@ h3. Lat Lon As Properties
         },
         "filter" : {
             "geo_distance" : {
-                "distance" : "12km"
+                "distance" : "12km",
                 "pin.location" : {
                     "lat" : 40,
                     "lon" : -70
@@ -83,7 +83,7 @@ h3. Lat Lon As Array
         },
         "filter" : {
             "geo_distance" : {
-                "distance" : "12km"
+                "distance" : "12km",
                 "pin.location" : [40, -70]
             }
         }
@@ -101,7 +101,7 @@ h3. Lat Lon As String
         },
         "filter" : {
             "geo_distance" : {
-                "distance" : "12km"
+                "distance" : "12km",
                 "pin.location" : "40,-70"
             }
         }
@@ -119,7 +119,7 @@ h3. Geohash
         },
         "filter" : {
             "geo_distance" : {
-                "distance" : "12km"
+                "distance" : "12km",
                 "pin.location" : "drm3btev3e86"
             }
         }
