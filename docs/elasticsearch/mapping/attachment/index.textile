@@ -17,7 +17,7 @@ p. The @attachment@ type allows to index different "attachment" type field (enco
 
 p. The @attachment@ type is provided as a plugin extension. The plugin is a simple zip file that can be downloaded and placed under @$ES_HOME/plugins@ location. It will be automatically detected and the @attachment@ type will be added.
 
-p. Using the attachment type is simple, in your mapping JSON, simply a certain JSON element as attachment, for example:
+p. Using the attachment type is simple, in your mapping JSON, simply set a certain JSON element as attachment, for example:
 
 <pre class="prettyprint lang-js">
 {
@@ -60,9 +60,9 @@ p. Both the meta data and the actual content are simple core type mappers (strin
             "file" : { 
                 "type" : "attachment",
                 "fields" : {
-                    "file" : {index : "no"},
-                    "date" : {store : "yes"},
-                    "author" : {analyzer: "myAnalyzer"}
+                    "file" : {"index" : "no"},
+                    "date" : {"store" : "yes"},
+                    "author" : {"analyzer" : "myAnalyzer"}
                 }
             }
         }
