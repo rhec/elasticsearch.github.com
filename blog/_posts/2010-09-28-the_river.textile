@@ -1,0 +1,44 @@
+---
+layout: blogpost
+title: The River
+author: Shay Banon
+nick: kimchy
+---
+
+p. One of the problems elasticsearch aims at solving is "the river" problem. The River is the stream of constant data and somehow finding a way to waddle through it and make something meaningful out of it.
+
+p. That constant data stream can come in different forms and from different sources. It can come directly from a user in an application that uses elasticsearch directly. For example, publishing a new status message, a new blog comment, or a review of a restaurant on apps that automatically apply that change to elasticsearch.
+
+p. Another option is for the data to be pushed to elasticsearch. For example, "flume":http://github.com/cloudera/flume, cloudera log aggregator, can use an "elasticsearch sink":http://github.com/tallpsmith/elasticflume to push log changes to elasticsearch.
+
+p. The last option, and the one discussed here is where data is pulled from one source and applied to elasticsearch. As an example, someone can write a twitter component that listens on twitter stream updates, and apply them to elasticsearch.
+
+p. Those type of components, aside from writing the core code that does it, require additional services to be provided for them. For example, the twitter component will require failover support (if it fails, start it on another node), and possibly state storage (what was the last tweet indexed).
+
+p. "Rivers":http://github.com/elasticsearch/elasticsearch/issues/377 in elasticsearch provides just that. A river is a service running within elasticsearch cluster and tries and solve the third type of integration point mentioned above. Rivers are allocated to nodes within the cluster. Are provided with automatic failover in case of node failure, and allow to store state associated with them.
+
+p. The River implementation is a bit of a cheat ;), rivers are simply represented as different types within an index called @_river@. Creating them is as simple as creating a document named @_meta@ within the river (type). Deleting them is just a matter of deleting the river (type). And last, they can easily store state as addition document(s) within the index type.
+
+p. ElasticSearch has a framework support for rivers, and upcoming 0.11 version will come with several different implementations of rivers. The one covered here is the "twitter river":http://github.com/elasticsearch/elasticsearch/issues/378. Here is how it can be created:
+
+<pre class="prettyprint lang-java">
+curl -XPUT localhost:9200/_river/my_twitter_river/_meta -d '
+{
+    "type" : "twitter",
+    "twitter" : {
+        "user" : "twitter_user",
+        "password" : "twitter_passowrd"
+    }
+}
+'
+</pre>
+
+p. Once created, the (public) stream of changes will start to be indexed into elasticsearch (including all the relevant metadata, like geo location, places, replies, and so on). Think about the power and capabilities you get with all that data indexed in elasticsearch ;).
+
+p. Deleting the twitter river is as simple as:
+
+<pre class="prettyprint lang-java">
+curl -XDELETE localhost:9200/_river/my_twitter_river
+</pre>
+
+p. The twitter river will be provided as a plugin in 0.11, and can be easily installed using @plugin -install river-twitter@.
