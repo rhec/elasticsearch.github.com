@@ -23,3 +23,4 @@ p. The following lists the available index level modules:
 |"mapper":mapper|The mapper module acts as a registry for the type mapping definitions added to an index using the "put mapping":/docs/elasticsearch/rest_api/admin/indices/put_mapping.|
 |"merge":merge|The merge module allows to configure both the "merge policy":merge/policy and "merge scheduler":merge/scheduler of a specific shard index.|
 |"store":store|The store module allows to control the storage type each index shard stores the index content at.|
+|"translog":translog|Allows to control flushing of shard based on number of translog operations.|

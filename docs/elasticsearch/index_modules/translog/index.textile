@@ -1,0 +1,16 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Index Modules | Translog
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["index_modules", "Index Modules"], 
+    ["translog", "Translog"], 
+];
+</script>
+
+h1. Index Translog Module
+
+p. A shard is flushed to local disk based on number of operations accumulated in translog. It can be controled using the @index.translog.flush_threshold@ setting (defaults to @5000@).
