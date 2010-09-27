@@ -1,0 +1,32 @@
+---
+layout: blogpost
+title: Searchable CouchDB
+author: Shay Banon
+nick: kimchy
+---
+
+p. "The River":/blog/2010/09/28/the_river.html allows to easily define data sources and have elasticsearch index them. The example provided in the post is twitter, but a river is an open API and can have different implementations. One of those coming out at 0.11 is "CouchDB":http://couchdb.apache.org/.
+
+p. The "CouchDB River":http://github.com/elasticsearch/elasticsearch/issues/382 allows to automatically index couchdb and make it searchable using the excellent "_changes":http://guide.couchdb.org/draft/notifications.html stream couchdb provides. Setting it up is as simple as executing the following against elasticsearch:
+
+<pre class="prettyprint lang-java">
+curl -XPUT 'localhost:9200/_river/my_db/_meta' -d '{
+    "type" : "couchdb",
+    "couchdb" : {
+        "host" : "localhost",
+        "port" : 5984,
+        "db" : "my_db",
+        "filter" : null
+    }
+}'
+</pre>
+
+p. This call will create a river that uses the @_changes@ stream to index all data within couchdb. Moreover, any "future" changes will automatically be indexed as well, making your search index and couchdb synchronized at all times.
+
+p. On top of that, in case of a failover, the couchdb river will automatically be started on another elasticsearch node, and continue indexing from the last indexed seq.
+
+p. As you can see, elasticsearch can easily have several couchdb rivers (and other types of rivers) running at the same type, all pointing to different databases and indexing them into different indices (or the same index, you choose) using the same elasticsearch cluster.
+
+p. This means that being able to search couchdb has just become really really simple. The couchdb river is provided as a plugin (in upcoming 0.11) and can be installed using @plugin -install river-couchdb@.
+
+-shay.banon
