@@ -1,0 +1,24 @@
+---
+layout: blogpost
+title: Yet Another Persistency Option
+author: Shay Banon
+nick: kimchy
+---
+
+p. In the "Search Engine Time Machine":/blog/2010/02/16/searchengine_time_machine.html post, elasticsearch support for long term persistency is explained. The idea is built around providing long term persistency using a shared storage solution. A common storage option between all nodes (shared file system, S3, HDFS) is used to asynchronously write changes in both the cluster meta data (indices created, mappings) and the actual indices to it.
+
+p. The shared storage option has several benefits. One obvious one is the ability to store (parts) of the index in memory, and still maintain long term persistency in case of full cluster shutdown. It also provides a native solution if backup is required of the indices (to s3 for example).
+
+p. It does comes with an overhead though, the first is the actual need for a shared storage solution for long term persistency, which does complicate things for simpler and get it started scenarios. The other is the fact that potentially very large data set will be stored, where simply using a shared storage is an overhead that is unacceptable.
+
+p. In upcoming 0.11 version, another gateway option is provided called local gateway. The local gateway option allows the cluster to restore both its state and the indices from each node local storage (local file system). And, in order to provide the best out of the box experience, this gateway is now the default one set.
+
+p. The cluster state, which includes the indices created, mapping applies and other meta information is versioned and stored on the nodes. In order to recovery it, the @gateway.recovery_after_nodes@ (or @gateway.recovery_after_master_nodes@) should be set to high enough value out of the total expected cluster size.
+
+p. Shards are recovered once a quorum (by default) of the shard with its replicas is found. For this reason (and others) it is recommended to have at least 2 replicas per shard set.
+
+p. Indices (and the transaction log) must be file system based, to provide recoverability in case of full shutdown.
+
+p. The local gateway allows for simple to use long term persistency with elasticsearch and should simplify greatly using elasticsearch with full persistency support.
+
+-shay.banon
