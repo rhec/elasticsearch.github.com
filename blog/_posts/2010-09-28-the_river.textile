@@ -33,7 +33,7 @@ curl -XPUT localhost:9200/_river/my_twitter_river/_meta -d '
 '
 </pre>
 
-p. Once created, the (public) stream of changes will start to be indexed into elasticsearch (including all the relevant metadata, like geo location, places, replies, and so on). Think about the power and capabilities you get with all that data indexed in elasticsearch ;).
+p. Once created, the "global stream of changes, a.k.a the hose":http://dev.twitter.com/pages/streaming_api will start to be indexed into elasticsearch (including all the relevant metadata, like geo location, places, replies, and so on). Think about the power and capabilities you get with all that data indexed in elasticsearch ;).
 
 p. Deleting the twitter river is as simple as:
 
