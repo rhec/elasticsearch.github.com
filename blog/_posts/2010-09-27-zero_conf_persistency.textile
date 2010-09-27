@@ -5,7 +5,7 @@ author: Shay Banon
 nick: kimchy
 ---
 
-p. Upcoming elasticsearch version 0.11 will provide zero conf long term persistency out of the box.
+p. With the new "local gateway", upcoming elasticsearch version 0.11 will provide zero conf long term persistency out of the box.
 
 p. In the "Search Engine Time Machine":/blog/2010/02/16/searchengine_time_machine.html post, elasticsearch support for long term persistency is explained. The idea is built around providing long term persistency using a shared storage solution. A common storage option between all nodes (shared file system, S3, HDFS) is used to asynchronously write changes in both the cluster meta data (indices created, mappings) and the actual indices to it.
 
