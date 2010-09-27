@@ -25,7 +25,7 @@ p. This call will create a river that uses the @_changes@ stream to index all da
 
 p. On top of that, in case of a failover, the couchdb river will automatically be started on another elasticsearch node, and continue indexing from the last indexed seq.
 
-p. As you can see, elasticsearch can easily have several couchdb rivers (and other types of rivers) running at the same type, all pointing to different databases and indexing them into different indices (or the same index, you choose) using the same elasticsearch cluster.
+p. As you can see, elasticsearch can easily have several couchdb rivers (and other types of rivers) running at the same time, all pointing to different databases and indexing them into different indices (or the same index, you choose) using the same elasticsearch cluster.
 
 p. This means that being able to search couchdb has just become really really simple. The couchdb river is provided as a plugin (in upcoming 0.11) and can be installed using @plugin -install river-couchdb@.
 
