@@ -1,0 +1,27 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Match All Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["match_all_filter", "Match All Filter"],
+];
+</script>
+
+h1. Match All Filter
+
+p. A filter that matches on all documents:
+
+<pre class="prettyprint lang-js">
+{
+    "constant_score" : {
+        "filter" : {
+            "match_all" : { }
+        }
+    }
+}
+</pre>

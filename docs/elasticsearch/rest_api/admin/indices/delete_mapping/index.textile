@@ -1,0 +1,19 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Admin | Indices | Delete Mapping
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["admin", "Admin"],
+    ["indices", "Indices"],
+    ["delete_mapping", "Delete Mapping"]
+];
+</script>
+
+h1. Delete Mapping
+
+p. Allow to delete a mapping (type) along with its data. The REST endpoint is @/{index}/{type}@ with @DELETE@ method.
+

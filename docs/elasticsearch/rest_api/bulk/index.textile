@@ -1,0 +1,44 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST API | Bulk
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["bulk", "Bulk"]
+];
+</script>
+
+h1. Bulk
+
+p. The bulk API allows to index and delete several documents in a single API. This can greatly increase the indexing speed.The REST AP endpoint is /_bulk and it follows the following structure (for @json@):
+
+<pre class="prettyprint">
+action_and_meta_data\n
+optional_source\n
+action_and_meta_data\n
+optional_source\n
+....
+</pre>
+
+p. The json format relies on the fact that Json string values must have @\n@ escaped, and that the actual json actions and sources are not pretty printed. Here is an example:
+
+<pre class="prettyprint">
+{ "index" : { "index" : "test", "type" : "type1", "id" : "1" } }
+{ "type1" : { "field1" : "value1" } }
+{ "delete" : { "index" : "test", "type" : "type1", "id" : "2" } }
+{ "create" : { "index" : "test", "type" : "type1", "id" : "1" } }
+{ "type1" : { "field1" : "value1" } }
+</pre>
+
+p. A note on the format. The idea here is to make processing of this as fast as possible. As some of the actions will be needed to be redirected to other shards that exists on other nodes, only the action meta_data is parsed on the receiving node side. Also, zero copy buffers can be used on the source directly writing segments relevant to each action source to the network.
+
+p. Client libraries using this protocol should try and strive to do something similar on the client side, and reduce as much as possible the creation of buffers.
+
+p. The result is a full formatted json, with all the actions performed (in the same order), with possible error field indicating for each one in case of failure (on an item level).
+
+p. Note, in the end, the full data needs to be represented on each server, so indexing 5GB of data should be broken down and not executed in a single batch.
+
+p. If using the HTTP API, make sure that the client does not send HTTP chunks, as this will slow things down.

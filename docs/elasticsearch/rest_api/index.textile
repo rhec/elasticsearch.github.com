@@ -17,6 +17,7 @@ p. This section describes the REST APIs ElasticSearch provides using JSON. The f
 |_. API |_. Description |
 |"index":index|Index a typed JSON document into a specific index and make it searchable.|
 |"delete":delete|Delete a typed JSON document from a specific index based on its id.|
+|"bulk":bulk|Index and delete json several documents in a single request.|
 |"get":get|Get a typed JSON document from an index based on its id.|
 |"search":search|Execute a search query against one or more indices and get back search hits.|
 |"count":count|Execute a query against one or more indices and get hits count.|

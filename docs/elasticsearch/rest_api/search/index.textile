@@ -27,4 +27,5 @@ p. The search API allows for the following options:
 |"fields":fields|Return specific *stored* fields per hit.|
 |"script_fields":script_fields|Return script evaluated fields per hit.|
 |"search_type":search_type|The type of search to execute.|
+|"named_filters":named_filters|Allows to return for each hit the filters it matched on.|
 |"scroll":scroll|Scroll a search request.|

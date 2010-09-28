@@ -27,3 +27,4 @@ p. Allows to selectively load specific *stored* fields for each document represe
 
 p. @*@ can be used to load all stored fields from the document.
 
+p. Script fields can also be automatically detected and used as fields, so things like @_source.obj1.obj2@ can be used.

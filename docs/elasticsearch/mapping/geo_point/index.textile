@@ -66,7 +66,14 @@ h3. Geohash
 
 h2. Lat Lon as Array
 
-Note, this is not supported currently in the model. It is mentioned here that its not supported so there won't be no confusion since this format is supported when searching.
+<pre class="prettyprint lang-js">
+{
+    "pin" : {
+        "location" : [41.12, -71.34]
+    }
+}
+</pre>
+
 
 h2. Indexed Fields
 

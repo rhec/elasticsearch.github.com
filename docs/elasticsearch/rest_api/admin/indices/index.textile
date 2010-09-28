@@ -22,6 +22,7 @@ p. This section describes administration APIs that revolve around indices. The f
 |"delete_index":delete_index|Deletes an index.|
 |"aliases":aliases|Aliasing one or more index.|
 |"update_settings":update_settings|Allows to update settings of one or more indices, including changing the @number_of_replicas@ and index has.|
+|"delete_mapping":delete_mapping|Deletes a mapping type with all its data from an index.|
 |"put_mapping":put_mapping|Register specific mapping definition for a specific type against one or more indices.|
 |"get_mapping":get_mapping|Retrieves mapping definition of index or index/type.|
 |"flush":flush|Flush the state of the index (clears memory).|

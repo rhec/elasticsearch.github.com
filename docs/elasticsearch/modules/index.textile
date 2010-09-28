@@ -21,6 +21,7 @@ p. The following lists the available top level modules:
 |"Transport":transport|Native communication layer between nodes.|
 |"HTTP":http|HTTP based communication layer.|
 |"Memcached":memcached|Memcached based communication layer.|
+|"Thrift":thrift|Thrift based REST communication layer.|
 |"Discovery":discovery|Discovery of nodes and cluster state.|
 |"Gateway":gateway|Long term persistent storage of cluster meta data.|
 |"JMX":jmx|JMX monitoring.|

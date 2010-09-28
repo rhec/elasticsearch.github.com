@@ -143,6 +143,10 @@ p. And using the boolean feature:
 }
 </pre>
 
+h2. _index
+
+p. The term facet allows to specify a special field name called @_index@. This will return a facet count of hits per @_index@ the search was executed on (relevant when a search request spans more than one index).
+
 h2. Memory Considerations
 
 p. Term facet causes the relevant field values to be loaded into memory. This means that per shard, there should be enough memory to contain them. It is advisable to explicitly set the fields to be @not_analyzed@ or make sure the number of unique tokens a field can have is not large.
