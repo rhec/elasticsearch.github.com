@@ -21,6 +21,7 @@ p. The type of the gateway to use can be set using the @gateway.type@ setting. T
 
 |_. Type |_. Description |
 |none|No state is stored.|
+|"local":local|Local gateway allowing for zero conf persistent storage (the default).|
 |"fs":fs|File system based storage.|
 |"hadoop":hadoop|Hadoop HDFS based storage.|
 |"cloud":/docs/elasticsearch/cloud/|Cloud blob store gateway.|
