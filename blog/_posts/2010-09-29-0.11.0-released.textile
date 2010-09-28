@@ -1,0 +1,32 @@
+---
+layout: blogpost
+title: ElasticSearch 0.11.0 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.11.0@ has just been released. You can download it "here":/download. This is a major release for elasticsearch, both in terms of feature set as well as stability.
+
+p. Major list of features include:
+
+h2. Zero Conf Persistency
+
+p. Out of the box long term persistency using a "local" gateway dubbed "zero conf persistency":/blog/2010/09/27/zero_conf_persistency.html.
+
+h2. River
+
+p. Generic support for "river(s)":/blog/2010/09/28/the_river.html which are services running within the elasticsearch cluster indexing streams of data. Rivers exists for "twitter":/blog/2010/09/28/the_river.html, "couchdb":/blog/2010/09/28/the_river_searchable_couchdb_.html, and "rabbitmq":/blog/2010/09/28/the_river_rabbitmq.html.
+
+h2. Bulk API
+
+p. A new API to do bulk indexing of data, greatly increasing the throughput of the indexing process. Details "here":/docs/elasticsearch/rest_api/bulk.
+
+h2. Thrift REST Transport
+
+p. A Thrift based REST transport (mimicking HTTP) for faster execution compared with plain HTTP.
+
+h2. Minor Features
+
+p. Minor features include "_source fields":/docs/elasticsearch/rest_api/search/script_field and the ability to use them in plain fields, "named_filters":/docs/elasticsearch/rest_api/search/named_filters, improved geo support, faster query_string and field queries execution, and of course, bug fixes.
+
+-shay.banon
