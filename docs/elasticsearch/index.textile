@@ -25,3 +25,4 @@ p. The "setup":setup section includes instructions on how to "install":setup/ins
 |"modules":modules|Covers the different node (top) level modules of ElasticSearch.|
 |"index_modules":index_modules|Covers the different index level modules and their respective settings.|
 |"cloud":cloud|Covers cloud based discovery and gateway support.|
+|"river":river|A river is a built in service that indexes external data sources.|

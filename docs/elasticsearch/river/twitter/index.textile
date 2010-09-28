@@ -1,0 +1,42 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | River | Twitter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["river", "River"],
+    ["twitter", "Twitter"],
+];
+</script>
+
+h1. Twitter River
+
+p. The twitter river indexes the public "twitter stream":http://dev.twitter.com/pages/streaming_api, aka the hose, and makes it searchable.
+
+p. The twitter river is provided as a plugin and can be installed using @plugin -install river-twitter@.
+
+p. Creating the twitter river can be done using:
+
+<pre class="prettyprint lang-java">
+curl -XPUT localhost:9200/_river/my_twitter_river/_meta -d '
+{
+    "type" : "twitter",
+    "twitter" : {
+        "user" : "twitter_user",
+        "password" : "twitter_passowrd"
+    },
+    "index" : {
+        "index" : "my_twitter_river",
+        "type" : "status",
+        "bulk_size" : 100
+    }
+}
+'
+</pre>
+
+p. The above lists all the options controlling the creation of a twitter river. The user and password are required in order to connect to the twitter stream.
+
+p. Tweets will be indexed once a @bulk_size@ of them have been accumulated.
+
