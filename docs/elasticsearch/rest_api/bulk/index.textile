@@ -13,7 +13,7 @@ docBreadcrumb = [
 
 h1. Bulk
 
-p. The bulk API allows to index and delete several documents in a single API. This can greatly increase the indexing speed.The REST AP endpoint is /_bulk and it follows the following structure (for @json@):
+p. The bulk API allows to index and delete several documents in a single API. This can greatly increase the indexing speed.The REST API endpoint is /_bulk and it follows the following structure (for @json@):
 
 <pre class="prettyprint">
 action_and_meta_data\n
