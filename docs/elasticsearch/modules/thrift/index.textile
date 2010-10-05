@@ -15,7 +15,9 @@ h1. Thrift Module
 
 p. The thrift transport module allows to expose the REST interface of elasticsearch using thrift. Thrift should provide better performance over http. Since thrift provides both the wire protocol and the transport, it should make using it simpler (thought its lacking on docs...).
 
-The thrift "schmea":http://github.com/elasticsearch/elasticsearch/blob/master/plugins/transport/thrift/elasticsearch.thrift can be used to generate thrift clients.
+p. Using thrift requires installing the @transport-thrift@ plugin using @bin/plugin -install transport-thrift@.
+
+p. The thrift "schmea":http://github.com/elasticsearch/elasticsearch/blob/master/plugins/transport/thrift/elasticsearch.thrift can be used to generate thrift clients.
 
 |_. Setting |_. Description |
 |@thrift.type@|Can be either @threadpool@, @threadpool_framed@, @nonblocking@, and @hsha@. Defaults to @threadpool@ (the default on hbase and cassandra)|
