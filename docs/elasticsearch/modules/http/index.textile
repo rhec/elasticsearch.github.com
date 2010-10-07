@@ -13,7 +13,7 @@ docBreadcrumb = [
 
 h1. HTTP Module
 
-p. The http module is allows to expose ElasticSearch "REST API":/docs/elasticsearch/rest_api over HTTP.
+p. The http module allows to expose ElasticSearch "REST API":/docs/elasticsearch/rest_api over HTTP.
 
 p. The http mechanism is completely asynchronous in nature, meaning that there is no blocking thread waiting for a response. The benefit of using asynchronous communication for HTTP is solving the "C10k problem":http://en.wikipedia.org/wiki/C10k_problem.
 
