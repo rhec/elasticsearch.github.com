@@ -31,5 +31,5 @@ p. It also shares the uses the common "network settings":../node/network.
 
 h2. Disable HTTP
 
-p. The http module can be completely disabled and not started using by setting @http.enabled@ to @false@. This make sense when creating non "data nodes":../node/data_node which accept HTTP requests, and communicate with data nodes using the internal "transport":../transport.
+p. The http module can be completely disabled and not started by setting @http.enabled@ to @false@. This make sense when creating non "data nodes":../node/data_node which accept HTTP requests, and communicate with data nodes using the internal "transport":../transport.
 

@@ -17,7 +17,7 @@ p. The thrift transport module allows to expose the REST interface of elasticsea
 
 p. Using thrift requires installing the @transport-thrift@ plugin using @bin/plugin -install transport-thrift@.
 
-p. The thrift "schmea":http://github.com/elasticsearch/elasticsearch/blob/master/plugins/transport/thrift/elasticsearch.thrift can be used to generate thrift clients.
+p. The thrift "schema":http://github.com/elasticsearch/elasticsearch/blob/master/plugins/transport/thrift/elasticsearch.thrift can be used to generate thrift clients.
 
 |_. Setting |_. Description |
 |@thrift.type@|Can be either @threadpool@, @threadpool_framed@, @nonblocking@, and @hsha@. Defaults to @threadpool@ (the default on hbase and cassandra)|
