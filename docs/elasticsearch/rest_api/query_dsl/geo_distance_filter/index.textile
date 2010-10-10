@@ -37,7 +37,7 @@ p. Then the following simple query can be executed with a @geo_distance@ filter:
         },
         "filter" : {
             "geo_distance" : {
-                "distance" : "200km"
+                "distance" : "200km",
                 "pin.location" : {
                     "lat" : 40,
                     "lon" : -70
