@@ -37,7 +37,7 @@ h3. Lat Lon as Properties
 {
     "pin" : {
         "location" : {
-            "lat" : 40.12,
+            "lat" : 41.12,
             "lon" : -71.34
         }
     }
@@ -64,7 +64,7 @@ h3. Geohash
 }
 </pre>
 
-h2. Lat Lon as Array
+h3. Lat Lon as Array
 
 <pre class="prettyprint lang-js">
 {
