@@ -27,7 +27,7 @@ p. Allow to specify field facets that return the N most frequent terms. For exam
             "terms" : {
                 "field" : "tag",
                 "size" : 10
-            },
+            }
         }
     }
 }
