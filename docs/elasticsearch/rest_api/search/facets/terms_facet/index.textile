@@ -143,6 +143,26 @@ p. And using the boolean feature:
 }
 </pre>
 
+h2. Multi Fields
+
+p. The term facet can be executed against more than one field, returning the aggregation result across those fields. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : {  }
+    },
+    "facets" : {
+        "tag" : {
+            "terms" : {
+                "fields" : ["tag1", "tag2"],
+                "size" : 10
+            }
+        }
+    }
+}
+</pre>
+
 h2. _index
 
 p. The term facet allows to specify a special field name called @_index@. This will return a facet count of hits per @_index@ the search was executed on (relevant when a search request spans more than one index).
