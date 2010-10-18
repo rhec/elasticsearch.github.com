@@ -1,0 +1,36 @@
+---
+layout: blogpost
+title: ElasticSearch 0.12.0 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.12.0@ has just been released. You can download it "here":/download. This release is a bit early due to a major bug found with full cluster recovery when using more than one index and the local gateway.
+
+p. Along the way, some features were added as well, those include:
+
+h2. More Script Language Support
+
+p. On top of mvel, there is now support for JavaScript, Python, and Groovy for executing scripts. Scripts can be used in different components within elasticsearch, including custom scoring, facets, and others. This support is going to be utilized in future features as well.
+
+h2. Dynamic Templates
+
+p. Dynamic schema introduction is already a part of elasticsearch, but sometimes, the defaults are just not good enough. Dynamic templates allow to control different mappings aspects while still retaining the dynamic nature of a document. A dynamic template, for example, can turn a single field automatically into a `multi_field` or have fields matching a template be stored.
+
+h2. Geo Overhaul
+
+p. The geo support aim was to support multiple location per document. The current design was problematic in supporting that, so a new design was implemented. This sadly requires a full reindexing if using geo features, as well as requiring to explicitly define `geo_point` mapping type.
+
+h2. Facets Improvements
+
+p. Both the `term` and the `statistical` facets now can be executed on more than one field and aggregating the results across all fields values.
+
+h2. Query Filters Improvements
+
+p. Fine grained control over which filter results are cached or not, with sensible defaults per filter (as filters behave differently).
+
+h2. Other
+
+p. Several small bug fixes and improvements. Note, if you use the thrift client, the thrift protocol has changed not to include some keywords in certain langs. Make sure to regenerate the client code.
+
+-shay.banon
