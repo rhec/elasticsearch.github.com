@@ -25,7 +25,7 @@ p. Statistical facet allows to compute statistical data on a numeric fields. The
     "facets" : {
         "stat1" : {
             "statistical" : {
-                "field" : "num1",
+                "field" : "num1"
             }
         }
     }
@@ -70,6 +70,26 @@ p. Parameters can also be provided to the different scripts (preferable if the s
     }
 }    
 </pre>
+
+h2. Multi Field
+
+p. The statistical facet can be executed against more than one field, returning the aggregation result across those fields. For example:
+
+<pre class="prettyprint lang-js">
+{
+    "query" : {
+        "match_all" : {}
+    },
+    "facets" : {
+        "stat1" : {
+            "statistical" : {
+                "fields" : ["num1", "num2"]
+            }
+        }
+    }
+}    
+</pre>
+
 
 h2. Memory Considerations
 
