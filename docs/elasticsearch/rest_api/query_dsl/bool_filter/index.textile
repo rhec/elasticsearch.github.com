@@ -48,3 +48,8 @@ p. A filter that matches documents matching boolean combinations of other querie
     }
 }    
 </pre>
+
+h2. Caching
+
+p. The result of the `bool` filter is automatically cached by default. The `_cache` can be set to `false` to turn it off.
+

@@ -25,3 +25,7 @@ p. Filters documents that have fields containing terms with a specified prefix. 
     }
 }
 </pre>
+
+h2. Caching
+
+p. The result of the filter is cached by default. The `_cache` can be set to `false` in order not to cache it.

@@ -44,3 +44,7 @@ p. The @range@ filter top level parameters include:
 | @gte@ | Same as setting @from@ and @from_inclusive@ to @true@. |
 | @lt@ | Same as setting @to@ and @to_inclusive@ to @false@. |
 | @lte@ | Same as setting @to@ and @to_inclusive@ to @true@. |
+
+h2. Caching
+
+p. The result of the filter is automatically cached by default. The `_cache` can be set to `false` to turn it off.

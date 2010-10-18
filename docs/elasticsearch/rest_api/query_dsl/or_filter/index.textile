@@ -35,3 +35,7 @@ p. A filter that matches documents using @OR@ boolean operator on other queries.
     }
 }
 </pre>
+
+h2. Caching
+
+p. The result of the filter is not cached by default. The `_cache` can be set to `true` in order to cache it (tough usually not needed).

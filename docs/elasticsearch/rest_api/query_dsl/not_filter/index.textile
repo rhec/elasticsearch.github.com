@@ -37,3 +37,7 @@ p. A filter that filters out matched documents using a query. This filter is mor
     }
 }
 </pre>
+
+h2. Caching
+
+p. The result of the filter is not cached by default. The `_cache` can be set to `true` in order to cache it (tough usually not needed).
