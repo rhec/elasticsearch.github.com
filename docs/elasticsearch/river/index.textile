@@ -22,6 +22,7 @@ h2. Rivers
 |"twitter":twitter|A river to index twitter public stream.|
 |"couchdb":couchdb|A river to index (realtime) couchdb database using the @_change@ API.|
 |"rabbitmq":rabbitmq|A river that indexes a rabbitmq queue.|
+|"wikipedia":wikipedia|A river that indexes wikipedia.|
 
 h2. How it Works
 
