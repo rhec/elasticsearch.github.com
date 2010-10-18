@@ -137,7 +137,7 @@ The following are options allowed on the filter:
 
 h2. @geo_point@ Type
 
-p. The filter does not require the @geo_point@ type to be set. It assumes that the location object indexed includes a @lat@ and @lon@ numeric values. The @geo_point@ type follows these rules and allows for more flexible indexing options / structure, but is not required.
+p. The filter *requires* the @geo_point@ type to be set on the relevant field.
 
 h2. Multi Location Per Document
 
