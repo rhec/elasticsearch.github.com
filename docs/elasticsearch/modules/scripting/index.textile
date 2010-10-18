@@ -13,13 +13,23 @@ docBreadcrumb = [
 
 h1. Scripting Module
 
-p. The scripting module allows to use scripts in order to evaluate custom expressions within different areas within the index module. For example, scripts can be used to return "script fields" as part of a search request, can be used to evaluate a custom score for a query and so on.
+p. The scripting module allows to use scripts in order to evaluate custom expressions. For example, scripts can be used to return "script fields" as part of a search request, or can be used to evaluate a custom score for a query and so on.
 
-p. The scripting module uses "mvel":http://mvel.codehaus.org/ as the scripting language with some extensions. mvel is used since its extremely fast and very simple to use, and in most cases, simple expressions are needed (for example, mathematical equations).
+p. The scripting module uses by default "mvel":http://mvel.codehaus.org/ as the scripting language with some extensions. mvel is used since its extremely fast and very simple to use, and in most cases, simple expressions are needed (for example, mathematical equations).
+
+p. Additional `lang` plugins are provided to allow to execute scripts in different languages. Currently supported are `lang-javascript` for JavaScript, `lang-groovy` for Groovy, and `lang-python` for Python. All places where a `script` parameter can be used, a `lang` parameter (on the same level) can be provided to define the language of the script.
+
+h2. Preloaded Scripts
+
+p. Scripts can always be provided as part of the relevant API, but they can also be preloaded by placing them under `config/scripts` and then referencing them by the script name (instead of providing the full script). This helps reduce the amount of data passed between the client and the nodes.
+
+p. The name of the script is derived from the hierarchy of directories it exists under, and the file name without the lang extension. For example, a script placed under `config/scripts/group1/group2/test.py` will be named `group1_group2_test`.
 
 h2. Document Fields
 
-p. Most scripting revolve around the use of specific document fields data. The @doc['field_name']@ can be used to access specific field data within a document (the document in question is usually derived by the context the script is used). The following data can be extracted from a field:
+p. Most scripting revolve around the use of specific document fields data. The @doc['field_name']@ can be used to access specific field data within a document (the document in question is usually derived by the context the script is used). Document fields are very fast to access since they end up being loaded into memory (all the relevant field values/tokens are loaded to memory).
+
+p. The following data can be extracted from a field:
 
 |_. Expression |_. Description |
 |@doc['field_name'].value@|The native value of the field. For example, if its a short type, it will be short.|
@@ -31,8 +41,20 @@ p. Most scripting revolve around the use of specific document fields data. The @
 |@doc['field_name'].dates@|Return an array of date values for the field.|
 |@doc['field_name'].empty@|A boolean indicating if the field has no values within the doc.|
 |@doc['field_name'].multiValued@|A boolean indicating that the field has several values within the corpus.|
+|@doc['field_name'].latValue@|The latitude of a geo point type.|
+|@doc['field_name'].lonValue@|The longitude of a geo point type.|
+|@doc['field_name'].latValues@|The latitudes of a geo point type.|
+|@doc['field_name'].lonValues@|The longitudes of a geo point type.|
 
-h2. Built In Functions
+h2. Stored Fields
+
+p. Stored fields can also be accessed when executed a script. Note, they are much slower to access compared with document fields, but are not loaded into memory. They can be simply accessed using `_fields[`my_field_name`].value` or `_fields['my_field_name'].values`.
+
+h2. Source Field
+
+p. The source field can also be accessed when executing a script. The source field is loaded per doc, parsed, and then provided to the script for evaluation. The `_source` forms the context under which the source field can be accessed, for example `_source.obj2.obj1.field3`.
+
+h2. mvel Built In Functions
 
 p. There are several built in functions that can be used within scripts. They include:
 
