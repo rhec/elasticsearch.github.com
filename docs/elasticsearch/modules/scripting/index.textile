@@ -17,7 +17,11 @@ p. The scripting module allows to use scripts in order to evaluate custom expres
 
 p. The scripting module uses by default "mvel":http://mvel.codehaus.org/ as the scripting language with some extensions. mvel is used since its extremely fast and very simple to use, and in most cases, simple expressions are needed (for example, mathematical equations).
 
-p. Additional `lang` plugins are provided to allow to execute scripts in different languages. Currently supported are `lang-javascript` for JavaScript, `lang-groovy` for Groovy, and `lang-python` for Python. All places where a `script` parameter can be used, a `lang` parameter (on the same level) can be provided to define the language of the script.
+p. Additional @lang@ plugins are provided to allow to execute scripts in different languages. Currently supported plugins are @lang-javascript@ for JavaScript, @lang-groovy@ for Groovy, and @lang-python@ for Python. All places where a `script` parameter can be used, a @lang@ parameter (on the same level) can be provided to define the language of the script. The @lang@ options are @js@, @groovy@, @python@, and @mvel@.
+
+h2. Default Scripting Language
+
+p. The default scripting language (assuming no @lang@ parameter is provided) is @mvel@. In order to change it set the @script.default_lang@ to the appropriate language.
 
 h2. Preloaded Scripts
 
