@@ -165,9 +165,9 @@ p. The term facet can be executed against more than one field, returning the agg
 
 h2. Script Field
 
-p. A script that provides the actual terms that will be processed for a given doc. A `script_field` (or `script` which will be used when no field or fields are provided) can be set to provide it.
+p. A script that provides the actual terms that will be processed for a given doc. A @script_field@ (or @script@ which will be used when no @field@ or @fields@ are provided) can be set to provide it.
 
-p. As an example, a search request (that is quite "heavy") can be executed and use either `_source` itself or `_fields` (for stored fields) without needing to load the terms to memory (at the expense of much slower execution of the search, and causing more IO load):
+p. As an example, a search request (that is quite "heavy") can be executed and use either @_source@ itself or @_fields@ (for stored fields) without needing to load the terms to memory (at the expense of much slower execution of the search, and causing more IO load):
 
 <pre class="prettyprint lang-js">
 {
