@@ -47,4 +47,4 @@ p. The @range@ filter top level parameters include:
 
 h2. Caching
 
-p. The result of the filter is automatically cached by default. The `_cache` can be set to `false` to turn it off.
+p. The result of the filter is automatically cached by default. The @_cache@ can be set to @false@ to turn it off.
