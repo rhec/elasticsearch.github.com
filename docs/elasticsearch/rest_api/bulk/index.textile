@@ -21,6 +21,8 @@ optional_source\n
 action_and_meta_data\n
 optional_source\n
 ....
+action_and_meta_data\n
+optional_source\n
 </pre>
 
 p. The json format relies on the fact that Json string values must have @\n@ escaped, and that the actual json actions and sources are not pretty printed. Here is an example:
@@ -30,8 +32,11 @@ p. The json format relies on the fact that Json string values must have @\n@ esc
 { "type1" : { "field1" : "value1" } }
 { "delete" : { "_index" : "test", "_type" : "type1", "_id" : "2" } }
 { "create" : { "_index" : "test", "_type" : "type1", "_id" : "1" } }
-{ "type1" : { "field1" : "value1" } }
+{ "field1" : "value1" }
+
 </pre>
+
+p. In the optional source part, the `type` is optional as is when indexing data.
 
 p. A note on the format. The idea here is to make processing of this as fast as possible. As some of the actions will be needed to be redirected to other shards that exists on other nodes, only the action meta_data is parsed on the receiving node side. Also, zero copy buffers can be used on the source directly writing segments relevant to each action source to the network.
 
