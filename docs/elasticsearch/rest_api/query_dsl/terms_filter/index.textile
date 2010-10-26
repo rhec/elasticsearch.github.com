@@ -26,6 +26,10 @@ p. Filters documents that have fields that match any of the provided terms (*not
 }
 </pre>
 
+h2. Optimization
+
+p. Note, if the terms tend to repeat in other @term@ or @terms@ filter, it is considered better to have a an @or@ filter wrapping single @term@ filters. 
+
 h2. Caching
 
 p. The result of the filter is automatically cached by default. The `_cache` can be set to `false` to turn it off.
