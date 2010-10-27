@@ -27,4 +27,4 @@ p. A query that wraps a filter and simply returns a constant score equal to the 
 }
 </pre>
 
-p. The filter object can hold only filter elements, not queries. Filters are much faster compared to queries since they don't perform any scoring, and they are cached within ElasticSearch.
+p. The filter object can hold only filter elements, not queries. Filters can be much faster compared to queries since they don't perform any scoring, especially when they are cached.

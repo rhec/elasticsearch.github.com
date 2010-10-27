@@ -66,7 +66,7 @@ h2. Filters and Caching
 
 p. Filters can be a great candidate for caching. Caching the result of a filter does not require a lot of memory, and will cause other queries executing against the same filter (same parameters) to be blazingly fast.
 
-p. Some filters already produce a result that is easily cacheable, and the different between caching and not caching them is the act of placing the result in the cache or not. This filters, which include the `term`, `terms`, `prefix`, and `range` filters, are by default cached.
+p. Some filters already produce a result that is easily cacheable, and the different between caching and not caching them is the act of placing the result in the cache or not. This filters, which include the `term`, `terms`, `prefix`, and `range` filters, are by default cached. These filters are recommended to use (compared to the equivalent query version) when the same filter (same parameters) will be used across multiple different queries (for example, a range filter with age higher than 10).
 
 p. Other filters, usually already working with the field data loaded into memory, are not cached by default. Those filter are already very fast, and the process of caching them requires extra processing in order to allow the filter result to be used with different queries than the one executed. This filters, including the geo filters, `numeric_range`, and `script` are not cached by default.
 
