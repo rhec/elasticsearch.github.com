@@ -45,7 +45,7 @@ p. Renaming an index is a simple @remove@ then @add@ operation within the same A
 $ curl -XPOST 'http://localhost:9200/_aliases' -d '
 {
     "actions" : [
-        { "remove" : { "index" : "test1", "alias" : "alias1" } }
+        { "remove" : { "index" : "test1", "alias" : "alias1" } },
         { "add" : { "index" : "test1", "alias" : "alias2" } }
     ]
 }'
@@ -57,7 +57,7 @@ p. Associating an alias with more then one index are simply several @add@ action
 $ curl -XPOST 'http://localhost:9200/_aliases' -d '
 {
     "actions" : [
-        { "add" : { "index" : "test1", "alias" : "alias1" } }
+        { "add" : { "index" : "test1", "alias" : "alias1" } },
         { "add" : { "index" : "test2", "alias" : "alias1" } }
     ]
 }'
