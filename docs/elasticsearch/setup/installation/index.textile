@@ -51,6 +51,10 @@ h3. File Descriptors
 
 p. Make sure to increate the number of open files descriptors on the machine (or for the user running elasticsearch). Setting it to 32k or even 64k is recommended.
 
+h3. Memory Settings
+
+p. It is recommended to set both the min and max memory allocation to be the same.
+
 h2. Running As a Service
 
 p. ElasticSearch can be run as a service using the @elasticsearch@ script located under @bin/service@ location. The repo for it is located "here":http://github.com/elasticsearch/elasticsearch-servicewrapper. The script accepts a single parameter with the following values:
