@@ -35,10 +35,10 @@ p. The @range@ query top level parameters include:
 |_. Name |_. Description |
 | @from@ | The lower bound. Defaults to start from the first.|
 | @to@ | The upper bound. Defaults to unbounded. |
-| @from_inclusive@ | Should the first from (if set) be inclusive or not. Defaults to @true@ |
-| @to_inclusive@ | Should the last to (if set) be inclusive or not. Defaults to @true@. |
-| @gt@ | Same as setting @from@ to the value, and @from_inclusive@ to @false@. |
-| @gte@ | Same as setting @from@ to the value,and @from_inclusive@ to @true@. |
-| @lt@ | Same as setting @to@ to the value, and @to_inclusive@ to @false@. |
-| @lte@ | Same as setting @to@ to the value, and @to_inclusive@ to @true@. |
+| @include_lower@ | Should the first from (if set) be inclusive or not. Defaults to @true@ |
+| @include_upper@ | Should the last to (if set) be inclusive or not. Defaults to @true@. |
+| @gt@ | Same as setting @from@ to the value, and @include_lower@ to @false@. |
+| @gte@ | Same as setting @from@ to the value,and @include_lower@ to @true@. |
+| @lt@ | Same as setting @to@ to the value, and @include_upper@ to @false@. |
+| @lte@ | Same as setting @to@ to the value, and @include_upper@ to @true@. |
 | @boost@ | Sets the boost value of the query. Defaults to @1.0@. |
