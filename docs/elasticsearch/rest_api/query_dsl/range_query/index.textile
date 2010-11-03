@@ -37,8 +37,8 @@ p. The @range@ query top level parameters include:
 | @to@ | The upper bound. Defaults to unbounded. |
 | @from_inclusive@ | Should the first from (if set) be inclusive or not. Defaults to @true@ |
 | @to_inclusive@ | Should the last to (if set) be inclusive or not. Defaults to @true@. |
-| @gt@ | Same as setting @from@ and @from_inclusive@ to @false@. |
-| @gte@ | Same as setting @from@ and @from_inclusive@ to @true@. |
-| @lt@ | Same as setting @to@ and @to_inclusive@ to @false@. |
-| @lte@ | Same as setting @to@ and @to_inclusive@ to @true@. |
+| @gt@ | Same as setting @from@ to the value, and @from_inclusive@ to @false@. |
+| @gte@ | Same as setting @from@ to the value,and @from_inclusive@ to @true@. |
+| @lt@ | Same as setting @to@ to the value, and @to_inclusive@ to @false@. |
+| @lte@ | Same as setting @to@ to the value, and @to_inclusive@ to @true@. |
 | @boost@ | Sets the boost value of the query. Defaults to @1.0@. |
