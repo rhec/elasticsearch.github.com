@@ -14,6 +14,8 @@ docBreadcrumb = [
 
 h1. Scroll
 
+p. Note, scroll is currently an experimental feature.
+
 p. A search request can be scrolled by specifying the @scroll@ parameter. The @scroll@ parameter is a time value parameter (for example: @scroll=5m@), indicating for how long the nodes that participate in the search will maintain relevant resources in order to continue and support it. This is very similar in its idea to opening a cursor against a database.
 
 p. A @scroll_id@ is returned from the first search request (and from continuos) scroll requests. The @scroll_id@ should be used when scrolling (and thats it, no other parameter is required).
