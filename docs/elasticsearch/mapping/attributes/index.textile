@@ -1,0 +1,32 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Mapping | Attributes
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["mapping", "Mapping"], 
+    ["attributes", "Attributes"]
+];
+</script>
+
+h1. Attributes
+
+p. Each mapping can have custom attributes associated with it. These are simple storage elements that are simply persisted along with the mapping and can be retrieved when fetching the mapping definition. The attributes are defined under the @_attributes@ element, for example:
+
+<pre class="prettyprint lang-js">
+{
+    "tweet" : {
+        "_attributes" : {
+            "attr1" : "value1",
+            "attr2" : {
+                "attr3" : "value3"
+            }
+        }
+    }
+}
+</pre>
+
+p. Attributes can be handy for example for client libraries that perform serialization and deserialization to store its meta model (for example, the class the document maps to).
+
