@@ -57,6 +57,7 @@ p. And here is a sample response:
 h2. Parameters
 
 |_. Name |_. Description |
+| @timeout@ | A search timeout, bounding the search request to be executed within the specified time value and bail with the hits accumulated up to that point when expired. Defaults to no timeout. |
 | @from@ | The starting from index of the hits to return. Defaults to @0@. |
 | @size@ | The number of hits to return. Defaults to @10@. |
 | @search_type@ | The type of the search operation to perform. Can be @dfs_query_then_fetch@, @dfs_query_and_fetch@, @query_then_fetch@, @query_and_fetch@. Defaults to @query_then_fetch@. |
