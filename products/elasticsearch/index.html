@@ -242,28 +242,9 @@ $ curl -XPUT http://localhost:9200/elasticsearch/ -d \
                 <h2>Gateway (Write Behind)</h2>
                 <p>Sometimes the whole cluster crashes or needs to be taken down. Many times, in such a case, we want to restore to the latest state of the cluster when it comes back up again. Elastic Search provides the gateway module allowing to do just that, think <b>Time Machine for search</b>.</p>
                 
-                <p>The state of the cluster (including the transaction log) can be <b>asynchronously</b> replicated to a persistent storage, which can then be used to recover from when the cluster comes back up. The gateway settings are set on the whole cluster, and on a per index level.</p>
-            </div>
-
-            <div>
-<pre class="prettyprint lang-yaml">
-gateway :
-    type: fs
-    fs :
-        location : /shared/elasticsearch
-</pre>          
-            </div>
-
-            <div style="float: left; margin-top: -27px; margin-left: 10px;"><img src="/images/set4/terminal128.png" height="40px"></img></div>
-            <div>
-<pre class="prettyprint lang-bsh">
-$ curl -XPUT http://localhost:9200/kimchy/ -d \
-'
-index :
-    gateway:
-        type: none
-'
-</pre>
+                <p>The state of the cluster (including the transaction log) can either be recreated from each node local storage (the default), or from a shared storage (like NFS or Amazon S3). When using a shared storage, the state is <b>asynchronously</b> replicated to it.</p>
+                
+                <p>Moreover, when using shared storage long term persistency, the index can be kept completely in memory while still being able to perform full recovery in the event of cluster shutdown.</p>                
             </div>
             
         </div></div>
