@@ -41,7 +41,7 @@ p. The bool query also supports @disable_coord@ parameter (defaults to @false@).
             {
                 "term" : { "tag" : "elasticsearch" }
             }
-        ]
+        ],
         "minimum_number_should_match" : 1,
         "boost" : 1.0
     }
