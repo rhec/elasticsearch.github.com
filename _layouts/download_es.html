@@ -5,7 +5,11 @@ layout: default
 <div class="siteheadersep"></div>
 <div class="generic nineforty" style="text-align: center;">
     <h1>{{page.title}}</h1>
-    <p>Your download will begin shortly, if it doesn't, <a href="{{page.download_url}}">click here</a>.</p>
+    <p>Your download will begin shortly, if it doesn't, <a href="{{page.download_url}}">click here</a>
+    {% if page.download_nix_url != null  %}
+    (<a href="{{page.download_nix_url}}">tar.gz</a>).
+    {% endif  %}
+    </p>
     
     <h2>While downloading:</h2>
 </div>
