@@ -30,7 +30,7 @@ p. The following sections cover all the aspects of how mapping work:
 |"boost_field":boost_field|Allow to control the boosting of a document using an external value.|
 |"source_field":source_field|Allow to control the @_source@ field storing the actual JSON indexed.|
 |"index_field":index_field|Allows to control indexing the @_index@ a document belongs to.|
-|"analyzer_field":analyzer_field|Allows to control the analyzer used for indexing based on a document field value.|
+|"analyzer_field":analyzer_field|Allows to control the analyzer used for indexing based on a document field value|
 |"all_field":all_field|Allows to automatically create an @_all@ field that includes all the other fields.|
 |"geo_point":geo_point|Mapping that represents a geo point.|
 |"ip":ip|Mapping that represents an ipv4 field.|
