@@ -31,6 +31,7 @@ p. The following sections cover all the aspects of how mapping work:
 |"source_field":source_field|Allow to control the @_source@ field storing the actual JSON indexed.|
 |"index_field":index_field|Allows to control indexing the @_index@ a document belongs to.|
 |"all_field":all_field|Allows to automatically create an @_all@ field that includes all the other fields.|
-|"geo_point":geo_point|Mapping the represents a geo point.|
+|"geo_point":geo_point|Mapping that represents a geo point.|
+|"ip":ip|Mapping that represents an ipv4 field.|
 |"attributes":attributes|Additional custom meta data stored on the mapping level.|
 |"attachment":attachment|A plugin extension to index @attachment@ types.|
