@@ -29,3 +29,4 @@ p. This section describes administration APIs that revolve around indices. The f
 |"refresh":refresh|Refresh one or more (or all) indices making all operations performed against the index since the last refresh searchable.|
 |"gateway_snapshot":gateway_snapshot|Explicitly perform a snapshot through the gateway of one or more indices (backup them).|
 |"optimize":optimize|Optimize one or more indices.|
+|"open_close":open_close|Close and open an index.|
