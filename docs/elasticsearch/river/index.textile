@@ -48,3 +48,7 @@ p. Rivers are singletons within the cluster. They get allocated automatically to
 
 p. River allocation on nodes can be controlled on each node. The @node.river@ can be set to @_none_@ disabling any river allocation to it. The @node.river@ can also include a comma separated list of either river names or types controlling the rivers allowed to run on it. For example: @my_river1,my_river2@, or @dummy,twitter@.
 
+h2. Status
+
+p. Each river (regardless of the implementation) exposes a high level @_status@ doc which includes the node the river is running on. Getting the status is a simple curl GET request to @/_river/{river name}/_status@.
+
