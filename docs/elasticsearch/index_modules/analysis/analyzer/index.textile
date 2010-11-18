@@ -32,6 +32,21 @@ p. An analyzer is registered under a logical name and can then be referenced fro
 
 p. The @default@ logical name allows to configure an analyzer that will be used both for indexing and for searching APIs. The @default_index@ logical name can be used to configure a default analyzer that will be used just when indexing, and the @default_search@ can be used to configure a default analyzer that will be used just when indexing.
 
+h2. Aliasing Analyzers
+
+p. Analyzers can be aliased to have several registered lookup names associated with them. For example:
+
+<pre class="prettyprint">
+index :
+  analysis :
+    analyzer :
+      standard :
+        alias: [alias1, alias2]
+        type : standard
+        stopwords : [test1, test2, test3]
+</pre>
+
+p. Will allow the @standard@ analyzer to also be referenced with @alias1@ and @alias2@ values.
 
 h2. Built in Analyzers
 
