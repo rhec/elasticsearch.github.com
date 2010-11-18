@@ -40,6 +40,8 @@ p. The @query_string@ top level parameters include:
 | @phrase_slop@ | Sets the default slop for phrases. If zero, then exact phrase matches are required.  Default value is @0@.|
 | @boost@ | Sets the boost value of the query. Defaults to @1.0@. |
 
+h2. Multi Field
+
 p. The @query_string@ query can also run against multiple fields. The idea of running the @query_string@ query against multiple fields is by internally creating several queries for the same query string, each with @default_field@ that match the fields provided. Since several queries are generated, combining them can be automatically done either using a @dis_max@ query or a simple @bool@ query. For example (the @name@ is boosted by 5 using @^5@ notation):
 
 <pre class="prettyprint lang-js">
@@ -57,6 +59,18 @@ p. When running the @query_string@ query against multiple fields, the following 
 |_. Parameter |_. Description |
 | @use_dis_max@ | Should the queries be combined using @dis_max@ (set it to @true@), or a @bool@ query (set it to @false@). Defaults to @true@.|
 | @tie_breaker@ | When using @dis_max@, the disjunction max tie breaker. Defaults to @0@. |
+
+p. The fields parameter can also include pattern based field names, allowing to automatically expand to the relevant fields (dynamically introduced fields included). For example:
+
+<pre class="prettyprint lang-js">
+{
+    "query_string" : { 
+        "fields" : ["content", "name.*^5"], 
+        "query" : "this AND that OR thus",
+        "use_dis_max" : true
+    }
+}
+</pre>
 
 h2. Syntax Extension
 
