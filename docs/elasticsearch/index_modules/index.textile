@@ -24,3 +24,11 @@ p. The following lists the available index level modules:
 |"merge":merge|The merge module allows to configure both the "merge policy":merge/policy and "merge scheduler":merge/scheduler of a specific shard index.|
 |"store":store|The store module allows to control the storage type each index shard stores the index content at.|
 |"translog":translog|Allows to control flushing of shard based on number of translog operations.|
+
+h2. Index Settings
+
+p. There specific index level settings that are not associated with any specific module. These include:
+
+|_. Setting |_. Description |
+|index.compound_format|Should the compound file format be used (boolean setting). If not set, controlled by the actually store used, this is because the compound format was created to reduce the number of open file handles when using file based storage. By default, it is set to @false@ for better performance (really applicable for file system based index storage), but, requires adapting the max open file handles.|
+
