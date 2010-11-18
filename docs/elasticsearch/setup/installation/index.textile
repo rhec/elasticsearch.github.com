@@ -53,7 +53,9 @@ p. Make sure to increate the number of open files descriptors on the machine (or
 
 h3. Memory Settings
 
-p. It is recommended to set both the min and max memory allocation to be the same.
+p.  By default, when starting, an "mlockall":http://opengroup.org/onlinepubs/007908799/xsh/mlockall.html will be called to try and lock the process address space so it won't be swapped. For this to work, it is recommended to set both the min and max memory allocation to be the same.
+
+p. In order to see if this works or not, set the @common.jna@ logging to DEBUG level. In order to disable even trying to @mlockall@, set @bootstrap.mlockall@ to @false@.
 
 h2. Running As a Service
 
