@@ -14,7 +14,7 @@ docBreadcrumb = [
 
 h1. Script Filter
 
-p. A filter allowing to define "scripts":../../modules/scripting as filters. For example:
+p. A filter allowing to define "scripts":../../../modules/scripting as filters. For example:
 
 <pre class="prettyprint lang-js">
 "filtered" : {
