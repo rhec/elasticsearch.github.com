@@ -31,6 +31,7 @@ p. The following sections cover all the aspects of how mapping work:
 |"source_field":source_field|Allow to control the @_source@ field storing the actual JSON indexed.|
 |"index_field":index_field|Allows to control indexing the @_index@ a document belongs to.|
 |"analyzer_field":analyzer_field|Allows to control the analyzer used for indexing based on a document field value|
+|"routing_field":routing_field|Allows to control routing aspect of a doc.|
 |"all_field":all_field|Allows to automatically create an @_all@ field that includes all the other fields.|
 |"geo_point":geo_point|Mapping that represents a geo point.|
 |"ip":ip|Mapping that represents an ipv4 field.|
