@@ -19,5 +19,6 @@ p. The directory layout of an installation is as follows:
 |*home*|Home of elasticsearch installation||@path.home@|
 |*bin*|Binary scripts including @elasticsearch@ to start a node|@{path.home}/bin@||
 |*conf*|Configuration files including @elasticsearch.yml@|@{path.home}/config@|@path.conf@|
-|*work*|Temporal files that are used by different nodes. For example, the local file system based storage of each shard index information (under a unique path including the node id, index name, and shard id), as well as the logs|@{path.home}/work@|@path.work@|
-|*logs*|Log files location|@{path.work}/logs@|@path.logs@|
+|*data*|The location of the data files of each index / shard allocated on the node.|@{path.home}/data@|@path.data@|
+|*work*|Temporal files that are used by different nodes.|@{path.home}/work@|@path.work@|
+|*logs*|Log files location|@{path.home}/logs@|@path.logs@|
