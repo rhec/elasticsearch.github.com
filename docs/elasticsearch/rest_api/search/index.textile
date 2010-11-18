@@ -30,3 +30,38 @@ p. The search API allows for the following options:
 |"index_boost":index_boost|Allow to specify index level boost when searching across indices.|
 |"named_filters":named_filters|Allows to return for each hit the filters it matched on.|
 |"scroll":scroll|Scroll a search request.|
+
+h2. Routing
+
+p. When executing a search, it will be broadcasted to all the index/indices shards (round robin between replicas). Which shards will be searched on can be controlled by providing the @routing@ parameter. For example, when indexing tweets, the routing value can be the user name:  
+
+<pre class="prettyprint">
+$ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '
+{
+    "user" : "kimchy",
+    "postDate" : "2009-11-15T14:12:12",
+    "message" : "trying out Elastic Search"
+}
+'
+</pre>
+
+p. In such a case, if we want to search only on the tweets for a specific user, we can specify it as the routing, resulting in the search hitting only the relevant shard:
+
+<pre class="prettyprint">
+$ curl -XGET 'http://localhost:9200/twitter/tweet/_search?routing=kimchy' -d '
+{
+    "filtered" : {
+        "query" : {
+            "query_string" : {
+                "query" : "some query string here"
+            }
+        },
+        "filter" : {
+            "term" : { "user" : "kimchy" }
+        }
+    }
+}
+'
+</pre>
+
+p. The routing parameter can be multi valued represented as a comma separated string. This will result in hitting the relevant shards where the routing values match to.

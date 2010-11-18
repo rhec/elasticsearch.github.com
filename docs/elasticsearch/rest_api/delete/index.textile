@@ -32,6 +32,18 @@ p. The result of the above delete operation is:
 
 p(note). The delete operation will always return the the above result, even if the document did not exists. This is done for performance reasons.
 
+h2. Routing
+
+p. When indexing using the ability to control the routing, in order to delete a document, the routing value should also be provided. For example:
+
+<pre class="prettyprint">
+$ curl -XDELETE 'http://localhost:9200/twitter/tweet/1?routing=kimchy'
+</pre>
+
+p. The above will delete a tweet with id 1, but will be routed based on the user. Note, issuing a delete without the correct routing, will cause the document to not be deleted.
+
+p. Many times, the routing value is not known when deleting a document. For those cases, when specifying the @_routing@ mapping as @required@, and no routing value is specified, the delete will be broadcasted automatically to all shards.
+
 h2. Automatic for the Index
 
 p. The delete operation automatically creates an index if it has not been created before (check out the "create index API":../admin/indices/create_index for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "put mapping":../admin/indices/put_mapping API for manually creating type mapping). 

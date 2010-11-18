@@ -81,3 +81,8 @@ p(note). Both HTTP GET and HTTP POST can be used to execute count with body. Sin
 h2. Distributed
 
 p. The count operation is broadcast across all shards. For each shard id group, a replica is chosen and executed against it. This means that replicas increase the scalability of count.
+
+h2. Routing
+
+p. The routing value (a comma separated list of the routing values) can be specified to control which shards the count request will be executed on.
+

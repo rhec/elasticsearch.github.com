@@ -113,6 +113,22 @@ p. The result of the above index operation is:
 }
 </pre>
 
+h2. Routing
+
+p. When indexing documents, the document will end up being indexed into a specific shard. By default, the shard is controlled by hashing the id value of the document and using the hash value to control the shard it will end at. For more explicit control of the routing, one can be specified as part of the API call. For example:
+
+<pre class="prettyprint">
+$ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '
+{
+    "user" : "kimchy",
+    "postDate" : "2009-11-15T14:12:12",
+    "message" : "trying out Elastic Search"
+}
+'
+</pre>
+
+p. The above sample will route the indexing of the tweet message based on the user name. Note, the @_routing@ mapping option allows to control automatic extraction of the routing value from an indexed document without the need to explicitly set it at the cost of (very lightweight) additional parsing of the doc. Also, if the @_routing@ mapping is defined, and set to be @required@, then the index operation will fail if no routing is provided (or extracted).
+
 h2. Distributed
 
 p. The index operation gets hashed into a specific shard id. It then gets redirected into the primary shard within that id group, and replicated (if needed) to shard replicas within that id group.

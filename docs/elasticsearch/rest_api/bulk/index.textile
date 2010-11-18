@@ -48,6 +48,10 @@ p. Note, in the end, the full data needs to be represented on each server, so in
 
 p. If using the HTTP API, make sure that the client does not send HTTP chunks, as this will slow things down.
 
+h2. Routing
+
+p. Each bulk item can include the routing value using the @_routing@ field. It automatically follows the behavior of the index / delete operation based on the @_routing@ mapping.
+
 h2. Write Consistency
 
 p. Control if the operation will be allowed to execute based on the number of active shards within that partition (replication group). The values allowed are @one@, @quorum@, and @all@. The parameter to set it is @consistency@, and it defaults to the node level setting of @action.write_consistency@ which in turn defaults to @quorum@.
