@@ -117,15 +117,17 @@ p. For example, we might want to have all fields to be stored by default, or all
 }
 </pre>
 
-p. The above mapping will create a `multi_field` mapping for all field names starting with multi, and will map all `string` types to be `not_analyzed`.
+p. The above mapping will create a @multi_field@ mapping for all field names starting with multi, and will map all @string@ types to be @not_analyzed@.
 
 p. Dynamic templates are named to allow for simple merge behavior. A new mapping, just with a new template can be "put" and that template will be added, or if it has the same name, the template will be replaced.
 
-p. The `match` allow to define matching on the field name. An `unmatch` option is also available to exclude fields if they do match on `match`. The `match_mapping_type` controls if this template will be applied only for dynamic fields of the specified type (as guessed by the json format).
+p. The @match@ allow to define matching on the field name. An @unmatch@ option is also available to exclude fields if they do match on @match@. The @match_mapping_type@ controls if this template will be applied only for dynamic fields of the specified type (as guessed by the json format).
 
-p. The format of all the matching is simple format, allowing to use * as a matching element supporting simple patterns such as xxx*, *xxx, xxx*yyy (with arbitrary number of pattern types), as well as direct equality. The `match_pattern` can be set to `regex` to allow for regular expression based matching.
+p. Another option is to use @path_match@, which allows to match the dynamic template against the "full" dot notation name of the field (for example @obj1.*.value@ or @obj1.obj2.*@), with the respective @path_unmatch@.
 
-p. The `mapping` element provides the actual mapping definition. The `{name}` keyword can be used and will be replaced with the actual dynamic field name being introduced. The `{dynamic_type}` (or `{dynamicType}`) can be used and will be replaced with the mapping derived based on the field type (or the derived type, like `date`).
+p. The format of all the matching is simple format, allowing to use * as a matching element supporting simple patterns such as xxx*, *xxx, xxx*yyy (with arbitrary number of pattern types), as well as direct equality. The @match_pattern@ can be set to @regex@ to allow for regular expression based matching.
+
+p. The @mapping@ element provides the actual mapping definition. The @{name}@ keyword can be used and will be replaced with the actual dynamic field name being introduced. The @{dynamic_type}@ (or @{dynamicType}@) can be used and will be replaced with the mapping derived based on the field type (or the derived type, like @date@).
 
 p. Complete generic settings can also be applied, for example, to have all mappings be stored, just set:
 
