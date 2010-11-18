@@ -1,0 +1,44 @@
+---
+layout: blogpost
+title: ElasticSearch 0.13.0 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.13.0@ has just been released. You can download it "here":/download. This release includes important bug fixes (most important one is a possible corruption in the index data) and some new features, including:
+
+h2. More Mapping Features
+
+p. Support for a new IP (ipv4) type (that is automatically detected) allowing to do range queries (for example) on IP ranges. More enhancements to dynamic templates matching, a compression threshold on the source field, and an analyzer mapping field.
+
+h2. Explicit Shard Routing Control
+
+p. Up until 0.13, documents were routed to the relevant shard based on their respective type and id values. In this version, they are not routed only by the id value by default (check the upgrade notes below), and they can be routed based on a custom value. This means that doing searches can be much faster when knowing in advance the list of routing values the search should executed on.
+
+p. For example, when indexing a blog post as a single document, and a blog comment as another document, the comment document can be routed to the same shard as the blog post using the blog post id. This means that when wanting to search only on things relating to a specific blog post, only a single shard needs to be searched on and not all shards of that index.
+
+p. This is very similar to the multi indices feature (and the ability to search on several of them), but provides a much higher control of routing within an index.
+
+h2. Improved Support for Large Number of Indices
+
+p. Large number of indices now consume much less resources on the cluster as a whole, and a new API allowing to close and open an index has been added.
+
+h2. Many more smaller features
+
+p. There are many more smaller features, with the list available "here":https://github.com/elasticsearch/elasticsearch/issues/closed under the 0.13 tag.
+
+h2. Upgrade Notes
+
+p. Two important nodes when upgrading to 0.13:
+
+p. The first, due to the change in the default routing mechanism of routing only based on the id and not the type, existing systems upgrading to the new version must set the @cluster.routing.operation.use_type@ to @true@ in order to maintain the same hashing mechanism as in previous releases.
+
+p. The second, the location of the index files have changed. It used to be stored under the "work" directory, but it has been moved to a new "data" directory. This means two things, if you are using the default, then rename the work directory under the installation to data. If @path.work@ was being explicitly set, change the setting to @path.data@.
+
+p. This was done in order to simplify the management of files elasticsearch created. Now, there are three places where data is created: @path.data@ for index related data information, @path.logs@ for the location of the logs, and @path.work@ for temporal data.
+
+
+-shay.banon
+
+
+
