@@ -1,0 +1,31 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Exists Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["exists_filter", "Exists Filter"],
+];
+</script>
+
+h1. Exists Filter
+
+p. Filters documents where a specific field has a value in them.
+
+<pre class="prettyprint lang-js">
+{
+    "constant_score" : {
+        "filter" : {
+            "exists" : { "field" : "user" }
+        }
+    }
+}
+</pre>
+
+h2. Caching
+
+p. The result of the filter is always cached.

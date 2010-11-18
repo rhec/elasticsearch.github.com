@@ -57,3 +57,11 @@ p. When running the @query_string@ query against multiple fields, the following 
 |_. Parameter |_. Description |
 | @use_dis_max@ | Should the queries be combined using @dis_max@ (set it to @true@), or a @bool@ query (set it to @false@). Defaults to @true@.|
 | @tie_breaker@ | When using @dis_max@, the disjunction max tie breaker. Defaults to @0@. |
+
+h2. Syntax Extension
+
+p. There are several syntax extensions to the Lucene query language.
+
+h3. missing / exists
+
+p. The @_exists_@ and @_missing_@ syntax allows to control docs that have fields that exists within them (have a value) and missing. The syntax is: @_exists_:field1@, @_missing_:field@ and can be used anywhere a query string is used.

@@ -1,0 +1,31 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | REST Query DSL API | Missing Filter
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["rest_api", "REST API"],
+    ["query_dsl", "Query DSL"],
+    ["missing_filter", "Missing Filter"],
+];
+</script>
+
+h1. Missing Filter
+
+p. Filters documents where a specific field has no value in them.
+
+<pre class="prettyprint lang-js">
+{
+    "constant_score" : {
+        "filter" : {
+            "missing" : { "field" : "user" }
+        }
+    }
+}
+</pre>
+
+h2. Caching
+
+p. The result of the filter is always cached.
