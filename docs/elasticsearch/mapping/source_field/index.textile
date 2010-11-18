@@ -32,3 +32,4 @@ p. The source field can be compressed (LZF) when stored in the index. This can g
 
 p. In order to enable compression, the @compress@ option should be set to @true@. By default it is set to @false@. Note, this can be changed on an existing index, as a mix of compressed and uncompressed sources is supported.
 
+p. Moreover, a @compression_threshold@ can be set to control when the source will be compressed. It accepts a byte size value (for example @100b@, @10kb@). Note, @compress@ should be set to @true@.
