@@ -51,6 +51,8 @@ h3. File Descriptors
 
 p. Make sure to increate the number of open files descriptors on the machine (or for the user running elasticsearch). Setting it to 32k or even 64k is recommended.
 
+p. In order to test how many open files the process can open, start it with @-Des.max-open-files@ set to @true@. This will print the number of open files the process can open on startup.
+
 h3. Memory Settings
 
 p.  By default, when starting, an "mlockall":http://opengroup.org/onlinepubs/007908799/xsh/mlockall.html will be called to try and lock the process address space so it won't be swapped. For this to work, it is recommended to set both the min and max memory allocation to be the same.
