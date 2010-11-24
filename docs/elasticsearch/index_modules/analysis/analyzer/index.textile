@@ -17,7 +17,7 @@ h1. Analyzer
 p. Analyzers in general are broken down into a @Tokenizer@ with zero or more @TokenFilter@ applied to it. The analysis module allows to register @TokenFilters@, @Tokenizers@ and @Analyzers@ under logical names which can then be referenced either in mapping definitions or in certain APIs. Here is a list of analyzer types:
 
 |_. Type |_. Description |
-|"standard":standard|An analyzer that is built of using "Standard Tokenizer":../tokenizer/standard, with "Standard Token Filter":../tokenfilter/standard, "Lower Case Token Filter":../tokenfilter/lowercase, and "Stop Token Filter":../tokefilter/stop.|
+|"standard":standard|An analyzer that is built of using "Standard Tokenizer":../tokenizer/standard, with "Standard Token Filter":../tokenfilter/standard, "Lower Case Token Filter":../tokenfilter/lowercase, and "Stop Token Filter":../tokenfilter/stop.|
 |"simple":simple|An analyzer that is built using a "Lower Case Tokenizer":../tokenizer/lowercase.|
 |"stop":stop|An analyzer that is built using a "Lower Case Tokenizer":../tokenizer/lowercase, with "Stop Token Filter":../tokenfilter/stop.|
 |"whitespace":whitespace|An analyzer that is built using a "Whitespace Tokenizer":../tokenizer/whitespace.|
