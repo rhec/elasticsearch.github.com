@@ -59,6 +59,8 @@ p.  By default, when starting, an "mlockall":http://opengroup.org/onlinepubs/007
 
 p. In order to see if this works or not, set the @common.jna@ logging to DEBUG level. In order to disable even trying to @mlockall@, set @bootstrap.mlockall@ to @false@.
 
+p. A solution to "Unknown mloclall error 0" can be to set @ulimit -l unlimited@.
+
 h2. Running As a Service
 
 p. ElasticSearch can be run as a service using the @elasticsearch@ script located under @bin/service@ location. The repo for it is located "here":http://github.com/elasticsearch/elasticsearch-servicewrapper. The script accepts a single parameter with the following values:
