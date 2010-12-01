@@ -31,4 +31,5 @@ p. There specific index level settings that are not associated with any specific
 
 |_. Setting |_. Description |
 |index.compound_format|Should the compound file format be used (boolean setting). If not set, controlled by the actually store used, this is because the compound format was created to reduce the number of open file handles when using file based storage. By default, it is set to @false@ for better performance (really applicable for file system based index storage), but, requires adapting the max open file handles.|
-
+|index.term_index_interval|Set the interval between indexed terms.  Large values cause less memory to be used by a reader / searcher, but slow random-access to terms. Small values cause more memory to be used by a reader / searcher, and speed random-access to terms. Defaults to @128@.|
+|index.refresh_interval|A time setting controlling how often the refresh operation will be executed. Defaults to @1s@. Can be set to @-1@ in order to disable it.|
