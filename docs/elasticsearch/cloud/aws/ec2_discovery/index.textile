@@ -34,3 +34,7 @@ p. The following are a list of settings (prefixed with @discovery.ec2@) that can
 |@availability_zones@|Either a comma separated list or array based list of availability zones. Only instances within the provided availability zones will be used in the cluster discovery.|
 |@any_group@|If set to @false@, will require all security groups to be present for the instance to be used for the discovery. Defaults to @true@.|
 
+h2. Filtering by Tags
+
+p. The ec2 discovery can also filter machines to include in the cluster based on tags (and not just groups). The settings to use include the @discovery.ec2.tag.@ prefix. For example, setting @discovery.ec2.tag.stage@ to @dev@ will only filter instances with a tag key set to @stage@, and a value of @dev@. Several tags set will require all of those tags to be set for the instance to be included.
+
