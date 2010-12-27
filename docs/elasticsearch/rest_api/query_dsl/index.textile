@@ -21,6 +21,7 @@ h2. Queries
 
 |_. API |_. Description |
 |"term":term_query|Matches documents that have fields that contain a a term (*not analyzed*).|
+|"terms":terms_query|Matches documents that have fields that match any of the listed terms (*not analyzed*).|
 |"range":range_query|Matches documents with fields that have terms within a certain range.|
 |"prefix":prefix_query|Matches documents that have fields containing terms with a specified prefix.|
 |"wildcard":wildcard_query|Matches documents that have fields matching a wildcard expression.|

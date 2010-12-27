@@ -26,6 +26,8 @@ p. Filters documents that have fields that match any of the provided terms (*not
 }
 </pre>
 
+p. The @terms@ filter is also aliased with @in@ as the filter name for simpler usage.
+
 h2. Optimization
 
 p. Note, if the terms tend to repeat in other @term@ or @terms@ filter, it is considered better to have a an @or@ filter wrapping single @term@ filters. 
