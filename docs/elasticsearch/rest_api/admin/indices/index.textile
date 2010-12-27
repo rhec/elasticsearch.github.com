@@ -31,3 +31,4 @@ p. This section describes administration APIs that revolve around indices. The f
 |"optimize":optimize|Optimize one or more indices.|
 |"open_close":open_close|Close and open an index.|
 |"analyze":analyze|Analyzes a custom text and produce its (tokens) results.|
+|"templates":templates|Templates allow to apply settings/mappings to new indices created.|
