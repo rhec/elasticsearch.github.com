@@ -72,6 +72,12 @@ p. The @memory@ type stores the index in memory with the following configuration
 
 |_. Setting |_. Description |
 |@index.store.memory.direct@|Will the index be stored outside the heap (direct) or within the heap. Defaults to @true@ which means it will be stored outside the heap.|
-|@index.store.memory.buffer_size@|A size based setting allowing to configure the buffers (chunks) that each file is fragmented to. Defaults to @100k@.|
-|@index.store.memory.cache_size@|A size based setting of the size of cached, already allocated buffers. Defaults to @20m@.|
-|@index.store.memory.warm_cache@|Should the cache be warmed or not. Defaults to @true@.|
+
+p. There are also *node* level settings that control the caching of buffers (important when using direct buffers):
+
+|_. Setting |_. Description |
+|@cache.memory.direct@|Should the memory be allocated outside of the JVM heap. Defaults to @true@.|
+|@cache.memory.small_buffer_size@|The small buffer size, defaults to @1kb@.|
+|@cache.memory.large_buffer_size@|The large buffer size, defaults to @1mb@.|
+|@cache.memory.small_cache_size@|The small buffer cache size, defaults to @10mb@.|
+|@cache.memory.large_cache_size@|The large buffer cache size, defaults to @500mb@.|
