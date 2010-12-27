@@ -41,6 +41,25 @@ $ curl -XPUT 'http://localhost:9200/twitter/' -d \
 '
 </pre>
 
+h2. Mappings
+
+p. The create index API allows to provide a set of one or more mappings:
+
+<pre class="prettyprint">
+curl -XPOST localhost:9200/test -d '
+{
+    "settings" : {
+        "number_of_shards" : 1
+    },
+    "mappings" : {
+        "type1" : {
+            "_source" : { "enabled" : false }
+        }
+    }
+}
+'
+</pre>
+
 h2. Index Settings
 
 p. For more information regarding all the different index level settings that can be set when creating an index, please check the "index modules":/docs/elasticsearch/index_modules section.
