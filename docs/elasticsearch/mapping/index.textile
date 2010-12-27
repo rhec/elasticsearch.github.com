@@ -32,6 +32,7 @@ p. The following sections cover all the aspects of how mapping work:
 |"index_field":index_field|Allows to control indexing the @_index@ a document belongs to.|
 |"analyzer_field":analyzer_field|Allows to control the analyzer used for indexing based on a document field value|
 |"routing_field":routing_field|Allows to control routing aspect of a doc.|
+|"parent_field":parent_field|Allow to set a relationship from a child doc to its parent.|
 |"all_field":all_field|Allows to automatically create an @_all@ field that includes all the other fields.|
 |"geo_point":geo_point|Mapping that represents a geo point.|
 |"ip":ip|Mapping that represents an ipv4 field.|

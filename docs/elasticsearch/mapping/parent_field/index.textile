@@ -1,0 +1,29 @@
+---
+layout: doc_es
+title: ElasticSearch Docs | Mapping | Root Object Type | Parent Field
+---
+
+<script type="text/javascript">
+docBreadcrumb = [
+    ["elasticsearch", "ElasticSearch"], 
+    ["mapping", "Mapping"], 
+    ["root_object_type", "Root Object Type"], 
+    ["parent_field", "Parent Field"], 
+];
+</script>
+
+h1. Parent Field
+
+p. The parent field mapping is defined on a child mapping, and points to the parent type this child relates to. For example, in case of a @blog@ type and a @blog_tag@ type child document, the mapping for @blog_tag@ should be:
+
+<pre class="prettyprint lang-js">
+{
+    "blog_tag" : {
+        "_parent" : {
+            "type" : "blog"
+        }
+    }
+}
+</pre>
+
+p. The mapping is automatically stored and indexed (meaning it can be searched on using the @_parent@ field notation).

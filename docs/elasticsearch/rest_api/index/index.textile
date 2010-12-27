@@ -129,6 +129,18 @@ $ curl -XPOST 'http://localhost:9200/twitter/tweet?routing=kimchy' -d '
 
 p. The above sample will route the indexing of the tweet message based on the user name. Note, the @_routing@ mapping option allows to control automatic extraction of the routing value from an indexed document without the need to explicitly set it at the cost of (very lightweight) additional parsing of the doc. Also, if the @_routing@ mapping is defined, and set to be @required@, then the index operation will fail if no routing is provided (or extracted).
 
+h2. Parent
+
+p. When indexing a child document, it is important that it will be routed to the same shard as the parent. This uses the routing capability. When indexing a doc with a parent id, it is automatically set as the routing value (unless the routing value is explicitly defined). Indexing a document with a parent id is simple:
+
+<pre class="prettyprint">
+$ curl -XPUT localhost:9200/blogs/blog_tag/1122?parent=1111 -d '
+{
+    "tag" : "something"
+}
+'
+</pre>
+
 h2. Distributed
 
 p. The index operation gets hashed into a specific shard id. It then gets redirected into the primary shard within that id group, and replicated (if needed) to shard replicas within that id group.

@@ -44,6 +44,10 @@ p. The above will delete a tweet with id 1, but will be routed based on the user
 
 p. Many times, the routing value is not known when deleting a document. For those cases, when specifying the @_routing@ mapping as @required@, and no routing value is specified, the delete will be broadcasted automatically to all shards.
 
+h2. Parent
+
+p. Though there isn't explicit parameter for parent when deleting, it is important to note that the routing is required to be set when deleting a doc (the routing should be set to the parent id).
+
 h2. Automatic for the Index
 
 p. The delete operation automatically creates an index if it has not been created before (check out the "create index API":../admin/indices/create_index for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if it has not been created before (check out the "put mapping":../admin/indices/put_mapping API for manually creating type mapping). 
