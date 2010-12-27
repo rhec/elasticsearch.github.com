@@ -1,0 +1,60 @@
+---
+layout: blogpost
+title: ElasticSearch 0.14.0 Released
+author: Shay Banon
+nick: kimchy
+---
+
+p. ElasticSearch version @0.14.0@ has just been released. You can download it "here":/download. This release includes bug fixes as well as several features:
+
+h2. Index Templates
+
+p. In ElasticSearch, creating several indices is a very simple, more over, searching over more than one index gives a lot of flexibility when it comes to designing your search system. Index templates allow to define both settings and mapping template that will be applied when an index is created based on simple matching on the index name, for example:
+
+<pre class="prettyprint">
+curl -XPUT localhost:9200/_template/template_1 -d '
+{
+    "template" : "te*",
+    "settings" : {
+        "number_of_shards" : 1
+    },
+    "mappings" : {
+        "type1" : {
+            "_source" : { "enabled" : false }
+        }
+    }
+}
+'
+</pre>
+
+h2. Highlighting Based on _source
+
+p. Up until now, highlighting required storing each separate field (usually in addition to storing to full source document). In 0.14, highlighting can now be performed directly on the _source document, causing considerable reduction in the index size when using highlighting.
+
+h2. Parent / Child Support
+
+p. In ElasticSearch, changing a specific field in a document required full reindexing. With the new parent child support, certain use cases can use it in order to index child document to an existing parent document, and then issue queries that will be executed on the child docs, but resulting in the parent docs.
+
+p. This include simple mapping definition in the child doc specifying the parent doc type, as well as reusing the routing feature added in 0.13 to make sure each child doc will end up in the same shard as the parent doc (thus reducing the cost of the "join" process to be in shard).
+
+p. Two queries have been added to the Query DSL, @has_child@ and @top_children@ that allow to query child docs and return parent docs.
+
+p. This feature is by no means complete, there is still work left in making it more usable (for example, returning the child docs as part of the search request), but the gist is there.
+
+h2. Network Optimizations
+
+p. ElasticSearch is being used heavily on cloud environments, such as ec2, where network resources are constrained. In 0.14, there has been several network optimizations to handle it better on top of the already existing feature of compressing all network traffic (by setting @transport.tcp.compress@ to @true@).
+
+h2. Analyze API
+
+p. Even wondered how text gets broken down into tokens that end up being indexed? The analyze API allows to provide a text that will go through the analysis process and output the tokens (with the meta information) generated from it. Its as simple as calling:
+
+<pre class="prettyprint">
+curl -XGET localhost:9200/[index_name]/_analyze?text=this is a test
+</pre>
+
+h2. Many more 
+
+p. There are many more small features and enhancements, as well as important bug fixes. Make sure to read the release notes on the wiki.
+
+-shay.banon
