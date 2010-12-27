@@ -61,8 +61,8 @@ h2. Filters
 |"geo_bounding_box":geo_bounding_box_filter|Filters documents that falls within a bounding box.|
 |"geo_polygon":geo_polygon_filter|Filters documents that falls within a geo polygon.|
 |"match_all":match_all_filter|A filter that matches on all documents.|
-|"exists":exists|Filters documents where a field has a value in them.|
-|"missing":missing|Filters documents where a field doesn't have a value in them.|
+|"exists":exists_filter|Filters documents where a field has a value in them.|
+|"missing":missing_filter|Filters documents where a field doesn't have a value in them.|
 
 h2. Filters and Caching
 
