@@ -14,7 +14,7 @@ docBreadcrumb = [
 
 h1. Fields
 
-p. Allows to selectively load specific *stored* fields for each document represented by a search hit. Defaults to load the internal @_source@ field.
+p. Allows to selectively load specific fields for each document represented by a search hit. Defaults to load the internal @_source@ field.
 
 <pre class="prettyprint lang-js">
 {
@@ -24,6 +24,8 @@ p. Allows to selectively load specific *stored* fields for each document represe
     }
 }
 </pre>
+
+p. The fields will automatically load stored fields (@store@ mapping set to @yes@), or, if not stored, will load the @_source@ and extract it from it (allowing to return nested document object).
 
 p. @*@ can be used to load all stored fields from the document.
 
