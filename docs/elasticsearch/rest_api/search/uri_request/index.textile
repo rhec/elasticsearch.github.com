@@ -58,8 +58,7 @@ p. The parameters allowed in the URI are:
 | @analyzer@ | The analyzer name to be used when analyzing the query string. |
 | @default_operator@ | The default operator to be used, can be @AND@ or @OR@. Defaults to @OR@. |
 | @explain@ | For each hit, contain an explanation of how scoring of the hits was computed. |
-| @fields@ | The selective fields of the document to return for each hit (fields must be stored), comma delimited. Defaults to the internal @_source@ field. |
-| @field@ | Same as fields above, but each parameter contains a single field name to load. There can be several @field@ parameters. |
+| @fields@ | The selective fields of the document to return for each hit (either retried from the index if stored, or from the @_source@ if not), comma delimited. Defaults to the internal @_source@ field. Not specifying any value will cause no fields to return.|
 | @sort@ | Sorting to perform. Can either be in the form of @fieldName@, or @fieldName:asc@/@fieldName:desc@. The fieldName can either be an actual field within the document, or the special @_score@ name to indicate sorting based on scores. There can be several @sort@ parameters (order is important). |
 | @timeout@ | A search timeout, bounding the search request to be executed within the specified time value and bail with the hits accumulated up to that point when expired. Defaults to no timeout. |
 | @from@ | The starting from index of the hits to return. Defaults to @0@. |
