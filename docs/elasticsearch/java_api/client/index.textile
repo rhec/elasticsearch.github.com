@@ -67,7 +67,7 @@ node.close();
 
 h2. Transport Client
 
-p. The @TransportClient@ connects remotely to an elasticsearch cluster using the transport module. It does not join the cluster, but simply gets one or more initial transport addresses, and sniff from them the rest of the cluster. It performs action based load balancing between different nodes, though most actions will probably be "two hop" operations.
+p. The @TransportClient@ connects remotely to an elasticsearch cluster using the transport module. It does not join the cluster, but simply gets one or more initial transport addresses and round robins between them on an action based operation (though most actions will probably be "two hop" operations).
 
 <pre class="prettyprint lang-java">
     
@@ -80,4 +80,10 @@ Client client = new TransportClient()
 // on shutdown
 
 client.close();
+</pre>
+
+p. The client allows to sniff the rest of the cluster, and add those into its list of machines to use. In this case, note that the ip addresses used will be the ones that the other nodes were started with (the "publish" address). In order to enable it, set the @client.transport.sniff@ to @true@:
+
+<pre class="prettyprint lang-java">
+TransportClient client = new TransportClient(settingsBuilder().put("client.transport.sniff", true));
 </pre>
