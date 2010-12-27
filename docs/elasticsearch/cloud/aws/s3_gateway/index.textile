@@ -32,4 +32,4 @@ gateway:
 p. The following are a list of settings (prefixed with @gateway.s3@) that can further control the s3 gateway:
 
 |_. Setting |_. Description |
-|@chunk_size@|Big files are broken down into chunks (to overcome AWS 5g limit). Default set to @100m@.|
+|@chunk_size@|Big files are broken down into chunks (to overcome AWS 5g limit and use concurrent snapshotting). Default set to @100m@.|
