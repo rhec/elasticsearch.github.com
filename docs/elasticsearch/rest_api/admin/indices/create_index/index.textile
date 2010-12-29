@@ -32,14 +32,32 @@ p. The above second example curl shows how an index called @twitter@ can be crea
 <pre class="prettyprint">
 $ curl -XPUT 'http://localhost:9200/twitter/' -d \
 '
-{ 
-    index : {
+{
+    settings : { 
+        index : {
+            number_of_shards : 3,
+            number_of_replicas : 2
+        }
+    }
+}
+'
+</pre>
+
+or more simplified
+
+<pre class="prettyprint">
+$ curl -XPUT 'http://localhost:9200/twitter/' -d \
+'
+{
+    settings : {
         number_of_shards : 3,
         number_of_replicas : 2
     }
 }
 '
 </pre>
+
+_Note you do not have to explicitly specify @index@ section inside @settings@ section._
 
 h2. Mappings
 
