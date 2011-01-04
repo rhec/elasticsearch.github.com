@@ -14,7 +14,7 @@ h1. River
 
 p. A river is a pluggable service running within elasticsearch cluster pulling data (or being pushed with data) that is then indexed into the cluster.
 
-p. A river is composed of a unique name and a type. The type is the type of the river (out of the box, there is the @dummy@ river that simply logs that its running). The name uniquely identifies the river within the cluster. For example, one can run an river called @my_river@ with type @dummy@, and another river called @my_other_river@ with type @dummy@.
+p. A river is composed of a unique name and a type. The type is the type of the river (out of the box, there is the @dummy@ river that simply logs that its running). The name uniquely identifies the river within the cluster. For example, one can run a river called @my_river@ with type @dummy@, and another river called @my_other_river@ with type @dummy@.
 
 h2. Rivers
 
@@ -26,7 +26,7 @@ h2. Rivers
 
 h2. How it Works
 
-p. A river instance (and its name) is a type within the @_river@ index. All different rivers implementations except a document called @_meta@ that at the very least has the type of the river (twitter / couchdb / ...) associated with it. Creating a river is a simple curl request to index that @_meta@ document (there is actually a @dummy@ river used for testing):
+p. A river instance (and its name) is a type within the @_river@ index. All different rivers implementations accept a document called @_meta@ that at the very least has the type of the river (twitter / couchdb / ...) associated with it. Creating a river is a simple curl request to index that @_meta@ document (there is actually a @dummy@ river used for testing):
 
 <pre class="prettyprint">
 curl -XPUT 'localhost:9200/_river/my_river/_meta' -d '{
